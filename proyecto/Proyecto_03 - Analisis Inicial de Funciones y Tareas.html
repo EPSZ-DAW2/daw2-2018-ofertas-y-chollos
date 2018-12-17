@@ -1,0 +1,181 @@
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Proyecto en Grupo - 3. Analisis Inicial de Funciones y Tareas</title>
+</head>
+<body>
+<div class="bloque" style="font-family:arial;font-size:1.25em;text-align:justify;border:1.5mm solid #508050;margin:0.25em;padding:1em;">
+
+<div class="titulo titulo1" style="margin:5mm;font-size:2.0em;font-weight:bold">Proyecto en Grupo</div>
+<div class="titulo titulo2" style="margin:5mm;font-size:1.5em;font-weight:bold">3. Descripción Inicial de Funciones y Tareas.</div>
+
+<br/>
+&nbsp;&nbsp;&nbsp;De los reguisitos iniciales planteados, se extraen una serie de funciones básicas a implementar, además de una serie de tareas adicionales a desarrollar dentro del sistema.</strong>.
+<br/>
+<br/>
+
+<hr/>
+<div class="titulo titulo3" style="margin:5mm;font-size:1.0em;font-weight:bold">Funcionalidades Privadas:</div>
+<div style="text-align:justify;margin:0em">
+<!--
+<table style="background:red">
+<thead>
+<tr>
+<th>#</th>
+<th>Funcionalidad</th>
+<th>Grupo</th>
+</tr>
+</thead>
+<tbody>
+
+</tbody>
+</table>
+-->
+
+<ul type="disc">
+  <li><strong>F1</strong> &rarr; Mantenimiento de Usuarios, 
+                Lista fija de clases de Perfiles o Roles, 
+                Mantenimiento de la Asignación de Roles a los usuarios,
+                Proceso de revisión del registro de nuevos usuarios,
+                Ampliación de Usuario registrado a Proveedor,
+                Mantenimiento de la Configuración.
+  </li>
+  <li><strong>F2</strong> &rarr; Mantenimiento de Anuncios/Ofertas, 
+                Lista fija de clases de Bloqueo, 
+                Lista fija de clases de Estados de Terminación, 
+                Mantenimiento de la relación con Etiquetas,
+                Mantenimiento de las imágenes del anuncio, 
+                Mantenimiento del seguimiento de Anuncios por los Usuarios.
+  </li>
+  <li><strong>F3</strong> &rarr; Mantenimiento de Categorías,
+                Relación jerarquica con categoría padre, 
+                Proceso de unificación de categorías,
+                Mantenimiento de preferencias de Usuario con Categorías,
+                Mantenimiento de Etiquetas, 
+                Proceso de unificación de etiquetas,
+                Mantenimiento de preferencias de Usuario con Etiquetas.
+  </li>
+  <li><strong>F4</strong> &rarr; Mantenimiento de Zonas, 
+                Lista fija de clases de Zona,
+                Relación jerarquica entre zonas según la restricción de clases de zona, 
+                Mantenimiento de Zonas de moderación para los usuarios de tipo moderador/administrador.
+                Copias de Seguridad.
+  </li>
+  <li><strong>F5</strong> &rarr; Mantenimiento de Comentarios,
+                Seguimiento jerarquico de comentarios,
+                Cierre de la rama de comentarios, 
+                Control de denuncias y de bloqueos en los comentarios,
+                Mantenimiento de Proveedores y relación con usuario registrado, 
+                Relación con anuncios publicados como proveedor.
+  </li>
+  <li><strong>F6</strong> &rarr; Mantenimiento de Avisos/Incidencias, 
+                Lista fija de clases de Aviso, 
+                Relación con usuario origen, usuario destino, con anuncio y/o comentario, 
+                Lista fija de clases de mensajes de Log, 
+                Mantenimiento de Logs y proceso de limpieza,
+                Mantenimiento de Mensajes de Chat pendientes de entrega.
+  </li>
+</ul>
+</div>
+
+<hr/>
+<div class="titulo titulo3" style="margin:5mm;font-size:1.0em;font-weight:bold">Funcionalidades/Tareas Públicas:</div>
+<div style="text-align:justify;margin:0em">
+<ul>
+  <li><strong>T1</strong> &rarr;
+      Partes públicas de visualización y Acciones del <strong>formulario de Acceso </strong> (login, logout) y del <strong>formulario de Registro</strong> de Usuarios.
+      
+      Pieza pública de visualización de una <strong>lista de Anuncios/Ofertas con &quot;ficha resumida&quot;</strong> la cual se debe poder reutilizar desde diferentes vistas o usar varias veces en la misma página para mostrar la lista de anuncios recibida como argumento (obtenida según los filtros de datos aplicados en cada uso).
+      
+      Pieza pública de visualización de una <strong>lista de Usuarios y/o Proveedores con &quot;ficha resumida&quot;</strong> la cual se debe poder reutilizar desde diferentes vistas o usar varias veces en la misma página para mostrar la lista de usuarios recibida como argumento (obtenida según los filtros de datos aplicados en cada uso).
+      
+      Pieza pública de <strong>búsqueda de usuarios</strong> para poder acceder a sus perfiles (resumidos), ver sus anuncios publicados, y/o establecer comunicación con ellos, desarrollo de acciones correspondientes y visualización de resultados.
+      
+      Pieza pública de <strong>búsqueda de proveedores/comercios</strong> para poder acceder a sus perfiles (resumidos) y tiendas, ver sus anuncios publicados, y/o establecer comunicación con ellos, acciones correspondientes y visualización de resultados.
+  </li>
+  <li><strong>T2</strong> &rarr; 
+      Parte pública de visualización de Anuncios/Ofertas con <strong>&quot;ficha detallada&quot;</strong> usando las piezas necesarias (propias o de otros compañeros) para mostrar todo lo necesario: 
+        Piezas para ver el estado del anuncio/oferta (y poder denunciar), 
+        ver los votos recibidos (y poder votar), 
+        ver los comentarios por fecha/hora de creación más reciente y poder agregar otros comentarios, responder a uno vinculado, denunciar), ...
+        Acciones para cumplir con las funcionalidades indicadas para los anuncios según los perfiles de los usuarios.
+  </li>
+  <li><strong>T3</strong> &rarr; 
+      Pieza pública de visualización del formulario de <strong>búsqueda simple</strong> de Anuncios/Ofertas con la acción para el filtrado de resultados según los datos del formulario, y visualización de resultados usando la pieza realizada de la lista de Anuncios con &quot;ficha resumida&quot;,
+      
+      Pieza pública de visualización del formulario de <strong>búsqueda avanzada</strong> de Anuncios/Ofertas con la acción para el filtrado de resultados según los datos del formulario, y visualización de resultados usando la pieza realizada de la lista de Anuncios con &quot;ficha resumida&quot;,
+      
+      Pieza pública de visualización del árbol de categorías para poder realizar la <strong>búsqueda por categorías</strong> de Anuncios/Ofertas con la acción para el filtrado de resultados según la categoría seleccionada o elegida, y visualización de resultados usando la pieza realizada de la lista de Anuncios con &quot;ficha resumida&quot;.
+      
+      Pieza pública de visualización de la nube de etiquetas para poder realizar la <strong>búsqueda simple por etiqueta</strong> de Anuncios/Ofertas con la acción para el filtrado de resultados según la etiqueta seleccionada o elegida, y visualización de resultados usando la pieza realizada de la lista de Anuncios con &quot;ficha resumida&quot;.
+  </li>
+  <li><strong>T4</strong> &rarr; 
+      Parte pública de visualización de la sección de <strong>&quot;Perfil de Usuario&quot;</strong> con sus datos o bloques de datos vinculados:
+          Piezas de visualización / modificación de &quot;Mi Perfil&quot;, 
+          Piezas de &quot;Cambio de Contraseña&quot;, 
+          Solicitud de Baja, 
+          Creación y Revisión de Avisos e Incidencias (enviadas y recibidas), 
+          Anuncios Propios (posiblemente aprovechando parte de lo creado en F2), 
+          Anuncios en Seguimiento (F2), 
+          Comentarios propios en Anuncios (F2, F5).
+      Y en general, todas las acciones para cumplir las funcionalidades indicadas para los usuarios registrados según los perfiles de cada uno.
+  </li>
+  <li><strong>T5</strong> &rarr;
+      Parte pública de visualización de la Portada inicial creando la plantilla pública principal del Portal aplicando alguna de las plantillas/temas públicos creados en <a href="https://yii2.themefactory.net" target="_blank">https://yii2.themefactory.net</a>, y usando las piezas necesarias (propias o de otros compañeros) para mostrar en la misma.
+      
+      Pieza pública de visualización del menú general de opciones que puede ejecutar el usuario según los perfiles de acceso.
+      
+      Filtrado y visualización de Anuncios según los patrocinios de proveedores en función de la prioridad o importancia de sus anuncios (*).
+      
+      Filtrado y visualización de Anuncios según las preferencias del usuario por categoría (*).
+      
+      Filtrado y visualización de Anuncios según las preferencias del usuario por etiquetas (*).
+      
+      Filtrado y visualización de Anuncios según las preferencias del usuario por  anuncios favoritos/en seguimiento (*).
+      
+      (*) Todos los resultados se deberán visualizar utilizando la pieza pública (realizada en T1) que muestra la lista de Anuncios con &quot;ficha resumida&quot;.
+  </li>
+  <li><strong>T6</strong> &rarr;
+      Parte pública de visualización del Chat entre usuarios y acciones correspondientes para su correcto funcionamiento.
+      
+      Pieza pública con formulario de búsqueda y/o visualización del árbol de zonas geográficas para poder realizar la <strong>búsqueda por zonas</strong> de Anuncios/Ofertas, con la acción para el filtrado de resultados según la zona seleccionada o elegida, y visualización de resultados usando la pieza realizada de la lista de Anuncios con &quot;ficha resumida&quot;.
+      
+      Pieza pública de acceso al mantenimiento de Alertas y Notas desde el punto de vista de los moderadores y administradores.
+  </li>
+</ul>
+<hr/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*** Los grupos que se formen deberán diseñar, implementar y documentar dos de los bloques trabajo, uno de funciones de mantenimiento privado &quot;Fx&quot; y otro de tareas públicas &quot;Tx&quot;, de entre las indicadas anteriormente.
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*** Una combinación de bloques de trabajo más o menos apropiada para esta aplicación es:
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(F1,T1), (F2,T2), (F3,T3), (F4,T4), (F5,T5), (F6,T6)
+<br/>
+</div>
+
+<hr/>
+<div class="titulo titulo3" style="margin:5mm;font-size:1.0em;font-weight:bold">Roles / Perfiles:</div>
+<div style="text-align:justify;margin:0em">
+<ul>
+  <li>
+  <strong>Usuario Invitado (guest): </strong>Cualquier usuario que navega por las partes públicas del portal, sin necesidad de estar registrado o validado en la aplicación.
+  </li>
+  <li>
+  <strong>Usuario Registrado (normal): </strong>Pensado para los usuarios que quieren utilizar la web a la hora de buscar, consultar / visualizar los anuncios de ofertas de su interés, gestionar su perfil, gestionar sus avisos, notificaciones y mensajes con moderadores o administradores, gestionar sus propios anuncios/ofertas, los anuncios en seguimiento, las preferencias de categorías y de etiquetas, los comentarios asociados a los anuncios, etc.
+  </li>
+  <li>
+  <strong>Usuario Moderador (moderador): </strong>Pensado para los usuarios que además deseen colaborar con la web a la hora de moderar los anuncios y comentarios de una o varias zonas geográficas.
+  </li>
+  <li>
+  <strong>Usuario Proveedor/Comercio (patrocinador): </strong>Pensado para los usuarios que deseen poner los anuncios de su comercio de forma destacada o &quot;antes&quot; que otros para que lleguen más veces a los usuarios que visitan la página. Podrán gestionar sus anuncios al igual que cualquier otro usuario, pero podrán configurar la importancia (prioridad) de cada anuncio en función de los planes de precios que tengan adquiridos. Estos usuarios se registran de la misma forma que los demás, pero deberán solicitar su activación como proveedores mediante un aviso/incidencia especial, para que los administradores le den el permiso en la aplicación.
+  </li>
+  <li>
+  <strong>Administrador del Portal (admin): </strong>Pensado para aquellos usuarios que realizan las tareas de mantenimiento de los datos del sistema, pueden gestionar cualquier cosa de la parte privada como usuarios, anuncios y datos asociados, comentarios, categorías, zonas geográficas, proveedores, configuración, hacer copias de seguridad o restaurarlas.
+  </li>
+  <li>
+  <strong>Administrador del Sistema (sysadmin): </strong>Pensado para los programadores de la aplicación y/o administradores generales del sistema donde se instale, tendrá acceso a todas las funciones de la aplicación sin restricciones, y opcionalmente deberá poder activar el rol que desee para trabajar como un usuario de ese tipo.
+  </li>
+</ul>
+</div>
+
+</body>
+</html>

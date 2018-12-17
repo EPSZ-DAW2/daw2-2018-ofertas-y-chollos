@@ -1,0 +1,402 @@
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Proyecto en Grupo - 2. Requisitos Iniciales</title>
+</head>
+<body>
+<div class="bloque" style="font-family:arial;font-size:1.25em;text-align:justify;border:1.5mm solid #508050;margin:0.25em;padding:1em;">
+
+<div class="titulo titulo1" style="margin:5mm;font-size:2.0em;font-weight:bold">Proyecto en Grupo</div>
+<div class="titulo titulo2" style="margin:5mm;font-size:1.5em;font-weight:bold">2. Requisitos Iniciales.</div>
+
+<br/>
+&nbsp;&nbsp;&nbsp;Se desea diseñar una aplicación web para la <strong>Publicación, Difusión y Gestión de Anuncios de Ofertas y Chollos.</strong>.
+<br/>
+<br/>
+&nbsp;&nbsp;&nbsp;La aplicación será un portal web en el que principalmente se podrán buscar y consultar Anuncios de Ofertas de cualquier tipo que estén registrados y dados de alta en el sistema.
+<br/>
+&nbsp;&nbsp;&nbsp;Las búsquedas se podrán realizar mediante un sistema de filtros por tipo de Anuncio/Oferta (clasificación por categorías), por etiquetas, por zonas, por fechas, comercios, etc, y el resultado se mostrará como una lista resumida de anuncios, paginada si son muchas, que coincidan con el filtro de búsqueda seleccionado o introducido... 
+¡Eso sí! -siempre que sean visibles públicamente, es decir, que tengan activado el indicador de visibilidad, que no esté terminada ni bloqueada. 
+<br/>
+&nbsp;&nbsp;&nbsp;Se podrá elegir un anuncio/oferta para visualizar su ficha en detalle, con sus datos completos, su título, descripción, tienda/comercio ubicación de la oferta, url (si tiene), fechas de inicio y finalización (si se conocen), precios de la oferta y original, imagen o fotografía del anuncio/oferta, votos recibidos, comentarios, etc.
+<br/>
+&nbsp;&nbsp;&nbsp;La aplicación además permitirá a los usuarios registrados mantener su perfil, crear nuevos anuncios u ofertas, mantener sus preferencias de anuncios por categorias y/o etiquetas, mantener el seguimiento de anuncios, recibir avisos de los cambios en los anuncios seguidos, enviar incidencias a los moderadores/administradores del portal, comentar anuncios, conversar con usuarios directamente en forma de chat, etc.
+<br/>
+
+<br/>
+
+
+<hr/>
+<div class="titulo titulo3" style="margin:5mm;font-size:1.0em;font-weight:bold">Requerimientos para el Público en general:</div>
+<div style="text-align:justify;margin:0em">
+<ul>
+  
+  <li><strong>Portada &quot;Inicial&quot; sin filtro:</strong> Una página inicial con la presentación del portal en la que se mostrará el logotipo del mismo, una zona con una barra de navegación por las diferentes opciones de la aplicación, una zona de acceso a la misma (Login / Registro / Usuario+Logout), un menú de selección de clasificación de anuncios a la izquierda (visible según tamaño de pantalla o dispositivo móvil), unas serie de bloques o zonas en la parte central con las &quot;fichas resumen&quot; de los N anuncios más próximos en el tiempo, más recientes, más visitados, más buscados, mejor valorados, según geolocalización del navegador cliente del usuario, o cualquier tipo de control que sirva para recomendar los anuncios/ofertas a los usuarios. 
+  Además se tendrá una zona con el posible buscador simple de anuncios para realizar filtros o un enlace para acceder al formulario de búsqueda avanzada. 
+  En la parte derecha se mostrarán una serie de anuncios o similar de los posibles proveedores/comercios patrocinadores.
+  </li>
+  <br/>
+  
+  <li><strong>Portada &quot;Inicial&quot; con filtro:</strong> Misma página inicial con la presentación del portal, etc, pero en este caso si se activa o ha activado cualquier filtro de búsqueda (simple, avanzada, categorías, etiquetas, zonas, proveedores, ...) se deberán mostrar los resultados (acordes con el filtro) en la parte central de la página. En este caso, la lista de anuncios resultantes deberá salir paginada con unas 25 &quot;fichas resumen&quot; por página, permitiendo movernos entre las posibles páginas resultantes. Se debe poder cambiar el número de resultados por página mediante un desplegable predefinido en el que se tendrán las opciones 10, 25, 50, 75, 100 y Todas.
+  <br/>*** Si se desactiva el filtro activo, se volverá a mostrar la vista inicial o página principal sin filtrar.
+  </li>
+  <br/>
+  
+  <li><strong>Ver Anuncio:</strong> Si se selecciona una de las &quot;fichas resumen&quot; se accederá a la ficha detalle del anuncio/oferta, debiendo poderse volver hacia atrás a la selección que estaba activada en ese momento, para lo cual se debe recordar dicha selección (por ejemplo en sesión o manteniendo los parámetros &quot;GET&quot;) para volver a aplicarla al mostrar la página principal.
+    <ul>
+    
+      <li>Si el usuario que está visitando la actividad es un usuario registrado, se podrá <strong>activar el seguimiento</strong> del anuncio, es decir, que cualquier cambio o actualización de la misma hará que se agregue una notificación para el usuario avisando de ello. Así mismo, un usuario registrado que tenga activado el seguimiento podrá <strong>desactivarlo</strong> en cualquier momento, bien sea visitando el anuncio en cuestión, o desde una opción que tendrán los usuarios para ver todos los anuncios que tiene en seguimiento.
+      </li>
+
+      <li>El anuncio/oferta tendrá una opción desde la que podrá ser denunciado/censurado por otros usuarios en caso de que consideren que su contenido no es apropiado o adecuado para el sitio. Para el control de las denuncias del anuncio se almacenará un contador de denuncias (inicialmente a cero) y la fecha/hora de la primera denuncia, y en caso de que se alcance un mínimo de denuncias (configurado en el sistema), pasará a estar bloqueado temporalmente hasta que sea resuelta (desbloqueado) por un moderador o administrador. 
+      Se almacenará la incidencia como un aviso para los moderadores o administradores del sitio en el que se relacionará la clase de alerta, el anuncio, el momento, el usuario que hace la denuncia y opcionalmente una nota acerca del motivo de la denuncia, por tanto, para poder denunciar un anuncio el usuario deberá haber accedido al sitio como usuario registrado.
+      </li>
+      <li>El anuncio/oferta ofrecerá también la posibilidad de votar a favor o en contra del mismo, para lo que se mantendrán dos contadores de votos, uno a favor y otro en contra, mostrándose el recuento en la ficha del anuncio y la forma de votar en uno u otro sentido.
+      </li>
+      <li>El anuncio/oferta dispondrá de comentarios moderados que podrán crear los usuarios registrados, en los que al menos se tendrá la fecha/hora del comentario, el texto escrito por el usuario y el nombre abreviado del usuario, no permitiendo crear elementos HTML potencialmente dañinos para la página. 
+      Los comentarios se publicarán lo antes posible tras la introducción del usuario que los crea, pero podrán ser denunciados/censurados por otros usuarios, o corregidos y/o anulados por los administradores si no son adecuados. 
+      Para poder denunciar un comentario en cada entrada reciente (de menos de un tiempo preestablecido/configurado) aparecerá una opción para que otros usuarios registrados lo puedan hacer, en ese caso se almacenará un aviso para los administradores del sitio en el que se relacionará la clase de alerta, el comentario, el momento y el usuario que lo denuncia, y una nota opcional acerca del motivo de la denuncia.
+      </li>
+      <br/>
+      
+      <li>En general la vista completa del anuncio tendrá:
+        <ul type="none" style="padding-left:1.25em">
+          <li>- Título, Descripción, Notas, ...</li>
+          <li>- Fechas (inicio,fin), </li>
+          <li>- Comercio/Proveedor/Ubicación (direccion / ubicacion, población, provincia, estado, país) &rarr; muy importante para los filtros.</li>
+          <li>- Foto/Fotos, o Icono asociado a las Categoría marcada en el anuncio.</li>
+          <li>- Estado del anuncio (visible, activado/terminado -realizado, suspendido- ).</li>
+          <li>- Estado del administrador (bloqueado, motivo)</li>
+          <li>- URL externa relacionada con el anuncio (en caso de tener web externa)</li>
+          <li>- Comentarios del anuncio.</li>
+          <li>- Proveedor/Comercio que lo patrocina (si tiene asociado).</li>
+          <li>- ...</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <br/>
+  
+  <li><strong>Agrupaciones por Categorias:</strong> Se dispondrá de una sección que mostrará los anuncios según un posible árbol de clasificación de categorias, para poder centrarse en un tipo de anuncio concreto, como por ejemplo: <strong>&quot;Deportes&quot; &rarr; &quot;Aire Libre&quot; &rarr; &quot;Acampada&quot;</strong>.
+  </li>
+  <br/>
+  
+  <li><strong>Nube de Etiquetas:</strong> Apartado donde poder mostrar la nube de palabras clave o etiquetas más utilizadas en los anuncios, pudiéndo usar la etiqueta como enlace y filtro de búsqueda específico de los anuncios relacionados.
+  </li>
+  <br/>
+  
+  <li><strong>Comercios/Proveedores (Patrocinadores):</strong> Para que el portal tenga un sentido algo más <em>&quot;comercial&quot;</em>, se introduce la idea de los patrocinios, bien a nivel global del portal, a nivel general por sectores de actividad o categorías, o a nivel más concreto por anuncio. Según cada tipo de patrocinio, se mostrarán los anunciantes en las diferentes páginas que se generan en el portal.
+    <ul type="none" style="padding-left:1.25em">
+      <li>* Patrocinadores globales del portal.</li>
+      <li>* Patrocinadores generales de un sector o sectores de actividad (categorías).</li>
+      <li>* Patrocinadores concretos de una actividad.</li>
+    </ul>
+    *** Estos patrocinadores podrán opcionalmente ser usuarios del portal para poder gestionar sus anuncios.
+  </li>
+  <br/>
+  
+  <li><strong>Registro y Acceso de Usuarios:</strong> Para que un usuario pueda colaborar en la web proporcionando anuncios, comentarios a los anuncios, deberá estar registrado y haber accedido a la aplicación como tal. 
+  Para ello se dispondrá de una gestión de usuarios y de un registro de cara al público para que puedan introducir sus datos de acceso y crearse como usuarios del sistema, pero no podrán acceder hasta que no hayan confirmado su registro mediante una validación del correo electrónico y/o un administrador así lo considere.
+  <br/>
+  *** En el acceso de usuarios existirá un control de intentos fallidos el cual servirá para bloquear a los usuarios que fallan el acceso un número predeterminado de intentos durante un intervalo de tiempo prefijado, para ello se tendrá al menos una fecha/hora del acceso y un contador de intentos fallidos. Cuando hay un acceso válido se almacenará la fecha/hora del momento y se establece el contador a cero. Cuando hay un acceso no válido, el contador se incrementa y si es el primer fallo, se almacenará la fecha/hora del momento, pero si no lo es, se comprueba el número de intentos frente al límite de fallos predetermiado, el cual si se supera, se bloquerá el acceso del usuario durante un intervalo de tiempo prefijado, el cual debe transcurrir antes de volver a permitir el acceso, para ello se calcula la diferencia de tiempo desde el primer acceso fallido hasta el momento del acceso actual y si se supera el intervalo configurado, se reinicia el contador a cero antes de seguir con el proceso de comprobación. De cada situación fallida se guardará un registro en un archivo de &quot;Log&quot; (o tabla en la base de datos) y se informará al usuario debidamente con los intentos pendientes antes de ser bloqueado o del tiempo restante antes de ser desbloqueado automáticamente.
+  </li>
+  <br/>
+  
+  <li><strong>Perfil de Usuario:</strong> Un usuario registrado pasa a ser automáticamente colaborador del sitio, con lo que aparte de poder consultar todos los anuncios disponibles y establecer sus preferencias, podrá agregar/modificar sus anuncios, agregar/corregir sus comentarios, etc.
+    <ul>
+      <li><strong>Mi Perfil:</strong> Podrá mantener su propia ficha de registro de usuario, tanto de los datos básicos de acceso (cambio de contraseña, de cuenta de correo), los datos del perfil del usuario (identificación, localización, contacto, ...).
+      <br/>
+      *** El usuario tendrá la opción de poder solicitar la baja de su perfil enviando una incidencia al moderador o administrador del sitio con la solicitud. Este tipo de notas se gestionarán como cualquier aviso o incidencia del sistema, pero con un indicador de &quot;baja&quot;.
+      <br/>
+      *** El usuario tendrá la opción de poder enviar una nota (como una clase de alerta) al moderador o administrador del sitio para comentarle cualquier cuestión que le surja. Este tipo de notas se gestionarán como cualquier aviso o incidencia del sistema, pero con un indicador de &quot;nota&quot; o &quot;consulta&quot;.
+      </li>
+      
+      <li><strong>Avisos y Notificaciones:</strong> Será una sección donde el usuario podrá visualizar y gestionar (marcar/desmarcar como leídos) todos y cada uno de los avisos/notificaciones que le lleguen en función de los anuncios que tenga en seguimiento u otro tipo de avisos del sistema.
+      </li>
+      
+      <li><strong>Anuncios Propios:</strong> Será una sección donde el usuario podrá navegar/ver y/o gestionar los anuncios/ofertas que haya dado de alta en el sitio. La lista de anuncios se visualizará de la forma más cómoda posible para poder filtrar en función del estado, de la fecha de creación, la fecha de terminación, etc.
+      <br/>
+      *** En la gestión de un anuncio, se podrán hacer cambios en la misma siempre que no afecten al funcionamiento del sitio, es decir, se puede reconfigurar o eliminar un anuncio mientras está en modo invisible o en activo sin seguidores, generando en su caso los avisos de cambio para los usuarios que siguen el anuncio.
+      Se podrá cancelar/suspender el anuncio indicando el motivo, almacenando también la fecha/hora de la cancelación, por supuesto avisando a los usuarios que lo siguen si los hubiera. También se podrá bloquear temporalmente o desbloquear por parte de los moderadores o administradores indicando el motivo del bloqueo (habitualmente por denuncia).
+      <br/>
+      *** Si un anuncio propio fuera bloqueado, se debería poder ver el momento y el motivo del bloqueo, permitiéndose subsanar el problema al usuario en un plazo de tiempo determinado y, posteriormente, poder avisar al moderador o administrador de que ya ha sido corregido para que nos desbloquee el anuncio.
+      </li>
+      
+      <li><strong>Anuncios en Seguimiento:</strong> Será una sección donde el usuario podrá navegar/ver de una forma rápida los anuncios en los que ha activado el seguimiento (sobre los que recibirá avisos y notificaciones). Podrá desactivar el seguimiento en cualquier momento que lo desee, aunque de forma automática se desactivará cuando un anuncio se marca como terminado tras haber notificado al usuario adecuadamente.
+      </li>
+      
+      <li><strong>Comentarios en Anuncios:</strong> Sección desde donde el usuario podrá navegar/ver de una forma rápida aquellos anuncios en los que ha añadido algún comentario. Un comentario no podrá ser modificado una vez creado a menos que sea solicitado/activado por un moderador u administrador del sitio, ya que de lo contrario se podrían estar cambiando los comentarios sin control alguno. Además, para su correcta gestión, los comentarios almacenarán como mínimo la relación con el anuncio, la fecha/hora de creación, el usuario que la ha creado, la fecha/hora de la última modificación, el usuario que la ha modificado (habitualmente el mismo que la crea), y el texto del comentario.
+      <br/>
+      *** Si bien un comentario está relacionado directamente con un anuncio, existe la posibilidad de que un comentario también esté relacionado con otro comentario en el caso de permitir hacer comentarios &quot;respuesta&quot;, para lo cual se necesitaría básicamente almacenar el identificador del comentario al que se hace referencia y que en el interfaz web donde se muestran los comentarios se introdujera una opción para crear un comentario de &quot;réplica&quot; o &quot;respuesta&quot; a cada uno de ellos. También se necesitaría el que un moderador o administrador pudiera bloquear o cerrar la opción de crear respuestas a un comentario &quot;final&quot;. Con esta posibilidad implementada se podrían crear &quot;grafos&quot; o &quot;árboles&quot; de los comentarios encadenados.
+      </li>
+      
+      <li><strong>Alertas y Notas:</strong> Esta opción se mostrará cuando el usuario sea administrador o esté activado como moderador de una o varias zonas. 
+      Será una sección donde se podrá navegar/ver y gestionar todos los avisos de denuncias recibidos de anuncios, o denuncias de comentarios introducidos, o notas que los usuarios envían directamente a la administración del sitio, pero sólamente de la zona o zonas que modera. 
+      En caso de que el usuario sea de tipo administrador del sitio, podrá ver todos los avisos.
+      <br/>
+      *** Esta sección quizá se deba separar en dos, una para la gestión de alertas sobre anuncios y comentarios, y otra para la gestión de notas de los usuarios, pero quizá se pueda mantener en una única vista si se gestionan adecuadamente las relaciones entre las diferentes alertas y notas.
+      </li>
+    </ul>
+  </li>
+  <br/>
+  
+  <li><strong>Servicios Web:</strong> Todas las opciones que se puedan realizar desde el interfaz web deberían poderse realizar mediante un API propio, el cual pueda ser usado desde aplicaciones externas o desde una aplicación web tipo SPI (Single Page Interface) compilada para dispositivos móviles. Dicho API debe servir para poder realizar las tareas propias de cualquier tipo de usuario registrado en el portal, a excepción del usuario administrador del sistema.
+  </li>
+  <br/>
+  
+</ul>
+</div>
+
+<hr/>
+<div class="titulo titulo3" style="margin:5mm;font-size:1.0em;font-weight:bold">Requerimientos para las partes privadas (Usuarios Normales, Usuarios Moderadores, Usuarios Proveedores (Patrocinadores), Usuarios Administradores):</div>
+<div style="text-align:justify;margin:0em">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*** En general se tendrán funciones básicas de Alta, Modificación, Baja, Consulta, Búsquedas/Filtrado.
+<ul>
+  <li><strong>Mantenimiento de Usuarios:</strong> Crear usuarios bajo demanda por petición de pasar a ser patrocinadores (Proveedores) o para ser moderadores o administradores. El resto serán usuarios que se registran ellos mismos. Se podrá revisar los nuevos usuarios registrados automáticamente, bloquear usuarios por exceso de anuncios o de comentarios denunciados, desbloquear usuarios que han fallado el límite de intentos de acceso al sitio, ver el registro de fallos de acceso, eliminar registros antiguos de fallos de acceso, etc.
+  <br/>
+  *** En la gestión de usuarios colaboradores (Moderadores) se deberá tener en cuenta la opción de moderador de zona y la zona o zonas asignadas, es decir, la relación de un usuario registrado con las zonas o ubicaciones que se permite gestionar o moderar. Las zonas son las propias ubicaciones (países, estados, provincias, poblaciones, areas, ...) en las que se ubicarán los anuncios de ofertas.
+  <br/>
+  *** En el detalle de la gestión de un usuario concreto, un administrador podrá ver la ficha con todas las opciones vinculadas con ese usuario, más o menos como se indica en el apartado &quot;Perfil de Usuario&quot;.
+  <br/>
+  *** Los roles disponibles estarán predefinidos de entre los indicados inicialmente.</li>
+  <br/>
+  
+  <li><strong>Mantenimiento de Ubicaciones (o Zonas):</strong> Servirá a los administradores para gestionar las zonas de ubicacion (y de influencia) de los anuncios de ofertas y por tanto de los moderadores/administradores que tengan asignadas dichas zonas. En concreto se mantendrán desde esta sección, los <strong>Paises</strong>, posiblemente <strong>Estados</strong> o <strong>Comunidades</strong> dentro de un país, <strong>Provincias</strong>, <strong>Municipios</strong>, <strong>Localidades</strong>, <strong>Barrios</strong> y <strong>Zonas</strong>.
+  <br/>
+  *** Los usuarios moderadores podrán estar asociados a diferentes zonas de influencia. Una zona de influencia puede ser cualquiera de las áreas indicadas (una zona, una población, una provincia, un estado, o un país, ...), y dependiendo de las asignaciones del usuario, éste podrá moderar todos los anuncios de ofertas del conjunto o unión de las zonas asignadas.
+  </li>
+  <br/>
+  
+  <li><strong>Mantenimiento de Categorías:</strong> Poder gestionar la lista de categorías que sirven para clasificar los anuncios/ofertas. No se debería eliminar una categoría que esté siendo usada por algún anuncio. Se debería poder unificar categorías que se consideren como duplicadas o sean muy parecidas en su texto, aunque esta decisión correrá a cargo de un administrador siendo el proceso de unificación el que sustituirá todos los registros de datos que usan una categoría por la buena.
+  <br/>
+  *** A la hora de crear anuncios, un usuario podrá proponer categorías nuevas si de entre las existentes no existe la adecuada para clasificarlo. Con esto se deberá tener un control de revisión de categorías nuevas para que los moderadores o administradores puedan detectarlas, revisarlas y actuar en consecuencia. Lo más oportuno es que al crear una categoría nueva, se genere un aviso de notificación para los moderadores o administradores de la zona de influencia avisando de lo ocurrido.
+  </li>
+  <br/>
+  
+  <li><strong>Mantenimiento de Etiquetas:</strong> Poder gestionar la lista de etiquetas que sirven para identificar los anuncios/ofertas. No se debería eliminar una etiqueta que esté siendo usada por algún anuncio. Se debería poder unificar etiquetas que se consideren como duplicadas o sean muy parecidas en su texto, aunque esta decisión correrá a cargo de un administrador siendo el proceso de unificación el que sustituirá todos los registros de datos que usan una etiqueta por la buena.
+  <br/>
+  *** A la hora de crear anuncios, las etiquetas inicialmente se intentarán extraer de las palabras contenidas en el título y en la descripción, se limpiarán de caracteres no alfabéticos, se pasarán a minúscula y se ignorarán las palabras no significativas como artículos, conjunciones, etc. Si no fuera factible, se crearán las etiquetas manualmente, pudiendo un usuario proponer etiquetas nuevas si de entre las existentes no son adecuadas para etiquetar el anuncio/oferta en cuestión. Con esto se deberá tener un control de revisión de etiquetas nuevas para que los moderadores o administradores puedan detectarlas, revisarlas y actuar en consecuencia. Lo más oportuno es que al crear una etiqueta nueva, se genere un aviso de notificación para los moderadores o admininstradores de la zona de influencia avisando de lo ocurrido.
+  </li>
+  <br/>
+  
+  <li><strong>Mantenimiento de Anuncios/Ofertas:</strong> Un mantenimiento generalizado de los anuncios y ofertas a nivel administrador, en la que se podrán ver y gestionar todos los existentes, incluso dar de alta o baja según se considere oportuno. En cada ficha concreta se podrán ver los datos del anuncio, tal y como se pueden gestionar desde un usuario normal, a excepción de algunas acciones que podrán realizarse de forma exclusiva por un administrador, como por ejemplo el bloqueo/desbloqueo del anuncio, etc.
+  <br/>
+  El mantenimiento de un anuncio incluirá la posible vinculación con un proveedor, la revisión y gestión de los usuarios que están siguiéndolo actualmente, la revisión / gestión de los comentarios creados, las votaciones, las posibles alertas de ese anuncio, etc.
+  </li>
+  <br/>
+  
+  <li><strong>Mantenimiento de Comentarios de Anuncios/Ofertas:</strong> Un mantenimiento generalizado de los comentarios hechos a los anuncios y ofertas a nivel administrador, en la que se podrán ver y gestionar todos los existentes, incluso dar de alta o baja según se considere oportuno. En cada ficha de comentario se podrán ver/mantener todos sus detalles y algunas acciones que podrán realizarse de forma exclusiva por un administrador, como por ejemplo el control de denuncias, el bloqueo/desbloqueo del comentario, etc.
+  <br/>
+  El mantenimiento de un comentario incluirá la posible vinculación con el anuncio al que se refiere el comentario, al comentario &quot;padre&quot; al que responde, a los comentarios &quot;hijo&quot; que tiene como respuesta, las posibles alertas del comentario, etc.
+  </li>
+  <br/>
+  
+  <li><strong>Mantenimiento de Proveedores / Comercios:</strong> Un mantenimiento de los proveedores o comercios que tienen interés en crear anuncios <strong>&quot;patrocinados&quot;</strong>. Se crearán los proveedores o comercios a partir de usuarios registrados que hacen la solicitud de ser proveedor rellenando la ficha de solicitud con sus datos adicionales. Los administradores realizarán la aceptación del usuario como proveedor creando el privilegio (Rol) asociado al usuario para que pueda realizar las acciones propias de dicho perfil.
+  <br/>
+  *** Se deberá permitir realizar una gestión más o menos completa de los anuncios que den de alta los proveedores según la actividad, la posible zona de influencia, las posibles etiquetas relacionadas, etc.
+  </li>
+  <br/>
+  
+  <li><strong>Mantenimiento de Avisos/Incidencias:</strong> El mantenimiento generalizado de los avisos e incidencias a nivel administrador, en la que se podrán ver y gestionar todos los avisos existentes, incluso dar de alta o baja según se considere oportuno. En cada ficha de aviso se podrán ver los datos del mismo y algunas acciones adicionales para permitir revisar y dar respuesta al aviso desde el punto de vista de moderador/administrador. En el caso de la vista con la versión para otros usuarios registrados, se podrá responder al mismo.
+  <br/>
+  El mantenimiento de un aviso incluirá la posible vinculación con el usuario origen y destino del mismo, con el anuncio y/o comentario relacionado (si lo hay), la fecha/hora de lectura por el usuario destino, y la fecha/hora de aceptación por un moderador/administrador.
+  </li>
+  <br/>
+  
+  <li><strong>Mantenimiento de Registros (LOG): </strong> Mantenimiento y visualización de los registro de LOG que se generen en el sistema, con posibilidad de poder exportar los registros en archivo de texto o de eliminar los registros que cumplan un filtro establecido. Además se deberá tener un proceso que permita eliminar automáticamente los registros &quot;anticuados&quot;.
+  </li>
+  <br/>
+  
+  <li><strong>Utilidades: </strong>
+    <ul>
+      <li>Procesos de limpieza de datos antiguos.
+      </li>
+      <li>Configuración de parametros del sistema.
+      </li>
+      <li>Copias de Seguridad y Restauración de los datos y archivos de imágenes de la aplicación.
+      </li>
+    </ul>
+  </li>
+  <br/>
+  
+</ul>
+</div>
+
+<hr/>
+<div class="titulo titulo3" style="margin:5mm;font-size:1.0em;font-weight:bold">Requisitos de Información / Datos:</div>
+<div style="text-align:justify;margin:0em">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*** Información y Datos que debe almacenar y manejar el sistema para proporcionar las funcionalidades indicadas en los requisitos.
+<ul>
+  <li><strong>Anuncio: </strong>Elemento con &rarr; título, descripción, 
+  tienda/lugar, url externa (dirección web opcional)
+  fecha/hora inicio y fin, precio oferta y original,
+  Zona geográfica de localización, 
+  Categoría, Etiquetas de Anuncio, 
+  Imagen principal, [Imágenes adicionales,]
+  Valoración (contadores de votos),
+  Proveedor de anuncio (si tiene) y prioridad,
+  Estados de anuncio,
+  Seguimientos,
+  Comentarios,
+  Registro de usuario,
+  notas administrador.
+  </li>
+  <br/>
+  
+  <li><strong>Zona: </strong>Alguna de las formas de tener ubicaciones relacionadas:
+  <br/>
+    <ul type="decimal">
+      <li>Sustituto de &rarr; código de clase de zona, [País | Estado | Región | Provincia | Municpio | Localidad | Barrio | Área | ...].
+      <br/>
+      *** Se deben fijar desde el diseño clases de datos relacionadas entre sí de forma jerarquizada. En esta opción, se deben &quot;identificar&quot; las diferentes clases por un código de clase (número o letra) para la implementación en la base de datos, como por ejemplo: 1=Pais, 2=Estado, 3=Provincia, 4=Poblacion, 5=Zona, ...
+      <ul>
+        <li><strong>País: </strong>nombre, código internacional de país, código idioma (si se considera útil para la identificación automática del idioma y localización)</li>
+        <li><strong>Estado: </strong>nombre, País. *** Considerar el Estado como Comunidad Autónoma, Región o similar.</li>
+        <li><strong>Provincia: </strong>nombre, Estado</li>
+        <li><strong>Población: </strong>nombre, Provincia</li>
+        <li><strong>Zona: </strong>nombre, Población</li>
+        <li>...</li>
+      </ul>
+      </li>
+      <li>Elemento con &rarr; código de clase de zona (por ejemplo: 1=Pais, 2=Estado, 3=Provincia, 4=Poblacion, 5=Zona, ...), nombre, Zona padre.
+      <br/>
+      *** Agrupar las posibles zonas en un conjunto en el que la jerarquía se realiza por auto-relaciones, y donde un elemento de clase N sólo puede estar relacionado con un elemento padre de clase <strong>&lt;N</strong>, o lo que es lo mismo, o N-1, o N-2, ..., o 1, o 0 (CERO).
+      <br/>
+      *** En este caso, los códigos de clase se pueden fijar desde un primer momento y tener la lista disponible desde código o como una enumeración en la base de datos.
+      </li>
+    </ul>
+  </li>
+  <br/>
+  
+  <li><strong>Categoría: </strong>Elemento de clasificación o agrupación de anuncios.
+  Es un elemento con &rarr; nombre, descripción, icono (opcional), Categoría padre para poder crear jerarquías de categorías.
+  </li>
+  <br/>
+
+  <li><strong>Etiquetas de Anuncio: </strong>Sustituto de relación que vincula un anuncio con una o varias etiquetas, puede ser una de la opciones:
+    <ul type="decimal">
+      <li>Elemento con &rarr; Anuncio, Etiqueta. *** Relaciona ambas clases de objeto. En este caso debe definirse:
+        <ul>
+          <li><strong>Etiqueta: </strong>Elemento con &rarr; nombre, descripción. 
+          *** Un conjunto de palabras clave utilizadas para identificar y clasificar de diferentes maneras los anuncios/ofertas.
+          </li>
+        </ul>
+      </li>
+      <li>Sustituto de &rarr; etiquetas_id. *** Una lista de identificadores de Etiqueta con los que se relaciona el anuncio.
+      </li>
+      <li>Sustituto de &rarr; etiquetas_nombre. *** Una lista de datos &quot;nombre&quot; de las propias etiquetas con las que se relaciona el anuncio.
+      </li>
+    </ul>
+    *** En el caso de usar listas serían cadenas de datos separados por comas, teniendo especial cuidado en que la coma no aparezca en el propio contenido de los datos.
+    <br/>
+    *** Para gestionar adecuadamente las etiquetas de nueva creación propuestas por los usuarios, se generará una alerta para los moderadores o administradores que indique la etiqueta creada, la fecha/hora del momento y el usuario que lo ha realizado para que tengan constancia de ello y se pueda revisar / actuar en consecuencia.
+  </li>
+  <br/>
+  
+  <li><strong>Imagen: </strong>Sustituto de &rarr; nombre(identificador) de archivo externo en carpeta predefinida (ruta escribible por el servidor web) o campo binario con la imagen subida.
+  </li>
+  <br/>
+  
+  <li><strong>Imágenes: </strong>Elemento con &rarr; Imagen, Anuncio. *** Relaciona una imagen con un anuncio con lo que se pueden tener múltiples imágenes por cada uno.
+  </li>
+  <br/>
+  
+  <li><strong>Valoración:</strong> Sustituto de una de estas opciones:
+  <br/>
+    <ul type="decimal">
+      <li>suma_notas, total_notas. *** Si se desea una valoración media por nota en un rango de valores posibles [0..N] sin necesidad de almacenar los votos independientes.</li>
+      <li>votos1, votos2, ..., votosN[, votosTotal]. *** Si se permiten N opiniones diferentes en la valoración y se desea almacenar la cuenta de votos independientes. Aquí se puede tener &quot;votosTotal&quot; como el acumulado de los N campos de votos para agilizar los cálculos en caso de necesidad.</li>
+      <li>votosOk, votosKo. *** Una versión reducida del anterior para tener una valoración de tipo &quot;a favor&quot; o &quot;en contra&quot; en la que sólo interesa los &quot;me gusta&quot; y &quot;no me gusta&quot; como valoración la actividad.</li>
+    </ul>
+  </li>
+  <br/>
+  
+  <li><strong>Proveedor:</strong> Sustituto de relación que vincula un anuncio con un proveedor / comercio / patrocinador (usuario). Es un elemento con &rarr; Usuario, nif/cif, razon social, telefono comercial, telefono de contacto, url a la web del comercio (si tiene), fecha/hora de alta como proveedor.
+    <ul>
+      <li><strong>Usuario:</strong>Sustituto de relación que vincula al proveedor con el Usuario principal al que pertenece.
+      <br/>
+      *** Se describe más abajo.
+      </li>
+    </ul>
+  </li>
+  <br/>
+  
+  <li><strong>Estados de Anuncio: </strong>Sustituto de &rarr; visible (lógico), terminado (0:No, 1:Realizado, 2:Suspendido, 3:Cancelado por inadecuado), fecha/hora de terminación, motivo de terminación, número denuncias, fecha/hora de la primera denuncia, bloqueado, fecha/hora del bloqueo, motivo del bloqueo.
+  </li>
+  <br/>
+  
+  <li><strong>Seguimientos: </strong>Sustituto de relación que vincula un anuncio con un usuario que desea estar al tanto de los avisos y notificaciones del mismo. Es un elemento con &rarr; fecha/hora de seguimiento, Anuncio, Usuario seguidor.
+  </li>
+  <br/>
+  
+  <li><strong>Comentarios: </strong>Sustituto de relación que vincula un anuncio con una serie de comentarios realizados por los usuarios del sistema. Es un elemento con &rarr; Anuncio, Comentario.
+  </li>  
+  <br/>
+  
+  <li><strong>Comentario: </strong>Sustituto de &rarr;
+  texto, Comentario padre, cerrado (lógico), número denuncias, fecha/hora de la primera denuncia, bloqueado, fecha/hora del bloqueo, motivo del bloqueo, Registro de usuario.
+  </li>  
+  <br/>
+  
+  <li><strong>Registro de usuario: </strong>Sustituto de &rarr; 
+    fecha/hora de creación, Usuario creador, fecha/hora de modificación, Usuario modificador.
+    <br/>
+    *** Sirve tanto para relacionar algún elemento de información con los usuarios que lo han creado y/o modificado, como para conocer el momento de cuando lo han realizado.
+  </li>
+  <br/>
+  
+  <li><strong>Usuario: </strong>Elemento con &rarr; email, password, nick, nombre, apellidos, fecha_nacimiento (opcional), dirección (opcional), Zona geográfica de localización (se recomienda obligatoria), relación con el perfil/rol (N:Normal, M:Moderador, P:Proveedor, A:Administrador), fecha/hora de registro, registro confirmado, ultimo acceso, intentos acceso, bloqueado, fecha/hora del bloqueo, motivo del bloqueo, [Valoración usuario,] Zonas de moderación, Seguimientos, Preferencias de Anuncios (por categorías, por etiquetas), Anuncios, Comentarios, Avisos.
+    <ul>
+      <li><strong>Valoración usuario:</strong> Sustituto de una de las opciones de &rarr; Valoración.
+      <br/>
+      *** Esta información es opcional, y por ahora no se incluye en la base de datos inicial.
+      </li>
+      <li><strong>Zonas de moderación:</strong> Sustituto de relación que vincula un usuario con un zona de influencia para actuar como moderador dentro de ella. Se utiliza a la hora de aplicar/validar los permisos de acceso a las opciones de moderación por zonas. Es un elemento con &rarr; Usuario, Zona.
+      </li>
+      <li><strong>Seguimientos, Preferencias de Anuncios, Anuncios, Comentarios, Avisos: </strong>Tablas relacionadas ya comentadas por su relación con los Anuncios.
+      </li>
+    </ul>
+  </li>
+  <br/>
+  
+  <li><strong>Incidencias / Avisos / Notificaciones: </strong>Elemento con &rarr; fecha/hora, código de clase de aviso (A:Aviso, N:Notificación, D:Denuncia, C:Consulta, M:Mensaje, B:Bloqueo), texto,
+  Usuario destino (NULO si es para un moderador o administrador y no se conoce su usuario o aún no ha sido aceptado el aviso por uno de ellos),
+  Usuario origen (NULO si es generado por el sistema),
+  Anuncio (NULO si no está relacionado con un anuncio),
+  Comentario (NULO si no está relacionado con un comentario),
+  fecha/hora de lectura (NULO si no se ha leído o se ha desmarcado como leído),
+  fecha/hora de aceptación (NULO si no se ha aceptado para su gestión por un moderador o administrador, no usado en otros usuarios).
+  <br/>
+  *** Un aviso pasa a estar &quot;leído&quot; si el usuario destino lo abre estando a NULO la fecha/hora de lectura. Si el usuario lo desea puede cambiarlo a &quot;no leído&quot;; en este caso se establace a NULO el dato.
+  <br/>
+  *** Un aviso que esta &quot;leído&quot; se eliminará definitivamente del sistema durante el proceso de limpieza cuando haya transcurrido el tiempo predeterminado de borrado de avisos ya leídos.
+  <br/>
+  *** Un aviso pasa a estar &quot;aceptado&quot; si el usuario destino es un moderador o administrador que lo marca para gestionarlo. En el caso de que el usuario destino sea NULO, cualquier moderador o administrador de la zona de influencia del aviso podrá aceptarlo, momento en el que se completará el dato con el usuario que lo ha aceptado. Si un aviso no ha sido aceptado, no podrá ser marcado como borrado.
+  </li>
+  <br/>
+  
+  <li><strong>Configuraciones: </strong>Será un elemento con &rarr; variable, valor. Concretamente un conjunto de información que servirá para establecer datos más o menos fijos (invariables en el tiempo) que se utilizan en la aplicación durante su ejecución. Por ejemplo...
+    <ul type="disc">
+      <li><strong>numero_anuncios_portada:</strong> el número máximo de anuncios más relevantes para los bloques de la página principal, </li>
+      <li><strong>numero_lineas_pagina:</strong> el número máximo de líneas por página de datos en las diferentes gestiones, </li>
+      <li><strong>numero_denuncias_anuncio:</strong> el número mínimo de denuncias para un anuncio antes de ser bloqueado, </li>
+      <li><strong>numero_denuncias_comentario:</strong> el número mínimo de denuncias para un comentario antes de ser bloqueado, </li>
+      <li><strong>numero_intentos_usuario:</strong> el número mínimo de intentos de acceso de un usuario antes de ser bloqueado, </li>
+      <li><strong>tiempo_borrar_avisos_leidos:</strong> el tiempo en días que debe transcurrir para que los avisos marcados como leídos se eliminen definitivamente de forma automática, </li>
+      <li>... </li>
+      
+    </ul>
+  </li>
+  <br/>
+  
+  <li><strong>Logs: </strong>Elemento con &rarr; fecha/hora, clase del nivel de log (E:Error, A:Aviso, I:Información, D:Depuración), modulo aplicación, texto.
+  </li>
+  <br/>
+  
+</ul>
+</div>
+  
+</div>
+
+</body>
+</html>

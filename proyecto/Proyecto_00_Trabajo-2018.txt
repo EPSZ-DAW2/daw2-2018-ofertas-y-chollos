@@ -1,0 +1,220 @@
+-----------------------------------------------------------------------------
+Trabajo:
+-----------------------------------------------------------------------------
+  Ofertas y Chollos - Red Social
+
+-----------------------------------------------------------------------------
+Perfiles/Roles:
+-----------------------------------------------------------------------------
+  - Invitado
+  - Usuario
+  - Cliente ? 
+  - Proveedor
+  - Comercio ? 
+  - Moderador
+  - Administrador
+  - Super
+
+-----------------------------------------------------------------------------
+Mantenimientos (Privado):
+-----------------------------------------------------------------------------
+  - Ofertas y Chollos / Anuncios Patrocinados
+  - Categorias
+  - Etiquetas
+  - Zonas
+  - Comentarios
+  - Mensajes (Encriptados)
+  - Usuarios Registrados
+  - Clientes ?
+  - Proveedores / Comercios
+  - Moderadores / Zonas de Moderacion
+  - Incidencias
+  
+  - Configuraciones
+  - Registro de Accesos/Acciones/Seguridad
+  - Procesos de Limpieza de Datos "antiguos".
+  - Copias de Seguridad (BD y Archivos)
+  
+-----------------------------------------------------------------------------
+Portal (Publico):
+-----------------------------------------------------------------------------
+  USUARIOS
+    - Registro - alta
+    - Login
+    - Logout
+    - Consultar perfil
+      - Modificar perfil
+      - Cambio de Contraseña y/o cuenta de correo
+      - Solicitar Baja (si queremos)
+      - Comunicar con Moderador (enviar mensaje a moderador/administrador)
+      - Mantener preferencias de anuncios: categorias y palabra clave
+      - Mantener seguimiento de anuncios y comentarios del usuario
+    
+    - Buscar usuarios
+    
+    - Ver anuncios de un usuario concreto
+      - Denunciar anuncio (incidencia)
+      - Comentar anuncio
+      - Chat entre usuarios - Anuncio
+      
+    - Ver notificaciones de anuncios segun preferencias.
+      
+    - Ver perfil de otros usuarios (resumen fecha alta, #anuncios, #comentarios, ...)
+      - Denunciar usuario (incidencia)
+        - Bloquear usuario (chat, anunciar, comentar, ...) - gestion privada
+      - Chat entre usuarios - Uno a Uno 
+
+    - Ver empresas / comercios / proveedores.
+      (lugares/comercios/establecimientos -> hacen ofertas)
+      - Ver anuncios de ...
+
+  OFERTAS
+    - Anuncios Recientes (creados en los últimos N dias)
+    - Anuncios Recientes de tu zona
+    - Anuncios Destacados (mejor valorados?, mas visitados?, mas comentados?)
+    - Anuncios Patrocinados
+    - Anuncios Personalizados (por intereses configurados por el usuario)
+    - 
+    - Buscar anuncios
+    - Ver anuncio (ficha detallada)
+      - Comentar anuncio
+      - Denunciar anuncio
+      - Denunciar comentario del anuncio
+      - Valorar anuncio (votos: 2 valores, n valores)
+    - Ver Categorias / Subcategorias
+      - Anuncios por categoria
+    - Buscar por palabras clave / etiquetas
+    - Reservas (futuras)
+
+-----------------------------------------------------------------------------
+Diccionario de Datos:
+-----------------------------------------------------------------------------
+  - Anuncios, Ofertas y Chollos / Anuncios Patrocinados
+    id,
+    titulo, descripcion, tienda/lugar, url externa, 
+    fecha/hora inicio, fecha/hora fin,
+    precio, precio original, 
+    Zona, Categoria, Etiquetas, Imagen (o Imagenes), 
+    votosOk, votosKo,
+    Proveedor, prioridad,
+    visible, 
+    terminada, fecha/hora terminacion, 
+    denuncias, fecha/hora primera denuncia, motivo denuncia, 
+    bloqueado, fecha/hora bloqueo, motivo bloqueo, 
+    Comentarios, cerrado comentar,
+    Registro de usuario (fecha/hora creacion, Usuario creador,
+        fecha/hora modificacion, Usuario modificador)
+    
+  - Categorias
+    id,
+    nombre, descripcion, icono,
+    Categoria padre
+    
+  - Etiquetas
+    id,
+    nombre, descripcion
+    
+  - Zonas
+    id,
+    clase (Continente,Pais,Estado,Region,Provincia,Municipio,Localidad,Barrio,Zona,...),
+    nombre, 
+    Zona padre
+    
+  - Comentarios
+    id,
+    Anuncio,
+    texto,
+    Comentario Origen, cerrado,
+    denuncias, fecha/hora primera denuncia, motivo denuncia, 
+    bloqueado, fecha/hora bloqueo, motivo bloqueo, 
+    Registro de usuario
+    
+  - Mensajes (Encriptados)
+    id,
+    fecha/hora,
+    texto,
+    Usuario origen,
+    Usuario destino
+    
+  - Usuarios Registrados
+    id,
+    email (login 1),
+    password,
+    nick (login 2),
+    nombre, apellidos, fecha nacimiento, direccion, Zona,
+    fecha/hora registro, registro confirmado,
+    fecha/hora acceso, numero accesos fallidos
+    bloqueado, fecha/hora bloqueo, motivo bloqueo, 
+    
+  - Clientes ?
+    id,
+    nif/cif,
+    nombre,
+    apellidos,
+    ...
+    Usuario
+    
+  - Proveedores / Comercios
+    id,
+    nif/cif,
+    nombre, apellidos, razon social, 
+    telefono comercio, telefono contacto,
+    direccion, Zona
+    url_web,
+    ...
+    Usuario
+    
+  - Moderadores / Zonas de Moderacion ??
+    id,
+    nif/cif,
+    nombre, apellidos, 
+    telefono contacto,
+    direccion, 
+    Zonas,
+    Usuario
+    
+  - Incidencias / Avisos:
+    id,
+    fecha/hora,
+    clase (Aviso, Denuncia, Consulta, Mensaje generico, Bloqueo, ...)
+    texto,
+    Usuario destino,
+    Usuario origen,
+    Anuncio (si la incidenccia es de un anuncio o NULO si no),
+    Comentario (si la incidenccia es de un comentario o NULO si no),
+    fecha/hora lectura (para el usuario destino),
+    fecha/hora aceptado (para los moderadores o administadores),
+    
+  - Configuraciones
+    clave, valor
+    
+  - Registro de Accesos/Acciones/Seguridad
+    *** Sistema de Log adecuado a la web.
+    
+  - Procesos de Limpieza de Datos "antiguos"
+    
+  - Copias de Seguridad (BD y Archivos)
+
+-----------------------------------------------------------------------------
+Grupos de Trabajo:
+-----------------------------------------------------------------------------
+Los existentes del primer trabajo...
+1. 
+
+2.
+
+3.
+
+4.
+
+5.
+
+6.
+
+
+
+
+
+
+
+
