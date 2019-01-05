@@ -66,6 +66,12 @@ class UsuariosController extends Controller
     {
         $model = new Usuario();
 
+        $model->confirmado="1";
+        $model->fecha_registro="5/01/2019";//CAMBIAR A ACTUAL
+        $model->num_accesos="0";
+        $model->bloqueado="0";
+
+
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
         }
