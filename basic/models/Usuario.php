@@ -63,11 +63,11 @@ class Usuario extends \yii\db\ActiveRecord
         return [
             'id' => Yii::t('app', 'ID'),
             'email' => Yii::t('app', 'Email'),
-            'password' => Yii::t('app', 'Password'),
+            'password' => Yii::t('app', 'Contraseña'),
             'nick' => Yii::t('app', 'Nick'),
             'nombre' => Yii::t('app', 'Nombre'),
             'apellidos' => Yii::t('app', 'Apellidos'),
-            'fecha_nacimiento' => Yii::t('app', 'Fecha Nacimiento'),
+            'fecha_nacimiento' => Yii::t('app', 'Fecha Nacimiento (Año-mes-día)'),
             'direccion' => Yii::t('app', 'Direccion'),
             'zona_id' => Yii::t('app', 'Zona ID'),
             'fecha_registro' => Yii::t('app', 'Fecha Registro'),
