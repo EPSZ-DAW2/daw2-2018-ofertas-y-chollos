@@ -3,11 +3,11 @@
 namespace app\models;
 
 /**
- * This is the ActiveQuery class for [[AnuncioComentario]].
+ * This is the ActiveQuery class for [[Anuncio_Comentario]].
  *
- * @see AnuncioComentario
+ * @see Anuncio_Comentario
  */
-class AnunciosComentariosQuery extends \yii\db\ActiveQuery
+class Anuncios_ComentariosQuery extends \yii\db\ActiveQuery
 {
     /*public function active()
     {
