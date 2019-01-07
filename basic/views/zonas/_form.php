@@ -12,8 +12,9 @@ use yii\widgets\ActiveForm;
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'clase_zona_id')->textInput(['maxlength' => true]) ?>
 
+
+    <?= $form->field($model, 'clase_zona_id')->dropDownList([ 1=>'Continente', 2=>'Pais', 3=>'Estado', 4=>'Region', 5=>'Provincia', 6=>'Municipio', 7=>'Localidad', 8=>'Barrio', 9=>'Area'], ['prompt' => 'Seleccione Uno' ]);   ?>
     <?= $form->field($model, 'nombre')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'zona_id')->textInput(['maxlength' => true]) ?>
