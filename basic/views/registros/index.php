@@ -4,20 +4,20 @@ use yii\helpers\Html;
 use yii\grid\GridView;
 use yii\widgets\Pjax;
 /* @var $this yii\web\View */
-/* @var $searchModel app\models\UsuariosAvisosSearch */
+/* @var $searchModel app\models\RegistrosSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = Yii::t('app', 'Usuarios Avisos');
+$this->title = Yii::t('app', 'Registros');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="usuarios-aviso-index">
+<div class="registro-index">
 
     <h1><?= Html::encode($this->title) ?></h1>
     <?php Pjax::begin(); ?>
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= Html::a(Yii::t('app', 'Create Usuarios Aviso'), ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a(Yii::t('app', 'Create Registro'), ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?= GridView::widget([
@@ -27,15 +27,12 @@ $this->params['breadcrumbs'][] = $this->title;
             ['class' => 'yii\grid\SerialColumn'],
 
             'id',
-            'fecha_aviso',
-            'clase_aviso_id',
+            'fecha_registro',
+            'clase_log_id',
+            'modulo',
             'texto:ntext',
-            'destino_usuario_id',
-            'origen_usuario_id',
-            'anuncio_id',
-            'comentario_id',
-            'fecha_lectura',
-            'fecha_aceptado',
+            //'ip',
+            //'browser:ntext',
 
             ['class' => 'yii\grid\ActionColumn'],
         ],
