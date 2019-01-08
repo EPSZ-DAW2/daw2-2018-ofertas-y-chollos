@@ -2,6 +2,8 @@
 
 use yii\helpers\Html;
 use yii\grid\GridView;
+use app\models\Zonas;
+
 
 /* @var $this yii\web\View */
 /* @var $searchModel app\models\zonasSearch */
@@ -16,7 +18,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= Html::a('Create Zonas', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Crear zona nueva', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?= GridView::widget([
@@ -25,9 +27,10 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
-            'id',
-            'clase_zona_id',
+ //           'id',
+ //           'clase_zona_id',
             'nombre',
+            'claseZona',
             'zona_id',
 
             ['class' => 'yii\grid\ActionColumn'],

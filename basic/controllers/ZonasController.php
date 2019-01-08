@@ -29,6 +29,15 @@ class ZonasController extends Controller
         ];
     }
 
+
+    public function codigo_a_texto($codigo){
+        return $this::$zonas[$codigo];
+
+    }
+    public function texto_a_codigo($texto){
+        return array_search($texto, $this::$zonas);
+    }
+
     /**
      * Lists all zonas models.
      * @return mixed
@@ -41,6 +50,7 @@ class ZonasController extends Controller
         return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
+            //'clasesZona' => $Zonas::$nzonas,
         ]);
     }
 
