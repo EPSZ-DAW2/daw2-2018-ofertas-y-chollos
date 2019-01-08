@@ -50,14 +50,14 @@ class UsuariosAviso extends \yii\db\ActiveRecord
         return [
             'id' => Yii::t('app', 'ID'),
             'fecha_aviso' => Yii::t('app', 'Fecha Aviso'),
-            'clase_aviso_id' => Yii::t('app', 'Clase Aviso ID'),
+            'clase_aviso_id' => Yii::t('app', 'Clase de aviso'),
             'texto' => Yii::t('app', 'Texto'),
-            'destino_usuario_id' => Yii::t('app', 'Destino Usuario ID'),
-            'origen_usuario_id' => Yii::t('app', 'Origen Usuario ID'),
-            'anuncio_id' => Yii::t('app', 'Anuncio ID'),
-            'comentario_id' => Yii::t('app', 'Comentario ID'),
+            'destino_usuario_id' => Yii::t('app', 'Usuario de destino'),
+            'origen_usuario_id' => Yii::t('app', 'Usuario de origen'),
+            'anuncio_id' => Yii::t('app', 'Anuncio'),
+            'comentario_id' => Yii::t('app', 'Comentario'),
             'fecha_lectura' => Yii::t('app', 'Fecha Lectura'),
-            'fecha_aceptado' => Yii::t('app', 'Fecha Aceptado'),
+            'fecha_aceptado' => Yii::t('app', 'Fecha Aceptación'),
         ];
     }
 
