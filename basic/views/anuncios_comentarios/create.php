@@ -6,8 +6,8 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model app\models\Anuncio_comentario */
 
-$this->title = Yii::t('app', 'Create Anuncio Comentario');
-$this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Anuncio Comentarios'), 'url' => ['index']];
+$this->title = Yii::t('app', 'Crear Comentario');
+$this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Comentarios'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="anuncio-comentario-create">

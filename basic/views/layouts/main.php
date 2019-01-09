@@ -10,6 +10,8 @@ use yii\bootstrap\NavBar;
 use yii\widgets\Breadcrumbs;
 use app\assets\AppAsset;
 
+$this->registerCssFile("https://use.fontawesome.com/releases/v5.6.1/css/all.css");
+
 AppAsset::register($this);
 ?>
 <?php $this->beginPage() ?>

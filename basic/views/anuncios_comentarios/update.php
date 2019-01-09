@@ -5,7 +5,7 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model app\models\Anuncio_comentario */
 
-$this->title = Yii::t('app', 'Update Anuncio Comentario: {nameAttribute}', [
+$this->title = Yii::t('app', 'Actulizar Comentario: {nameAttribute}', [
     'nameAttribute' => $model->id,
 ]);
 $this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Anuncio Comentarios'), 'url' => ['index']];

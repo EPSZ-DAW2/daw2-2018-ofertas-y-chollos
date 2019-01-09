@@ -57,15 +57,15 @@ class Anuncio_comentario extends \yii\db\ActiveRecord
             'texto' => Yii::t('app', 'Texto'),
             'comentario_id' => Yii::t('app', 'Comentario ID'),
             'cerrado' => Yii::t('app', 'Cerrado'),
-            'num_denuncias' => Yii::t('app', 'Num Denuncias'),
-            'fecha_denuncia1' => Yii::t('app', 'Fecha Denuncia1'),
+            'num_denuncias' => Yii::t('app', 'Nº Denuncias'),
+            'fecha_denuncia1' => Yii::t('app', 'Fecha 1ª Denuncia'),
             'bloqueado' => Yii::t('app', 'Bloqueado'),
-            'fecha_bloqueo' => Yii::t('app', 'Fecha Bloqueo'),
-            'notas_bloqueo' => Yii::t('app', 'Notas Bloqueo'),
+            'fecha_bloqueo' => Yii::t('app', 'Fecha bloqueo'),
+            'notas_bloqueo' => Yii::t('app', 'Nota bloqueo'),
             'crea_usuario_id' => Yii::t('app', 'Crea Usuario ID'),
-            'crea_fecha' => Yii::t('app', 'Crea Fecha'),
+            'crea_fecha' => Yii::t('app', 'Fecha creación'),
             'modi_usuario_id' => Yii::t('app', 'Modi Usuario ID'),
-            'modi_fecha' => Yii::t('app', 'Modi Fecha'),
+            'modi_fecha' => Yii::t('app', 'Fecha modificación'),
         ];
     }
 
