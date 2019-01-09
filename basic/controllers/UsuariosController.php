@@ -61,9 +61,6 @@ class UsuariosController extends Controller
     public function actionConfirmar($id)
     {
         $model = new Usuario();
-        
-
-        
 
         if (Yii::$app->request->get("confirmar")) 
         {
@@ -71,7 +68,7 @@ class UsuariosController extends Controller
             $model->confirmado="1";
             //si se recibe confirmar, modificarlo y redirigir a id
             Yii::$app->db->createCommand("UPDATE usuarios SET confirmado=1 WHERE id = '$id' ")->execute();
-           return $this->redirect(['view', 'id' => $id]);
+           return $this->redirect(['login', 'id' => $id]);
         }
 
         return $this->render('confirmar', [
@@ -120,7 +117,7 @@ class UsuariosController extends Controller
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
            
-           return $this->redirect(['login', 'id' => $model->id]);
+           return $this->redirect(['confirmar', 'id' => $model->id]);
         }
 
         return $this->render('registro', [
