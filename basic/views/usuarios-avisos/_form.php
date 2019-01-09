@@ -14,7 +14,7 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'fecha_aviso')->textInput() ?>
 
-    <?= $form->field($model, 'clase_aviso_id')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'clase_aviso_id')->dropDownList($model::$tipos, ['prompt' => 'Seleccione Uno' ]);   ?>
 
     <?= $form->field($model, 'texto')->textarea(['rows' => 6]) ?>
 
