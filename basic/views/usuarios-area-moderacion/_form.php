@@ -4,23 +4,20 @@ use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
 /* @var $this yii\web\View */
-/* @var $model app\models\zonas */
+/* @var $model app\models\UsuariosAreaModeracion */
 /* @var $form yii\widgets\ActiveForm */
 ?>
 
-<div class="zonas-form">
+<div class="usuarios-area-moderacion-form">
 
     <?php $form = ActiveForm::begin(); ?>
 
-
-
-    <?= $form->field($model, 'clase_zona_id')->dropDownList($model::$zonas, ['prompt' => 'Seleccione Uno' ]);   ?>
-    <?= $form->field($model, 'nombre')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'usuario_id')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'zona_id')->textInput(['maxlength' => true]) ?>
 
     <div class="form-group">
-        <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
+        <?= Html::submitButton(Yii::t('app', 'Save'), ['class' => 'btn btn-success']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>

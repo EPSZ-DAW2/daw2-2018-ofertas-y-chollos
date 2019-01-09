@@ -2,23 +2,21 @@
 
 use yii\helpers\Html;
 use yii\grid\GridView;
-use app\models\Zonas;
-
 
 /* @var $this yii\web\View */
-/* @var $searchModel app\models\zonasSearch */
+/* @var $searchModel app\models\UsuariosAreaModeracionSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Zonas';
+$this->title = Yii::t('app', 'Usuarios Area Moderacions');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="zonas-index">
+<div class="usuarios-area-moderacion-index">
 
     <h1><?= Html::encode($this->title) ?></h1>
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= Html::a('Crear zona nueva', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a(Yii::t('app', 'Create Usuarios Area Moderacion'), ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?= GridView::widget([
@@ -27,12 +25,11 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
-           'id',
- //           'clase_zona_id',
-            'nombre',
-            'claseZona',
-            'zona_id',
-            'zonaPadre',
+         //   'id',
+            'usuario',
+         //   'usuario_id',
+          //  'zona_id',
+            'zona',
 
             ['class' => 'yii\grid\ActionColumn'],
         ],

@@ -3,16 +3,16 @@
 namespace app\controllers;
 
 use Yii;
-use app\models\zonas;
-use app\models\zonasSearch;
+use app\models\UsuariosAreaModeracion;
+use app\models\UsuariosAreaModeracionSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
 /**
- * ZonasController implements the CRUD actions for zonas model.
+ * UsuariosAreaModeracionController implements the CRUD actions for UsuariosAreaModeracion model.
  */
-class ZonasController extends Controller
+class UsuariosAreaModeracionController extends Controller
 {
     /**
      * @inheritdoc
@@ -29,33 +29,23 @@ class ZonasController extends Controller
         ];
     }
 
-
-    public function codigo_a_texto($codigo){
-        return $this::$zonas[$codigo];
-
-    }
-    public function texto_a_codigo($texto){
-        return array_search($texto, $this::$zonas);
-    }
-
     /**
-     * Lists all zonas models.
+     * Lists all UsuariosAreaModeracion models.
      * @return mixed
      */
     public function actionIndex()
     {
-        $searchModel = new zonasSearch();
+        $searchModel = new UsuariosAreaModeracionSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
-            'clasesZona' => Zonas::$zonas,
         ]);
     }
 
     /**
-     * Displays a single zonas model.
+     * Displays a single UsuariosAreaModeracion model.
      * @param string $id
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
@@ -68,13 +58,13 @@ class ZonasController extends Controller
     }
 
     /**
-     * Creates a new zonas model.
+     * Creates a new UsuariosAreaModeracion model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
     public function actionCreate()
     {
-        $model = new zonas();
+        $model = new UsuariosAreaModeracion();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
@@ -86,7 +76,7 @@ class ZonasController extends Controller
     }
 
     /**
-     * Updates an existing zonas model.
+     * Updates an existing UsuariosAreaModeracion model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param string $id
      * @return mixed
@@ -106,7 +96,7 @@ class ZonasController extends Controller
     }
 
     /**
-     * Deletes an existing zonas model.
+     * Deletes an existing UsuariosAreaModeracion model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param string $id
      * @return mixed
@@ -120,18 +110,18 @@ class ZonasController extends Controller
     }
 
     /**
-     * Finds the zonas model based on its primary key value.
+     * Finds the UsuariosAreaModeracion model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param string $id
-     * @return zonas the loaded model
+     * @return UsuariosAreaModeracion the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = zonas::findOne($id)) !== null) {
+        if (($model = UsuariosAreaModeracion::findOne($id)) !== null) {
             return $model;
         }
 
-        throw new NotFoundHttpException('The requested page does not exist.');
+        throw new NotFoundHttpException(Yii::t('app', 'The requested page does not exist.'));
     }
 }

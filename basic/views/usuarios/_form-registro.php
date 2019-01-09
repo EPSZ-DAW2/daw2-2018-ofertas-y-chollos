@@ -12,20 +12,22 @@ use yii\widgets\ActiveForm;
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'email')->textInput(['maxlength' => true]) ?>
-
-    <?= $form->field($model, 'password')->passwordInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'nombre')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'apellidos')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'nick')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'nombre')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'email')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'email2')->textInput(['maxlength' => true]) ?>
+    
 
-    <?= $form->field($model, 'apellidos')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'password')->passwordInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'password2')->passwordInput(['maxlength' => true]) ?>
+   
 
-    <?= $form->field($model, 'fecha_nacimiento')->textInput() ?>
-
+    
+    <?= $form->field($model, 'fecha_nacimiento')->textInput() ?>   
     <?= $form->field($model, 'direccion')->textarea(['rows' => 6]) ?>
-
 
 
     

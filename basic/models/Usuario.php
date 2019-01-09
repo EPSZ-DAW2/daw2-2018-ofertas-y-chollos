@@ -23,9 +23,14 @@ use Yii;
  * @property int $bloqueado Indicador de usuario bloqueado: 0=No, 1=Si(bloqueada por accesos), 2=Si(bloqueada por administrador), ...
  * @property string $fecha_bloqueo Fecha y Hora del bloqueo del usuario. Debería estar a NULL si no está bloqueado o si se desbloquea.
  * @property string $notas_bloqueo Notas visibles sobre el motivo del bloqueo del usuario o NULL si no hay -se muestra por defecto según indique "bloqueado"-.
+ * @property string $email2s
+ * @property string $password2
  */
 class Usuario extends \yii\db\ActiveRecord
 {
+
+    public $email2;
+    public $password2;
     /**
      * @inheritdoc
      */
@@ -44,14 +49,20 @@ class Usuario extends \yii\db\ActiveRecord
             [['fecha_nacimiento', 'fecha_registro', 'fecha_acceso', 'fecha_bloqueo'], 'safe'],
             [['direccion', 'notas_bloqueo'], 'string'],
             [['zona_id', 'num_accesos'], 'integer'],
-            [['email'], 'string', 'max' => 255],
+            [['email'], 'string','max' => 250],
+            [['email'], 'email'],
+            [['email2'], 'string','max' => 250],
+            [['email2'], 'email'],
+            [['email2'],'compare','compareAttribute'=>'email'],
             [['password'], 'string', 'max' => 60],
+            [['password2'], 'string', 'max' => 60],
+            [['password2'], 'compare','compareAttribute'=>'password'],
             [['nick'], 'string', 'max' => 25],
             [['nombre'], 'string', 'max' => 50],
             [['apellidos'], 'string', 'max' => 100],
             [['confirmado', 'bloqueado'], 'string', 'max' => 1],
             [['email'], 'unique'],
-            [['nick'], 'unique'],
+            [['nick'], 'unique'],            
         ];
     }
 
@@ -77,6 +88,8 @@ class Usuario extends \yii\db\ActiveRecord
             'bloqueado' => Yii::t('app', 'Bloqueado'),
             'fecha_bloqueo' => Yii::t('app', 'Fecha Bloqueo'),
             'notas_bloqueo' => Yii::t('app', 'Notas Bloqueo'),
+            'email2' => Yii::t('app', 'Repite Email'),
+            'password2' => Yii::t('app', 'Repite Contraseña'),
         ];
     }
 
