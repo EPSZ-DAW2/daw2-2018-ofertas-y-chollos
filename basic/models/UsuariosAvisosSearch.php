@@ -13,6 +13,8 @@ use app\models\UsuariosAviso;
 class UsuariosAvisosSearch extends UsuariosAviso
 {
     public $tipo;
+    public $usuarioOrigen;
+    public $usuarioDestino;
     /**
      * @inheritdoc
      */
@@ -20,7 +22,7 @@ class UsuariosAvisosSearch extends UsuariosAviso
     {
         return [
             [['id', 'destino_usuario_id', 'origen_usuario_id', 'anuncio_id', 'comentario_id'], 'integer'],
-            [['fecha_aviso', 'clase_aviso_id', 'texto', 'fecha_lectura', 'fecha_aceptado', 'tipo'], 'safe'],
+            [['fecha_aviso', 'clase_aviso_id', 'texto', 'fecha_lectura', 'fecha_aceptado', 'tipo','usuarioOrigen','usuarioDestino'], 'safe'],
         ];
     }
 
@@ -43,6 +45,8 @@ class UsuariosAvisosSearch extends UsuariosAviso
     public function search($params)
     {
         $query = UsuariosAviso::find();
+        $query->joinWith(['avisosClientesOrigen aC'], true, 'LEFT OUTER JOIN');
+        $query->joinWith(['avisosClientesDestino dC'], true, 'LEFT OUTER JOIN');
 
         // add conditions that should always apply here
 
@@ -53,6 +57,18 @@ class UsuariosAvisosSearch extends UsuariosAviso
         $dataProvider->sort->attributes['tipo']=[
             'asc'=>['clase_aviso_id'=>SORT_ASC],
             'desc'=>['clase_aviso_id'=>SORT_DESC],
+            'defaut'=>SORT_ASC,
+        ];
+
+        $dataProvider->sort->attributes['usuarioOrigen']=[
+            'asc'=>['aC.nick'=>SORT_ASC],
+            'desc'=>['aC.nick'=>SORT_DESC],
+            'defaut'=>SORT_ASC,
+        ];
+
+        $dataProvider->sort->attributes['usuarioDestino']=[
+            'asc'=>['dc.nick'=>SORT_ASC],
+            'desc'=>['dc.nick'=>SORT_DESC],
             'defaut'=>SORT_ASC,
         ];
 
@@ -75,6 +91,8 @@ class UsuariosAvisosSearch extends UsuariosAviso
             'fecha_lectura' => $this->fecha_lectura,
             'fecha_aceptado' => $this->fecha_aceptado,
             'clase_aviso_id' => $this->tipo,
+            'aC.nick' => $this->usuarioOrigen,
+            'dc.nick' => $this->usuarioDestino,
         ]);
 
         $query->andFilterWhere(['like', 'clase_aviso_id', $this->clase_aviso_id])
