@@ -8,6 +8,7 @@ use app\models\UsuarioSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use app\models\LoginForm;
 
 /**
  * UsuariosController implements the CRUD actions for Usuario model.
@@ -66,17 +67,62 @@ class UsuariosController extends Controller
     {
         $model = new Usuario();
 
-        $model->confirmado="1";
-        $model->fecha_registro="2019-05-03";//CAMBIAR A ACTUAL
-        $model->num_accesos="0";
-        $model->bloqueado="0";
-
-
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
         }
 
         return $this->render('create', [
+            'model' => $model,
+        ]);
+    }
+
+    /**
+     * Acción de registro de usuario.
+     * Si el registro es correcto, se redirigirá a la pantalla de login.     
+     */
+
+    public function actionRegistro()
+    {
+        $model = new Usuario();
+
+        //proceso de registro de usuario.
+
+
+        $model->confirmado="1";
+        $model->fecha_registro="2019-05-03";//CAMBIAR A ACTUAL
+        $model->num_accesos="0";
+        $model->bloqueado="0";
+
+        
+
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+           
+           return $this->redirect(['login', 'id' => $model->id]);
+        }
+
+        return $this->render('registro', [
+            'model' => $model,
+        ]);
+    }
+
+    /**
+     * Acción de registro de usuario.
+     * Si el registro es correcto, se redirigirá a la pantalla de login.     
+     */
+
+    public function actionLogin()
+    {
+        if (!Yii::$app->user->isGuest) {
+            return $this->goHome();
+        }
+
+        $model = new LoginForm();
+        if ($model->load(Yii::$app->request->post()) && $model->login()) {
+            return $this->goBack();
+        }
+
+        $model->password = '';
+        return $this->render('login', [
             'model' => $model,
         ]);
     }
