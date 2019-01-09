@@ -51,6 +51,7 @@ class UsuariosAviso extends \yii\db\ActiveRecord
         return $this::$tipos[$this->clase_aviso_id];
 
     }
+    
 
     /**
      * @inheritdoc
