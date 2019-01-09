@@ -102,11 +102,14 @@ class Anuncios_comentariosController extends Controller
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
      */
-    public function actionDelete($id)
+    public function actionDelete($id, $page=null)
     {
         $this->findModel($id)->delete();
 
-        return $this->redirect(['index']);
+        if($page!==null)
+					return $this->redirect([$page]);
+				else
+					return $this->redirect(['index']);
     }
 
     /**
@@ -124,4 +127,43 @@ class Anuncios_comentariosController extends Controller
 
         throw new NotFoundHttpException(Yii::t('app', 'The requested page does not exist.'));
     }
+		
+		
+	public function actionComentarios()
+	{
+		$model = new Anuncio_comentario();
+		
+		//id oferta
+		$id = 1;
+		
+		if ($model->load(Yii::$app->request->post())) {
+			//$model->crea_usuario_id = Yii::$app->user->identity->id; //---------pendiente-------------
+			$model->crea_usuario_id = 43;
+			$model->crea_fecha = date('Y-m-d H:i:s');
+			$model->save(false);
+			return $this->redirect(['comentarios']);
+		}
+		
+		$searchModel = new Anuncio_comentarioSearch();
+		$dataProvider = $searchModel->search(['Anuncio_comentarioSearch'=>['anuncio_id' => $id, 'bloqueado' => '0']]);
+		$dataProvider->setSort([
+        'defaultOrder' => ['id'=>SORT_DESC],
+		]);
+		
+		return $this->render('comentarios', [
+				'dataProvider' => $dataProvider,
+				'model' => $model,
+		]);
+
+	}
+	
+	public function actionDenunciar($id)
+	{
+		$model = $this->findModel($id);
+		$model->num_denuncias = $model->num_denuncias+1;
+		if ($model->fecha_denuncia1 === null) $model->fecha_denuncia1 = date('Y-m-d H:i:s');
+		$model->save(false);
+		
+		return $this->redirect(['comentarios']);
+	}
 }
