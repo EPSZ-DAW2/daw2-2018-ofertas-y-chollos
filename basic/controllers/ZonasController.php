@@ -50,7 +50,7 @@ class ZonasController extends Controller
         return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
-            //'clasesZona' => $Zonas::$nzonas,
+            'clasesZona' => Zonas::$zonas,
         ]);
     }
 

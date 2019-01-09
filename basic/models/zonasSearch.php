@@ -12,6 +12,7 @@ use app\models\zonas;
  */
 class zonasSearch extends zonas
 {
+    public $claseZona;
     /**
      * @inheritdoc
      */
@@ -19,7 +20,7 @@ class zonasSearch extends zonas
     {
         return [
             [['id', 'zona_id'], 'integer'],
-            [['clase_zona_id', 'nombre'], 'safe'],
+            [['claseZona', 'nombre'], 'safe'],
         ];
     }
 
@@ -49,6 +50,19 @@ class zonasSearch extends zonas
             'query' => $query,
         ]);
 
+         $dataProvider->setSort([
+            'attributes' => [
+                'id',
+                
+                'nombre',
+                'claseZona' => [
+                    'asc' => ['clase_zona_id' => SORT_ASC],
+                    'desc' => ['clase_zona_id' => SORT_DESC],
+                    'default' => SORT_ASC
+                ],
+                'zona_id'
+            ]
+        ]);
         $this->load($params);
 
         if (!$this->validate()) {
@@ -61,9 +75,11 @@ class zonasSearch extends zonas
         $query->andFilterWhere([
             'id' => $this->id,
             'zona_id' => $this->zona_id,
+            'zonas.clase_zona_id' => $this->claseZona,
         ]);
 
         $query->andFilterWhere(['like', 'clase_zona_id', $this->clase_zona_id])
+            ->andFilterWhere(['like', 'nombre', $this->nombre])
             ->andFilterWhere(['like', 'nombre', $this->nombre]);
 
         return $dataProvider;
