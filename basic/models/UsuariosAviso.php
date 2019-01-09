@@ -42,6 +42,16 @@ class UsuariosAviso extends \yii\db\ActiveRecord
         ];
     }
 
+
+    public static $tipos=[ 'A'=>'Aviso', 'N'=>'Notificación', 'D'=>'Denuncia', 'C'=>'Consulta', 'M'=>'Mensaje', 'B'=>'Bloqueo'];
+
+    public function getTipos()
+    {
+
+        return $this::$tipos[$this->clase_aviso_id];
+
+    }
+
     /**
      * @inheritdoc
      */
