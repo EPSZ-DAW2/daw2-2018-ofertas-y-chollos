@@ -72,4 +72,5 @@ class Registro extends \yii\db\ActiveRecord
     {
         return new RegistrosQuery(get_called_class());
     }
+
 }

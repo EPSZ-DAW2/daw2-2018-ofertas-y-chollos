@@ -8,7 +8,6 @@ use app\models\RegistrosSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
-
 /**
  * RegistrosController implements the CRUD actions for Registro model.
  */
@@ -107,6 +106,33 @@ class RegistrosController extends Controller
         $this->findModel($id)->delete();
 
         return $this->redirect(['index']);
+    }
+
+    public function actionExportar()
+    {
+
+        $registros=registro::find()->all();
+
+         $nombre_archivo = "logs".date("d-m-Y|H:i:s").".txt"; 
+
+
+
+        foreach ($registros as $registro) {
+
+            $mensaje=$registro->fecha_registro." | ".$registro->clase_log_id." | ".$registro->modulo." | ".$registro->texto." | ".$registro->ip." | ".$registro->browser.";";
+
+            print($mensaje."\n");
+
+        }
+
+            header("Pragma: public");
+            header("Cache-Control: must-revalidate, post-check=0, pre-check=0");
+            header("Cache-Control: private",false);
+            header("Content-Description: File Transfer");
+            header("Content-Type: application/force-download");
+            header("Content-Disposition: attachment; filename=".$nombre_archivo);
+       
+
     }
 
     /**
