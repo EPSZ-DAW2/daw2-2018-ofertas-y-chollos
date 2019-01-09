@@ -45,7 +45,7 @@ class UsuariosAviso extends \yii\db\ActiveRecord
 
     public static $tipos=[ 'A'=>'Aviso', 'N'=>'Notificación', 'D'=>'Denuncia', 'C'=>'Consulta', 'M'=>'Mensaje', 'B'=>'Bloqueo'];
 
-    public function getTipos()
+    public function getTipo()
     {
 
         return $this::$tipos[$this->clase_aviso_id];
@@ -69,6 +69,7 @@ class UsuariosAviso extends \yii\db\ActiveRecord
             'comentario_id' => Yii::t('app', 'Comentario'),
             'fecha_lectura' => Yii::t('app', 'Fecha Lectura'),
             'fecha_aceptado' => Yii::t('app', 'Fecha Aceptación'),
+            'tipo' => Yii::t('app', 'Tipo'),
         ];
     }
 

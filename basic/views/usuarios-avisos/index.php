@@ -28,7 +28,8 @@ $this->params['breadcrumbs'][] = $this->title;
 
             //'id',
             'fecha_aviso',
-            'Tipos',
+            //'clase_aviso_id',
+            'tipo',
             'texto:ntext',
             'destino_usuario_id',
             'origen_usuario_id',

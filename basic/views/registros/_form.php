@@ -14,7 +14,8 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'fecha_registro')->textInput() ?>
 
-    <?= $form->field($model, 'clase_log_id')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'clase_log_id')->dropDownList($model::$tipos, ['prompt' => 'Seleccione Uno' ]);   ?>
+ ?>
 
     <?= $form->field($model, 'modulo')->textInput(['maxlength' => true]) ?>
 

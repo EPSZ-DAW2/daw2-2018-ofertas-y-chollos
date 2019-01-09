@@ -12,6 +12,7 @@ use app\models\Registro;
  */
 class RegistrosSearch extends Registro
 {
+    public $tipo;
     /**
      * @inheritdoc
      */
@@ -19,7 +20,7 @@ class RegistrosSearch extends Registro
     {
         return [
             [['id'], 'integer'],
-            [['fecha_registro', 'clase_log_id', 'modulo', 'texto', 'ip', 'browser'], 'safe'],
+            [['fecha_registro', 'clase_log_id', 'modulo', 'texto', 'ip', 'browser', 'tipo'], 'safe'],
         ];
     }
 
@@ -49,6 +50,12 @@ class RegistrosSearch extends Registro
             'query' => $query,
         ]);
 
+        $dataProvider->sort->attributes['tipo']=[
+            'asc'=>['clase_log_id'=>SORT_ASC],
+            'desc'=>['clase_log_id'=>SORT_DESC],
+            'defaut'=>SORT_ASC,
+        ];
+
         $this->load($params);
 
         if (!$this->validate()) {
@@ -61,6 +68,7 @@ class RegistrosSearch extends Registro
         $query->andFilterWhere([
             'id' => $this->id,
             'fecha_registro' => $this->fecha_registro,
+            'clase_log_id' => $this->tipo,
         ]);
 
         $query->andFilterWhere(['like', 'clase_log_id', $this->clase_log_id])
