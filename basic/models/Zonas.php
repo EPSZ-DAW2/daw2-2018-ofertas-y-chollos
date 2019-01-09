@@ -44,11 +44,11 @@ public static $zonas=[ 1=>'Continente', 2=>'Pais', 3=>'Estado', 4=>'Region', 5=>
     public function attributeLabels()
     {
         return [
-            'id' => 'ID',
-            'clase_zona_id' => 'Código de clase de la zona',
-            'nombre' => 'Nombre de la zona que la identifica.',
-            'zona_id' => 'Zona relacionada.',
-            'claseZona'=>'Tipo de zona',
+            'id' => Yii::t('app','ID'),
+            'clase_zona_id' => Yii::t('app','Código de clase de la zona'),
+            'nombre' => Yii::t('app','Nombre de la zona que la identifica.'),
+            'zona_id' => Yii::t('app','Zona relacionada.'),
+            'claseZona'=>Yii::t('app','Tipo de zona'),
         ];
     }
     public function getClaseZona(){

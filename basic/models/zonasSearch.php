@@ -75,11 +75,10 @@ class zonasSearch extends zonas
         $query->andFilterWhere([
             'id' => $this->id,
             'zona_id' => $this->zona_id,
-            'zonas.clase_zona_id' => $this->claseZona,
+            'clase_zona_id' => $this->claseZona,
         ]);
 
         $query->andFilterWhere(['like', 'clase_zona_id', $this->clase_zona_id])
-            ->andFilterWhere(['like', 'nombre', $this->nombre])
             ->andFilterWhere(['like', 'nombre', $this->nombre]);
 
         return $dataProvider;
