@@ -70,7 +70,31 @@ class UsuariosAviso extends \yii\db\ActiveRecord
             'fecha_lectura' => Yii::t('app', 'Fecha Lectura'),
             'fecha_aceptado' => Yii::t('app', 'Fecha Aceptación'),
             'tipo' => Yii::t('app', 'Tipo'),
+            'usuarioDestino' => Yii::t('app', 'Destinatario'),
+            'usuarioOrigen' => Yii::t('app', 'Remitente'),
         ];
+    }
+
+    public function getUsuarioDestino()
+    {
+        $nick=Usuario::find()->select('nick')->where(['id'=>$this->destino_usuario_id])->one();
+        return $nick->nick;
+    }
+
+    public function getUsuarioOrigen()
+    {
+        $nick=Usuario::find()->select('nick')->where(['id'=>$this->origen_usuario_id])->one();
+        return $nick->nick;
+    }
+
+    public function getAvisosClientesOrigen()
+    {
+        return $this->hasOne(Usuario::className(),['id'=>'origen_usuario_id']);
+    }
+
+    public function getAvisosClientesDestino()
+    {
+        return $this->hasOne(Usuario::className(),['id'=>'destino_usuario_id']);
     }
 
     /**
