@@ -28,7 +28,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
             'id',
             'fecha_registro',
-            'clase_log_id',
+            'tipo',
             'modulo',
             'texto:ntext',
             //'ip',

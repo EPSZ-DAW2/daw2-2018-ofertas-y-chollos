@@ -28,17 +28,21 @@ $this->params['breadcrumbs'][] = $this->title;
 
             //'id',
             'fecha_aviso',
-            'Tipos',
+            //'clase_aviso_id',
+            'tipo',
             'texto:ntext',
-            'destino_usuario_id',
-            'origen_usuario_id',
+            //'origen_usuario_id',
+            'usuarioOrigen',
+            //'destino_usuario_id',
+            'usuarioDestino',
             'anuncio_id',
             'comentario_id',
             'fecha_lectura',
             'fecha_aceptado',
-
+            
             ['class' => 'yii\grid\ActionColumn'],
         ],
     ]); ?>
     <?php Pjax::end(); ?>
+
 </div>

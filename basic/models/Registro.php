@@ -40,6 +40,14 @@ class Registro extends \yii\db\ActiveRecord
         ];
     }
 
+
+    public static $tipos=[ 'E'=>'Error', 'A'=>'Aviso', 'I'=>'Informacion', 'D'=>'Depuracion'];
+
+    public function getTipo()
+    {
+        return $this::$tipos[$this->clase_log_id];
+    }
+
     /**
      * @inheritdoc
      */
