@@ -12,6 +12,8 @@ use app\models\UsuariosAreaModeracion;
  */
 class UsuariosAreaModeracionSearch extends UsuariosAreaModeracion
 {
+    public $zona;
+    public $usuario;
     /**
      * @inheritdoc
      */
@@ -19,6 +21,7 @@ class UsuariosAreaModeracionSearch extends UsuariosAreaModeracion
     {
         return [
             [['id', 'usuario_id', 'zona_id'], 'integer'],
+            [['usuario', 'zona'], 'safe'],
         ];
     }
 
@@ -44,9 +47,22 @@ class UsuariosAreaModeracionSearch extends UsuariosAreaModeracion
 
         // add conditions that should always apply here
 
+        $query->joinWith(['zonaOrdenar zO'], true, 'LEFT OUTER JOIN');
+        $query->joinWith(['usuarioOrdenar uO'], true, 'LEFT OUTER JOIN');
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
         ]);
+
+        $dataProvider->sort->attributes['usuario']=[
+            'asc'=>['uO.nick'=>SORT_ASC],
+            'desc'=>['uO.nick'=>SORT_DESC],
+            'defaut'=>SORT_ASC,
+        ];
+        $dataProvider->sort->attributes['zona']=[
+            'asc'=>['zO.nombre'=>SORT_ASC],
+            'desc'=>['zO.nombre'=>SORT_DESC],
+            'defaut'=>SORT_ASC,
+        ];
 
         $this->load($params);
 
@@ -60,7 +76,8 @@ class UsuariosAreaModeracionSearch extends UsuariosAreaModeracion
         $query->andFilterWhere([
             'id' => $this->id,
             'usuario_id' => $this->usuario_id,
-            'zona_id' => $this->zona_id,
+            'uO.nick'=>$this->usuario,
+            'zO.nombre' => $this->zona,
         ]);
 
         return $dataProvider;

@@ -48,10 +48,26 @@ public static $zonas=[ 1=>'Continente', 2=>'Pais', 3=>'Estado', 4=>'Region', 5=>
             'clase_zona_id' => Yii::t('app','Código de clase de la zona'),
             'nombre' => Yii::t('app','Nombre de la zona que la identifica.'),
             'zona_id' => Yii::t('app','Zona relacionada.'),
+            'zonaPadre' => Yii::t('app','Zona relacionada.'),
             'claseZona'=>Yii::t('app','Tipo de zona'),
         ];
     }
+    public function getPadreZona()
+    {
+        return $this->hasOne(Zonas::className(), ['id' => 'zona_id']);
+    }
+
+    public function getZonaPadre(){
+        $padre = $this->padreZona;
+        if ($padre) return $padre->nombre;
+    }
+
+
     public function getClaseZona(){
         return $this::$zonas[$this->clase_zona_id];
+    }
+    //////////PARA FILTRAR Y BUSCAR
+    public function getPadreOrdenar(){
+        return $this->hasOne(Zonas::className(),['id'=>'zona_id']);
     }
 }

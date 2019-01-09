@@ -13,6 +13,7 @@ use app\models\zonas;
 class zonasSearch extends zonas
 {
     public $claseZona;
+    public $zonaPadre;
     /**
      * @inheritdoc
      */
@@ -20,7 +21,7 @@ class zonasSearch extends zonas
     {
         return [
             [['id', 'zona_id'], 'integer'],
-            [['claseZona', 'nombre'], 'safe'],
+            [['claseZona', 'nombre', 'zonaPadre'], 'safe'],
         ];
     }
 
@@ -46,6 +47,8 @@ class zonasSearch extends zonas
 
         // add conditions that should always apply here
 
+        $query->joinWith(['padreOrdenar pO'], true, 'LEFT OUTER JOIN');
+
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
         ]);
@@ -60,7 +63,12 @@ class zonasSearch extends zonas
                     'desc' => ['clase_zona_id' => SORT_DESC],
                     'default' => SORT_ASC
                 ],
-                'zona_id'
+                'zona_id',
+                'zonaPadre'=>[
+                    'asc' => ['pO.nombre' => SORT_ASC],
+                    'desc' => ['pO.nombre' => SORT_DESC],
+                    'default' => SORT_ASC
+                ]
             ]
         ]);
         $this->load($params);
@@ -76,6 +84,7 @@ class zonasSearch extends zonas
             'id' => $this->id,
             'zona_id' => $this->zona_id,
             'clase_zona_id' => $this->claseZona,
+            'pO.nombre' => $this->zonaPadre,
         ]);
 
         $query->andFilterWhere(['like', 'clase_zona_id', $this->clase_zona_id])

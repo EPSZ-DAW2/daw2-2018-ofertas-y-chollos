@@ -39,8 +39,8 @@ class UsuariosAreaModeracion extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'usuario_id' => 'Usuario relacionado con un Area para su moderación.',
-            'zona_id' => 'Zona relacionada con el Usuario que puede moderarla.',
+            'usuario' => Yii::t('app','Usuario.'),
+            'zona' => Yii::t('app','Zona.'),
         ];
     }
 
@@ -51,5 +51,25 @@ class UsuariosAreaModeracion extends \yii\db\ActiveRecord
     public static function find()
     {
         return new UsuariosAreaModeracionQuery(get_called_class());
+    }
+
+    public function getUsuario(){
+        
+        $user=usuario::find()->select('nick')->where(['id'=>$this->usuario_id])->one();
+//        print_r($user);
+        return $user["nick"];
+    }
+
+    public function getZona(){
+        
+        $zona=zonas::find()->select('nombre')->where(['id'=>$this->zona_id])->one();
+        return $zona["nombre"];
+    }
+    //PARA FILTRAR Y ORDENAR
+    public function getZonaOrdenar(){
+        return $this->hasOne(Zonas::className(),['id'=>'zona_id']);
+    }
+    public function getUsuarioOrdenar(){
+        return $this->hasOne(Usuario::className(),['id'=>'usuario_id']);
     }
 }
