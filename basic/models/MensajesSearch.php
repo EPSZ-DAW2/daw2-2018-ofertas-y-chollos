@@ -5,22 +5,21 @@ namespace app\models;
 use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use app\models\zonas;
+use app\models\Mensaje;
 
 /**
- * zonasSearch represents the model behind the search form of `app\models\zonas`.
+ * MensajesSearch represents the model behind the search form of `app\models\Mensaje`.
  */
-class zonasSearch extends zonas
+class MensajesSearch extends Mensaje
 {
-    public $claseZona;
     /**
      * @inheritdoc
      */
     public function rules()
     {
         return [
-            [['id', 'zona_id'], 'integer'],
-            [['claseZona', 'nombre'], 'safe'],
+            [['id', 'origen_usuario_id', 'destino_usuario_id'], 'integer'],
+            [['fecha_hora', 'texto'], 'safe'],
         ];
     }
 
@@ -42,7 +41,7 @@ class zonasSearch extends zonas
      */
     public function search($params)
     {
-        $query = zonas::find();
+        $query = Mensaje::find();
 
         // add conditions that should always apply here
 
@@ -50,19 +49,6 @@ class zonasSearch extends zonas
             'query' => $query,
         ]);
 
-         $dataProvider->setSort([
-            'attributes' => [
-                'id',
-                
-                'nombre',
-                'claseZona' => [
-                    'asc' => ['clase_zona_id' => SORT_ASC],
-                    'desc' => ['clase_zona_id' => SORT_DESC],
-                    'default' => SORT_ASC
-                ],
-                'zona_id'
-            ]
-        ]);
         $this->load($params);
 
         if (!$this->validate()) {
@@ -74,12 +60,12 @@ class zonasSearch extends zonas
         // grid filtering conditions
         $query->andFilterWhere([
             'id' => $this->id,
-            'zona_id' => $this->zona_id,
-            'clase_zona_id' => $this->claseZona,
+            'fecha_hora' => $this->fecha_hora,
+            'origen_usuario_id' => $this->origen_usuario_id,
+            'destino_usuario_id' => $this->destino_usuario_id,
         ]);
 
-        $query->andFilterWhere(['like', 'clase_zona_id', $this->clase_zona_id])
-            ->andFilterWhere(['like', 'nombre', $this->nombre]);
+        $query->andFilterWhere(['like', 'texto', $this->texto]);
 
         return $dataProvider;
     }

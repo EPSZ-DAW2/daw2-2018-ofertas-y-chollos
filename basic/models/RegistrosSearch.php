@@ -5,22 +5,22 @@ namespace app\models;
 use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use app\models\zonas;
+use app\models\Registro;
 
 /**
- * zonasSearch represents the model behind the search form of `app\models\zonas`.
+ * RegistrosSearch represents the model behind the search form of `app\models\Registro`.
  */
-class zonasSearch extends zonas
+class RegistrosSearch extends Registro
 {
-    public $claseZona;
+    public $tipo;
     /**
      * @inheritdoc
      */
     public function rules()
     {
         return [
-            [['id', 'zona_id'], 'integer'],
-            [['claseZona', 'nombre'], 'safe'],
+            [['id'], 'integer'],
+            [['fecha_registro', 'clase_log_id', 'modulo', 'texto', 'ip', 'browser', 'tipo'], 'safe'],
         ];
     }
 
@@ -42,7 +42,7 @@ class zonasSearch extends zonas
      */
     public function search($params)
     {
-        $query = zonas::find();
+        $query = Registro::find();
 
         // add conditions that should always apply here
 
@@ -50,19 +50,12 @@ class zonasSearch extends zonas
             'query' => $query,
         ]);
 
-         $dataProvider->setSort([
-            'attributes' => [
-                'id',
-                
-                'nombre',
-                'claseZona' => [
-                    'asc' => ['clase_zona_id' => SORT_ASC],
-                    'desc' => ['clase_zona_id' => SORT_DESC],
-                    'default' => SORT_ASC
-                ],
-                'zona_id'
-            ]
-        ]);
+        $dataProvider->sort->attributes['tipo']=[
+            'asc'=>['clase_log_id'=>SORT_ASC],
+            'desc'=>['clase_log_id'=>SORT_DESC],
+            'defaut'=>SORT_ASC,
+        ];
+
         $this->load($params);
 
         if (!$this->validate()) {
@@ -74,12 +67,15 @@ class zonasSearch extends zonas
         // grid filtering conditions
         $query->andFilterWhere([
             'id' => $this->id,
-            'zona_id' => $this->zona_id,
-            'clase_zona_id' => $this->claseZona,
+            'fecha_registro' => $this->fecha_registro,
+            'clase_log_id' => $this->tipo,
         ]);
 
-        $query->andFilterWhere(['like', 'clase_zona_id', $this->clase_zona_id])
-            ->andFilterWhere(['like', 'nombre', $this->nombre]);
+        $query->andFilterWhere(['like', 'clase_log_id', $this->clase_log_id])
+            ->andFilterWhere(['like', 'modulo', $this->modulo])
+            ->andFilterWhere(['like', 'texto', $this->texto])
+            ->andFilterWhere(['like', 'ip', $this->ip])
+            ->andFilterWhere(['like', 'browser', $this->browser]);
 
         return $dataProvider;
     }

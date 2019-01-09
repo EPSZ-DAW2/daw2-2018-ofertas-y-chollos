@@ -4,6 +4,7 @@ namespace app\models;
 
 use Yii;
 
+
 /**
  * This is the model class for table "Zonas".
  *
@@ -34,6 +35,8 @@ class Zonas extends \yii\db\ActiveRecord
             [['nombre'], 'string', 'max' => 50],
         ];
     }
+public static $zonas=[ 1=>'Continente', 2=>'Pais', 3=>'Estado', 4=>'Region', 5=>'Provincia', 6=>'Municipio', 7=>'Localidad', 8=>'Barrio', 9=>'Area'];
+
 
     /**
      * @inheritdoc
@@ -41,10 +44,14 @@ class Zonas extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id' => 'ID',
-            'clase_zona_id' => 'Código de clase de la zona',
-            'nombre' => 'Nombre de la zona que la identifica.',
-            'zona_id' => 'Zona relacionada.',
+            'id' => Yii::t('app','ID'),
+            'clase_zona_id' => Yii::t('app','Código de clase de la zona'),
+            'nombre' => Yii::t('app','Nombre de la zona que la identifica.'),
+            'zona_id' => Yii::t('app','Zona relacionada.'),
+            'claseZona'=>Yii::t('app','Tipo de zona'),
         ];
+    }
+    public function getClaseZona(){
+        return $this::$zonas[$this->clase_zona_id];
     }
 }
