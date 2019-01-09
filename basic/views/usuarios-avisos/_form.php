@@ -1,7 +1,9 @@
 <?php
 
 use yii\helpers\Html;
+use yii\helpers\ArrayHelper;
 use yii\widgets\ActiveForm;
+use app\models\UsuariosAviso;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\UsuariosAviso */
@@ -12,7 +14,7 @@ use yii\widgets\ActiveForm;
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'fecha_aviso')?>
+    <?= $form->field($model, 'fecha_aviso');?>
 
     <?= $form->field($model, 'clase_aviso_id')->dropDownList($model::$tipos, ['prompt' => 'Seleccione Uno' ]);   ?>
 
