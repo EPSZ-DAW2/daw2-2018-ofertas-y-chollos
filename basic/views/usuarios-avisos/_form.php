@@ -28,9 +28,9 @@ use app\models\UsuariosAviso;
 
     <?= $form->field($model, 'comentario_id')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'fecha_lectura')->textInput() ?>
+    <?= $form->field($model, 'fecha_lectura')->input('date') ?>
 
-    <?= $form->field($model, 'fecha_aceptado')->textInput() ?>
+    <?= $form->field($model, 'fecha_aceptado')->input('date') ?>
 
     <div class="form-group">
         <?= Html::submitButton(Yii::t('app', 'Save'), ['class' => 'btn btn-success']) ?>

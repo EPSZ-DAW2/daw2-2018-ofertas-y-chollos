@@ -17,6 +17,7 @@ use Yii;
  */
 class Registro extends \yii\db\ActiveRecord
 {
+    public $fecha_limpieza;
     /**
      * @inheritdoc
      */
@@ -37,6 +38,7 @@ class Registro extends \yii\db\ActiveRecord
             [['clase_log_id'], 'string', 'max' => 1],
             [['modulo'], 'string', 'max' => 50],
             [['ip'], 'string', 'max' => 40],
+            [['fecha_limpieza'],'string'],
         ];
     }
 
