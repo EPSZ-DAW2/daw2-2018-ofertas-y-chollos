@@ -47,6 +47,8 @@ AppAsset::register($this);
             ['label' => 'Avisos', 'url' => ['/usuarios-avisos/index']],
             ['label' => 'Perfil', 'url' => ['/perfil/index']],
             ['label' => 'Logs', 'url' => ['/registros/index']],
+            ['label' => 'Mensajes', 'url' => ['/mensajes/index']],
+            ['label' => 'Chats', 'url' => ['/mensajes/listar']],
             Yii::$app->user->isGuest ? (
                 ['label' => 'Conectar', 'url' => ['/usuarios/login']]
             ) : (
