@@ -68,6 +68,6 @@ public static $zonas=[ 1=>'Continente', 2=>'Pais', 3=>'Estado', 4=>'Region', 5=>
     }
     //////////PARA FILTRAR Y BUSCAR
     public function getPadreOrdenar(){
-        return $this->hasOne(Zonas::className(),['id'=>'zona_id']);
+        return $this->hasOne(Zonas::className(), ['id' => 'zona_id']);
     }
 }

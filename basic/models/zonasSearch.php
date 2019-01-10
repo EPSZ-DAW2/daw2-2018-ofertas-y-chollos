@@ -82,7 +82,6 @@ class zonasSearch extends zonas
         // grid filtering conditions
         $query->andFilterWhere([
             'id' => $this->id,
-            'zona_id' => $this->zona_id,
             'clase_zona_id' => $this->claseZona,
             'pO.nombre' => $this->zonaPadre,
         ]);
