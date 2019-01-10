@@ -47,7 +47,7 @@ class zonasSearch extends zonas
 
         // add conditions that should always apply here
 
-        $query->joinWith(['padreOrdenar pO'], true, 'LEFT OUTER JOIN');
+   //     $query->joinWith(['padreOrdenar pO'], true, 'LEFT OUTER JOIN');
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
@@ -83,7 +83,7 @@ class zonasSearch extends zonas
         $query->andFilterWhere([
             'id' => $this->id,
             'clase_zona_id' => $this->claseZona,
-            'pO.nombre' => $this->zonaPadre,
+            'zonas.nombre' => $this->zonaPadre,
         ]);
 
         $query->andFilterWhere(['like', 'clase_zona_id', $this->clase_zona_id])

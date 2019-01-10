@@ -35,7 +35,7 @@ class Zonas extends \yii\db\ActiveRecord
             [['nombre'], 'string', 'max' => 50],
         ];
     }
-public static $zonas=[ 1=>'Continente', 2=>'Pais', 3=>'Estado', 4=>'Region', 5=>'Provincia', 6=>'Municipio', 7=>'Localidad', 8=>'Barrio', 9=>'Area'];
+public static $zonas=array( 1=>'Continente', 2=>'Pais', 3=>'Estado', 4=>'Region', 5=>'Provincia', 6=>'Municipio', 7=>'Localidad', 8=>'Barrio', 9=>'Area');
 
 
     /**
