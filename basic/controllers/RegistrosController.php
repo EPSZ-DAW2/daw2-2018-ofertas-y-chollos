@@ -56,6 +56,27 @@ class RegistrosController extends Controller
         ]);
     }
 
+
+    public function actionLimpieza()
+    {
+        $model = new Registro();
+        if (!empty($_POST['Registro'])) {
+            //Eliminar Logs de la fecha
+            $fecha=$_POST['Registro']['fecha_limpieza'];
+
+            $ids_borrar=registro::find()->select('id')->where(['<=', 'fecha_registro', $fecha])->all();
+            foreach ($ids_borrar as $id)
+            {
+                $model=$this->findModel($id);
+                $model->delete();
+            }
+            return $this->redirect(['index']);
+        }
+        return $this->render('limpieza', [
+            'model' => $model,
+        ]);
+    }
+
     /**
      * Creates a new Registro model.
      * If creation is successful, the browser will be redirected to the 'view' page.
@@ -110,28 +131,39 @@ class RegistrosController extends Controller
 
     public function actionExportar()
     {
-
         $registros=registro::find()->all();
 
          $nombre_archivo = "logs".date("d-m-Y|H:i:s").".txt"; 
 
+         
+        $archivo="";
+        //$archivo=fopen("log.txt","w");
 
-
-        foreach ($registros as $registro) {
+        foreach ($registros as $registro)
+        {
 
             $mensaje=$registro->fecha_registro." | ".$registro->clase_log_id." | ".$registro->modulo." | ".$registro->texto." | ".$registro->ip." | ".$registro->browser.";";
 
-            print($mensaje."\n");
+                $mensaje=$mensaje."\n";
+                //fwrite($archivo, $mensaje);
+                $archivo=$archivo.$mensaje;
+
 
         }
 
-            header("Pragma: public");
-            header("Cache-Control: must-revalidate, post-check=0, pre-check=0");
-            header("Cache-Control: private",false);
-            header("Content-Description: File Transfer");
+
+           
+
+            //$size=filesize('log.txt');
             header("Content-Type: application/force-download");
             header("Content-Disposition: attachment; filename=".$nombre_archivo);
-       
+            header("Content-Transfer-Encoding: binary");
+            //header("Content-Lenght".$size);
+            echo $archivo;
+            //readfile('log.txt');
+            //return true;
+            //return $this->redirect(['index']);
+
 
     }
 
