@@ -69,7 +69,7 @@ class Mensaje extends \yii\db\ActiveRecord
     public function getLista()
     {
         $nicks=array();
-        if(isset($_SESSION['mensajes']))
+        if(!empty($_SESSION['mensajes']))
         {
             foreach($_SESSION['mensajes'] as $key=>$mensaje)
             {

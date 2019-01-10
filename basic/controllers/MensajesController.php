@@ -38,6 +38,11 @@ class MensajesController extends Controller
         $model->load(Yii::$app->request->post());
         $model->fecha_hora=date("Y-m-d H:i:s");
         $model->save();
+        $_SESSION['mensajes'][$model->destino_usuario_id][]=$model;
+        return $this->render('chat', [
+            'mensajes'=>$_SESSION['mensajes'][$model->destino_usuario_id],
+            'model'=>new Mensaje(),
+        ]);
     }
 
     public function actionListar()
