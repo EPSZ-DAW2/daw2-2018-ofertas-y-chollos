@@ -1,11 +1,65 @@
 {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
-        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "11dc19ae1bd8fd0737fec254fc20f7de",
+    "content-hash": "188fa20ea2d3dc0171bd1177111a304b",
     "packages": [
+        {
+            "name": "beaten-sect0r/yii2-db-manager",
+            "version": "2.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Beaten-Sect0r/yii2-db-manager.git",
+                "reference": "04d410e79a4e65ac0bd93d490ac2884d73d94ff9"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Beaten-Sect0r/yii2-db-manager/zipball/04d410e79a4e65ac0bd93d490ac2884d73d94ff9",
+                "reference": "04d410e79a4e65ac0bd93d490ac2884d73d94ff9",
+                "shasum": ""
+            },
+            "require": {
+                "creocoder/yii2-flysystem": "*",
+                "symfony/process": "2.8.*|3.*|4.*",
+                "yiisoft/yii2": "*",
+                "yiisoft/yii2-bootstrap": "*"
+            },
+            "type": "yii2-extension",
+            "extra": {
+                "bootstrap": "bs\\dbManager\\Bootstrap"
+            },
+            "autoload": {
+                "psr-4": {
+                    "bs\\dbManager\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Alexander Volkov",
+                    "email": "beatensect0r@gmail.com",
+                    "role": "Developer"
+                },
+                {
+                    "name": "Insolita",
+                    "email": "donnainsolita@gmail.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "The db dump manager module for Yii2",
+            "keywords": [
+                "backup",
+                "db manager",
+                "dump",
+                "yii2"
+            ],
+            "time": "2018-12-04T17:06:21+00:00"
+        },
         {
             "name": "bower-asset/bootstrap",
             "version": "v3.3.7",
@@ -74,7 +128,7 @@
             "version": "v1.3.2",
             "source": {
                 "type": "git",
-                "url": "https://github.com/bestiejs/punycode.js.git",
+                "url": "git@github.com:bestiejs/punycode.js.git",
                 "reference": "38c8d3131a82567bfef18da09f7f4db68c84f8a3"
             },
             "dist": {
@@ -168,6 +222,159 @@
             "time": "2017-07-16T21:13:23+00:00"
         },
         {
+            "name": "creocoder/yii2-flysystem",
+            "version": "0.9.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/creocoder/yii2-flysystem.git",
+                "reference": "bd0bf4df7b141b52a1099b2ab725c39d1e15109d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/creocoder/yii2-flysystem/zipball/bd0bf4df7b141b52a1099b2ab725c39d1e15109d",
+                "reference": "bd0bf4df7b141b52a1099b2ab725c39d1e15109d",
+                "shasum": ""
+            },
+            "require": {
+                "league/flysystem": "~1.0",
+                "yiisoft/yii2": "~2.0.0"
+            },
+            "require-dev": {
+                "league/flysystem-aws-s3-v3": "~1.0",
+                "league/flysystem-azure": "~1.0",
+                "league/flysystem-cached-adapter": "~1.0",
+                "league/flysystem-copy": "~1.0",
+                "league/flysystem-dropbox": "~1.0",
+                "league/flysystem-gridfs": "~1.0",
+                "league/flysystem-rackspace": "~1.0",
+                "league/flysystem-replicate-adapter": "~1.0",
+                "league/flysystem-sftp": "~1.0",
+                "league/flysystem-webdav": "~1.0",
+                "league/flysystem-ziparchive": "~1.0"
+            },
+            "type": "yii2-extension",
+            "autoload": {
+                "psr-4": {
+                    "creocoder\\flysystem\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Alexander Kochetov",
+                    "email": "creocoder@gmail.com"
+                }
+            ],
+            "description": "The flysystem extension for the Yii framework",
+            "keywords": [
+                "Flysystem",
+                "GridFS",
+                "WebDAV",
+                "aws",
+                "azure",
+                "copy.com",
+                "dropbox",
+                "files",
+                "filesystem",
+                "ftp",
+                "rackspace",
+                "s3",
+                "sftp",
+                "yii2"
+            ],
+            "time": "2018-11-14T11:29:47+00:00"
+        },
+        {
+            "name": "demi/backup",
+            "version": "1.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/demisang/yii2-backup.git",
+                "reference": "19aefcab07e6d8082f3da6b0a76c675ffb455f75"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/demisang/yii2-backup/zipball/19aefcab07e6d8082f3da6b0a76c675ffb455f75",
+                "reference": "19aefcab07e6d8082f3da6b0a76c675ffb455f75",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.4.0",
+                "yiisoft/yii2": "*"
+            },
+            "type": "yii2-extension",
+            "autoload": {
+                "psr-4": {
+                    "demi\\backup\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GNU"
+            ],
+            "authors": [
+                {
+                    "name": "Ivan Orlov",
+                    "email": "orlov_mail@mail.ru",
+                    "homepage": "https://orlov.io/",
+                    "role": "Creator"
+                }
+            ],
+            "description": "Basic Yii2 site backup methods",
+            "homepage": "https://github.com/demisang/yii2-backup#readme",
+            "keywords": [
+                "backup",
+                "dump",
+                "yii2"
+            ],
+            "time": "2015-11-08T05:48:27+00:00"
+        },
+        {
+            "name": "execut/yii2-backup",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/execut/yii2-backup.git",
+                "reference": "a38ded3ec38ee86c6f88aac823783f486fdca3d9"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/execut/yii2-backup/zipball/a38ded3ec38ee86c6f88aac823783f486fdca3d9",
+                "reference": "a38ded3ec38ee86c6f88aac823783f486fdca3d9",
+                "shasum": ""
+            },
+            "require": {
+                "yii2mod/yii2-ftp": "*",
+                "yiisoft/yii2": "*"
+            },
+            "type": "yii2-extension",
+            "autoload": {
+                "psr-4": {
+                    "execut\\backup\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "Apache-2.0"
+            ],
+            "authors": [
+                {
+                    "name": "eXeCUT"
+                }
+            ],
+            "description": "Database and files backup command for yii2",
+            "homepage": "https://github.com/execut/yii2-backup",
+            "keywords": [
+                "database backup",
+                "files backup",
+                "yii2"
+            ],
+            "time": "2016-06-17T11:43:42+00:00"
+        },
+        {
             "name": "ezyang/htmlpurifier",
             "version": "v4.10.0",
             "source": {
@@ -213,6 +420,90 @@
                 "html"
             ],
             "time": "2018-02-23T01:58:20+00:00"
+        },
+        {
+            "name": "league/flysystem",
+            "version": "1.0.49",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/thephpleague/flysystem.git",
+                "reference": "a63cc83d8a931b271be45148fa39ba7156782ffd"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/thephpleague/flysystem/zipball/a63cc83d8a931b271be45148fa39ba7156782ffd",
+                "reference": "a63cc83d8a931b271be45148fa39ba7156782ffd",
+                "shasum": ""
+            },
+            "require": {
+                "ext-fileinfo": "*",
+                "php": ">=5.5.9"
+            },
+            "conflict": {
+                "league/flysystem-sftp": "<1.0.6"
+            },
+            "require-dev": {
+                "phpspec/phpspec": "^3.4",
+                "phpunit/phpunit": "^5.7.10"
+            },
+            "suggest": {
+                "ext-fileinfo": "Required for MimeType",
+                "ext-ftp": "Allows you to use FTP server storage",
+                "ext-openssl": "Allows you to use FTPS server storage",
+                "league/flysystem-aws-s3-v2": "Allows you to use S3 storage with AWS SDK v2",
+                "league/flysystem-aws-s3-v3": "Allows you to use S3 storage with AWS SDK v3",
+                "league/flysystem-azure": "Allows you to use Windows Azure Blob storage",
+                "league/flysystem-cached-adapter": "Flysystem adapter decorator for metadata caching",
+                "league/flysystem-eventable-filesystem": "Allows you to use EventableFilesystem",
+                "league/flysystem-rackspace": "Allows you to use Rackspace Cloud Files",
+                "league/flysystem-sftp": "Allows you to use SFTP server storage via phpseclib",
+                "league/flysystem-webdav": "Allows you to use WebDAV storage",
+                "league/flysystem-ziparchive": "Allows you to use ZipArchive adapter",
+                "spatie/flysystem-dropbox": "Allows you to use Dropbox storage",
+                "srmklive/flysystem-dropbox-v2": "Allows you to use Dropbox storage for PHP 5 applications"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.1-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "League\\Flysystem\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Frank de Jonge",
+                    "email": "info@frenky.net"
+                }
+            ],
+            "description": "Filesystem abstraction: Many filesystems, one API.",
+            "keywords": [
+                "Cloud Files",
+                "WebDAV",
+                "abstraction",
+                "aws",
+                "cloud",
+                "copy.com",
+                "dropbox",
+                "file systems",
+                "files",
+                "filesystem",
+                "filesystems",
+                "ftp",
+                "rackspace",
+                "remote",
+                "s3",
+                "sftp",
+                "storage"
+            ],
+            "time": "2018-11-23T23:41:29+00:00"
         },
         {
             "name": "swiftmailer/swiftmailer",
@@ -267,6 +558,101 @@
                 "mailer"
             ],
             "time": "2018-01-23T07:37:21+00:00"
+        },
+        {
+            "name": "symfony/process",
+            "version": "v3.4.21",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/process.git",
+                "reference": "0d41dd7d95ed179aed6a13393b0f4f97bfa2d25c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/process/zipball/0d41dd7d95ed179aed6a13393b0f4f97bfa2d25c",
+                "reference": "0d41dd7d95ed179aed6a13393b0f4f97bfa2d25c",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^5.5.9|>=7.0.8"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "3.4-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Symfony\\Component\\Process\\": ""
+                },
+                "exclude-from-classmap": [
+                    "/Tests/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://symfony.com/contributors"
+                }
+            ],
+            "description": "Symfony Process Component",
+            "homepage": "https://symfony.com",
+            "time": "2019-01-02T21:24:08+00:00"
+        },
+        {
+            "name": "yii2mod/yii2-ftp",
+            "version": "1.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/yii2mod/yii2-ftp.git",
+                "reference": "c5986065fdfba8c86e08e1f4ebe204e03adb6a20"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/yii2mod/yii2-ftp/zipball/c5986065fdfba8c86e08e1f4ebe204e03adb6a20",
+                "reference": "c5986065fdfba8c86e08e1f4ebe204e03adb6a20",
+                "shasum": ""
+            },
+            "require": {
+                "ext-ftp": "*",
+                "php": ">=5.4"
+            },
+            "require-dev": {
+                "friendsofphp/php-cs-fixer": "~2.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "yii2mod\\ftp\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "A flexible FTP and SSL-FTP client for PHP. This lib provides helpers easy to use to manage the remote files.",
+            "keywords": [
+                "extension",
+                "file",
+                "ftp",
+                "helper",
+                "lib",
+                "server",
+                "sftp",
+                "ssl",
+                "ssl-ftp",
+                "yii2"
+            ],
+            "time": "2017-04-26T20:45:18+00:00"
         },
         {
             "name": "yiisoft/yii2",
@@ -3230,7 +3616,9 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": {
+        "execut/yii2-backup": 20
+    },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
