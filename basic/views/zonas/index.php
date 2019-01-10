@@ -31,7 +31,7 @@ $this->params['breadcrumbs'][] = $this->title;
  //           'clase_zona_id',
             'nombre',
             'claseZona',
-            'zona_id',
+     //       'zona_id',
             'zonaPadre',
 
             ['class' => 'yii\grid\ActionColumn'],
