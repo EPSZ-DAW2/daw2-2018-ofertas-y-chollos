@@ -7,35 +7,27 @@ use yii\widgets\ActiveForm;
 /* @var $this yii\web\View */
 /* @var $model app\models\Usuario */
 
-$this->title = $model->id;
+$this->title = "Registro Completado";
 $this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Usuarios'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="usuario-view">
 
-    <h1><?= Html::encode($this->title) ?></h1>
+    <h1>Registro Completado, Solo un paso más!</h1>
+    <h3>Confirma tu registro pulsando en enlace de abajo</h3>
 
 
     <?= DetailView::widget([
         'model' => $model,
         'attributes' => [
-            'id',
             'email:email',
-            'password',
             'nick',
             'nombre',
             'apellidos',
             'fecha_nacimiento',
             'direccion:ntext',
-            'zona_id',
-            'fecha_registro',
-            'confirmado',
-            'fecha_acceso',
-            'num_accesos',
-            'bloqueado',
-            'fecha_bloqueo',
-            'notas_bloqueo:ntext',
-        ],
+            'fecha_registro'
+             ],
     ]) ?>
 
 
