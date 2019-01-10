@@ -58,23 +58,7 @@ class UsuariosController extends Controller
         ]);
     }
 
-    public function actionConfirmar($id)
-    {
-        $model = new Usuario();
-
-        if (Yii::$app->request->get("confirmar")) 
-        {
-            $model = Usuario::findOne($id);
-            $model->confirmado="1";
-            //si se recibe confirmar, modificarlo y redirigir a id
-            Yii::$app->db->createCommand("UPDATE usuarios SET confirmado=1 WHERE id = '$id' ")->execute();
-           return $this->redirect(['login', 'id' => $id]);
-        }
-
-        return $this->render('confirmar', [
-            'model' => $this->findModel($id),
-        ]);
-    }
+    
 
     /**
      * Creates a new Usuario model.
@@ -85,9 +69,9 @@ class UsuariosController extends Controller
     {
         $model = new Usuario();
 
-        $model->confirmado="0";
+        
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['confirmarh', 'id' => $model->id]);
+            return $this->redirect(['view', 'id' => $model->id]);
         }
 
         return $this->render('create', [
@@ -104,30 +88,39 @@ class UsuariosController extends Controller
     {
         $model = new Usuario();
 
-        //proceso de registro de usuario.
+        if ($model->load(Yii::$app->request->post())) {
 
+            //preparamos los datos recibidos para guardar en la base de datos, y añadimos los necesarios.
 
-        $model->confirmado="1";
-        $model->fecha_registro="2019-05-03";//CAMBIAR A ACTUAL
-        $model->num_accesos="0";
-        $model->bloqueado="0";
-        $model->confirmado="0";
+            //hashear password
+            $model->password=md5($model->password);
+            $model->password2=md5($model->password2);
 
-        
+            //convertir fecha nacimiento [ PROVISIONAL HASTA DATEPICKER ]            
+            $fecha_aux = str_replace('/', '-', $model->fecha_nacimiento);            
+            $model->fecha_nacimiento=date('Y-m-d', strtotime($fecha_aux));
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-           
-           return $this->redirect(['confirmar', 'id' => $model->id]);
+            //obtener fecha actual
+            $model->fecha_registro=date("Y-m-d H:i:s");
+
+            //inicializar otros campos...
+            $model->num_accesos="0";
+            $model->bloqueado="0";
+            $model->confirmado="0";
+
+            if($model->save()){
+
+                return $this->redirect(['confirmar', 'id' => $model->id]);
+            }
         }
 
         return $this->render('registro', [
             'model' => $model,
         ]);
 
-
-
-
     }
+
+    
 
     /**
      * Acción de registro de usuario.

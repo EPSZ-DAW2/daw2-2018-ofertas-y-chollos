@@ -48,13 +48,13 @@ $config = [
         ],
         'db' => $db,
 		
-        /*---*X/
+        
 		'authManager' => [
             'class' => 'yii\rbac\DbManager',
             // uncomment if you want to cache RBAC items hierarchy
             // 'cache' => 'cache',
         ],
-        //---*/
+        
 		
         /*---*X/
         'urlManager' => [
