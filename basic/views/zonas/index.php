@@ -30,7 +30,7 @@ $this->params['breadcrumbs'][] = $this->title;
            'id',
  //           'clase_zona_id',
             'nombre',
-            'claseZona',
+            [ 'attribute'=>'claseZona', 'filter'=>array( 1=>'Continente', 2=>'Pais', 3=>'Estado', 4=>'Region', 5=>'Provincia', 6=>'Municipio', 7=>'Localidad', 8=>'Barrio', 9=>'Area'), ], 
      //       'zona_id',
             'zonaPadre',
 
