@@ -39,8 +39,8 @@ $this->params['breadcrumbs'][] = $this->title;
     
     <?php $form = ActiveForm::begin(['action' => ['enviar'],]); ?>
     <?= $form->field($model, 'texto')->textarea(['rows' => 6]) ?>
-    <?= $form->field($model, 'origen_usuario_id')->hiddenInput(['value'=>$id])->label(false); ?>
-    <?= $form->field($model, 'destino_usuario_id')->hiddenInput(['value'=>$destino])->label(false); ?>
+    <?= $form->field($model, 'origen_usuario_id')->hiddenInput([$id])->label(false); ?>
+    <?= $form->field($model, 'destino_usuario_id')->hiddenInput([$destino])->label(false); ?>
     <?= Html::submitButton(Yii::t('app', 'Enviar'), ['class' => 'btn btn-success']) ?>
     <?php ActiveForm::end(); ?>
 </div>
