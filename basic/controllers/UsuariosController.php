@@ -120,6 +120,27 @@ class UsuariosController extends Controller
 
     }
 
+    /**
+     * Acción de confirmación del usuario
+     * Si el registro es correcto, se redirigirá a la pantalla de login.     
+     */
+
+    public function actionConfirmar($id)
+    {
+        $model = new Usuario();
+        if (Yii::$app->request->get("confirmar")) 
+        {
+            $model = Usuario::findOne($id);
+            $model->confirmado="1";
+            //si se recibe confirmar, modificarlo y redirigir a id
+            Yii::$app->db->createCommand("UPDATE usuarios SET confirmado=1 WHERE id = '$id' ")->execute();
+           return $this->redirect(['login', 'id' => $id]);
+        }
+        return $this->render('confirmar', [
+            'model' => $this->findModel($id),
+        ]);
+    }
+
     
 
     /**
