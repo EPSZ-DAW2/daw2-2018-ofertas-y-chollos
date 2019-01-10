@@ -43,6 +43,7 @@ AppAsset::register($this);
             ['label' => 'Home', 'url' => ['/site/index']],
             ['label' => 'About', 'url' => ['/site/about']],
             ['label' => 'Contact', 'url' => ['/site/contact']],
+			['label' => 'Categorías', 'url' => ['/categorias/index']],
             ['label' => 'Comentarios', 'url' => ['/anuncios_comentarios/index']],
             ['label' => 'Avisos', 'url' => ['/usuarios-avisos/index']],
             ['label' => 'Perfil', 'url' => ['/perfil/index']],
