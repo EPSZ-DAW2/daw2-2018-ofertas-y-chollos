@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 10-01-2019 a las 19:18:05
+-- Tiempo de generación: 10-01-2019 a las 19:54:32
 -- Versión del servidor: 10.1.36-MariaDB
 -- Versión de PHP: 7.2.10
 
@@ -124,6 +124,23 @@ CREATE TABLE `auth_item` (
   `updated_at` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Volcado de datos para la tabla `auth_item`
+--
+
+INSERT INTO `auth_item` (`name`, `type`, `description`, `rule_name`, `data`, `created_at`, `updated_at`) VALUES
+('admin', 1, NULL, NULL, NULL, 1547145986, 1547145986),
+('buscar', 2, 'Buscar ofertas', NULL, NULL, 1547145985, 1547145985),
+('consultar', 2, 'Consultar oferta', NULL, NULL, 1547145985, 1547145985),
+('crear', 2, 'crear ofertas', NULL, NULL, 1547145985, 1547145985),
+('eliminar', 2, 'Eliminar oferta', NULL, NULL, 1547145985, 1547145985),
+('invitado', 1, NULL, NULL, NULL, 1547145985, 1547145985),
+('moderador', 1, NULL, NULL, NULL, 1547145986, 1547145986),
+('modificar', 2, 'Modificar oferta', NULL, NULL, 1547145985, 1547145985),
+('patrocinador', 1, NULL, NULL, NULL, 1547145986, 1547145986),
+('sysadmin', 1, NULL, NULL, NULL, 1547145986, 1547145986),
+('usuario', 1, NULL, NULL, NULL, 1547145986, 1547145986);
+
 -- --------------------------------------------------------
 
 --
@@ -134,6 +151,22 @@ CREATE TABLE `auth_item_child` (
   `parent` varchar(64) NOT NULL,
   `child` varchar(64) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `auth_item_child`
+--
+
+INSERT INTO `auth_item_child` (`parent`, `child`) VALUES
+('admin', 'moderador'),
+('admin', 'modificar'),
+('invitado', 'buscar'),
+('invitado', 'consultar'),
+('moderador', 'eliminar'),
+('moderador', 'usuario'),
+('patrocinador', 'usuario'),
+('sysadmin', 'admin'),
+('usuario', 'crear'),
+('usuario', 'invitado');
 
 -- --------------------------------------------------------
 
@@ -526,7 +559,7 @@ ALTER TABLE `registros`
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id` int(12) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id` int(12) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT de la tabla `usuarios_anuncios`

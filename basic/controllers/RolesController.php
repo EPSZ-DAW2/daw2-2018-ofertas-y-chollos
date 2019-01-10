@@ -1,13 +1,16 @@
 <?php
-namespace app\commands;
+namespace app\controllers;
 
 use Yii;
-use yii\console\Controller;
+use yii\web\Controller;
 
 class RbacController extends Controller
 {
     public function actionInit()
     {
+
+        $auth = Yii::$app->authManager;
+        
         //------------------------------------------------------------------
         //SE CREAN LOS PERMISOS
         // agrega el permiso "crear"
@@ -69,7 +72,7 @@ class RbacController extends Controller
         $admin = $auth->createRole('admin');
         $auth->add($admin);
         $auth->addChild($admin, $moderador);
-        $auth->addChild($admin, $eliminar);
+        $auth->addChild($admin, $modificar);
 
 
 
