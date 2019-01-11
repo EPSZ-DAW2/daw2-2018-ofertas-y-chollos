@@ -128,8 +128,7 @@ class UsuariosController extends Controller
     }
 
     /**
-     * Acción de confirmación del usuario
-     * Si el registro es correcto, se redirigirá a la pantalla de login.     
+     * Acción de confirmación del usuario, marca al usuario como confirmado en la base de datos. 
      */
 
     public function actionConfirmar($id)
@@ -157,6 +156,7 @@ class UsuariosController extends Controller
 
     public function actionLogin()
     {
+               
         if (!Yii::$app->user->isGuest) {
             return $this->goHome();
         }
@@ -171,6 +171,7 @@ class UsuariosController extends Controller
             'model' => $model,
         ]);
     }
+
 
     /**
      * Updates an existing Usuario model.

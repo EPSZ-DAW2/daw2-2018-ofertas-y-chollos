@@ -26,11 +26,12 @@ use Yii;
  * @property string $email2s
  * @property string $password2
  */
-class Usuario extends \yii\db\ActiveRecord
+class Usuario extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface
 {
 
     public $email2;
     public $password2;
+    public $authKey;
     /**
      * @inheritdoc
      */
@@ -100,5 +101,49 @@ class Usuario extends \yii\db\ActiveRecord
     public static function find()
     {
         return new UsuariosQuery(get_called_class());
+    }
+
+
+    //implementando la interfaz IdentityInterface...
+    ///////////////////////////////////////////////////
+    public function getAuthKey(){
+
+        return $this->authKey;
+    }
+
+    public function getId(){
+
+        return $this->id;
+    }
+
+    public function validateAuthKey($authKey){
+
+        return $this->authKey;
+    }
+
+    public static function findIdentity($id){
+
+        return self::findOne($id);
+    }
+
+    public static function findIdentityByAccessToken($token,$type = null){
+
+        throw new yii\base\NotSupportedException();
+    }
+    ////////////////////////////////////////////////////
+
+    //buscar por nombre de usuario
+    public static function findByUsername($username){
+
+        return self::findOne(['nick'=>$username]);
+
+    }
+
+    //validar password
+    public function validatePassword($password){
+
+        return $this->password === md5($password);
+
+
     }
 }
