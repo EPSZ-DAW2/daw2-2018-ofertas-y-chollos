@@ -5,12 +5,10 @@
 
 use app\widgets\Alert;
 use yii\helpers\Html;
-use yii\widgets\Menu;
 use yii\bootstrap\Nav;
 use yii\bootstrap\NavBar;
 use yii\widgets\Breadcrumbs;
 use app\assets\AppAsset;
-use yii\debug\Toolbar;
 
 $this->registerCssFile("https://use.fontawesome.com/releases/v5.6.1/css/all.css");
 
@@ -33,7 +31,7 @@ AppAsset::register($this);
 <div class="wrap">
     <?php
     NavBar::begin([
-        //'brandLabel' => Yii::$app->name,
+        'brandLabel' => Yii::$app->name,
         'brandUrl' => Yii::$app->homeUrl,
         'options' => [
             'class' => 'navbar-inverse navbar-fixed-top',
@@ -45,16 +43,20 @@ AppAsset::register($this);
             ['label' => 'Home', 'url' => ['/site/index']],
             ['label' => 'About', 'url' => ['/site/about']],
             ['label' => 'Contact', 'url' => ['/site/contact']],
+			['label' => 'Categorías', 'url' => ['/categorias/index']],
             ['label' => 'Comentarios', 'url' => ['/anuncios_comentarios/index']],
             ['label' => 'Avisos', 'url' => ['/usuarios-avisos/index']],
+            ['label' => 'Perfil', 'url' => ['/perfil/index']],
             ['label' => 'Logs', 'url' => ['/registros/index']],
+            ['label' => 'Mensajes', 'url' => ['/mensajes/index']],
+            ['label' => 'Chats', 'url' => ['/mensajes/listar']],
             Yii::$app->user->isGuest ? (
                 ['label' => 'Conectar', 'url' => ['/usuarios/login']]
             ) : (
                 '<li>'
                 . Html::beginForm(['/usuarios/logout'], 'post')
                 . Html::submitButton(
-                    'Logout (' . Yii::$app->user->identity->username . ')',
+                    'Logout (' . Yii::$app->user->identity->nick . ')',
                     ['class' => 'btn btn-link logout']
                 )
                 . Html::endForm()
@@ -74,13 +76,13 @@ AppAsset::register($this);
     </div>
 </div>
 
-<div id="footer-wrap">
-  <div id="footer">
-    <?php echo Html::encode(\Yii::$app->name); ?>
-    
-    <div class="clear"></div>
-  </div>
-</div>
+<footer class="footer">
+    <div class="container">
+        <p class="pull-left">&copy; My Company <?= date('Y') ?></p>
+
+        <p class="pull-right"><?= Yii::powered() ?></p>
+    </div>
+</footer>
 
 <?php $this->endBody() ?>
 </body>

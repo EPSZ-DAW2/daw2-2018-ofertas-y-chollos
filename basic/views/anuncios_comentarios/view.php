@@ -28,8 +28,9 @@ $this->params['breadcrumbs'][] = $this->title;
     <?= DetailView::widget([
         'model' => $model,
         'attributes' => [
-            'id',
+			'id',
             'anuncio_id',
+			//'id_y_anuncio',
             'texto:ntext',
             'comentario_id',
             'cerrado',
@@ -39,6 +40,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'fecha_bloqueo',
             'notas_bloqueo:ntext',
             'crea_usuario_id',
+            //'id_y_usuario',
             'crea_fecha',
             'modi_usuario_id',
             'modi_fecha',
