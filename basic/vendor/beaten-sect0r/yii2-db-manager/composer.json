@@ -1,0 +1,37 @@
+{
+    "name": "beaten-sect0r/yii2-db-manager",
+    "description": "The db dump manager module for Yii2",
+    "keywords": ["yii2", "backup", "db manager", "dump"],
+    "authors": [
+        {
+            "name": "Alexander Volkov",
+            "email": "beatensect0r@gmail.com",
+            "role": "Developer"
+        },
+        {
+            "name": "Insolita",
+            "email": "donnainsolita@gmail.com",
+            "role": "Developer"
+        }
+    ],
+    "type": "yii2-extension",
+    "license": "BSD-3-Clause",
+    "support": {
+        "issues": "https://github.com/Beaten-Sect0r/yii2-db-manager/issues?state=open",
+        "source": "https://github.com/Beaten-Sect0r/yii2-db-manager"
+    },
+    "require": {
+        "yiisoft/yii2": "*",
+        "yiisoft/yii2-bootstrap": "*",
+        "symfony/process": "2.8.*|3.*|4.*",
+        "creocoder/yii2-flysystem": "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "bs\\dbManager\\": "src"
+        }
+    },
+    "extra": {
+        "bootstrap": "bs\\dbManager\\Bootstrap"
+    }
+}
