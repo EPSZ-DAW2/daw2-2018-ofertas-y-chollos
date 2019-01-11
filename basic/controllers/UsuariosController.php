@@ -45,6 +45,26 @@ class UsuariosController extends Controller
         ]);
     }
 
+
+    //muestra todos los usuarios y su rol correspondiente para modificarlos
+    public function actionRoles()
+    {
+        $searchModel = new UsuarioSearch();
+        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+
+        return $this->render('admin_roles', [
+            'searchModel' => $searchModel,
+            'dataProvider' => $dataProvider,
+        ]);
+    }
+
+    public function actionAscender($id)
+    {
+         return $this->render('view', [
+            'model' => $this->findModel($id),
+        ]);
+    }
+
     /**
      * Displays a single Usuario model.
      * @param string $id
