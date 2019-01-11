@@ -110,6 +110,11 @@ class UsuariosController extends Controller
 
             if($model->save()){
 
+                //asignamos el rol usuario
+                $auth = Yii::$app->authManager;
+                $authorRole = $auth->getRole('usuario');
+                $auth->assign($authorRole, $model->id);
+
                 return $this->redirect(['confirmar', 'id' => $model->id]);
             }
         }
