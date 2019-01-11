@@ -53,19 +53,21 @@ class Anuncio_comentario extends \yii\db\ActiveRecord
     {
         return [
             'id' => Yii::t('app', 'ID'),
-            'anuncio_id' => Yii::t('app', 'Anuncio ID'),
+            'anuncio_id' => Yii::t('app', 'ID Anuncio'),
             'texto' => Yii::t('app', 'Texto'),
-            'comentario_id' => Yii::t('app', 'Comentario ID'),
+            'comentario_id' => Yii::t('app', 'ID Comentario Padre'),
             'cerrado' => Yii::t('app', 'Cerrado'),
             'num_denuncias' => Yii::t('app', 'Nº Denuncias'),
             'fecha_denuncia1' => Yii::t('app', 'Fecha 1ª Denuncia'),
             'bloqueado' => Yii::t('app', 'Bloqueado'),
             'fecha_bloqueo' => Yii::t('app', 'Fecha bloqueo'),
             'notas_bloqueo' => Yii::t('app', 'Nota bloqueo'),
-            'crea_usuario_id' => Yii::t('app', 'Crea Usuario ID'),
+            'crea_usuario_id' => Yii::t('app', 'ID Usuario Creador'),
             'crea_fecha' => Yii::t('app', 'Fecha creación'),
-            'modi_usuario_id' => Yii::t('app', 'Modi Usuario ID'),
+            'modi_usuario_id' => Yii::t('app', 'ID Usuario Modificador'),
             'modi_fecha' => Yii::t('app', 'Fecha modificación'),
+            'id_y_usuario' => Yii::t('app', 'Usuario'),
+            'id_y_anuncio' => Yii::t('app', 'Anuncio'),
         ];
     }
 
@@ -77,4 +79,53 @@ class Anuncio_comentario extends \yii\db\ActiveRecord
     {
         return new Anuncios_comentariosQuery(get_called_class());
     }
+		
+	//-------------------------------------------------------------------------
+	//lista de estados posibles para bloqueo.
+	public static $bloqueados= array(
+		0=>'No', 
+		1=>'Bloqueado por denuncias',
+		2=>'Bloqueado por administrador',
+	);
+		
+	public function getBloqueado()
+    {
+		return $this::$bloqueados[$this->bloqueado];
+    }
+	
+	public static $cerrados= array(
+		0=>'No', 
+		1=>'Si',
+	);
+		
+	public function getCerrado()
+    {
+		return $this::$cerrados[$this->cerrado];
+    }
+	
+	public function getId_y_anuncio()
+    {
+        $titulo=Anuncio::find()->select('titulo')->where(['id'=>$this->anuncio_id])->one();
+        return '['.$this->anuncio_id.'] → '.$titulo->titulo;
+    }
+		
+	public function getId_y_usuario()
+    {
+        $nick=Usuario::find()->select('nick')->where(['id'=>$this->crea_usuario_id])->one();
+        return '['.$this->crea_usuario_id.'] → '.$nick->nick;
+    }
+		
+	public function getAnuncio()
+    {
+        $titulo=Anuncio::find()->select('titulo')->where(['id'=>$this->anuncio_id])->one();
+        return $titulo->titulo;
+    }
+		
+	public function getUsuario()
+    {
+        $nick=Usuario::find()->select('nick')->where(['id'=>$this->crea_usuario_id])->one();
+        return $nick->nick;
+    }
+		
+		
 }

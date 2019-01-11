@@ -56,6 +56,38 @@ class Anuncios_comentariosController extends Controller
             'model' => $this->findModel($id),
         ]);
     }
+	
+	 /**
+     * Displays a branch of Comentarios_anuncio.
+     * @param string $id
+     * @return mixed
+     * @throws NotFoundHttpException if the model cannot be found
+     */
+    public function actionRama($id)
+    {
+        $model = $this->findModel($id);
+		$models = array($model);
+		
+		$i=array(0);
+		$j=0;
+		
+		$searchModel = new Anuncio_comentarioSearch();
+		$dataProvider = $searchModel->search(['Anuncio_comentarioSearch'=>[]]);
+		$dataProvider->setModels(array($model));
+		$dataProvider->setKeys($i);
+		
+			while ($model->comentario_id != 0) {
+				$model = $this->findModel($model->comentario_id);
+				$dataProvider->getModels($models);
+				array_unshift($models, $model);
+				$j++;
+				$i[] = $j;
+				$dataProvider->setModels($models);
+				$dataProvider->setKeys($i);
+			}
+		
+		return $this->render('rama', ['dataProvider' => $dataProvider]);
+    }
 
     /**
      * Creates a new Anuncio_comentario model.
@@ -86,8 +118,25 @@ class Anuncios_comentariosController extends Controller
     {
         $model = $this->findModel($id);
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+				$result = $model->load(Yii::$app->request->post()) && $model->validate();
+				if ($result) {
+					if($model->texto != $model->oldAttributes['texto']) {
+						//if(Yii::$app->authManager->getRolesByUser(Yii::$app->user->identity->id) == 'Administrador' ) 
+							$model->modi_usuario_id = 0;
+						//else
+							//$model->modi_usuario_id = Yii::$app->user->identity->id;
+						$model->modi_fecha = date('Y-m-d H:i:s');
+					}
+					if($model->bloqueado != $model->oldAttributes['bloqueado']) {
+						if($model->bloqueado == 0){
+							$model->fecha_bloqueo = '';
+						} else if($model->fecha_bloqueo == ''){
+							$model->fecha_bloqueo = date('Y-m-d H:i:s');
+						}
+					}
+					if ($model->save(false)) {
+						return $this->redirect(['view', 'id' => $model->id]);
+					}
         }
 
         return $this->render('update', [
@@ -102,7 +151,10 @@ class Anuncios_comentariosController extends Controller
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
      */
-    public function actionDelete($id, $page=null)
+   
+	/* 
+	//los comentarios no se eliminan, se bloquean y se quedan guardados
+	public function actionDelete($id, $page=null)
     {
         $this->findModel($id)->delete();
 
@@ -110,6 +162,28 @@ class Anuncios_comentariosController extends Controller
 					return $this->redirect([$page]);
 				else
 					return $this->redirect(['index']);
+    }
+	*/
+	
+	/**
+     * Block an existing Anuncio_comentario model.
+     * If Blocked is successful, the browser will be redirected to the 'view' page.
+     * @param string $id
+     * @return mixed
+     * @throws NotFoundHttpException if the model cannot be found
+     */
+   
+	public function actionBloquear($id, $page=null)
+    {
+        $model = $this->findModel($id);
+		$model->bloqueado = 2;
+		if($model->fecha_bloqueo == '') $model->fecha_bloqueo = date('Y-m-d H:i:s');
+		$model->save(false);
+
+        if($page!==null)
+					return $this->redirect([$page]);
+				else
+					return $this->redirect(['view', 'id' => $id]);
     }
 
     /**
@@ -128,6 +202,18 @@ class Anuncios_comentariosController extends Controller
         throw new NotFoundHttpException(Yii::t('app', 'The requested page does not exist.'));
     }
 		
+	public function actionCerrar($models)
+	{
+		if(!is_array($models))
+		$models = array($models);
+	
+		foreach($models as $model){
+			$model->cerrado = 1;
+			$model->save(false);
+		}
+		
+		return $this->redirect(['index']);
+	}
 		
 	public function actionComentarios()
 	{
@@ -166,4 +252,5 @@ class Anuncios_comentariosController extends Controller
 		
 		return $this->redirect(['comentarios']);
 	}
+	
 }

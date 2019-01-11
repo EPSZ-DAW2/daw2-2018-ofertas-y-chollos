@@ -16,9 +16,11 @@ $this->params['breadcrumbs'][] = $this->title;
     <?php Pjax::begin(); ?>
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
-    <p>
-        <?= Html::a(Yii::t('app', 'Crear comentario'), ['create'], ['class' => 'btn btn-success']) ?>
+    <!-- Se comenta esto porque no se podrán crear comentarios desde aquí
+	<p>
+        <?php // echo Html::a(Yii::t('app', 'Crear comentario'), ['create'], ['class' => 'btn btn-success']) ?>
     </p>
+	-->
 
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
@@ -30,18 +32,34 @@ $this->params['breadcrumbs'][] = $this->title;
             'anuncio_id',
             'texto:ntext',
             'comentario_id',
-            'cerrado',
-            //'num_denuncias',
+            //'cerrado',
+            'num_denuncias',
             //'fecha_denuncia1',
-            //'bloqueado',
+            'bloqueado',
             //'fecha_bloqueo',
             //'notas_bloqueo:ntext',
-            //'crea_usuario_id',
-            //'crea_fecha',
+            'crea_usuario_id',
+            'crea_fecha',
             //'modi_usuario_id',
             //'modi_fecha',
 
-            ['class' => 'yii\grid\ActionColumn'],
+			[
+				'class' => 'yii\grid\ActionColumn',
+				'template' => '{view}{update}{bloquear}{rama}',
+				'buttons' => [
+					'bloquear' => function ($url, $model) {
+						return Html::a('<i class="fas fa-lock"></i>', $url, [
+									'title' => Yii::t('app', 'bloquear'),
+						]);
+					},
+					'rama' => function ($url, $model) {
+						return Html::a('<i class="fas fa-sort-amount-up"></i>', $url, [
+									'title' => Yii::t('app', 'rama'),
+						]);
+					}
+
+				],
+			],
         ],
     ]); ?>
     <?php Pjax::end(); ?>
