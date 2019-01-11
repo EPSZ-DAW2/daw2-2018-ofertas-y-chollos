@@ -48,41 +48,4 @@ return array (
       '@yii/faker' => $vendorDir . '/yiisoft/yii2-faker',
     ),
   ),
-  'execut/yii2-backup' => 
-  array (
-    'name' => 'execut/yii2-backup',
-    'version' => '9999999-dev',
-    'alias' => 
-    array (
-      '@execut/backup' => $vendorDir . '/execut/yii2-backup',
-    ),
-  ),
-  'demi/backup' => 
-  array (
-    'name' => 'demi/backup',
-    'version' => '1.0.1.0',
-    'alias' => 
-    array (
-      '@demi/backup' => $vendorDir . '/demi/backup',
-    ),
-  ),
-  'creocoder/yii2-flysystem' => 
-  array (
-    'name' => 'creocoder/yii2-flysystem',
-    'version' => '0.9.3.0',
-    'alias' => 
-    array (
-      '@creocoder/flysystem' => $vendorDir . '/creocoder/yii2-flysystem/src',
-    ),
-  ),
-  'beaten-sect0r/yii2-db-manager' => 
-  array (
-    'name' => 'beaten-sect0r/yii2-db-manager',
-    'version' => '2.2.0.0',
-    'alias' => 
-    array (
-      '@bs/dbManager' => $vendorDir . '/beaten-sect0r/yii2-db-manager/src',
-    ),
-    'bootstrap' => 'bs\\dbManager\\Bootstrap',
-  ),
 );

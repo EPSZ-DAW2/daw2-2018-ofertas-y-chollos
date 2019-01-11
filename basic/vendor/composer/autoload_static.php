@@ -7,8 +7,8 @@ namespace Composer\Autoload;
 class ComposerStaticInitca92174f94924455cc80624f2ab12859
 {
     public static $files = array (
-        '2cffec82183ee1cea088009cef9a6fc3' => __DIR__ . '/..' . '/ezyang/htmlpurifier/library/HTMLPurifier.composer.php',
         '0e6d7bf4a5811bfa5cf40c5ccd6fae6a' => __DIR__ . '/..' . '/symfony/polyfill-mbstring/bootstrap.php',
+        '2cffec82183ee1cea088009cef9a6fc3' => __DIR__ . '/..' . '/ezyang/htmlpurifier/library/HTMLPurifier.composer.php',
         '6124b4c8570aa390c21fafd04a26c69f' => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy/deep_copy.php',
         'a0edc8309cc5e1d60e3047b5df6b7052' => __DIR__ . '/..' . '/guzzlehttp/psr7/src/functions_include.php',
         '2c102faa651ef8ea5874edb585946bce' => __DIR__ . '/..' . '/swiftmailer/swiftmailer/lib/swift_required.php',
@@ -25,28 +25,14 @@ class ComposerStaticInitca92174f94924455cc80624f2ab12859
             'yii\\composer\\' => 13,
             'yii\\bootstrap\\' => 14,
             'yii\\' => 4,
-            'yii2mod\\ftp\\' => 12,
         ),
         'p' => 
         array (
             'phpDocumentor\\Reflection\\' => 25,
         ),
-        'e' => 
-        array (
-            'execut\\backup\\' => 14,
-        ),
-        'd' => 
-        array (
-            'demi\\backup\\' => 12,
-        ),
         'c' => 
         array (
-            'creocoder\\flysystem\\' => 20,
             'cebe\\markdown\\' => 14,
-        ),
-        'b' => 
-        array (
-            'bs\\dbManager\\' => 13,
         ),
         'W' => 
         array (
@@ -56,7 +42,6 @@ class ComposerStaticInitca92174f94924455cc80624f2ab12859
         array (
             'Symfony\\Polyfill\\Mbstring\\' => 26,
             'Symfony\\Component\\Yaml\\' => 23,
-            'Symfony\\Component\\Process\\' => 26,
             'Symfony\\Component\\Finder\\' => 25,
             'Symfony\\Component\\EventDispatcher\\' => 34,
             'Symfony\\Component\\DomCrawler\\' => 29,
@@ -69,10 +54,6 @@ class ComposerStaticInitca92174f94924455cc80624f2ab12859
         array (
             'Psr\\Log\\' => 8,
             'Psr\\Http\\Message\\' => 17,
-        ),
-        'L' => 
-        array (
-            'League\\Flysystem\\' => 17,
         ),
         'G' => 
         array (
@@ -124,35 +105,15 @@ class ComposerStaticInitca92174f94924455cc80624f2ab12859
         array (
             0 => __DIR__ . '/..' . '/yiisoft/yii2',
         ),
-        'yii2mod\\ftp\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/yii2mod/yii2-ftp',
-        ),
         'phpDocumentor\\Reflection\\' => 
         array (
             0 => __DIR__ . '/..' . '/phpdocumentor/reflection-common/src',
             1 => __DIR__ . '/..' . '/phpdocumentor/reflection-docblock/src',
             2 => __DIR__ . '/..' . '/phpdocumentor/type-resolver/src',
         ),
-        'execut\\backup\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/execut/yii2-backup',
-        ),
-        'demi\\backup\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/demi/backup',
-        ),
-        'creocoder\\flysystem\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/creocoder/yii2-flysystem/src',
-        ),
         'cebe\\markdown\\' => 
         array (
             0 => __DIR__ . '/..' . '/cebe/markdown',
-        ),
-        'bs\\dbManager\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/beaten-sect0r/yii2-db-manager/src',
         ),
         'Webmozart\\Assert\\' => 
         array (
@@ -165,10 +126,6 @@ class ComposerStaticInitca92174f94924455cc80624f2ab12859
         'Symfony\\Component\\Yaml\\' => 
         array (
             0 => __DIR__ . '/..' . '/symfony/yaml',
-        ),
-        'Symfony\\Component\\Process\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/symfony/process',
         ),
         'Symfony\\Component\\Finder\\' => 
         array (
@@ -205,10 +162,6 @@ class ComposerStaticInitca92174f94924455cc80624f2ab12859
         'Psr\\Http\\Message\\' => 
         array (
             0 => __DIR__ . '/..' . '/psr/http-message/src',
-        ),
-        'League\\Flysystem\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/league/flysystem/src',
         ),
         'GuzzleHttp\\Psr7\\' => 
         array (
