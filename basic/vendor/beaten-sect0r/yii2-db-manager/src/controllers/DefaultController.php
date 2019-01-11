@@ -88,7 +88,7 @@ class DefaultController extends Controller
                 $this->runProcess($dumpCommand);
             }
         } else {
-            Yii::$app->session->setFlash('error', Yii::t('dbManager', 'Dump request invalid.') . '<br>' . Html::errorSummary($model));
+            Yii::$app->session->setFlash('error', Yii::t('dbManager', 'Respuesta invalida.') . '<br>' . Html::errorSummary($model));
         }
 
         return $this->redirect(['index']);
@@ -146,11 +146,11 @@ class DefaultController extends Controller
             $exists = Yii::$app->backupStorage->has($dumpname);
             if ($exists) {
                 Yii::$app->backupStorage->delete($dumpname);
-                Yii::$app->session->setFlash('success', Yii::t('dbManager', 'Dump deleted from storage.'));
+                Yii::$app->session->setFlash('success', Yii::t('dbManager', 'Copia borrada del almacenamiento.'));
             } else {
                 $stream = fopen($dumpPath, 'r+');
                 Yii::$app->backupStorage->writeStream($dumpname, $stream);
-                Yii::$app->session->setFlash('success', Yii::t('dbManager', 'Dump uploaded to storage.'));
+                Yii::$app->session->setFlash('success', Yii::t('dbManager', 'Copia subida al almacenamiento.'));
             }
         }
 
@@ -164,9 +164,9 @@ class DefaultController extends Controller
     {
         $dumpFile = $this->getModule()->path . StringHelper::basename(ArrayHelper::getValue($this->getModule()->getFileList(), $id));
         if (unlink($dumpFile)) {
-            Yii::$app->session->setFlash('success', Yii::t('dbManager', 'Dump deleted successfully.'));
+            Yii::$app->session->setFlash('success', Yii::t('dbManager', 'Copia eliminada correctamente.'));
         } else {
-            Yii::$app->session->setFlash('error', Yii::t('dbManager', 'Error deleting dump.'));
+            Yii::$app->session->setFlash('error', Yii::t('dbManager', 'Error al eliminar la copia.'));
         }
 
         return $this->redirect(['index']);
@@ -185,9 +185,9 @@ class DefaultController extends Controller
                 }
             }
             if (empty($fail)) {
-                Yii::$app->session->setFlash('success', Yii::t('dbManager', 'All dumps successfully removed.'));
+                Yii::$app->session->setFlash('success', Yii::t('dbManager', 'Copia eliminadas correctamente.'));
             } else {
-                Yii::$app->session->setFlash('error', Yii::t('dbManager', 'Error deleting dumps.'));
+                Yii::$app->session->setFlash('error', Yii::t('dbManager', 'Error al eliminar las copias.'));
             }
         }
 
@@ -203,10 +203,10 @@ class DefaultController extends Controller
         $process = new Process($command);
         $process->run();
         if ($process->isSuccessful()) {
-            $msg = (!$isRestore) ? Yii::t('dbManager', 'Dump successfully created.') : Yii::t('dbManager', 'Dump successfully restored.');
+            $msg = (!$isRestore) ? Yii::t('dbManager', 'Copia creada correctamente.') : Yii::t('dbManager', 'Copia restaurada correctamente.');
             Yii::$app->session->addFlash('success', $msg);
         } else {
-            $msg = (!$isRestore) ? Yii::t('dbManager', 'Dump failed.') : Yii::t('dbManager', 'Restore failed.');
+            $msg = (!$isRestore) ? Yii::t('dbManager', 'Copia fallida.') : Yii::t('dbManager', 'Restauración fallida.');
             Yii::$app->session->addFlash('error', $msg . '<br>' . 'Command - ' . $command . '<br>' . $process->getOutput() . $process->getErrorOutput());
             Yii::error($msg . PHP_EOL . 'Command - ' . $command . PHP_EOL . $process->getOutput() . PHP_EOL . $process->getErrorOutput());
         }

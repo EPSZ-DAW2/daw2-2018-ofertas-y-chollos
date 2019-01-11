@@ -15,7 +15,7 @@ return [
     'interactive' => true,
     'sourcePath' => '@bs/dbManager',
     'messagePath' => '@bs/dbManager/messages',
-    'languages' => ['ru-RU'],
+    'languages' => ['es-ES'],
     'translator' => 'Yii::t',
     'sort' => true,
     'overwrite' => true,

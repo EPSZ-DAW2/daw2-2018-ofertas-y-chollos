@@ -69,9 +69,9 @@ class Restore extends Model
     public function attributeLabels()
     {
         return [
-            'db' => Yii::t('dbManager', 'Database'),
+            'db' => Yii::t('dbManager', 'Base de datos'),
             'preset'  => Yii::t('dbManager', 'Custom restore preset'),
-            'runInBackground' => Yii::t('dbManager', 'Run in background'),
+            'runInBackground' => Yii::t('dbManager', 'Ejecutar en segundo plano'),
         ];
     }
 
