@@ -29,6 +29,64 @@ class MensajesController extends Controller
         ];
     }
 
+    public function actionEnviar()
+    {
+        $model=new Mensaje();
+        /*$model->texto=$texto;
+        $model->origen_usuario_id=$origen;
+        $model->destino_usuario_id=$destino;*/
+        $model->load(Yii::$app->request->post());
+        $model->fecha_hora=date("Y-m-d H:i:s");
+        $model->save();
+        $_SESSION['mensajes'][$model->destino_usuario_id][]=$model;
+        return $this->render('chat', [
+            'mensajes'=>$_SESSION['mensajes'][$model->destino_usuario_id],
+            'model'=>new Mensaje(),
+        ]);
+    }
+
+    public function actionListar()
+    {
+        $model=new Mensaje();
+        $id_origen=Yii::$app->user->id;
+        $model->destino_usuario_id=$id_origen;
+        return $this->render('listar', [
+            'lista'=>$model->lista
+        ]);
+    }
+
+    public function actionActualizar($id_destino=null)
+    {
+        $model=new Mensaje();
+        $id_origen=Yii::$app->user->id;
+        $model->origen_usuario_id=$id_origen;
+        $model->destino_usuario_id=$id_destino;
+        $mensajes=$model->mensajes;
+        foreach($mensajes as $mensaje)
+        {
+            $_SESSION['mensajes'][$id_destino][]=$mensaje;
+            $mensaje->delete();
+        }
+    }
+
+    //Función que iniciará el chat entre dos usuarios
+    public function actionIniciar($id_destino=null)
+    {
+        $this->actionActualizar($id_destino);
+        return $this->render('chat', [
+            'mensajes'=>$_SESSION['mensajes'][$id_destino],
+            'model'=>new Mensaje(),
+        ]);
+        /*if(isset($_SESSION['mensajes'][$id_destino]))
+        {
+            foreach ($_SESSION['mensajes'][$id_destino] as $mensaje)
+            {
+                echo $mensaje->fecha_hora.' '.$mensaje->texto.'<br>';
+                //echo $mensaje->nick;
+            }
+        }*/
+    }
+
     /**
      * Lists all Mensaje models.
      * @return mixed

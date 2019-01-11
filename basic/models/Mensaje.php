@@ -50,6 +50,44 @@ class Mensaje extends \yii\db\ActiveRecord
         ];
     }
 
+    public function getMensajes()
+    {
+        return $mensajes=Mensaje::find()->where(['and',['origen_usuario_id'=>$this->destino_usuario_id],['destino_usuario_id'=>$this->origen_usuario_id]])->all();
+    }
+
+    public function getNick()
+    {
+        $nick=Usuario::find()->select('nick')->where(['id'=>$this->origen_usuario_id])->one();
+        return $nick->nick;
+    }
+
+    public function getNo_leidos()
+    {
+        return $mensajes=Mensaje::find()->where(['destino_usuario_id'=>$this->destino_usuario_id])->all();
+    }
+
+    public function getLista()
+    {
+        $nicks=array();
+        if(!empty($_SESSION['mensajes']))
+        {
+            foreach($_SESSION['mensajes'] as $key=>$mensaje)
+            {
+                $nicks[$key]=$mensaje[0]->nick;
+            }
+        }
+        $mensajes=$this->no_leidos;
+        foreach($mensajes as $mensaje)
+        {
+            $id=$mensaje->origen_usuario_id;
+            if(!isset($_SESSION['mensajes'][$id]))
+            {
+                $nicks[$id]=$mensaje->nick;
+            }
+        }
+        return $nicks;
+    }
+
     /**
      * @inheritdoc
      * @return MensajesQuery the active query used by this AR class.

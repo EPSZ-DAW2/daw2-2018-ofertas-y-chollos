@@ -12,7 +12,7 @@ use yii\widgets\ActiveForm;
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'fecha_hora')->textInput() ?>
+    <?= $form->field($model, 'fecha_hora')->input('date') ?>
 
     <?= $form->field($model, 'texto')->textarea(['rows' => 6]) ?>
 

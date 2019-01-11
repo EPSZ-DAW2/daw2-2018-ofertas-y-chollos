@@ -166,17 +166,16 @@ class RegistrosController extends Controller
         }
 
 
-           
-
             //$size=filesize('log.txt');
             header("Content-Type: application/force-download");
             header("Content-Disposition: attachment; filename=".$nombre_archivo);
             header("Content-Transfer-Encoding: binary");
             //header("Content-Lenght".$size);
-            echo $archivo;
+            print($archivo);
             //readfile('log.txt');
             //return true;
-            //return $this->redirect(['index']);
+            //return $this->redirect(['index']);*/
+    
 
 
     }

@@ -34,7 +34,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'nick',
             'nombre',
             'apellidos',
-            //'fecha_nacimiento',
+            'fecha_nacimiento',
             'direccion:ntext',
             //'zona_id',
             //'fecha_registro',
@@ -45,7 +45,7 @@ $this->params['breadcrumbs'][] = $this->title;
             //'fecha_bloqueo',
             //'notas_bloqueo:ntext',
 
-            //['class' => 'yii\grid\ActionColumn'],
+            ['class' => 'yii\grid\ActionColumn'],
         ],
     ]); ?>
 </div>
