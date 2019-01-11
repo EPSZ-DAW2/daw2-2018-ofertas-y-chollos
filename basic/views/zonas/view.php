@@ -6,8 +6,8 @@ use yii\widgets\DetailView;
 /* @var $this yii\web\View */
 /* @var $model app\models\zonas */
 
-$this->title = $model->nombre;
-$this->params['breadcrumbs'][] = ['label' => Yii::t('app','Zonas'), 'url' => ['index']];
+$this->title = $model->id;
+$this->params['breadcrumbs'][] = ['label' => 'Zonas', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="zonas-view">
@@ -29,9 +29,9 @@ $this->params['breadcrumbs'][] = $this->title;
         'model' => $model,
         'attributes' => [
             'id',
-            'claseZona',
+            'clase_zona_id',
             'nombre',
-            'zonaPadre',
+            'zona_id',
         ],
     ]) ?>
 

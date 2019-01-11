@@ -9,6 +9,7 @@ $config = [
 	'language'=>'es',
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
+	'name' => 'Gangómetro',
     'aliases' => [
         '@bower' => '@vendor/bower-asset',
         '@npm'   => '@vendor/npm-asset',
@@ -22,7 +23,7 @@ $config = [
             'class' => 'yii\caching\FileCache',
         ],
         'user' => [
-            'identityClass' => 'app\models\Usuario',
+            'identityClass' => 'app\models\User',
             'enableAutoLogin' => true,
         ],
         'errorHandler' => [
@@ -46,17 +47,23 @@ $config = [
                 ],
             ],
         ],
+		'view' => [
+			'theme' => [
+				'pathMap' => ['@app/views' => '@app/themes/iphone7-yii2-1473294825'],
+				'baseUrl' => '@web/../themes/iphone7-yii2-1473294825',
+			],
+		],
         'db' => $db,
 		
-        
+        /*---*X/
 		'authManager' => [
             'class' => 'yii\rbac\DbManager',
             // uncomment if you want to cache RBAC items hierarchy
             // 'cache' => 'cache',
         ],
-        
+        //---*/
 		
-        /*
+        /*---*X/
         'urlManager' => [
             'enablePrettyUrl' => true,
 			//'enableStrictParsing' => true,
@@ -67,27 +74,10 @@ $config = [
 					, 'tokens' => [ '{id}' => '<id:\\w[\\w,]*>' ] //Que admita cualquier caracter y clave primaria multiple.
 				],
             ],
-        ],*/
-        
+        ],
+        /*---*/
     ],
     'params' => $params,
-	'modules' => [
-        'db-manager' => [
-            'class' => 'bs\dbManager\Module',
-            // path to directory for the dumps
-            'path' => '@app/backups',
-            // list of registerd db-components
-            'dbList' => ['db'],
-            'as access' => [
-                'class' => 'yii\filters\AccessControl',
-                'rules' => [
-                    [
-                        'allow' => true,
-                        'roles' => ['admin'],
-                    ],
-            ],
-        ],
-    ],],
 ];
 
 if (YII_ENV_DEV) {
@@ -104,15 +94,7 @@ if (YII_ENV_DEV) {
         'class' => 'yii\gii\Module',
         // uncomment the following to add your IP if you are not connecting from localhost.
         //'allowedIPs' => ['127.0.0.1', '::1'],
-		
-    ]; 
-	$config['modules']['db-manager'] = [
-        'class' => 'bs\dbManager\Module',
-        // uncomment the following to add your IP if you are not connecting from localhost.
-        //'allowedIPs' => ['127.0.0.1', '::1'],
-		
     ];
-
 }
 
 return $config;

@@ -5,12 +5,10 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model app\models\zonas */
 
-$this->title = Yii::t('app','Update Zonas: {nameAttribute}', [
-    'nameAttribute' => $model->nombre,
-]);
+$this->title = 'Update Zonas: {nameAttribute}';
 $this->params['breadcrumbs'][] = ['label' => 'Zonas', 'url' => ['index']];
-$this->params['breadcrumbs'][] = ['label' => $model->nombre, 'url' => ['view', 'id' => $model->id]];
-$this->params['breadcrumbs'][] = Yii::t('app','Update');
+$this->params['breadcrumbs'][] = ['label' => $model->id, 'url' => ['view', 'id' => $model->id]];
+$this->params['breadcrumbs'][] = 'Update';
 ?>
 <div class="zonas-update">
 

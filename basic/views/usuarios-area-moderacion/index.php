@@ -7,7 +7,7 @@ use yii\grid\GridView;
 /* @var $searchModel app\models\UsuariosAreaModeracionSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = Yii::t('app', 'Usuarios Area Moderación');
+$this->title = Yii::t('app', 'Usuarios Area Moderacions');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="usuarios-area-moderacion-index">

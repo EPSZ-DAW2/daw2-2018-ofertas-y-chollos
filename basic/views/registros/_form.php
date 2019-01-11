@@ -12,7 +12,7 @@ use yii\widgets\ActiveForm;
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'fecha_registro')->input('date') ?>
+    <?= $form->field($model, 'fecha_registro')->textInput() ?>
 
     <?= $form->field($model, 'clase_log_id')->dropDownList($model::$tipos, ['prompt' => 'Seleccione Uno' ]);   ?>
  ?>

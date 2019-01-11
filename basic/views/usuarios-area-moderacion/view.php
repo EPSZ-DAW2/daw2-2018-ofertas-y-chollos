@@ -7,7 +7,7 @@ use yii\widgets\DetailView;
 /* @var $model app\models\UsuariosAreaModeracion */
 
 $this->title = $model->id;
-$this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Usuarios Area Moderación'), 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Usuarios Area Moderacions'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="usuarios-area-moderacion-view">
@@ -29,8 +29,8 @@ $this->params['breadcrumbs'][] = $this->title;
         'model' => $model,
         'attributes' => [
             'id',
-            'usuario',
-            'zona',
+            'usuario_id',
+            'zona_id',
         ],
     ]) ?>
 
