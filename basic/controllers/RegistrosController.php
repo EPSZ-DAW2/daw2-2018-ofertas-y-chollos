@@ -171,13 +171,11 @@ class RegistrosController extends Controller
             header("Content-Disposition: attachment; filename=".$nombre_archivo);
             header("Content-Transfer-Encoding: binary");
             //header("Content-Lenght".$size);
-            print("<pre>".$archivo."</pre>");
+            print($archivo);
             //readfile('log.txt');
             //return true;
             //return $this->redirect(['index']);*/
-            header("Content-Type: application/force-download");
-            header("Content-Disposition: attachment; filename=".$nombre_archivo);
-            header("Content-Transfer-Encoding: binary");
+    
 
 
     }
