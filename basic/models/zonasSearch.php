@@ -5,7 +5,7 @@ namespace app\models;
 use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use app\models\zonas;
+use app\models\Zonas;
 
 /**
  * zonasSearch represents the model behind the search form of `app\models\zonas`.
@@ -33,6 +33,10 @@ class zonasSearch extends zonas
         // bypass scenarios() implementation in the parent class
         return Model::scenarios();
     }
+     
+    public function getZonaId($nombre=null){
+        if(!is_null($nombre) && ($nombre!='')) return array_search($nombre, Zonas::$zonas);
+    }
 
     /**
      * Creates data provider instance with search query applied
@@ -47,7 +51,7 @@ class zonasSearch extends zonas
 
         // add conditions that should always apply here
 
-   //     $query->joinWith(['padreOrdenar pO'], true, 'LEFT OUTER JOIN');
+        $query->joinWith(['padreOrdenar pO'], true, 'LEFT OUTER JOIN');
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
@@ -78,16 +82,17 @@ class zonasSearch extends zonas
             // $query->where('0=1');
             return $dataProvider;
         }
-
+//print_r(Zonas::$zonas);
         // grid filtering conditions
         $query->andFilterWhere([
             'id' => $this->id,
-            'clase_zona_id' => $this->claseZona,
-            'zonas.nombre' => $this->zonaPadre,
+            'zonas.clase_zona_id' => $this->getZonaId($this->claseZona),
+ //           'pO.nombre' => $this->zonaPadre,
         ]);
 
         $query->andFilterWhere(['like', 'clase_zona_id', $this->clase_zona_id])
-            ->andFilterWhere(['like', 'nombre', $this->nombre]);
+            ->andFilterWhere(['like', 'nombre', $this->nombre])
+            ->andFilterWhere(['like', 'pO.nombre', $this->zonaPadre]);
 
         return $dataProvider;
     }
