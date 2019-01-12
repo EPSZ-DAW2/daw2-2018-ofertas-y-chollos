@@ -72,12 +72,61 @@ $this->params['breadcrumbs'][] = $this->title;
             'buttons' => [
                     'ascender' => function ($dataProvider) {
                         $id=substr($dataProvider,-2);
-                        return Html::a('Ascender', ['usuarios/ascender', 'id'=>$id]);
+
+                        $userRole = Yii::$app->authManager->getRolesByUser($id);
+
+                        if ($userRole) 
+                        {
+
+                            foreach ($userRole as $role) {
+                               $roles[] = $role->name;
+                            }
+
+                            // if user have 1 role then $userRole will be a string containing it
+                            // othewhise let $userRole be an array containing them all
+
+                            $userRole = count($roles) === 1 ? $roles[0] : $roles ;
+                        }
+
+                        if ($userRole=='sysadmin') return 'No se puede ascender';
+                        else return Html::a('Ascender', ['usuarios/admin', 'id'=>$id, 'opcion'=>'ascender', 'rol'=>$userRole]);
                     },
                 ]
             
              ],
 
+
+             [
+            'class' => 'yii\grid\ActionColumn',
+            'template' => '{degradar}',  // your custom button
+            'buttons' => [
+                    'degradar' => function ($dataProvider) {
+                        $id=substr($dataProvider,-2);
+
+                        $userRole = Yii::$app->authManager->getRolesByUser($id);
+
+                        if ($userRole) 
+                        {
+
+                            foreach ($userRole as $role) {
+                               $roles[] = $role->name;
+                            }
+
+                            // if user have 1 role then $userRole will be a string containing it
+                            // othewhise let $userRole be an array containing them all
+
+                            $userRole = count($roles) === 1 ? $roles[0] : $roles ;
+                        }
+
+                        if ($userRole=='usuario') return 'No se puede degradar';
+                        else return Html::a('Degradar', ['usuarios/admin', 'id'=>$id, 'opcion'=>'degradar', 'rol'=>$userRole]);
+                    },
+                ]
+            
+             ],
+              
+
+             
     
             
             
