@@ -58,12 +58,51 @@ class UsuariosController extends Controller
         ]);
     }
 
-    public function actionAscender($id)
+    public function actionAdmin($id, $opcion, $rol)
     {
-         return $this->render('view', [
-            'model' => $this->findModel($id),
-        ]);
+        //Se crea un array con los roles para ascender o descender mas facilmente 
+        $roles= array("usuario" , "moderador", "patrocinador", "admin", "sysadmin" );
+        switch ($rol) //se calcula el índice en el que esta el rol actual
+        {
+            case 'usuario':
+                $idrol=0;
+                break;
+            case 'moderador':
+                $idrol=1;
+                break;
+            case 'patrocinador':
+                $idrol=2;
+                break;
+            case 'admin':
+                $idrol=3;
+                break;
+            case 'sysadmin':
+                $idrol=4;
+                break;
+        }
+
+
+        $auth = Yii::$app->authManager;
+        
+        $auth->revokeAll($id);
+
+        if ($opcion=='ascender') 
+        {
+            $authorRole = $auth->getRole($roles[$idrol+1]);
+            $auth->assign($authorRole, $id);
+        }
+        else if ($opcion=='degradar')
+        {
+            $authorRole = $auth->getRole($roles[$idrol-1]);
+            $auth->assign($authorRole, $id);
+
+        }
+
+
+
+         Yii::$app->runAction('usuarios/roles');
     }
+
 
     /**
      * Displays a single Usuario model.
