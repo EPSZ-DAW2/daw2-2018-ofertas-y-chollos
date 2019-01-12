@@ -9,6 +9,7 @@ $config = [
 	'language'=>'es',
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
+	'name' => 'Gangómetro',
     'aliases' => [
         '@bower' => '@vendor/bower-asset',
         '@npm'   => '@vendor/npm-asset',
@@ -46,6 +47,12 @@ $config = [
                 ],
             ],
         ],
+		'view' => [
+			'theme' => [
+				'pathMap' => ['@app/views' => '@app/themes/iphone7-yii2-1473294825'],
+				'baseUrl' => '@web/../themes/iphone7-yii2-1473294825',
+			],
+		],
         'db' => $db,
 		
         
