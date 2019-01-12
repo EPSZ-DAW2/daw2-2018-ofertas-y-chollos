@@ -122,10 +122,14 @@ use yii\widgets\Breadcrumbs;
     </header>
 
 	<main>
-		<div class="row">
-		  <div class="col-md-12">
-			 <?php echo $content; ?>
-		  </div>
+		<div class="body-content">
+			<div class="container">
+				<div class="row">
+				  <div class="col-md-12">
+					 <?php echo $content; ?>
+				  </div>
+				</div>
+			</div>
 		</div>
 	<!--/.Main layout-->
 	</main>

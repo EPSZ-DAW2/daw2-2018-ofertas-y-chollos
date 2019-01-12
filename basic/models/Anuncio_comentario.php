@@ -103,18 +103,6 @@ class Anuncio_comentario extends \yii\db\ActiveRecord
 		return $this::$cerrados[$this->cerrado];
     }
 	
-	public function getId_y_anuncio()
-    {
-        $titulo=Anuncio::find()->select('titulo')->where(['id'=>$this->anuncio_id])->one();
-        return '['.$this->anuncio_id.'] → '.$titulo->titulo;
-    }
-		
-	public function getId_y_usuario()
-    {
-        $nick=Usuario::find()->select('nick')->where(['id'=>$this->crea_usuario_id])->one();
-        return '['.$this->crea_usuario_id.'] → '.$nick->nick;
-    }
-		
 	public function getAnuncio()
     {
         $titulo=Anuncio::find()->select('titulo')->where(['id'=>$this->anuncio_id])->one();
@@ -125,6 +113,16 @@ class Anuncio_comentario extends \yii\db\ActiveRecord
     {
         $nick=Usuario::find()->select('nick')->where(['id'=>$this->crea_usuario_id])->one();
         return $nick->nick;
+    }
+		
+	public function getId_y_anuncio()
+    {
+        return '['.$this->anuncio_id.'] → '.$this->anuncio;
+    }
+		
+	public function getId_y_usuario()
+    {
+        return '['.$this->crea_usuario_id.'] → '.$this->usuario;
     }
 		
 		

@@ -173,17 +173,27 @@ class Anuncios_comentariosController extends Controller
      * @throws NotFoundHttpException if the model cannot be found
      */
    
-	public function actionBloquear($id, $page=null)
+	public function actionBloquear($id)
     {
         $model = $this->findModel($id);
-		$model->bloqueado = 2;
-		if($model->fecha_bloqueo == '') $model->fecha_bloqueo = date('Y-m-d H:i:s');
-		$model->save(false);
 
-        if($page!==null)
-					return $this->redirect([$page]);
-				else
-					return $this->redirect(['view', 'id' => $id]);
+		$result = $model->load(Yii::$app->request->post());
+		if ($result) {
+			if($model->bloqueado != $model->oldAttributes['bloqueado']) {
+				if($model->bloqueado == 0){
+					$model->fecha_bloqueo = '';
+				} else if($model->fecha_bloqueo == ''){
+					$model->fecha_bloqueo = date('Y-m-d H:i:s');
+				}
+			}
+			if ($model->save(false)) {
+				return $this->redirect(['view', 'id' => $model->id]);
+			}
+        }
+
+        return $this->render('bloquear', [
+            'model' => $model,
+        ]);
     }
 
     /**

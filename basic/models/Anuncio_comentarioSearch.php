@@ -48,6 +48,19 @@ class Anuncio_comentarioSearch extends Anuncio_comentario
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
         ]);
+		
+		$dataProvider->sort->attributes['id_y_anuncio'] = [
+			'asc' => ['anuncio_id' => SORT_ASC],
+            'desc' => ['anuncio_id' => SORT_DESC],
+            'default' => SORT_DESC,
+            'label' => 'Name',
+		];
+		$dataProvider->sort->attributes['id_y_usuario'] = [
+			'asc' => ['crea_usuario_id' => SORT_ASC],
+            'desc' => ['crea_usuario_id' => SORT_DESC],
+            'default' => SORT_DESC,
+            'label' => 'Name',
+		];
 
         $this->load($params);
 
@@ -75,6 +88,15 @@ class Anuncio_comentarioSearch extends Anuncio_comentario
             ->andFilterWhere(['like', 'cerrado', $this->cerrado])
             ->andFilterWhere(['like', 'bloqueado', $this->bloqueado])
             ->andFilterWhere(['like', 'notas_bloqueo', $this->notas_bloqueo]);
+			/*
+			->andFilterWhere(['or'
+              , ['like', 'anuncio_id', $this->id_y_usuario]
+              , ['like', 'usuario', $this->id_y_usuario]
+            ])
+			->andFilterWhere(['or'
+              , ['like', 'crea_usuario_id', $this->id_y_anuncio]
+              , ['like', 'anuncio', $this->id_y_anuncio]
+            ]);*/
 
         return $dataProvider;
     }

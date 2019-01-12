@@ -7,14 +7,12 @@ use yii\web\View;
 ?>
 
 <div class="comentario-mini" id="<?=$model->id?>_coment">
-
-	<div class="panel panel-primary">
-		<div class="panel-heading">
-			<h3 class="panel-title"><?= $model->usuario ?></h3>
-			<p><?= $model->crea_fecha ?></p>
-		</div>
-		<div class="panel-body">
-			<p class="text"><?= $model->texto ?></p>
+	
+	<div class="card">
+		<div class="card-block">
+			<p><strong><?= $model->usuario ?></strong></p>
+			<p class="text-muted"><?= $model->crea_fecha ?></p>
+			<p class="card-text"><?= $model->texto ?></p>
 		</div>
 	</div>
 	
