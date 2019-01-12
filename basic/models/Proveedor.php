@@ -50,13 +50,16 @@ class Proveedor extends \yii\db\ActiveRecord
     {
         return [
             'id' => Yii::t('app', 'ID'),
-            'usuario_id' => Yii::t('app', 'Usuario ID'),
-            'nif_cif' => Yii::t('app', 'Nif Cif'),
+            'usuario_id' => Yii::t('app', 'ID Usuario'),
+            'nif_cif' => Yii::t('app', 'Nif/Cif'),
             'razon_social' => Yii::t('app', 'Razon Social'),
             'telefono_comercio' => Yii::t('app', 'Telefono Comercio'),
             'telefono_contacto' => Yii::t('app', 'Telefono Contacto'),
             'url' => Yii::t('app', 'Url'),
             'fecha_alta' => Yii::t('app', 'Fecha Alta'),
+            'fecha_alta' => Yii::t('app', 'Fecha Alta'),
+            'usuario' => Yii::t('app', 'Usuario'),
+            'id_y_usuario' => Yii::t('app', 'Usuario'),
         ];
     }
 
@@ -68,4 +71,21 @@ class Proveedor extends \yii\db\ActiveRecord
     {
         return new ProveedoresQuery(get_called_class());
     }
+	
+	public function getUsuario()
+    {
+        $nick=Usuario::find()->select('nick')->where(['id'=>$this->usuario_id])->one();
+        return $nick->nick;
+    }
+		
+	public function getId_y_usuario()
+    {
+        return '['.$this->usuario_id.'] → '.$this->usuario;
+    }
+	
+	//Definir relacion con los Anuncios asociados.
+	public function getAnuncios()
+	{
+		return $this->hasMany( Anuncio::className(), ['proveedor_id' => 'id']);
+	}
 }

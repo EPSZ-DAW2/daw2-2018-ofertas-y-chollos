@@ -7,7 +7,7 @@ use yii\widgets\Pjax;
 /* @var $searchModel app\models\ProveedorSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = Yii::t('app', 'Proveedors');
+$this->title = Yii::t('app', 'Proveedores');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="proveedor-index">
@@ -17,7 +17,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= Html::a(Yii::t('app', 'Create Proveedor'), ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a(Yii::t('app', 'Crear Proveedor'), ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?= GridView::widget([
@@ -28,11 +28,12 @@ $this->params['breadcrumbs'][] = $this->title;
 
             'id',
             'usuario_id',
-            'nif_cif',
+            //'id_y_usuario',
+            //'nif_cif',
             'razon_social',
             'telefono_comercio',
-            //'telefono_contacto',
-            //'url:ntext',
+            'telefono_contacto',
+            'url:ntext',
             //'fecha_alta',
 
             ['class' => 'yii\grid\ActionColumn'],

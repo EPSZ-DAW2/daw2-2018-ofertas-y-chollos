@@ -125,5 +125,9 @@ class Anuncio_comentario extends \yii\db\ActiveRecord
         return '['.$this->crea_usuario_id.'] → '.$this->usuario;
     }
 		
-		
+	//Definir relacion con los Anuncios asociados.
+	public function getAnuncios()
+	{
+		return $this->hasMany( Anuncio::className(), ['crea_usuario_id' => 'id']);
+	}
 }
