@@ -60,6 +60,7 @@ use Symfony\Component\Console\Output\OutputInterface;
  *  --report              Show output in compact style
  *  --html                Generate html with results (default: "report.html")
  *  --xml                 Generate JUnit XML Log (default: "report.xml")
+ *  --phpunit-xml         Generate PhpUnit XML Log (default: "phpunit-report.xml")
  *  --tap                 Generate Tap Log (default: "report.tap.log")
  *  --json                Generate Json Log (default: "report.json")
  *  --colors              Use colors in output
@@ -78,6 +79,7 @@ use Symfony\Component\Console\Output\OutputInterface;
  *  --skip-group (-x)     Skip selected groups (multiple values allowed)
  *  --env                 Run tests in selected environments. (multiple values allowed, environments can be merged with ',')
  *  --fail-fast (-f)      Stop after first failure
+ *  --no-rebuild          Do not rebuild actor classes on start
  *  --help (-h)           Display this help message.
  *  --quiet (-q)          Do not output any message.
  *  --verbose (-v|vv|vvv) Increase the verbosity of messages: 1 for normal output, 2 for more verbose output and 3 for debug
@@ -85,6 +87,7 @@ use Symfony\Component\Console\Output\OutputInterface;
  *  --ansi                Force ANSI output.
  *  --no-ansi             Disable ANSI output.
  *  --no-interaction (-n) Do not ask any interactive question.
+ *  --seed                Use the given seed for shuffling tests
  * ```
  *
  */
@@ -126,6 +129,7 @@ class Run extends Command
             new InputOption('report', '', InputOption::VALUE_NONE, 'Show output in compact style'),
             new InputOption('html', '', InputOption::VALUE_OPTIONAL, 'Generate html with results', 'report.html'),
             new InputOption('xml', '', InputOption::VALUE_OPTIONAL, 'Generate JUnit XML Log', 'report.xml'),
+            new InputOption('phpunit-xml', '', InputOption::VALUE_OPTIONAL, 'Generate PhpUnit XML Log', 'phpunit-report.xml'),
             new InputOption('tap', '', InputOption::VALUE_OPTIONAL, 'Generate Tap Log', 'report.tap.log'),
             new InputOption('json', '', InputOption::VALUE_OPTIONAL, 'Generate Json Log', 'report.json'),
             new InputOption('colors', '', InputOption::VALUE_NONE, 'Use colors in output'),
@@ -201,6 +205,13 @@ class Run extends Command
             ),
             new InputOption('fail-fast', 'f', InputOption::VALUE_NONE, 'Stop after first failure'),
             new InputOption('no-rebuild', '', InputOption::VALUE_NONE, 'Do not rebuild actor classes on start'),
+            new InputOption(
+                'seed',
+                '',
+                InputOption::VALUE_REQUIRED,
+                'Define random seed for shuffle setting'
+            ),
+
         ]);
 
         parent::configure();
@@ -221,7 +232,8 @@ class Run extends Command
      */
     public function execute(InputInterface $input, OutputInterface $output)
     {
-        $this->ensureCurlIsAvailable();
+        $this->ensurePhpExtIsAvailable('CURL');
+        $this->ensurePhpExtIsAvailable('mbstring');
         $this->options = $input->getOptions();
         $this->output = $output;
 
@@ -239,10 +251,15 @@ class Run extends Command
         if (!$this->options['colors']) {
             $this->options['colors'] = $config['settings']['colors'];
         }
+
         if (!$this->options['silent']) {
             $this->output->writeln(
                 Codecept::versionString() . "\nPowered by " . \PHPUnit\Runner\Version::getVersionString()
             );
+            $this->output->writeln(
+                "Running with seed: " . $this->options['seed'] . "\n"
+            );
+
         }
         if ($this->options['debug']) {
             $this->output->setVerbosity(OutputInterface::VERBOSITY_VERY_VERBOSE);
@@ -253,6 +270,7 @@ class Run extends Command
             $userOptions,
             $this->booleanOptions($input, [
                 'xml' => 'report.xml',
+                'phpunit-xml' => 'phpunit-report.xml',
                 'html' => 'report.html',
                 'json' => 'report.json',
                 'tap' => 'report.tap.log',
@@ -267,6 +285,11 @@ class Run extends Command
         $userOptions['interactive'] = !$input->hasParameterOption(['--no-interaction', '-n']);
         $userOptions['ansi'] = (!$input->hasParameterOption('--no-ansi') xor $input->hasParameterOption('ansi'));
 
+        if (!$this->options['seed']) {
+            $userOptions['seed'] = rand();
+        } else {
+            $userOptions['seed'] = intval($this->options['seed']);
+        }
         if ($this->options['no-colors'] || !$userOptions['ansi']) {
             $userOptions['colors'] = false;
         }
@@ -349,6 +372,12 @@ class Run extends Command
             $userOptions['filter'] = $filter;
         }
 
+        if (!$this->options['silent'] && $config['settings']['shuffle']) {
+            $this->output->writeln(
+                "[Seed] <info>" . $userOptions['seed'] . "</info>"
+            );
+        }
+
         $this->codecept = new Codecept($userOptions);
 
         if ($suite and $test) {
@@ -386,7 +415,7 @@ class Run extends Command
     {
         // Workaround when codeception.yml is inside tests directory and tests path is set to "."
         // @see https://github.com/Codeception/Codeception/issues/4432
-        if ($config['paths']['tests'] === '.' && !preg_match('~^\.[/\\\]~', $suite)) {
+        if (isset($config['paths']['tests']) && $config['paths']['tests'] === '.' && !preg_match('~^\.[/\\\]~', $suite)) {
             $suite = './' . $suite;
         }
 
@@ -544,14 +573,18 @@ class Run extends Command
         return $values;
     }
 
-    private function ensureCurlIsAvailable()
+    /**
+     * @param string $ext
+     * @throws \Exception
+     */
+    private function ensurePhpExtIsAvailable($ext)
     {
-        if (!extension_loaded('curl')) {
+        if (!extension_loaded(strtolower($ext))) {
             throw new \Exception(
-                "Codeception requires CURL extension installed to make tests run\n"
-                . "If you are not sure, how to install CURL, please refer to StackOverflow\n\n"
+                "Codeception requires \"{$ext}\" extension installed to make tests run\n"
+                . "If you are not sure, how to install \"{$ext}\", please refer to StackOverflow\n\n"
                 . "Notice: PHP for Apache/Nginx and CLI can have different php.ini files.\n"
-                . "Please make sure that your PHP you run from console has CURL enabled."
+                . "Please make sure that your PHP you run from console has \"{$ext}\" enabled."
             );
         }
     }

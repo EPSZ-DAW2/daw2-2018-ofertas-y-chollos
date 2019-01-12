@@ -40,6 +40,7 @@ class Console implements EventSubscriberInterface
         Events::TEST_ERROR         => 'testError',
         Events::TEST_INCOMPLETE    => 'testIncomplete',
         Events::TEST_SKIPPED       => 'testSkipped',
+        Events::TEST_WARNING       => 'testWarning',
         Events::TEST_FAIL_PRINT    => 'printFail',
         Events::RESULT_PRINT_AFTER => 'afterResult',
     ];
@@ -74,14 +75,15 @@ class Console implements EventSubscriberInterface
     protected $chars = ['success' => '+', 'fail' => 'x', 'of' => ':'];
 
     protected $options = [
-        'debug'     => false,
-        'ansi'      => false,
-        'steps'     => true,
-        'verbosity' => 0,
-        'xml'       => null,
-        'html'      => null,
-        'tap'       => null,
-        'json'      => null,
+        'debug'       => false,
+        'ansi'        => false,
+        'steps'       => true,
+        'verbosity'   => 0,
+        'xml'         => null,
+        'phpunit-xml' => null,
+        'html'        => null,
+        'tap'         => null,
+        'json'        => null,
     ];
 
     /**
@@ -104,7 +106,7 @@ class Console implements EventSubscriberInterface
             $this->chars['fail'] = '✖';
         }
 
-        foreach (['html', 'xml', 'tap', 'json'] as $report) {
+        foreach (['html', 'xml', 'phpunit-xml', 'tap', 'json'] as $report) {
             if (!$this->options[$report]) {
                 continue;
             }
@@ -234,6 +236,16 @@ class Console implements EventSubscriberInterface
     {
         $this->metaStep = null;
         $this->printedTest = null;
+    }
+
+    public function testWarning(TestEvent $e)
+    {
+        if ($this->isDetailed($e->getTest())) {
+            $this->message('WARNING')->center(' ')->style('pending')->append("\n")->writeln();
+
+            return;
+        }
+        $this->writelnFinishedTest($e, $this->message('W')->style('pending'));
     }
 
     public function testFail(FailEvent $e)
@@ -430,7 +442,7 @@ class Console implements EventSubscriberInterface
         }
     }
 
-    public function printExceptionTrace(\Exception $e)
+    public function printExceptionTrace($e)
     {
         static $limit = 10;
 

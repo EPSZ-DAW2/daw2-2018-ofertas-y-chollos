@@ -89,7 +89,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 'template' => '{download} {restore} {storage} {delete}',
                 'buttons' => [
                     'download' => function ($url, $model) {
-                        return Html::a('<span class="glyphicon glyphicon-download-alt"></span>',
+                        return Html::a('<i class="fas fa-download"></i>',
                             [
                                 'download',
                                 'id' => $model['id'],
@@ -100,7 +100,7 @@ $this->params['breadcrumbs'][] = $this->title;
                             ]);
                     },
                     'restore' => function ($url, $model) {
-                        return Html::a('<span class="glyphicon glyphicon-import"></span>',
+                        return Html::a('<i class="fas fa-file-import"></i>',
                             [
                                 'restore',
                                 'id' => $model['id'],
@@ -126,7 +126,7 @@ $this->params['breadcrumbs'][] = $this->title;
                         }
                     },
                     'delete' => function ($url, $model) {
-                        return Html::a('<span class="glyphicon glyphicon-trash"></span>',
+                        return Html::a('<i class="far fa-trash-alt"></i>',
                             [
                                 'delete',
                                 'id' => $model['id'],

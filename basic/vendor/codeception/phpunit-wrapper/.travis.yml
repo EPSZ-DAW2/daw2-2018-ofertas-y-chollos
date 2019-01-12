@@ -1,12 +1,12 @@
 language: php
 
 env:
-  CODECEPTION_VERSION: '2.4.x-dev'
+  CODECEPTION_VERSION: 'dev-phpunit-xml-reports'
 
 php:
-  - 5.6
   - 7.0
   - 7.1
+  - 7.2
 
 before_script:
   - wget https://robo.li/robo.phar

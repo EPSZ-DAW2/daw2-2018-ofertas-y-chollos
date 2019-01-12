@@ -11,7 +11,7 @@ use Codeception\Test\Descriptor;
  */
 class FilterTest extends \PHPUnit\Runner\Filter\NameFilterIterator
 {
-    public function accept()
+    public function accept():bool
     {
         $test = $this->getInnerIterator()->current();
 
@@ -27,6 +27,13 @@ class FilterTest extends \PHPUnit\Runner\Filter\NameFilterIterator
         }
 
         $accepted = preg_match($this->filter, $name, $matches);
+
+        // This fix the issue when an invalid dataprovider method generate a warning
+        // See issue https://github.com/Codeception/Codeception/issues/4888
+        if($test instanceof \PHPUnit\Framework\WarningTestCase) {
+            $message = $test->getMessage();
+            $accepted = preg_match($this->filter, $message, $matches);
+        }
 
         if ($accepted && isset($this->filterMax)) {
             $set = end($matches);

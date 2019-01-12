@@ -22,7 +22,7 @@ class Bootstrap implements BootstrapInterface
             if (!isset($app->i18n->translations['dbManager'])) {
                 $app->i18n->translations['dbManager'] = [
                     'class' => 'yii\i18n\PhpMessageSource',
-                    'sourceLanguage' => 'en-US',
+                    'sourceLanguage' => 'es-ES',
                     'basePath' => '@bs/dbManager/messages',
                 ];
             }

@@ -120,6 +120,9 @@ class ParserTest extends TestCase
             array('a[name]', array('Attribute[Element[a][name]]')),
             array("a[ name\t]", array('Attribute[Element[a][name]]')),
             array('a [name]', array('CombinedSelector[Element[a] <followed> Attribute[Element[*][name]]]')),
+            array('[name="foo"]', array("Attribute[Element[*][name = 'foo']]")),
+            array("[name='foo[1]']", array("Attribute[Element[*][name = 'foo[1]']]")),
+            array("[name='foo[0][bar]']", array("Attribute[Element[*][name = 'foo[0][bar]']]")),
             array('a[rel="include"]', array("Attribute[Element[a][rel = 'include']]")),
             array('a[rel = include]', array("Attribute[Element[a][rel = 'include']]")),
             array("a[hreflang |= 'en']", array("Attribute[Element[a][hreflang |= 'en']]")),
@@ -186,6 +189,7 @@ class ParserTest extends TestCase
             array('foo:after', 'Element[foo]', 'after'),
             array('foo::selection', 'Element[foo]', 'selection'),
             array('lorem#ipsum ~ a#b.c[href]:empty::selection', 'CombinedSelector[Hash[Element[lorem]#ipsum] ~ Pseudo[Attribute[Class[Hash[Element[a]#b].c][href]]:empty]]', 'selection'),
+            array('video::-webkit-media-controls', 'Element[video]', '-webkit-media-controls'),
         );
     }
 

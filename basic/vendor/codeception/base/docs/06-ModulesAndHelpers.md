@@ -35,7 +35,7 @@ modules:
 
 The FunctionalTester class has its methods defined in modules. Actually, it doesn't contain any of them,
 but rather acts as a proxy. It knows which module executes this action and passes parameters into it.
-To make your IDE see all of the FunctionalTester methods, you should run use the `codecept build` command.
+To make your IDE see all of the FunctionalTester methods, you should run the `codecept build` command.
 It generates method signatures from enabled modules and saves them into a trait which is included in an actor.
 In the current example, the `tests/support/_generated/FunctionalTesterActions.php` file will be generated.
 By default, Codeception automatically rebuilds the Actions trait on each change of the suite configuration.
@@ -357,6 +357,8 @@ Here is how it is done in the Db module:
 class Db extends \Codeception\Module
 {
     protected $requiredFields = ['dsn', 'user', 'password'];
+    // ...
+}
 ```
 
 The next time you start the suite without setting one of these values, an exception will be thrown.
@@ -370,6 +372,8 @@ class WebDriver extends \Codeception\Module
 {
     protected $requiredFields = ['browser', 'url'];
     protected $config = ['host' => '127.0.0.1', 'port' => '4444'];
+    // ...
+}
 ```
 
 The host and port parameter can be redefined in the suite configuration.

@@ -6,7 +6,7 @@ use Robo\Task\Development\GenerateMarkdownDoc as Doc;
 
 class RoboFile extends \Robo\Tasks
 {
-    const STABLE_BRANCH = '2.4';
+    const STABLE_BRANCH = '2.5';
     const REPO_BLOB_URL = 'https://github.com/Codeception/Codeception/blob';
 
     public function release()
@@ -96,11 +96,6 @@ class RoboFile extends \Robo\Tasks
     public function testWebdriver($args = '', $opt = ['test|t' => null])
     {
         $test = $opt['test'] ? ':'.$opt['test'] : '';
-        $container = $this->taskDockerRun('davert/selenium-env')
-            ->detached()
-            ->publish(4444, 4444)
-            ->env('APP_PORT', 8000)
-            ->run();
 
         $this->taskServer(8000)
             ->dir('tests/data/app')
@@ -108,22 +103,14 @@ class RoboFile extends \Robo\Tasks
             ->host('0.0.0.0')
             ->run();
 
-        sleep(3); // wait for selenium to launch
-
         $this->taskCodecept('./codecept')
-            ->test('tests/web/WebDriverTest.php'.$test)
+            ->suite('web')
             ->args($args)
             ->run();
-
-        $this->taskDockerStop($container)->run();
     }
 
-    public function testLaunchServer($pathToSelenium = '~/selenium-server.jar ')
+    public function testLaunchServer()
     {
-        $this->taskExec('java -jar '.$pathToSelenium)
-            ->background()
-            ->run();
-
         $this->taskServer(8010)
             ->background()
             ->dir('tests/data/rest')
@@ -532,8 +519,10 @@ EOF;
                 $releaseFile->line("\n## $branch");
                 if ($major < 2) {
                     $releaseFile->line("*Requires: PHP 5.3 and higher + CURL*\n");
-                } else {
+                } elseif ($major == 2 && $minor < 4) {
                     $releaseFile->line("*Requires: PHP 5.4 and higher + CURL*\n");
+                } else {
+                    $releaseFile->line("*Requires: PHP 5.6 and higher + CURL*\n");
                 }
                 $releaseFile->line("* **[Download Latest $branch Release]($downloadUrl)**");
             }
@@ -612,7 +601,7 @@ EOF;
                     'source' => self::REPO_BLOB_URL."/".self::STABLE_BRANCH."/src/Codeception/Module/$name.php"
                 ];
                 // building version switcher
-                foreach (['master', '2.2', '2.1', '2.0', '1.8'] as $branch) {
+                foreach (['master', '2.3', '2.2', '2.1', '2.0', '1.8'] as $branch) {
                     $buttons[$branch] = self::REPO_BLOB_URL."/$branch/docs/modules/$name.md";
                 }
                 $buttonHtml = "\n\n".'<div class="btn-group" role="group" style="float: right" aria-label="...">';

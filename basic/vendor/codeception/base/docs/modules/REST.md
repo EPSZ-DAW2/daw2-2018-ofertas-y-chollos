@@ -42,10 +42,10 @@ Conflicts with SOAP module
 ### amAWSAuthenticated
  
 Allows to send REST request using AWS Authorization
-Only works with PhpBrowser
-Example
-Config -
 
+Only works with PhpBrowser
+Example Config:
+```yml
 modules:
      enabled:
          - REST:
@@ -54,7 +54,8 @@ modules:
                  secret: accessSecret
                  service: awsService
                  region: awsRegion
-
+```
+Code:
 ```php
 <?php
 $I->amAWSAuthenticated();
@@ -440,6 +441,38 @@ $I->seeResponseCodeIs(\Codeception\Util\HttpCode::OK);
  * `[Part]` json
  * `[Part]` xml
  * `param` $code
+
+
+### seeResponseCodeIsClientError
+ 
+Checks that the response code is 4xx
+
+ * `[Part]` json
+ * `[Part]` xml
+
+
+### seeResponseCodeIsRedirection
+ 
+Checks that the response code 3xx
+
+ * `[Part]` json
+ * `[Part]` xml
+
+
+### seeResponseCodeIsServerError
+ 
+Checks that the response code is 5xx
+
+ * `[Part]` json
+ * `[Part]` xml
+
+
+### seeResponseCodeIsSuccessful
+ 
+Checks that the response code is 2xx
+
+ * `[Part]` json
+ * `[Part]` xml
 
 
 ### seeResponseContains
@@ -864,4 +897,4 @@ $I->stopFollowingRedirects();
  * `[Part]` xml
  * `[Part]` json
 
-<p>&nbsp;</p><div class="alert alert-warning">Module reference is taken from the source code. <a href="https://github.com/Codeception/Codeception/tree/2.4/src/Codeception/Module/REST.php">Help us to improve documentation. Edit module reference</a></div>
+<p>&nbsp;</p><div class="alert alert-warning">Module reference is taken from the source code. <a href="https://github.com/Codeception/Codeception/tree/2.5/src/Codeception/Module/REST.php">Help us to improve documentation. Edit module reference</a></div>

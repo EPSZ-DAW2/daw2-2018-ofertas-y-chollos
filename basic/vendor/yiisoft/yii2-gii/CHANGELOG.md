@@ -1,6 +1,32 @@
 Yii Framework 2 gii extension Change Log
 ========================================
 
+2.1.0 under development
+-----------------------
+
+- no changes in this release.
+
+
+2.0.8 December 08, 2018
+-----------------------
+
+- Bug #327: Fixed bug in Model generator when $baseClass is an abstract class (rhertogh)
+- Bug #379: Fixed bug in view page where delete button not work well (zacksleo)
+- Bug #383: Fix incorrect title generation in CRUD update view (bscheshirwork)
+- Enh #366: Option to allow standardized class names capitals in model generator (slinstj)
+- Enh #378: Remove useless import of `Yii` from CRUD generator search model template (CeBe)
+
+
+2.0.7 May 3, 2018
+-----------------
+
+- Bug #185: Fixed bug in Model generators when FKs pointing to non-existing tables (adipriyantobpn)
+- Bug #328: Fixed bug in CRUD update view generator (ricpelo)
+- Bug #333: Fixed incorrect validation rule for TINYINT column type (nostop8)
+- Bug #340: Fixed bug in CRUD SearchModel generator (JeanWolf)
+- Bug #351: Fixed incorrect validation rule for JSON column type (silverfire)
+
+
 2.0.6 December 23, 2017
 -----------------------
 
