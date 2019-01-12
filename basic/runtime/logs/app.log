@@ -1,0 +1,598 @@
+2019-01-12 19:34:00 [::1][-][-][trace][yii\base\Application::bootstrap] Bootstrap with bs\dbManager\Bootstrap::bootstrap()
+2019-01-12 19:34:00 [::1][-][-][trace][yii\base\Application::bootstrap] Bootstrap with yii\log\Dispatcher
+2019-01-12 19:34:00 [::1][-][-][trace][yii\base\Module::getModule] Loading module: debug
+2019-01-12 19:34:00 [::1][-][-][error][ReflectionException] ReflectionException: Class yii\debug\Module does not exist in C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\di\Container.php:428
+Stack trace:
+#0 C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\di\Container.php(428): ReflectionClass->__construct('yii\\debug\\Modul...')
+#1 C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\di\Container.php(364): yii\di\Container->getDependencies('yii\\debug\\Modul...')
+#2 C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\di\Container.php(156): yii\di\Container->build('yii\\debug\\Modul...', Array, Array)
+#3 C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\BaseYii.php(349): yii\di\Container->get('yii\\debug\\Modul...', Array, Array)
+#4 C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\base\Module.php(427): yii\BaseYii::createObject(Array, Array)
+#5 C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\base\Application.php(315): yii\base\Module->getModule('debug')
+#6 C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\web\Application.php(69): yii\base\Application->bootstrap()
+#7 C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\base\Application.php(273): yii\web\Application->bootstrap()
+#8 C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\base\BaseObject.php(109): yii\base\Application->init()
+#9 C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\base\Application.php(206): yii\base\BaseObject->__construct(Array)
+#10 C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\web\index.php(12): yii\base\Application->__construct(Array)
+#11 {main}
+2019-01-12 19:34:00 [::1][-][-][trace][yii\base\View::renderFile] Rendering view file: C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\views\errorHandler\exception.php
+2019-01-12 19:34:00 [::1][-][-][trace][yii\base\View::renderFile] Rendering view file: C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\views\errorHandler\callStackItem.php
+2019-01-12 19:34:00 [::1][-][-][trace][yii\base\View::renderFile] Rendering view file: C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\views\errorHandler\callStackItem.php
+2019-01-12 19:34:00 [::1][-][-][trace][yii\base\View::renderFile] Rendering view file: C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\views\errorHandler\callStackItem.php
+2019-01-12 19:34:00 [::1][-][-][trace][yii\base\View::renderFile] Rendering view file: C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\views\errorHandler\callStackItem.php
+2019-01-12 19:34:00 [::1][-][-][trace][yii\base\View::renderFile] Rendering view file: C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\views\errorHandler\callStackItem.php
+2019-01-12 19:34:00 [::1][-][-][trace][yii\base\View::renderFile] Rendering view file: C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\views\errorHandler\callStackItem.php
+2019-01-12 19:34:00 [::1][-][-][trace][yii\base\View::renderFile] Rendering view file: C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\views\errorHandler\callStackItem.php
+2019-01-12 19:34:00 [::1][-][-][trace][yii\base\View::renderFile] Rendering view file: C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\views\errorHandler\callStackItem.php
+2019-01-12 19:34:00 [::1][-][-][trace][yii\base\View::renderFile] Rendering view file: C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\views\errorHandler\callStackItem.php
+2019-01-12 19:34:00 [::1][-][-][trace][yii\base\View::renderFile] Rendering view file: C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\views\errorHandler\callStackItem.php
+2019-01-12 19:34:00 [::1][-][-][trace][yii\base\View::renderFile] Rendering view file: C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\views\errorHandler\callStackItem.php
+2019-01-12 19:34:00 [::1][-][-][trace][yii\base\View::renderFile] Rendering view file: C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\views\errorHandler\callStackItem.php
+2019-01-12 19:34:02 [::1][-][-][trace][yii\base\Application::bootstrap] Bootstrap with bs\dbManager\Bootstrap::bootstrap()
+2019-01-12 19:34:02 [::1][-][-][trace][yii\base\Application::bootstrap] Bootstrap with yii\log\Dispatcher
+2019-01-12 19:34:02 [::1][-][-][trace][yii\base\Module::getModule] Loading module: debug
+2019-01-12 19:34:02 [::1][-][-][error][ReflectionException] ReflectionException: Class yii\debug\Module does not exist in C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\di\Container.php:428
+Stack trace:
+#0 C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\di\Container.php(428): ReflectionClass->__construct('yii\\debug\\Modul...')
+#1 C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\di\Container.php(364): yii\di\Container->getDependencies('yii\\debug\\Modul...')
+#2 C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\di\Container.php(156): yii\di\Container->build('yii\\debug\\Modul...', Array, Array)
+#3 C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\BaseYii.php(349): yii\di\Container->get('yii\\debug\\Modul...', Array, Array)
+#4 C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\base\Module.php(427): yii\BaseYii::createObject(Array, Array)
+#5 C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\base\Application.php(315): yii\base\Module->getModule('debug')
+#6 C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\web\Application.php(69): yii\base\Application->bootstrap()
+#7 C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\base\Application.php(273): yii\web\Application->bootstrap()
+#8 C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\base\BaseObject.php(109): yii\base\Application->init()
+#9 C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\base\Application.php(206): yii\base\BaseObject->__construct(Array)
+#10 C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\web\index.php(12): yii\base\Application->__construct(Array)
+#11 {main}
+2019-01-12 19:34:02 [::1][-][-][trace][yii\base\View::renderFile] Rendering view file: C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\views\errorHandler\exception.php
+2019-01-12 19:34:02 [::1][-][-][trace][yii\base\View::renderFile] Rendering view file: C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\views\errorHandler\callStackItem.php
+2019-01-12 19:34:02 [::1][-][-][trace][yii\base\View::renderFile] Rendering view file: C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\views\errorHandler\callStackItem.php
+2019-01-12 19:34:02 [::1][-][-][trace][yii\base\View::renderFile] Rendering view file: C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\views\errorHandler\callStackItem.php
+2019-01-12 19:34:02 [::1][-][-][trace][yii\base\View::renderFile] Rendering view file: C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\views\errorHandler\callStackItem.php
+2019-01-12 19:34:02 [::1][-][-][trace][yii\base\View::renderFile] Rendering view file: C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\views\errorHandler\callStackItem.php
+2019-01-12 19:34:02 [::1][-][-][trace][yii\base\View::renderFile] Rendering view file: C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\views\errorHandler\callStackItem.php
+2019-01-12 19:34:02 [::1][-][-][trace][yii\base\View::renderFile] Rendering view file: C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\views\errorHandler\callStackItem.php
+2019-01-12 19:34:02 [::1][-][-][trace][yii\base\View::renderFile] Rendering view file: C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\views\errorHandler\callStackItem.php
+2019-01-12 19:34:02 [::1][-][-][trace][yii\base\View::renderFile] Rendering view file: C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\views\errorHandler\callStackItem.php
+2019-01-12 19:34:02 [::1][-][-][trace][yii\base\View::renderFile] Rendering view file: C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\views\errorHandler\callStackItem.php
+2019-01-12 19:34:02 [::1][-][-][trace][yii\base\View::renderFile] Rendering view file: C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\views\errorHandler\callStackItem.php
+2019-01-12 19:34:02 [::1][-][-][trace][yii\base\View::renderFile] Rendering view file: C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\views\errorHandler\callStackItem.php
+2019-01-12 19:34:28 [::1][-][-][trace][yii\base\Application::bootstrap] Bootstrap with bs\dbManager\Bootstrap::bootstrap()
+2019-01-12 19:34:28 [::1][-][-][trace][yii\base\Application::bootstrap] Bootstrap with yii\log\Dispatcher
+2019-01-12 19:34:28 [::1][-][-][trace][yii\base\Module::getModule] Loading module: debug
+2019-01-12 19:34:28 [::1][-][-][error][ReflectionException] ReflectionException: Class yii\debug\Module does not exist in C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\di\Container.php:428
+Stack trace:
+#0 C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\di\Container.php(428): ReflectionClass->__construct('yii\\debug\\Modul...')
+#1 C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\di\Container.php(364): yii\di\Container->getDependencies('yii\\debug\\Modul...')
+#2 C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\di\Container.php(156): yii\di\Container->build('yii\\debug\\Modul...', Array, Array)
+#3 C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\BaseYii.php(349): yii\di\Container->get('yii\\debug\\Modul...', Array, Array)
+#4 C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\base\Module.php(427): yii\BaseYii::createObject(Array, Array)
+#5 C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\base\Application.php(315): yii\base\Module->getModule('debug')
+#6 C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\web\Application.php(69): yii\base\Application->bootstrap()
+#7 C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\base\Application.php(273): yii\web\Application->bootstrap()
+#8 C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\base\BaseObject.php(109): yii\base\Application->init()
+#9 C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\base\Application.php(206): yii\base\BaseObject->__construct(Array)
+#10 C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\web\index.php(12): yii\base\Application->__construct(Array)
+#11 {main}
+2019-01-12 19:34:28 [::1][-][-][trace][yii\base\View::renderFile] Rendering view file: C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\views\errorHandler\exception.php
+2019-01-12 19:34:28 [::1][-][-][trace][yii\base\View::renderFile] Rendering view file: C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\views\errorHandler\callStackItem.php
+2019-01-12 19:34:28 [::1][-][-][trace][yii\base\View::renderFile] Rendering view file: C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\views\errorHandler\callStackItem.php
+2019-01-12 19:34:28 [::1][-][-][trace][yii\base\View::renderFile] Rendering view file: C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\views\errorHandler\callStackItem.php
+2019-01-12 19:34:28 [::1][-][-][trace][yii\base\View::renderFile] Rendering view file: C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\views\errorHandler\callStackItem.php
+2019-01-12 19:34:28 [::1][-][-][trace][yii\base\View::renderFile] Rendering view file: C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\views\errorHandler\callStackItem.php
+2019-01-12 19:34:28 [::1][-][-][trace][yii\base\View::renderFile] Rendering view file: C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\views\errorHandler\callStackItem.php
+2019-01-12 19:34:28 [::1][-][-][trace][yii\base\View::renderFile] Rendering view file: C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\views\errorHandler\callStackItem.php
+2019-01-12 19:34:28 [::1][-][-][trace][yii\base\View::renderFile] Rendering view file: C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\views\errorHandler\callStackItem.php
+2019-01-12 19:34:28 [::1][-][-][trace][yii\base\View::renderFile] Rendering view file: C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\views\errorHandler\callStackItem.php
+2019-01-12 19:34:28 [::1][-][-][trace][yii\base\View::renderFile] Rendering view file: C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\views\errorHandler\callStackItem.php
+2019-01-12 19:34:28 [::1][-][-][trace][yii\base\View::renderFile] Rendering view file: C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\views\errorHandler\callStackItem.php
+2019-01-12 19:34:28 [::1][-][-][trace][yii\base\View::renderFile] Rendering view file: C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\views\errorHandler\callStackItem.php
+2019-01-12 19:34:28 [::1][-][-][trace][yii\base\Application::bootstrap] Bootstrap with bs\dbManager\Bootstrap::bootstrap()
+2019-01-12 19:34:28 [::1][-][-][trace][yii\base\Application::bootstrap] Bootstrap with yii\log\Dispatcher
+2019-01-12 19:34:28 [::1][-][-][trace][yii\base\Module::getModule] Loading module: debug
+2019-01-12 19:34:28 [::1][-][-][error][ReflectionException] ReflectionException: Class yii\debug\Module does not exist in C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\di\Container.php:428
+Stack trace:
+#0 C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\di\Container.php(428): ReflectionClass->__construct('yii\\debug\\Modul...')
+#1 C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\di\Container.php(364): yii\di\Container->getDependencies('yii\\debug\\Modul...')
+#2 C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\di\Container.php(156): yii\di\Container->build('yii\\debug\\Modul...', Array, Array)
+#3 C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\BaseYii.php(349): yii\di\Container->get('yii\\debug\\Modul...', Array, Array)
+#4 C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\base\Module.php(427): yii\BaseYii::createObject(Array, Array)
+#5 C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\base\Application.php(315): yii\base\Module->getModule('debug')
+#6 C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\web\Application.php(69): yii\base\Application->bootstrap()
+#7 C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\base\Application.php(273): yii\web\Application->bootstrap()
+#8 C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\base\BaseObject.php(109): yii\base\Application->init()
+#9 C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\base\Application.php(206): yii\base\BaseObject->__construct(Array)
+#10 C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\web\index.php(12): yii\base\Application->__construct(Array)
+#11 {main}
+2019-01-12 19:34:28 [::1][-][-][trace][yii\base\View::renderFile] Rendering view file: C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\views\errorHandler\exception.php
+2019-01-12 19:34:28 [::1][-][-][trace][yii\base\View::renderFile] Rendering view file: C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\views\errorHandler\callStackItem.php
+2019-01-12 19:34:28 [::1][-][-][trace][yii\base\View::renderFile] Rendering view file: C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\views\errorHandler\callStackItem.php
+2019-01-12 19:34:28 [::1][-][-][trace][yii\base\View::renderFile] Rendering view file: C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\views\errorHandler\callStackItem.php
+2019-01-12 19:34:28 [::1][-][-][trace][yii\base\View::renderFile] Rendering view file: C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\views\errorHandler\callStackItem.php
+2019-01-12 19:34:28 [::1][-][-][trace][yii\base\View::renderFile] Rendering view file: C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\views\errorHandler\callStackItem.php
+2019-01-12 19:34:28 [::1][-][-][trace][yii\base\View::renderFile] Rendering view file: C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\views\errorHandler\callStackItem.php
+2019-01-12 19:34:28 [::1][-][-][trace][yii\base\View::renderFile] Rendering view file: C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\views\errorHandler\callStackItem.php
+2019-01-12 19:34:28 [::1][-][-][trace][yii\base\View::renderFile] Rendering view file: C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\views\errorHandler\callStackItem.php
+2019-01-12 19:34:28 [::1][-][-][trace][yii\base\View::renderFile] Rendering view file: C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\views\errorHandler\callStackItem.php
+2019-01-12 19:34:28 [::1][-][-][trace][yii\base\View::renderFile] Rendering view file: C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\views\errorHandler\callStackItem.php
+2019-01-12 19:34:28 [::1][-][-][trace][yii\base\View::renderFile] Rendering view file: C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\views\errorHandler\callStackItem.php
+2019-01-12 19:34:28 [::1][-][-][trace][yii\base\View::renderFile] Rendering view file: C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\views\errorHandler\callStackItem.php
+2019-01-12 19:34:29 [::1][-][-][trace][yii\base\Application::bootstrap] Bootstrap with bs\dbManager\Bootstrap::bootstrap()
+2019-01-12 19:34:29 [::1][-][-][trace][yii\base\Application::bootstrap] Bootstrap with yii\log\Dispatcher
+2019-01-12 19:34:29 [::1][-][-][trace][yii\base\Module::getModule] Loading module: debug
+2019-01-12 19:34:29 [::1][-][-][error][ReflectionException] ReflectionException: Class yii\debug\Module does not exist in C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\di\Container.php:428
+Stack trace:
+#0 C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\di\Container.php(428): ReflectionClass->__construct('yii\\debug\\Modul...')
+#1 C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\di\Container.php(364): yii\di\Container->getDependencies('yii\\debug\\Modul...')
+#2 C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\di\Container.php(156): yii\di\Container->build('yii\\debug\\Modul...', Array, Array)
+#3 C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\BaseYii.php(349): yii\di\Container->get('yii\\debug\\Modul...', Array, Array)
+#4 C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\base\Module.php(427): yii\BaseYii::createObject(Array, Array)
+#5 C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\base\Application.php(315): yii\base\Module->getModule('debug')
+#6 C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\web\Application.php(69): yii\base\Application->bootstrap()
+#7 C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\base\Application.php(273): yii\web\Application->bootstrap()
+#8 C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\base\BaseObject.php(109): yii\base\Application->init()
+#9 C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\base\Application.php(206): yii\base\BaseObject->__construct(Array)
+#10 C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\web\index.php(12): yii\base\Application->__construct(Array)
+#11 {main}
+2019-01-12 19:34:29 [::1][-][-][trace][yii\base\View::renderFile] Rendering view file: C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\views\errorHandler\exception.php
+2019-01-12 19:34:29 [::1][-][-][trace][yii\base\View::renderFile] Rendering view file: C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\views\errorHandler\callStackItem.php
+2019-01-12 19:34:29 [::1][-][-][trace][yii\base\View::renderFile] Rendering view file: C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\views\errorHandler\callStackItem.php
+2019-01-12 19:34:29 [::1][-][-][trace][yii\base\View::renderFile] Rendering view file: C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\views\errorHandler\callStackItem.php
+2019-01-12 19:34:29 [::1][-][-][trace][yii\base\View::renderFile] Rendering view file: C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\views\errorHandler\callStackItem.php
+2019-01-12 19:34:29 [::1][-][-][trace][yii\base\View::renderFile] Rendering view file: C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\views\errorHandler\callStackItem.php
+2019-01-12 19:34:29 [::1][-][-][trace][yii\base\View::renderFile] Rendering view file: C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\views\errorHandler\callStackItem.php
+2019-01-12 19:34:29 [::1][-][-][trace][yii\base\View::renderFile] Rendering view file: C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\views\errorHandler\callStackItem.php
+2019-01-12 19:34:29 [::1][-][-][trace][yii\base\View::renderFile] Rendering view file: C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\views\errorHandler\callStackItem.php
+2019-01-12 19:34:29 [::1][-][-][trace][yii\base\View::renderFile] Rendering view file: C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\views\errorHandler\callStackItem.php
+2019-01-12 19:34:29 [::1][-][-][trace][yii\base\View::renderFile] Rendering view file: C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\views\errorHandler\callStackItem.php
+2019-01-12 19:34:29 [::1][-][-][trace][yii\base\View::renderFile] Rendering view file: C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\views\errorHandler\callStackItem.php
+2019-01-12 19:34:29 [::1][-][-][trace][yii\base\View::renderFile] Rendering view file: C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\views\errorHandler\callStackItem.php
+2019-01-12 19:34:29 [::1][-][-][trace][yii\base\Application::bootstrap] Bootstrap with bs\dbManager\Bootstrap::bootstrap()
+2019-01-12 19:34:29 [::1][-][-][trace][yii\base\Application::bootstrap] Bootstrap with yii\log\Dispatcher
+2019-01-12 19:34:29 [::1][-][-][trace][yii\base\Module::getModule] Loading module: debug
+2019-01-12 19:34:29 [::1][-][-][error][ReflectionException] ReflectionException: Class yii\debug\Module does not exist in C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\di\Container.php:428
+Stack trace:
+#0 C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\di\Container.php(428): ReflectionClass->__construct('yii\\debug\\Modul...')
+#1 C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\di\Container.php(364): yii\di\Container->getDependencies('yii\\debug\\Modul...')
+#2 C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\di\Container.php(156): yii\di\Container->build('yii\\debug\\Modul...', Array, Array)
+#3 C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\BaseYii.php(349): yii\di\Container->get('yii\\debug\\Modul...', Array, Array)
+#4 C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\base\Module.php(427): yii\BaseYii::createObject(Array, Array)
+#5 C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\base\Application.php(315): yii\base\Module->getModule('debug')
+#6 C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\web\Application.php(69): yii\base\Application->bootstrap()
+#7 C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\base\Application.php(273): yii\web\Application->bootstrap()
+#8 C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\base\BaseObject.php(109): yii\base\Application->init()
+#9 C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\base\Application.php(206): yii\base\BaseObject->__construct(Array)
+#10 C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\web\index.php(12): yii\base\Application->__construct(Array)
+#11 {main}
+2019-01-12 19:34:29 [::1][-][-][trace][yii\base\View::renderFile] Rendering view file: C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\views\errorHandler\exception.php
+2019-01-12 19:34:29 [::1][-][-][trace][yii\base\View::renderFile] Rendering view file: C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\views\errorHandler\callStackItem.php
+2019-01-12 19:34:29 [::1][-][-][trace][yii\base\View::renderFile] Rendering view file: C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\views\errorHandler\callStackItem.php
+2019-01-12 19:34:29 [::1][-][-][trace][yii\base\View::renderFile] Rendering view file: C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\views\errorHandler\callStackItem.php
+2019-01-12 19:34:29 [::1][-][-][trace][yii\base\View::renderFile] Rendering view file: C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\views\errorHandler\callStackItem.php
+2019-01-12 19:34:29 [::1][-][-][trace][yii\base\View::renderFile] Rendering view file: C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\views\errorHandler\callStackItem.php
+2019-01-12 19:34:29 [::1][-][-][trace][yii\base\View::renderFile] Rendering view file: C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\views\errorHandler\callStackItem.php
+2019-01-12 19:34:29 [::1][-][-][trace][yii\base\View::renderFile] Rendering view file: C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\views\errorHandler\callStackItem.php
+2019-01-12 19:34:29 [::1][-][-][trace][yii\base\View::renderFile] Rendering view file: C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\views\errorHandler\callStackItem.php
+2019-01-12 19:34:29 [::1][-][-][trace][yii\base\View::renderFile] Rendering view file: C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\views\errorHandler\callStackItem.php
+2019-01-12 19:34:29 [::1][-][-][trace][yii\base\View::renderFile] Rendering view file: C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\views\errorHandler\callStackItem.php
+2019-01-12 19:34:29 [::1][-][-][trace][yii\base\View::renderFile] Rendering view file: C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\views\errorHandler\callStackItem.php
+2019-01-12 19:34:29 [::1][-][-][trace][yii\base\View::renderFile] Rendering view file: C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\views\errorHandler\callStackItem.php
+2019-01-12 19:34:29 [::1][-][-][trace][yii\base\Application::bootstrap] Bootstrap with bs\dbManager\Bootstrap::bootstrap()
+2019-01-12 19:34:29 [::1][-][-][trace][yii\base\Application::bootstrap] Bootstrap with yii\log\Dispatcher
+2019-01-12 19:34:29 [::1][-][-][trace][yii\base\Module::getModule] Loading module: debug
+2019-01-12 19:34:29 [::1][-][-][error][ReflectionException] ReflectionException: Class yii\debug\Module does not exist in C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\di\Container.php:428
+Stack trace:
+#0 C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\di\Container.php(428): ReflectionClass->__construct('yii\\debug\\Modul...')
+#1 C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\di\Container.php(364): yii\di\Container->getDependencies('yii\\debug\\Modul...')
+#2 C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\di\Container.php(156): yii\di\Container->build('yii\\debug\\Modul...', Array, Array)
+#3 C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\BaseYii.php(349): yii\di\Container->get('yii\\debug\\Modul...', Array, Array)
+#4 C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\base\Module.php(427): yii\BaseYii::createObject(Array, Array)
+#5 C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\base\Application.php(315): yii\base\Module->getModule('debug')
+#6 C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\web\Application.php(69): yii\base\Application->bootstrap()
+#7 C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\base\Application.php(273): yii\web\Application->bootstrap()
+#8 C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\base\BaseObject.php(109): yii\base\Application->init()
+#9 C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\base\Application.php(206): yii\base\BaseObject->__construct(Array)
+#10 C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\web\index.php(12): yii\base\Application->__construct(Array)
+#11 {main}
+2019-01-12 19:34:29 [::1][-][-][trace][yii\base\View::renderFile] Rendering view file: C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\views\errorHandler\exception.php
+2019-01-12 19:34:29 [::1][-][-][trace][yii\base\View::renderFile] Rendering view file: C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\views\errorHandler\callStackItem.php
+2019-01-12 19:34:29 [::1][-][-][trace][yii\base\View::renderFile] Rendering view file: C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\views\errorHandler\callStackItem.php
+2019-01-12 19:34:29 [::1][-][-][trace][yii\base\View::renderFile] Rendering view file: C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\views\errorHandler\callStackItem.php
+2019-01-12 19:34:29 [::1][-][-][trace][yii\base\View::renderFile] Rendering view file: C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\views\errorHandler\callStackItem.php
+2019-01-12 19:34:29 [::1][-][-][trace][yii\base\View::renderFile] Rendering view file: C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\views\errorHandler\callStackItem.php
+2019-01-12 19:34:29 [::1][-][-][trace][yii\base\View::renderFile] Rendering view file: C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\views\errorHandler\callStackItem.php
+2019-01-12 19:34:29 [::1][-][-][trace][yii\base\View::renderFile] Rendering view file: C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\views\errorHandler\callStackItem.php
+2019-01-12 19:34:29 [::1][-][-][trace][yii\base\View::renderFile] Rendering view file: C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\views\errorHandler\callStackItem.php
+2019-01-12 19:34:29 [::1][-][-][trace][yii\base\View::renderFile] Rendering view file: C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\views\errorHandler\callStackItem.php
+2019-01-12 19:34:29 [::1][-][-][trace][yii\base\View::renderFile] Rendering view file: C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\views\errorHandler\callStackItem.php
+2019-01-12 19:34:29 [::1][-][-][trace][yii\base\View::renderFile] Rendering view file: C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\views\errorHandler\callStackItem.php
+2019-01-12 19:34:29 [::1][-][-][trace][yii\base\View::renderFile] Rendering view file: C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\views\errorHandler\callStackItem.php
+2019-01-12 19:34:30 [::1][-][-][trace][yii\base\Application::bootstrap] Bootstrap with bs\dbManager\Bootstrap::bootstrap()
+2019-01-12 19:34:30 [::1][-][-][trace][yii\base\Application::bootstrap] Bootstrap with yii\log\Dispatcher
+2019-01-12 19:34:30 [::1][-][-][trace][yii\base\Module::getModule] Loading module: debug
+2019-01-12 19:34:30 [::1][-][-][error][ReflectionException] ReflectionException: Class yii\debug\Module does not exist in C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\di\Container.php:428
+Stack trace:
+#0 C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\di\Container.php(428): ReflectionClass->__construct('yii\\debug\\Modul...')
+#1 C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\di\Container.php(364): yii\di\Container->getDependencies('yii\\debug\\Modul...')
+#2 C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\di\Container.php(156): yii\di\Container->build('yii\\debug\\Modul...', Array, Array)
+#3 C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\BaseYii.php(349): yii\di\Container->get('yii\\debug\\Modul...', Array, Array)
+#4 C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\base\Module.php(427): yii\BaseYii::createObject(Array, Array)
+#5 C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\base\Application.php(315): yii\base\Module->getModule('debug')
+#6 C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\web\Application.php(69): yii\base\Application->bootstrap()
+#7 C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\base\Application.php(273): yii\web\Application->bootstrap()
+#8 C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\base\BaseObject.php(109): yii\base\Application->init()
+#9 C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\base\Application.php(206): yii\base\BaseObject->__construct(Array)
+#10 C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\web\index.php(12): yii\base\Application->__construct(Array)
+#11 {main}
+2019-01-12 19:34:30 [::1][-][-][trace][yii\base\View::renderFile] Rendering view file: C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\views\errorHandler\exception.php
+2019-01-12 19:34:30 [::1][-][-][trace][yii\base\View::renderFile] Rendering view file: C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\views\errorHandler\callStackItem.php
+2019-01-12 19:34:30 [::1][-][-][trace][yii\base\View::renderFile] Rendering view file: C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\views\errorHandler\callStackItem.php
+2019-01-12 19:34:30 [::1][-][-][trace][yii\base\View::renderFile] Rendering view file: C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\views\errorHandler\callStackItem.php
+2019-01-12 19:34:30 [::1][-][-][trace][yii\base\View::renderFile] Rendering view file: C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\views\errorHandler\callStackItem.php
+2019-01-12 19:34:30 [::1][-][-][trace][yii\base\View::renderFile] Rendering view file: C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\views\errorHandler\callStackItem.php
+2019-01-12 19:34:30 [::1][-][-][trace][yii\base\View::renderFile] Rendering view file: C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\views\errorHandler\callStackItem.php
+2019-01-12 19:34:30 [::1][-][-][trace][yii\base\View::renderFile] Rendering view file: C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\views\errorHandler\callStackItem.php
+2019-01-12 19:34:30 [::1][-][-][trace][yii\base\View::renderFile] Rendering view file: C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\views\errorHandler\callStackItem.php
+2019-01-12 19:34:30 [::1][-][-][trace][yii\base\View::renderFile] Rendering view file: C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\views\errorHandler\callStackItem.php
+2019-01-12 19:34:30 [::1][-][-][trace][yii\base\View::renderFile] Rendering view file: C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\views\errorHandler\callStackItem.php
+2019-01-12 19:34:30 [::1][-][-][trace][yii\base\View::renderFile] Rendering view file: C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\views\errorHandler\callStackItem.php
+2019-01-12 19:34:30 [::1][-][-][trace][yii\base\View::renderFile] Rendering view file: C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\views\errorHandler\callStackItem.php
+2019-01-12 19:34:30 [::1][-][-][trace][yii\base\Application::bootstrap] Bootstrap with bs\dbManager\Bootstrap::bootstrap()
+2019-01-12 19:34:30 [::1][-][-][trace][yii\base\Application::bootstrap] Bootstrap with yii\log\Dispatcher
+2019-01-12 19:34:30 [::1][-][-][trace][yii\base\Module::getModule] Loading module: debug
+2019-01-12 19:34:30 [::1][-][-][error][ReflectionException] ReflectionException: Class yii\debug\Module does not exist in C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\di\Container.php:428
+Stack trace:
+#0 C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\di\Container.php(428): ReflectionClass->__construct('yii\\debug\\Modul...')
+#1 C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\di\Container.php(364): yii\di\Container->getDependencies('yii\\debug\\Modul...')
+#2 C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\di\Container.php(156): yii\di\Container->build('yii\\debug\\Modul...', Array, Array)
+#3 C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\BaseYii.php(349): yii\di\Container->get('yii\\debug\\Modul...', Array, Array)
+#4 C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\base\Module.php(427): yii\BaseYii::createObject(Array, Array)
+#5 C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\base\Application.php(315): yii\base\Module->getModule('debug')
+#6 C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\web\Application.php(69): yii\base\Application->bootstrap()
+#7 C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\base\Application.php(273): yii\web\Application->bootstrap()
+#8 C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\base\BaseObject.php(109): yii\base\Application->init()
+#9 C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\base\Application.php(206): yii\base\BaseObject->__construct(Array)
+#10 C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\web\index.php(12): yii\base\Application->__construct(Array)
+#11 {main}
+2019-01-12 19:34:30 [::1][-][-][trace][yii\base\View::renderFile] Rendering view file: C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\views\errorHandler\exception.php
+2019-01-12 19:34:30 [::1][-][-][trace][yii\base\View::renderFile] Rendering view file: C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\views\errorHandler\callStackItem.php
+2019-01-12 19:34:30 [::1][-][-][trace][yii\base\View::renderFile] Rendering view file: C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\views\errorHandler\callStackItem.php
+2019-01-12 19:34:30 [::1][-][-][trace][yii\base\View::renderFile] Rendering view file: C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\views\errorHandler\callStackItem.php
+2019-01-12 19:34:30 [::1][-][-][trace][yii\base\View::renderFile] Rendering view file: C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\views\errorHandler\callStackItem.php
+2019-01-12 19:34:30 [::1][-][-][trace][yii\base\View::renderFile] Rendering view file: C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\views\errorHandler\callStackItem.php
+2019-01-12 19:34:30 [::1][-][-][trace][yii\base\View::renderFile] Rendering view file: C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\views\errorHandler\callStackItem.php
+2019-01-12 19:34:30 [::1][-][-][trace][yii\base\View::renderFile] Rendering view file: C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\views\errorHandler\callStackItem.php
+2019-01-12 19:34:30 [::1][-][-][trace][yii\base\View::renderFile] Rendering view file: C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\views\errorHandler\callStackItem.php
+2019-01-12 19:34:30 [::1][-][-][trace][yii\base\View::renderFile] Rendering view file: C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\views\errorHandler\callStackItem.php
+2019-01-12 19:34:30 [::1][-][-][trace][yii\base\View::renderFile] Rendering view file: C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\views\errorHandler\callStackItem.php
+2019-01-12 19:34:30 [::1][-][-][trace][yii\base\View::renderFile] Rendering view file: C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\views\errorHandler\callStackItem.php
+2019-01-12 19:34:30 [::1][-][-][trace][yii\base\View::renderFile] Rendering view file: C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\views\errorHandler\callStackItem.php
+2019-01-12 19:34:31 [::1][-][-][trace][yii\base\Application::bootstrap] Bootstrap with bs\dbManager\Bootstrap::bootstrap()
+2019-01-12 19:34:31 [::1][-][-][trace][yii\base\Application::bootstrap] Bootstrap with yii\log\Dispatcher
+2019-01-12 19:34:31 [::1][-][-][trace][yii\base\Module::getModule] Loading module: debug
+2019-01-12 19:34:31 [::1][-][-][error][ReflectionException] ReflectionException: Class yii\debug\Module does not exist in C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\di\Container.php:428
+Stack trace:
+#0 C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\di\Container.php(428): ReflectionClass->__construct('yii\\debug\\Modul...')
+#1 C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\di\Container.php(364): yii\di\Container->getDependencies('yii\\debug\\Modul...')
+#2 C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\di\Container.php(156): yii\di\Container->build('yii\\debug\\Modul...', Array, Array)
+#3 C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\BaseYii.php(349): yii\di\Container->get('yii\\debug\\Modul...', Array, Array)
+#4 C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\base\Module.php(427): yii\BaseYii::createObject(Array, Array)
+#5 C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\base\Application.php(315): yii\base\Module->getModule('debug')
+#6 C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\web\Application.php(69): yii\base\Application->bootstrap()
+#7 C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\base\Application.php(273): yii\web\Application->bootstrap()
+#8 C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\base\BaseObject.php(109): yii\base\Application->init()
+#9 C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\base\Application.php(206): yii\base\BaseObject->__construct(Array)
+#10 C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\web\index.php(12): yii\base\Application->__construct(Array)
+#11 {main}
+2019-01-12 19:34:31 [::1][-][-][trace][yii\base\View::renderFile] Rendering view file: C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\views\errorHandler\exception.php
+2019-01-12 19:34:31 [::1][-][-][trace][yii\base\View::renderFile] Rendering view file: C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\views\errorHandler\callStackItem.php
+2019-01-12 19:34:31 [::1][-][-][trace][yii\base\View::renderFile] Rendering view file: C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\views\errorHandler\callStackItem.php
+2019-01-12 19:34:31 [::1][-][-][trace][yii\base\View::renderFile] Rendering view file: C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\views\errorHandler\callStackItem.php
+2019-01-12 19:34:31 [::1][-][-][trace][yii\base\View::renderFile] Rendering view file: C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\views\errorHandler\callStackItem.php
+2019-01-12 19:34:31 [::1][-][-][trace][yii\base\View::renderFile] Rendering view file: C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\views\errorHandler\callStackItem.php
+2019-01-12 19:34:31 [::1][-][-][trace][yii\base\View::renderFile] Rendering view file: C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\views\errorHandler\callStackItem.php
+2019-01-12 19:34:31 [::1][-][-][trace][yii\base\View::renderFile] Rendering view file: C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\views\errorHandler\callStackItem.php
+2019-01-12 19:34:31 [::1][-][-][trace][yii\base\View::renderFile] Rendering view file: C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\views\errorHandler\callStackItem.php
+2019-01-12 19:34:31 [::1][-][-][trace][yii\base\View::renderFile] Rendering view file: C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\views\errorHandler\callStackItem.php
+2019-01-12 19:34:31 [::1][-][-][trace][yii\base\View::renderFile] Rendering view file: C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\views\errorHandler\callStackItem.php
+2019-01-12 19:34:31 [::1][-][-][trace][yii\base\View::renderFile] Rendering view file: C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\views\errorHandler\callStackItem.php
+2019-01-12 19:34:31 [::1][-][-][trace][yii\base\View::renderFile] Rendering view file: C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\views\errorHandler\callStackItem.php
+2019-01-12 19:34:38 [::1][-][-][trace][yii\base\Application::bootstrap] Bootstrap with bs\dbManager\Bootstrap::bootstrap()
+2019-01-12 19:34:38 [::1][-][-][trace][yii\base\Application::bootstrap] Bootstrap with yii\log\Dispatcher
+2019-01-12 19:34:38 [::1][-][-][trace][yii\base\Module::getModule] Loading module: debug
+2019-01-12 19:34:38 [::1][-][-][error][ReflectionException] ReflectionException: Class yii\debug\Module does not exist in C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\di\Container.php:428
+Stack trace:
+#0 C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\di\Container.php(428): ReflectionClass->__construct('yii\\debug\\Modul...')
+#1 C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\di\Container.php(364): yii\di\Container->getDependencies('yii\\debug\\Modul...')
+#2 C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\di\Container.php(156): yii\di\Container->build('yii\\debug\\Modul...', Array, Array)
+#3 C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\BaseYii.php(349): yii\di\Container->get('yii\\debug\\Modul...', Array, Array)
+#4 C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\base\Module.php(427): yii\BaseYii::createObject(Array, Array)
+#5 C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\base\Application.php(315): yii\base\Module->getModule('debug')
+#6 C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\web\Application.php(69): yii\base\Application->bootstrap()
+#7 C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\base\Application.php(273): yii\web\Application->bootstrap()
+#8 C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\base\BaseObject.php(109): yii\base\Application->init()
+#9 C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\base\Application.php(206): yii\base\BaseObject->__construct(Array)
+#10 C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\web\index.php(12): yii\base\Application->__construct(Array)
+#11 {main}
+2019-01-12 19:34:38 [::1][-][-][trace][yii\base\View::renderFile] Rendering view file: C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\views\errorHandler\exception.php
+2019-01-12 19:34:38 [::1][-][-][trace][yii\base\View::renderFile] Rendering view file: C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\views\errorHandler\callStackItem.php
+2019-01-12 19:34:38 [::1][-][-][trace][yii\base\View::renderFile] Rendering view file: C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\views\errorHandler\callStackItem.php
+2019-01-12 19:34:38 [::1][-][-][trace][yii\base\View::renderFile] Rendering view file: C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\views\errorHandler\callStackItem.php
+2019-01-12 19:34:38 [::1][-][-][trace][yii\base\View::renderFile] Rendering view file: C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\views\errorHandler\callStackItem.php
+2019-01-12 19:34:38 [::1][-][-][trace][yii\base\View::renderFile] Rendering view file: C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\views\errorHandler\callStackItem.php
+2019-01-12 19:34:38 [::1][-][-][trace][yii\base\View::renderFile] Rendering view file: C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\views\errorHandler\callStackItem.php
+2019-01-12 19:34:38 [::1][-][-][trace][yii\base\View::renderFile] Rendering view file: C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\views\errorHandler\callStackItem.php
+2019-01-12 19:34:38 [::1][-][-][trace][yii\base\View::renderFile] Rendering view file: C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\views\errorHandler\callStackItem.php
+2019-01-12 19:34:38 [::1][-][-][trace][yii\base\View::renderFile] Rendering view file: C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\views\errorHandler\callStackItem.php
+2019-01-12 19:34:38 [::1][-][-][trace][yii\base\View::renderFile] Rendering view file: C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\views\errorHandler\callStackItem.php
+2019-01-12 19:34:38 [::1][-][-][trace][yii\base\View::renderFile] Rendering view file: C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\views\errorHandler\callStackItem.php
+2019-01-12 19:34:38 [::1][-][-][trace][yii\base\View::renderFile] Rendering view file: C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\views\errorHandler\callStackItem.php
+2019-01-12 19:34:38 [::1][-][-][trace][yii\base\Application::bootstrap] Bootstrap with bs\dbManager\Bootstrap::bootstrap()
+2019-01-12 19:34:38 [::1][-][-][trace][yii\base\Application::bootstrap] Bootstrap with yii\log\Dispatcher
+2019-01-12 19:34:38 [::1][-][-][trace][yii\base\Module::getModule] Loading module: debug
+2019-01-12 19:34:38 [::1][-][-][error][ReflectionException] ReflectionException: Class yii\debug\Module does not exist in C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\di\Container.php:428
+Stack trace:
+#0 C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\di\Container.php(428): ReflectionClass->__construct('yii\\debug\\Modul...')
+#1 C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\di\Container.php(364): yii\di\Container->getDependencies('yii\\debug\\Modul...')
+#2 C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\di\Container.php(156): yii\di\Container->build('yii\\debug\\Modul...', Array, Array)
+#3 C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\BaseYii.php(349): yii\di\Container->get('yii\\debug\\Modul...', Array, Array)
+#4 C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\base\Module.php(427): yii\BaseYii::createObject(Array, Array)
+#5 C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\base\Application.php(315): yii\base\Module->getModule('debug')
+#6 C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\web\Application.php(69): yii\base\Application->bootstrap()
+#7 C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\base\Application.php(273): yii\web\Application->bootstrap()
+#8 C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\base\BaseObject.php(109): yii\base\Application->init()
+#9 C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\base\Application.php(206): yii\base\BaseObject->__construct(Array)
+#10 C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\web\index.php(12): yii\base\Application->__construct(Array)
+#11 {main}
+2019-01-12 19:34:38 [::1][-][-][trace][yii\base\View::renderFile] Rendering view file: C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\views\errorHandler\exception.php
+2019-01-12 19:34:38 [::1][-][-][trace][yii\base\View::renderFile] Rendering view file: C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\views\errorHandler\callStackItem.php
+2019-01-12 19:34:38 [::1][-][-][trace][yii\base\View::renderFile] Rendering view file: C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\views\errorHandler\callStackItem.php
+2019-01-12 19:34:38 [::1][-][-][trace][yii\base\View::renderFile] Rendering view file: C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\views\errorHandler\callStackItem.php
+2019-01-12 19:34:38 [::1][-][-][trace][yii\base\View::renderFile] Rendering view file: C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\views\errorHandler\callStackItem.php
+2019-01-12 19:34:38 [::1][-][-][trace][yii\base\View::renderFile] Rendering view file: C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\views\errorHandler\callStackItem.php
+2019-01-12 19:34:38 [::1][-][-][trace][yii\base\View::renderFile] Rendering view file: C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\views\errorHandler\callStackItem.php
+2019-01-12 19:34:38 [::1][-][-][trace][yii\base\View::renderFile] Rendering view file: C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\views\errorHandler\callStackItem.php
+2019-01-12 19:34:38 [::1][-][-][trace][yii\base\View::renderFile] Rendering view file: C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\views\errorHandler\callStackItem.php
+2019-01-12 19:34:38 [::1][-][-][trace][yii\base\View::renderFile] Rendering view file: C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\views\errorHandler\callStackItem.php
+2019-01-12 19:34:38 [::1][-][-][trace][yii\base\View::renderFile] Rendering view file: C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\views\errorHandler\callStackItem.php
+2019-01-12 19:34:38 [::1][-][-][trace][yii\base\View::renderFile] Rendering view file: C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\views\errorHandler\callStackItem.php
+2019-01-12 19:34:38 [::1][-][-][trace][yii\base\View::renderFile] Rendering view file: C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\views\errorHandler\callStackItem.php
+2019-01-12 19:34:39 [::1][-][-][trace][yii\base\Application::bootstrap] Bootstrap with bs\dbManager\Bootstrap::bootstrap()
+2019-01-12 19:34:39 [::1][-][-][trace][yii\base\Application::bootstrap] Bootstrap with yii\log\Dispatcher
+2019-01-12 19:34:39 [::1][-][-][trace][yii\base\Module::getModule] Loading module: debug
+2019-01-12 19:34:39 [::1][-][-][error][ReflectionException] ReflectionException: Class yii\debug\Module does not exist in C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\di\Container.php:428
+Stack trace:
+#0 C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\di\Container.php(428): ReflectionClass->__construct('yii\\debug\\Modul...')
+#1 C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\di\Container.php(364): yii\di\Container->getDependencies('yii\\debug\\Modul...')
+#2 C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\di\Container.php(156): yii\di\Container->build('yii\\debug\\Modul...', Array, Array)
+#3 C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\BaseYii.php(349): yii\di\Container->get('yii\\debug\\Modul...', Array, Array)
+#4 C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\base\Module.php(427): yii\BaseYii::createObject(Array, Array)
+#5 C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\base\Application.php(315): yii\base\Module->getModule('debug')
+#6 C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\web\Application.php(69): yii\base\Application->bootstrap()
+#7 C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\base\Application.php(273): yii\web\Application->bootstrap()
+#8 C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\base\BaseObject.php(109): yii\base\Application->init()
+#9 C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\base\Application.php(206): yii\base\BaseObject->__construct(Array)
+#10 C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\web\index.php(12): yii\base\Application->__construct(Array)
+#11 {main}
+2019-01-12 19:34:39 [::1][-][-][trace][yii\base\View::renderFile] Rendering view file: C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\views\errorHandler\exception.php
+2019-01-12 19:34:39 [::1][-][-][trace][yii\base\View::renderFile] Rendering view file: C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\views\errorHandler\callStackItem.php
+2019-01-12 19:34:39 [::1][-][-][trace][yii\base\View::renderFile] Rendering view file: C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\views\errorHandler\callStackItem.php
+2019-01-12 19:34:39 [::1][-][-][trace][yii\base\View::renderFile] Rendering view file: C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\views\errorHandler\callStackItem.php
+2019-01-12 19:34:39 [::1][-][-][trace][yii\base\View::renderFile] Rendering view file: C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\views\errorHandler\callStackItem.php
+2019-01-12 19:34:39 [::1][-][-][trace][yii\base\View::renderFile] Rendering view file: C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\views\errorHandler\callStackItem.php
+2019-01-12 19:34:39 [::1][-][-][trace][yii\base\View::renderFile] Rendering view file: C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\views\errorHandler\callStackItem.php
+2019-01-12 19:34:39 [::1][-][-][trace][yii\base\View::renderFile] Rendering view file: C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\views\errorHandler\callStackItem.php
+2019-01-12 19:34:39 [::1][-][-][trace][yii\base\View::renderFile] Rendering view file: C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\views\errorHandler\callStackItem.php
+2019-01-12 19:34:39 [::1][-][-][trace][yii\base\View::renderFile] Rendering view file: C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\views\errorHandler\callStackItem.php
+2019-01-12 19:34:39 [::1][-][-][trace][yii\base\View::renderFile] Rendering view file: C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\views\errorHandler\callStackItem.php
+2019-01-12 19:34:39 [::1][-][-][trace][yii\base\View::renderFile] Rendering view file: C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\views\errorHandler\callStackItem.php
+2019-01-12 19:34:39 [::1][-][-][trace][yii\base\View::renderFile] Rendering view file: C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\views\errorHandler\callStackItem.php
+2019-01-12 19:34:39 [::1][-][-][trace][yii\base\Application::bootstrap] Bootstrap with bs\dbManager\Bootstrap::bootstrap()
+2019-01-12 19:34:39 [::1][-][-][trace][yii\base\Application::bootstrap] Bootstrap with yii\log\Dispatcher
+2019-01-12 19:34:39 [::1][-][-][trace][yii\base\Module::getModule] Loading module: debug
+2019-01-12 19:34:39 [::1][-][-][error][ReflectionException] ReflectionException: Class yii\debug\Module does not exist in C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\di\Container.php:428
+Stack trace:
+#0 C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\di\Container.php(428): ReflectionClass->__construct('yii\\debug\\Modul...')
+#1 C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\di\Container.php(364): yii\di\Container->getDependencies('yii\\debug\\Modul...')
+#2 C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\di\Container.php(156): yii\di\Container->build('yii\\debug\\Modul...', Array, Array)
+#3 C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\BaseYii.php(349): yii\di\Container->get('yii\\debug\\Modul...', Array, Array)
+#4 C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\base\Module.php(427): yii\BaseYii::createObject(Array, Array)
+#5 C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\base\Application.php(315): yii\base\Module->getModule('debug')
+#6 C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\web\Application.php(69): yii\base\Application->bootstrap()
+#7 C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\base\Application.php(273): yii\web\Application->bootstrap()
+#8 C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\base\BaseObject.php(109): yii\base\Application->init()
+#9 C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\base\Application.php(206): yii\base\BaseObject->__construct(Array)
+#10 C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\web\index.php(12): yii\base\Application->__construct(Array)
+#11 {main}
+2019-01-12 19:34:39 [::1][-][-][trace][yii\base\View::renderFile] Rendering view file: C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\views\errorHandler\exception.php
+2019-01-12 19:34:39 [::1][-][-][trace][yii\base\View::renderFile] Rendering view file: C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\views\errorHandler\callStackItem.php
+2019-01-12 19:34:39 [::1][-][-][trace][yii\base\View::renderFile] Rendering view file: C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\views\errorHandler\callStackItem.php
+2019-01-12 19:34:39 [::1][-][-][trace][yii\base\View::renderFile] Rendering view file: C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\views\errorHandler\callStackItem.php
+2019-01-12 19:34:39 [::1][-][-][trace][yii\base\View::renderFile] Rendering view file: C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\views\errorHandler\callStackItem.php
+2019-01-12 19:34:39 [::1][-][-][trace][yii\base\View::renderFile] Rendering view file: C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\views\errorHandler\callStackItem.php
+2019-01-12 19:34:39 [::1][-][-][trace][yii\base\View::renderFile] Rendering view file: C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\views\errorHandler\callStackItem.php
+2019-01-12 19:34:39 [::1][-][-][trace][yii\base\View::renderFile] Rendering view file: C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\views\errorHandler\callStackItem.php
+2019-01-12 19:34:39 [::1][-][-][trace][yii\base\View::renderFile] Rendering view file: C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\views\errorHandler\callStackItem.php
+2019-01-12 19:34:39 [::1][-][-][trace][yii\base\View::renderFile] Rendering view file: C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\views\errorHandler\callStackItem.php
+2019-01-12 19:34:39 [::1][-][-][trace][yii\base\View::renderFile] Rendering view file: C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\views\errorHandler\callStackItem.php
+2019-01-12 19:34:39 [::1][-][-][trace][yii\base\View::renderFile] Rendering view file: C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\views\errorHandler\callStackItem.php
+2019-01-12 19:34:39 [::1][-][-][trace][yii\base\View::renderFile] Rendering view file: C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\views\errorHandler\callStackItem.php
+2019-01-12 19:34:45 [::1][-][-][trace][yii\base\Application::bootstrap] Bootstrap with bs\dbManager\Bootstrap::bootstrap()
+2019-01-12 19:34:45 [::1][-][-][trace][yii\base\Application::bootstrap] Bootstrap with yii\log\Dispatcher
+2019-01-12 19:34:45 [::1][-][-][trace][yii\base\Module::getModule] Loading module: debug
+2019-01-12 19:34:45 [::1][-][-][error][ReflectionException] ReflectionException: Class yii\debug\Module does not exist in C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\di\Container.php:428
+Stack trace:
+#0 C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\di\Container.php(428): ReflectionClass->__construct('yii\\debug\\Modul...')
+#1 C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\di\Container.php(364): yii\di\Container->getDependencies('yii\\debug\\Modul...')
+#2 C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\di\Container.php(156): yii\di\Container->build('yii\\debug\\Modul...', Array, Array)
+#3 C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\BaseYii.php(349): yii\di\Container->get('yii\\debug\\Modul...', Array, Array)
+#4 C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\base\Module.php(427): yii\BaseYii::createObject(Array, Array)
+#5 C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\base\Application.php(315): yii\base\Module->getModule('debug')
+#6 C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\web\Application.php(69): yii\base\Application->bootstrap()
+#7 C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\base\Application.php(273): yii\web\Application->bootstrap()
+#8 C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\base\BaseObject.php(109): yii\base\Application->init()
+#9 C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\base\Application.php(206): yii\base\BaseObject->__construct(Array)
+#10 C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\web\index.php(12): yii\base\Application->__construct(Array)
+#11 {main}
+2019-01-12 19:34:45 [::1][-][-][trace][yii\base\View::renderFile] Rendering view file: C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\views\errorHandler\exception.php
+2019-01-12 19:34:45 [::1][-][-][trace][yii\base\View::renderFile] Rendering view file: C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\views\errorHandler\callStackItem.php
+2019-01-12 19:34:45 [::1][-][-][trace][yii\base\View::renderFile] Rendering view file: C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\views\errorHandler\callStackItem.php
+2019-01-12 19:34:45 [::1][-][-][trace][yii\base\View::renderFile] Rendering view file: C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\views\errorHandler\callStackItem.php
+2019-01-12 19:34:45 [::1][-][-][trace][yii\base\View::renderFile] Rendering view file: C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\views\errorHandler\callStackItem.php
+2019-01-12 19:34:45 [::1][-][-][trace][yii\base\View::renderFile] Rendering view file: C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\views\errorHandler\callStackItem.php
+2019-01-12 19:34:45 [::1][-][-][trace][yii\base\View::renderFile] Rendering view file: C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\views\errorHandler\callStackItem.php
+2019-01-12 19:34:45 [::1][-][-][trace][yii\base\View::renderFile] Rendering view file: C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\views\errorHandler\callStackItem.php
+2019-01-12 19:34:45 [::1][-][-][trace][yii\base\View::renderFile] Rendering view file: C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\views\errorHandler\callStackItem.php
+2019-01-12 19:34:45 [::1][-][-][trace][yii\base\View::renderFile] Rendering view file: C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\views\errorHandler\callStackItem.php
+2019-01-12 19:34:45 [::1][-][-][trace][yii\base\View::renderFile] Rendering view file: C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\views\errorHandler\callStackItem.php
+2019-01-12 19:34:45 [::1][-][-][trace][yii\base\View::renderFile] Rendering view file: C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\views\errorHandler\callStackItem.php
+2019-01-12 19:34:45 [::1][-][-][trace][yii\base\View::renderFile] Rendering view file: C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\views\errorHandler\callStackItem.php
+2019-01-12 19:34:45 [::1][-][-][trace][yii\base\Application::bootstrap] Bootstrap with bs\dbManager\Bootstrap::bootstrap()
+2019-01-12 19:34:45 [::1][-][-][trace][yii\base\Application::bootstrap] Bootstrap with yii\log\Dispatcher
+2019-01-12 19:34:45 [::1][-][-][trace][yii\base\Module::getModule] Loading module: debug
+2019-01-12 19:34:45 [::1][-][-][error][ReflectionException] ReflectionException: Class yii\debug\Module does not exist in C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\di\Container.php:428
+Stack trace:
+#0 C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\di\Container.php(428): ReflectionClass->__construct('yii\\debug\\Modul...')
+#1 C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\di\Container.php(364): yii\di\Container->getDependencies('yii\\debug\\Modul...')
+#2 C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\di\Container.php(156): yii\di\Container->build('yii\\debug\\Modul...', Array, Array)
+#3 C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\BaseYii.php(349): yii\di\Container->get('yii\\debug\\Modul...', Array, Array)
+#4 C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\base\Module.php(427): yii\BaseYii::createObject(Array, Array)
+#5 C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\base\Application.php(315): yii\base\Module->getModule('debug')
+#6 C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\web\Application.php(69): yii\base\Application->bootstrap()
+#7 C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\base\Application.php(273): yii\web\Application->bootstrap()
+#8 C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\base\BaseObject.php(109): yii\base\Application->init()
+#9 C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\base\Application.php(206): yii\base\BaseObject->__construct(Array)
+#10 C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\web\index.php(12): yii\base\Application->__construct(Array)
+#11 {main}
+2019-01-12 19:34:45 [::1][-][-][trace][yii\base\View::renderFile] Rendering view file: C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\views\errorHandler\exception.php
+2019-01-12 19:34:45 [::1][-][-][trace][yii\base\View::renderFile] Rendering view file: C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\views\errorHandler\callStackItem.php
+2019-01-12 19:34:45 [::1][-][-][trace][yii\base\View::renderFile] Rendering view file: C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\views\errorHandler\callStackItem.php
+2019-01-12 19:34:45 [::1][-][-][trace][yii\base\View::renderFile] Rendering view file: C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\views\errorHandler\callStackItem.php
+2019-01-12 19:34:45 [::1][-][-][trace][yii\base\View::renderFile] Rendering view file: C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\views\errorHandler\callStackItem.php
+2019-01-12 19:34:45 [::1][-][-][trace][yii\base\View::renderFile] Rendering view file: C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\views\errorHandler\callStackItem.php
+2019-01-12 19:34:45 [::1][-][-][trace][yii\base\View::renderFile] Rendering view file: C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\views\errorHandler\callStackItem.php
+2019-01-12 19:34:45 [::1][-][-][trace][yii\base\View::renderFile] Rendering view file: C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\views\errorHandler\callStackItem.php
+2019-01-12 19:34:45 [::1][-][-][trace][yii\base\View::renderFile] Rendering view file: C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\views\errorHandler\callStackItem.php
+2019-01-12 19:34:45 [::1][-][-][trace][yii\base\View::renderFile] Rendering view file: C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\views\errorHandler\callStackItem.php
+2019-01-12 19:34:45 [::1][-][-][trace][yii\base\View::renderFile] Rendering view file: C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\views\errorHandler\callStackItem.php
+2019-01-12 19:34:45 [::1][-][-][trace][yii\base\View::renderFile] Rendering view file: C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\views\errorHandler\callStackItem.php
+2019-01-12 19:34:45 [::1][-][-][trace][yii\base\View::renderFile] Rendering view file: C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\views\errorHandler\callStackItem.php
+2019-01-12 19:34:46 [::1][-][-][trace][yii\base\Application::bootstrap] Bootstrap with bs\dbManager\Bootstrap::bootstrap()
+2019-01-12 19:34:46 [::1][-][-][trace][yii\base\Application::bootstrap] Bootstrap with yii\log\Dispatcher
+2019-01-12 19:34:46 [::1][-][-][trace][yii\base\Module::getModule] Loading module: debug
+2019-01-12 19:34:46 [::1][-][-][error][ReflectionException] ReflectionException: Class yii\debug\Module does not exist in C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\di\Container.php:428
+Stack trace:
+#0 C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\di\Container.php(428): ReflectionClass->__construct('yii\\debug\\Modul...')
+#1 C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\di\Container.php(364): yii\di\Container->getDependencies('yii\\debug\\Modul...')
+#2 C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\di\Container.php(156): yii\di\Container->build('yii\\debug\\Modul...', Array, Array)
+#3 C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\BaseYii.php(349): yii\di\Container->get('yii\\debug\\Modul...', Array, Array)
+#4 C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\base\Module.php(427): yii\BaseYii::createObject(Array, Array)
+#5 C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\base\Application.php(315): yii\base\Module->getModule('debug')
+#6 C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\web\Application.php(69): yii\base\Application->bootstrap()
+#7 C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\base\Application.php(273): yii\web\Application->bootstrap()
+#8 C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\base\BaseObject.php(109): yii\base\Application->init()
+#9 C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\base\Application.php(206): yii\base\BaseObject->__construct(Array)
+#10 C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\web\index.php(12): yii\base\Application->__construct(Array)
+#11 {main}
+2019-01-12 19:34:46 [::1][-][-][trace][yii\base\View::renderFile] Rendering view file: C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\views\errorHandler\exception.php
+2019-01-12 19:34:46 [::1][-][-][trace][yii\base\View::renderFile] Rendering view file: C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\views\errorHandler\callStackItem.php
+2019-01-12 19:34:46 [::1][-][-][trace][yii\base\View::renderFile] Rendering view file: C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\views\errorHandler\callStackItem.php
+2019-01-12 19:34:46 [::1][-][-][trace][yii\base\View::renderFile] Rendering view file: C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\views\errorHandler\callStackItem.php
+2019-01-12 19:34:46 [::1][-][-][trace][yii\base\View::renderFile] Rendering view file: C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\views\errorHandler\callStackItem.php
+2019-01-12 19:34:46 [::1][-][-][trace][yii\base\View::renderFile] Rendering view file: C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\views\errorHandler\callStackItem.php
+2019-01-12 19:34:46 [::1][-][-][trace][yii\base\View::renderFile] Rendering view file: C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\views\errorHandler\callStackItem.php
+2019-01-12 19:34:46 [::1][-][-][trace][yii\base\View::renderFile] Rendering view file: C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\views\errorHandler\callStackItem.php
+2019-01-12 19:34:46 [::1][-][-][trace][yii\base\View::renderFile] Rendering view file: C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\views\errorHandler\callStackItem.php
+2019-01-12 19:34:46 [::1][-][-][trace][yii\base\View::renderFile] Rendering view file: C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\views\errorHandler\callStackItem.php
+2019-01-12 19:34:46 [::1][-][-][trace][yii\base\View::renderFile] Rendering view file: C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\views\errorHandler\callStackItem.php
+2019-01-12 19:34:46 [::1][-][-][trace][yii\base\View::renderFile] Rendering view file: C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\views\errorHandler\callStackItem.php
+2019-01-12 19:34:46 [::1][-][-][trace][yii\base\View::renderFile] Rendering view file: C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\views\errorHandler\callStackItem.php
+2019-01-12 19:34:50 [::1][-][-][trace][yii\base\Application::bootstrap] Bootstrap with bs\dbManager\Bootstrap::bootstrap()
+2019-01-12 19:34:50 [::1][-][-][trace][yii\base\Application::bootstrap] Bootstrap with yii\log\Dispatcher
+2019-01-12 19:34:50 [::1][-][-][trace][yii\base\Module::getModule] Loading module: debug
+2019-01-12 19:34:50 [::1][-][-][error][ReflectionException] ReflectionException: Class yii\debug\Module does not exist in C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\di\Container.php:428
+Stack trace:
+#0 C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\di\Container.php(428): ReflectionClass->__construct('yii\\debug\\Modul...')
+#1 C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\di\Container.php(364): yii\di\Container->getDependencies('yii\\debug\\Modul...')
+#2 C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\di\Container.php(156): yii\di\Container->build('yii\\debug\\Modul...', Array, Array)
+#3 C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\BaseYii.php(349): yii\di\Container->get('yii\\debug\\Modul...', Array, Array)
+#4 C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\base\Module.php(427): yii\BaseYii::createObject(Array, Array)
+#5 C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\base\Application.php(315): yii\base\Module->getModule('debug')
+#6 C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\web\Application.php(69): yii\base\Application->bootstrap()
+#7 C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\base\Application.php(273): yii\web\Application->bootstrap()
+#8 C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\base\BaseObject.php(109): yii\base\Application->init()
+#9 C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\base\Application.php(206): yii\base\BaseObject->__construct(Array)
+#10 C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\web\index.php(12): yii\base\Application->__construct(Array)
+#11 {main}
+2019-01-12 19:34:50 [::1][-][-][trace][yii\base\View::renderFile] Rendering view file: C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\views\errorHandler\exception.php
+2019-01-12 19:34:50 [::1][-][-][trace][yii\base\View::renderFile] Rendering view file: C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\views\errorHandler\callStackItem.php
+2019-01-12 19:34:50 [::1][-][-][trace][yii\base\View::renderFile] Rendering view file: C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\views\errorHandler\callStackItem.php
+2019-01-12 19:34:50 [::1][-][-][trace][yii\base\View::renderFile] Rendering view file: C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\views\errorHandler\callStackItem.php
+2019-01-12 19:34:50 [::1][-][-][trace][yii\base\View::renderFile] Rendering view file: C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\views\errorHandler\callStackItem.php
+2019-01-12 19:34:50 [::1][-][-][trace][yii\base\View::renderFile] Rendering view file: C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\views\errorHandler\callStackItem.php
+2019-01-12 19:34:50 [::1][-][-][trace][yii\base\View::renderFile] Rendering view file: C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\views\errorHandler\callStackItem.php
+2019-01-12 19:34:50 [::1][-][-][trace][yii\base\View::renderFile] Rendering view file: C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\views\errorHandler\callStackItem.php
+2019-01-12 19:34:50 [::1][-][-][trace][yii\base\View::renderFile] Rendering view file: C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\views\errorHandler\callStackItem.php
+2019-01-12 19:34:50 [::1][-][-][trace][yii\base\View::renderFile] Rendering view file: C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\views\errorHandler\callStackItem.php
+2019-01-12 19:34:50 [::1][-][-][trace][yii\base\View::renderFile] Rendering view file: C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\views\errorHandler\callStackItem.php
+2019-01-12 19:34:50 [::1][-][-][trace][yii\base\View::renderFile] Rendering view file: C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\views\errorHandler\callStackItem.php
+2019-01-12 19:34:50 [::1][-][-][trace][yii\base\View::renderFile] Rendering view file: C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\views\errorHandler\callStackItem.php
+2019-01-12 19:34:51 [::1][-][-][trace][yii\base\Application::bootstrap] Bootstrap with bs\dbManager\Bootstrap::bootstrap()
+2019-01-12 19:34:51 [::1][-][-][trace][yii\base\Application::bootstrap] Bootstrap with yii\log\Dispatcher
+2019-01-12 19:34:51 [::1][-][-][trace][yii\base\Module::getModule] Loading module: debug
+2019-01-12 19:34:51 [::1][-][-][error][ReflectionException] ReflectionException: Class yii\debug\Module does not exist in C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\di\Container.php:428
+Stack trace:
+#0 C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\di\Container.php(428): ReflectionClass->__construct('yii\\debug\\Modul...')
+#1 C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\di\Container.php(364): yii\di\Container->getDependencies('yii\\debug\\Modul...')
+#2 C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\di\Container.php(156): yii\di\Container->build('yii\\debug\\Modul...', Array, Array)
+#3 C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\BaseYii.php(349): yii\di\Container->get('yii\\debug\\Modul...', Array, Array)
+#4 C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\base\Module.php(427): yii\BaseYii::createObject(Array, Array)
+#5 C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\base\Application.php(315): yii\base\Module->getModule('debug')
+#6 C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\web\Application.php(69): yii\base\Application->bootstrap()
+#7 C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\base\Application.php(273): yii\web\Application->bootstrap()
+#8 C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\base\BaseObject.php(109): yii\base\Application->init()
+#9 C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\base\Application.php(206): yii\base\BaseObject->__construct(Array)
+#10 C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\web\index.php(12): yii\base\Application->__construct(Array)
+#11 {main}
+2019-01-12 19:34:51 [::1][-][-][trace][yii\base\View::renderFile] Rendering view file: C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\views\errorHandler\exception.php
+2019-01-12 19:34:51 [::1][-][-][trace][yii\base\View::renderFile] Rendering view file: C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\views\errorHandler\callStackItem.php
+2019-01-12 19:34:51 [::1][-][-][trace][yii\base\View::renderFile] Rendering view file: C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\views\errorHandler\callStackItem.php
+2019-01-12 19:34:51 [::1][-][-][trace][yii\base\View::renderFile] Rendering view file: C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\views\errorHandler\callStackItem.php
+2019-01-12 19:34:51 [::1][-][-][trace][yii\base\View::renderFile] Rendering view file: C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\views\errorHandler\callStackItem.php
+2019-01-12 19:34:51 [::1][-][-][trace][yii\base\View::renderFile] Rendering view file: C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\views\errorHandler\callStackItem.php
+2019-01-12 19:34:51 [::1][-][-][trace][yii\base\View::renderFile] Rendering view file: C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\views\errorHandler\callStackItem.php
+2019-01-12 19:34:51 [::1][-][-][trace][yii\base\View::renderFile] Rendering view file: C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\views\errorHandler\callStackItem.php
+2019-01-12 19:34:51 [::1][-][-][trace][yii\base\View::renderFile] Rendering view file: C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\views\errorHandler\callStackItem.php
+2019-01-12 19:34:51 [::1][-][-][trace][yii\base\View::renderFile] Rendering view file: C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\views\errorHandler\callStackItem.php
+2019-01-12 19:34:51 [::1][-][-][trace][yii\base\View::renderFile] Rendering view file: C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\views\errorHandler\callStackItem.php
+2019-01-12 19:34:51 [::1][-][-][trace][yii\base\View::renderFile] Rendering view file: C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\views\errorHandler\callStackItem.php
+2019-01-12 19:34:51 [::1][-][-][trace][yii\base\View::renderFile] Rendering view file: C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\views\errorHandler\callStackItem.php
+2019-01-12 19:35:26 [::1][-][-][trace][yii\base\Application::bootstrap] Bootstrap with bs\dbManager\Bootstrap::bootstrap()
+2019-01-12 19:35:26 [::1][-][-][trace][yii\base\Application::bootstrap] Bootstrap with yii\log\Dispatcher
+2019-01-12 19:35:26 [::1][-][-][trace][yii\base\Module::getModule] Loading module: debug
+2019-01-12 19:35:26 [::1][-][-][trace][yii\base\Application::bootstrap] Bootstrap with yii\debug\Module::bootstrap()
+2019-01-12 19:35:26 [::1][-][-][trace][yii\base\Module::getModule] Loading module: gii
+2019-01-12 19:35:26 [::1][-][-][trace][yii\base\Application::bootstrap] Bootstrap with yii\gii\Module::bootstrap()
+2019-01-12 19:35:26 [::1][-][-][trace][yii\web\UrlManager::parseRequest] Pretty URL not enabled. Using default URL parsing logic.
+2019-01-12 19:35:26 [::1][-][-][trace][yii\web\Application::handleRequest] Route requested: ''
+2019-01-12 19:35:26 [::1][-][-][trace][yii\base\Controller::runAction] Route to run: site/index
+2019-01-12 19:35:26 [::1][-][-][trace][yii\base\InlineAction::runWithParams] Running action: app\controllers\SiteController::actionIndex()
+2019-01-12 19:35:26 [::1][-][-][trace][yii\base\View::renderFile] Rendering view file: C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\views\site\index.php
+    in C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\controllers\SiteController.php:64
+2019-01-12 19:35:26 [::1][-][-][trace][yii\base\View::renderFile] Rendering view file: C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\themes\iphone7-yii2-1473294825\layouts\main.php
+    in C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\controllers\SiteController.php:64
+2019-01-12 19:36:14 [::1][-][-][trace][yii\base\Application::bootstrap] Bootstrap with bs\dbManager\Bootstrap::bootstrap()
+2019-01-12 19:36:14 [::1][-][-][trace][yii\base\Application::bootstrap] Bootstrap with yii\log\Dispatcher
+2019-01-12 19:36:14 [::1][-][-][trace][yii\base\Module::getModule] Loading module: debug
+2019-01-12 19:36:14 [::1][-][-][trace][yii\base\Application::bootstrap] Bootstrap with yii\debug\Module::bootstrap()
+2019-01-12 19:36:14 [::1][-][-][trace][yii\base\Module::getModule] Loading module: gii
+2019-01-12 19:36:14 [::1][-][-][trace][yii\base\Application::bootstrap] Bootstrap with yii\gii\Module::bootstrap()
+2019-01-12 19:36:14 [::1][-][-][trace][yii\web\UrlManager::parseRequest] Pretty URL not enabled. Using default URL parsing logic.
+2019-01-12 19:36:14 [::1][-][-][trace][yii\web\Application::handleRequest] Route requested: ''
+2019-01-12 19:36:14 [::1][-][-][trace][yii\base\Controller::runAction] Route to run: site/index
+2019-01-12 19:36:14 [::1][-][-][trace][yii\base\InlineAction::runWithParams] Running action: app\controllers\SiteController::actionIndex()
+2019-01-12 19:36:14 [::1][-][-][trace][yii\base\View::renderFile] Rendering view file: C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\views\site\index.php
+    in C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\controllers\SiteController.php:64
+2019-01-12 19:36:14 [::1][-][-][trace][yii\base\View::renderFile] Rendering view file: C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\themes\iphone7-yii2-1473294825\layouts\main.php
+    in C:\xampp\htdocs\daw2_prueba\daw2-2018-ofertas-y-chollos\basic\controllers\SiteController.php:64
