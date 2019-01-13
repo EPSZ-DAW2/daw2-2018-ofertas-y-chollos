@@ -58,13 +58,13 @@ $this->params['breadcrumbs'][] = $this->title;
 			'columns' => [
 				['class' => 'yii\grid\SerialColumn'],
 
-				//'id',
-				'titulo:ntext',
-				/*[
-					'label' => 'Título',
-					'format'=> 'raw',
-					//'value' => Html::a(Yii::t('app', 'titulo:ntext'), ['anuncios/view', 'id' => $model->id]),
-				],*/
+				'id',
+				//'titulo:ntext',
+				[ 
+					'attribute' => 'titulo', 
+					'format' => 'raw', 
+					'value' => function ($model) { return Html::a($model->titulo, [ 'anuncios/view', 'id' => $model->id ]); }, 
+				],
 				'descripcion:ntext',
 				'crea_fecha',
 				'tienda:ntext',

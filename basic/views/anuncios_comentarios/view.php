@@ -56,22 +56,22 @@ $this->params['breadcrumbs'][] = $this->title;
 	<div style="overflow-x:auto;">	
 		<?= GridView::widget([
 			'dataProvider' => new ActiveDataProvider([
-				'query' => $model->getAnuncios(),  //devuelve "ActiveQuery" de Ficheros
+				'query' => $model->getAnuncios(),  //devuelve "ActiveQuery" de Anuncios
 				//'pagination'=>false,
 				'sort'=>false,
 			]),
 			//'filterModel' => $searchModel,
-			'summary' => '<h3>Anuncios publicados</h3>',
+			'summary' => '<h3>Anuncio</h3>',
 			'columns' => [
 				['class' => 'yii\grid\SerialColumn'],
 
-				//'id',
-				'titulo:ntext',
-				/*[
-					'label' => 'Titulo',
-					'format'=> 'raw',
-					//'value' => Html::a(Yii::t('app', 'titulo:ntext'), ['anuncios/view', 'id' => $model->id]),
-				],*/
+				'id',
+				//'titulo:ntext',
+				[ 
+					'attribute' => 'titulo', 
+					'format' => 'raw', 
+					'value' => function ($model) { return Html::a($model->titulo, [ 'anuncios/view', 'id' => $model->id ]); }, 
+				],
 				'descripcion:ntext',
 				'crea_fecha',
 				'tienda:ntext',

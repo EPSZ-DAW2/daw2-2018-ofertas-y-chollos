@@ -76,8 +76,8 @@ use yii\widgets\Breadcrumbs;
                 <!--Collapse content-->
                 <div class="collapse navbar-toggleable-xs" id="collapseEx">
                     <!--Navbar Brand-->
-                    <a class="navbar-brand" href="#" target="_blank"><?php echo Html::encode(\Yii::$app->name); ?></a>
-                    <!--Links-->
+                    <?= Html::a(Yii::t('app', Html::encode(\Yii::$app->name)), ['site/index'], ['class' => 'navbar-brand']) ?>
+					<!--Links-->
                     <?php
       				        echo Menu::widget([
       				          'options' => [
@@ -85,14 +85,13 @@ use yii\widgets\Breadcrumbs;
       				            "class" => "nav navbar-nav"
       				          ],
     				            'items' => [
-									['label' => 'Home', 'url' => ['site/index'], "options" => [ "class" => "nav-item"]],
-									['label' => 'About', 'url' => ['site/about'], "options" => [ "class" => "nav-item"]],
-									['label' => 'Contact', 'url' => ['site/contact'], "options" => [ "class" => "nav-item"]],
-									['label' => 'Comentarios', 'url' => ['/anuncios_comentarios/index'], "options" => [ "class" => "nav-item"]],
-									['label' => 'Avisos', 'url' => ['/usuarios-avisos/index'], "options" => [ "class" => "nav-item"]],
-									['label' => 'Logs', 'url' => ['/registros/index'], "options" => [ "class" => "nav-item"]],
+									['label' => 'About', 'url' => ['site/about'], 'options' => [ "class" => "nav-item"]],
+									['label' => 'Contact', 'url' => ['site/contact'], 'options' => [ "class" => "nav-item"]],
+									['label' => 'Gestión', 'url' => ['gestion/index'],'options' => [ "class" => "nav-item"],
+										//'visible'=>Yii::$app->user->can('administrador')
+									],
 									Yii::$app->user->isGuest ? (
-										['label' => 'Conectar', 'url' => ['/usuarios/login'], "options" => [ "class" => "nav-item"]]
+										['label' => 'Conectar', 'url' => ['/usuarios/login'], 'options' => [ "class" => "nav-item"]]
 									) : (
 										'<li>'
 										. Html::beginForm(['/usuarios/logout'], 'post')
