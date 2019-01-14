@@ -7,6 +7,13 @@ use yii\widgets\Pjax;
 
 $this->title = Yii::t('app', 'Anuncios');
 ?>
+
+<style>
+ li {
+  display:inline;
+  margin: 1px;
+}
+</style>
 <div class="anuncio-index">
 
     <h1><?= Html::encode($this->title) ?></h1>
@@ -15,7 +22,8 @@ $this->title = Yii::t('app', 'Anuncios');
 
     <?= ListView::widget([
         'dataProvider' => $dataProvider,
-        'itemView' => '_anunciosMini'
+        'itemView' => '_anunciosMini',
+        'layout' => '<div class="container container-fluid">{items}</div> <div>{pager}{summary}</div>'
     ]); ?>    
 
     <?php Pjax::end(); ?>
