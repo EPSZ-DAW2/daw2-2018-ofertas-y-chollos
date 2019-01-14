@@ -204,7 +204,7 @@ class AnunciosController extends Controller
         $dataProvider = new ActiveDataProvider([
             'query' => Anuncio::find(),
             'pagination' => [
-        'pageSize' => 1,
+            'pageSize' => 20,
         ],
 ]);
 
