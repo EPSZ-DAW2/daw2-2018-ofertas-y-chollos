@@ -4,13 +4,13 @@ use yii\helpers\Html;
 
 
 /* @var $this yii\web\View */
-/* @var $model app\models\Categoria */
+/* @var $model app\models\Categorias */
 
-$this->title = Yii::t('app', 'Create Categoria');
+$this->title = Yii::t('app', 'Crear Categoria');
 $this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Categorias'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="categoria-create">
+<div class="categorias-create">
 
     <h1><?= Html::encode($this->title) ?></h1>
 
