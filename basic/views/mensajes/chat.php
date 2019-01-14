@@ -7,7 +7,6 @@ use yii\widgets\ActiveForm;
 /* @var $this yii\web\View */
 /* @var $searchModel app\models\MensajesSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
-
     $id=Yii::$app->user->id;
     if($mensajes[0]->origen_usuario_id!=$id)
     {
@@ -26,6 +25,8 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <h1><?= Html::encode($this->title) ?></h1>
     <?php Pjax::begin(); ?>
+	<?= Html::a("Refresh", ['actualizar', 'id_destino' => $destino], ['class' => 'btn btn-lg btn-primary','id' => 'refreshButton','style'=> 'visibility: hidden;' ]) ?>
+
     <div id='chat' style="max-height: 400px; height:400px; overflow-y: scroll; padding: 20px;">
     <?php
         foreach ($mensajes as $mensaje)
@@ -45,8 +46,20 @@ $this->params['breadcrumbs'][] = $this->title;
     ?>
     </div>
 
-    
+
+
+
+    <?= time()?>
     <?php Pjax::end(); ?>
+        <?php
+$script = <<< JS
+$(document).ready(function() {
+    setInterval(function(){ $("#refreshButton").click(); }, 10000);
+    $("#chat").animate({ scrollTop: $('#chat')[0].scrollHeight},0);
+});
+JS;
+$this->registerJs($script);
+?>
     
     <?php $form = ActiveForm::begin(['action' => ['enviar'],]); ?>
     <?= $form->field($model, 'texto')->textarea(['rows' => 6]) ?>
@@ -55,27 +68,3 @@ $this->params['breadcrumbs'][] = $this->title;
     <?= Html::submitButton(Yii::t('app', 'Enviar'), ['class' => 'btn btn-success']) ?>
     <?php ActiveForm::end(); ?>
 </div>
-<script>
-    
-    (function () {
-    var chatBox, message, sendButton, messageItem;
-
-    chatBox = document.querySelector('#chat');
-    message = document.querySelector('#message');
-    sendButton = document.querySelector('#send-message');
-
-    sendButton.addEventListener('click', function () {
-        console.log(message.value);
-        messageItem = document.createElement('div');
-        messageItem.innerHTML = message.value
-            .replace('<', '&lt;')
-            .replace('>', '&gt;')
-            .replace('"', '&quot;');
-        chatBox.appendChild(messageItem);
-
-        // aca lo interesante
-        chatBox.scrollTop = chatBox.scrollHeight;
-    });
-
-})();
-    </script>

@@ -75,7 +75,7 @@ class MensajesController extends Controller
         ]);
     }
 
-    public function actionActualizar($id_destino=null)
+    public function actionActualizar($id_destino)
     {
         $model=new Mensaje();
         $id_origen=Yii::$app->user->id;
@@ -87,6 +87,11 @@ class MensajesController extends Controller
             $_SESSION['mensajes'][$id_destino][]=$mensaje;
             $mensaje->delete();
         }
+
+             return $this->render('chat', [
+            'mensajes'=>$_SESSION['mensajes'][$id_destino],
+            'model'=>new Mensaje(),
+        ]);
     }
 
     //Función que iniciará el chat entre dos usuarios
