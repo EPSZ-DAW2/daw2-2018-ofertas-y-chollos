@@ -10575,3 +10575,197 @@ AND rc.table_name = 'Zonas' AND kcu.table_name = 'Zonas'
     in C:\xampp\htdocs\daw2\basic\controllers\ZonasController.php:53
 2019-01-12 23:32:35 [::1][-][-][trace][yii\base\View::renderFile] Rendering view file: C:\xampp\htdocs\daw2\basic\themes\iphone7-yii2-1473294825\layouts\main.php
     in C:\xampp\htdocs\daw2\basic\controllers\ZonasController.php:53
+2019-01-13 17:11:51 [::1][-][-][trace][yii\base\Application::bootstrap] Bootstrap with bs\dbManager\Bootstrap::bootstrap()
+2019-01-13 17:11:51 [::1][-][-][trace][yii\base\Application::bootstrap] Bootstrap with yii\log\Dispatcher
+2019-01-13 17:11:51 [::1][-][-][trace][yii\base\Module::getModule] Loading module: debug
+2019-01-13 17:11:51 [::1][-][-][trace][yii\base\Application::bootstrap] Bootstrap with yii\debug\Module::bootstrap()
+2019-01-13 17:11:51 [::1][-][-][trace][yii\base\Module::getModule] Loading module: gii
+2019-01-13 17:11:51 [::1][-][-][trace][yii\base\Application::bootstrap] Bootstrap with yii\gii\Module::bootstrap()
+2019-01-13 17:11:51 [::1][-][-][trace][yii\web\UrlManager::parseRequest] Pretty URL not enabled. Using default URL parsing logic.
+2019-01-13 17:11:51 [::1][-][-][trace][yii\web\Application::handleRequest] Route requested: ''
+2019-01-13 17:11:51 [::1][-][-][trace][yii\base\Controller::runAction] Route to run: site/index
+2019-01-13 17:11:51 [::1][-][-][trace][yii\base\InlineAction::runWithParams] Running action: app\controllers\SiteController::actionIndex()
+2019-01-13 17:11:51 [::1][-][-][trace][yii\base\View::renderFile] Rendering view file: C:\xampp\htdocs\daw2_trabajo_final_ofertas_y_chollos\daw2-2018-ofertas-y-chollos\basic\views\site\index.php
+    in C:\xampp\htdocs\daw2_trabajo_final_ofertas_y_chollos\daw2-2018-ofertas-y-chollos\basic\controllers\SiteController.php:64
+2019-01-13 17:11:51 [::1][-][-][trace][yii\base\View::renderFile] Rendering view file: C:\xampp\htdocs\daw2_trabajo_final_ofertas_y_chollos\daw2-2018-ofertas-y-chollos\basic\themes\iphone7-yii2-1473294825\layouts\main.php
+    in C:\xampp\htdocs\daw2_trabajo_final_ofertas_y_chollos\daw2-2018-ofertas-y-chollos\basic\controllers\SiteController.php:64
+2019-01-13 17:13:07 [::1][-][-][trace][yii\base\Application::bootstrap] Bootstrap with bs\dbManager\Bootstrap::bootstrap()
+2019-01-13 17:13:07 [::1][-][-][trace][yii\base\Application::bootstrap] Bootstrap with yii\log\Dispatcher
+2019-01-13 17:13:07 [::1][-][-][trace][yii\base\Module::getModule] Loading module: debug
+2019-01-13 17:13:07 [::1][-][-][trace][yii\base\Application::bootstrap] Bootstrap with yii\debug\Module::bootstrap()
+2019-01-13 17:13:07 [::1][-][-][trace][yii\base\Module::getModule] Loading module: gii
+2019-01-13 17:13:07 [::1][-][-][trace][yii\base\Application::bootstrap] Bootstrap with yii\gii\Module::bootstrap()
+2019-01-13 17:13:07 [::1][-][-][trace][yii\web\UrlManager::parseRequest] Pretty URL not enabled. Using default URL parsing logic.
+2019-01-13 17:13:07 [::1][-][-][trace][yii\web\Application::handleRequest] Route requested: 'gestion/index'
+2019-01-13 17:13:07 [::1][-][-][trace][yii\base\Controller::runAction] Route to run: gestion/index
+2019-01-13 17:13:07 [::1][-][-][trace][yii\base\InlineAction::runWithParams] Running action: app\controllers\GestionController::actionIndex()
+2019-01-13 17:13:07 [::1][-][-][info][yii\db\Command::query] SHOW FULL COLUMNS FROM `registros`
+    in C:\xampp\htdocs\daw2_trabajo_final_ofertas_y_chollos\daw2-2018-ofertas-y-chollos\basic\models\RegistrosSearch.php:53
+    in C:\xampp\htdocs\daw2_trabajo_final_ofertas_y_chollos\daw2-2018-ofertas-y-chollos\basic\controllers\GestionController.php:65
+2019-01-13 17:13:07 [::1][-][-][info][yii\db\Connection::open] Opening DB connection: mysql:host=localhost;dbname=daw2_ofertas
+    in C:\xampp\htdocs\daw2_trabajo_final_ofertas_y_chollos\daw2-2018-ofertas-y-chollos\basic\models\RegistrosSearch.php:53
+    in C:\xampp\htdocs\daw2_trabajo_final_ofertas_y_chollos\daw2-2018-ofertas-y-chollos\basic\controllers\GestionController.php:65
+2019-01-13 17:13:07 [::1][-][-][info][yii\db\Command::query] SELECT
+    kcu.constraint_name,
+    kcu.column_name,
+    kcu.referenced_table_name,
+    kcu.referenced_column_name
+FROM information_schema.referential_constraints AS rc
+JOIN information_schema.key_column_usage AS kcu ON
+    (
+        kcu.constraint_catalog = rc.constraint_catalog OR
+        (kcu.constraint_catalog IS NULL AND rc.constraint_catalog IS NULL)
+    ) AND
+    kcu.constraint_schema = rc.constraint_schema AND
+    kcu.constraint_name = rc.constraint_name
+WHERE rc.constraint_schema = database() AND kcu.table_schema = database()
+AND rc.table_name = 'registros' AND kcu.table_name = 'registros'
+    in C:\xampp\htdocs\daw2_trabajo_final_ofertas_y_chollos\daw2-2018-ofertas-y-chollos\basic\models\RegistrosSearch.php:53
+    in C:\xampp\htdocs\daw2_trabajo_final_ofertas_y_chollos\daw2-2018-ofertas-y-chollos\basic\controllers\GestionController.php:65
+2019-01-13 17:13:07 [::1][-][-][trace][yii\base\View::renderFile] Rendering view file: C:\xampp\htdocs\daw2_trabajo_final_ofertas_y_chollos\daw2-2018-ofertas-y-chollos\basic\views\gestion\index.php
+    in C:\xampp\htdocs\daw2_trabajo_final_ofertas_y_chollos\daw2-2018-ofertas-y-chollos\basic\controllers\GestionController.php:67
+2019-01-13 17:13:07 [::1][-][-][info][yii\db\Command::query] SELECT COUNT(*) FROM `registros`
+    in C:\xampp\htdocs\daw2_trabajo_final_ofertas_y_chollos\daw2-2018-ofertas-y-chollos\basic\views\gestion\index.php:68
+    in C:\xampp\htdocs\daw2_trabajo_final_ofertas_y_chollos\daw2-2018-ofertas-y-chollos\basic\controllers\GestionController.php:67
+2019-01-13 17:13:07 [::1][-][-][trace][yii\base\View::renderFile] Rendering view file: C:\xampp\htdocs\daw2_trabajo_final_ofertas_y_chollos\daw2-2018-ofertas-y-chollos\basic\themes\iphone7-yii2-1473294825\layouts\main.php
+    in C:\xampp\htdocs\daw2_trabajo_final_ofertas_y_chollos\daw2-2018-ofertas-y-chollos\basic\controllers\GestionController.php:67
+2019-01-13 17:13:15 [::1][-][-][trace][yii\base\Application::bootstrap] Bootstrap with bs\dbManager\Bootstrap::bootstrap()
+2019-01-13 17:13:15 [::1][-][-][trace][yii\base\Application::bootstrap] Bootstrap with yii\log\Dispatcher
+2019-01-13 17:13:15 [::1][-][-][trace][yii\base\Module::getModule] Loading module: debug
+2019-01-13 17:13:15 [::1][-][-][trace][yii\base\Application::bootstrap] Bootstrap with yii\debug\Module::bootstrap()
+2019-01-13 17:13:15 [::1][-][-][trace][yii\base\Module::getModule] Loading module: gii
+2019-01-13 17:13:15 [::1][-][-][trace][yii\base\Application::bootstrap] Bootstrap with yii\gii\Module::bootstrap()
+2019-01-13 17:13:15 [::1][-][-][trace][yii\web\UrlManager::parseRequest] Pretty URL not enabled. Using default URL parsing logic.
+2019-01-13 17:13:15 [::1][-][-][trace][yii\web\Application::handleRequest] Route requested: 'usuarios/login'
+2019-01-13 17:13:15 [::1][-][-][trace][yii\base\Controller::runAction] Route to run: usuarios/login
+2019-01-13 17:13:15 [::1][-][-][trace][yii\base\InlineAction::runWithParams] Running action: app\controllers\UsuariosController::actionLogin()
+2019-01-13 17:13:15 [::1][-][-][trace][yii\base\View::renderFile] Rendering view file: C:\xampp\htdocs\daw2_trabajo_final_ofertas_y_chollos\daw2-2018-ofertas-y-chollos\basic\views\usuarios\login.php
+    in C:\xampp\htdocs\daw2_trabajo_final_ofertas_y_chollos\daw2-2018-ofertas-y-chollos\basic\controllers\UsuariosController.php:235
+2019-01-13 17:13:15 [::1][-][-][trace][yii\base\View::renderFile] Rendering view file: C:\xampp\htdocs\daw2_trabajo_final_ofertas_y_chollos\daw2-2018-ofertas-y-chollos\basic\themes\iphone7-yii2-1473294825\layouts\main.php
+    in C:\xampp\htdocs\daw2_trabajo_final_ofertas_y_chollos\daw2-2018-ofertas-y-chollos\basic\controllers\UsuariosController.php:235
+2019-01-13 17:16:42 [::1][-][-][trace][yii\base\Application::bootstrap] Bootstrap with bs\dbManager\Bootstrap::bootstrap()
+2019-01-13 17:16:42 [::1][-][-][trace][yii\base\Application::bootstrap] Bootstrap with yii\log\Dispatcher
+2019-01-13 17:16:42 [::1][-][-][trace][yii\base\Module::getModule] Loading module: debug
+2019-01-13 17:16:42 [::1][-][-][trace][yii\base\Application::bootstrap] Bootstrap with yii\debug\Module::bootstrap()
+2019-01-13 17:16:42 [::1][-][-][trace][yii\base\Module::getModule] Loading module: gii
+2019-01-13 17:16:42 [::1][-][-][trace][yii\base\Application::bootstrap] Bootstrap with yii\gii\Module::bootstrap()
+2019-01-13 17:16:42 [::1][-][-][trace][yii\web\UrlManager::parseRequest] Pretty URL not enabled. Using default URL parsing logic.
+2019-01-13 17:16:42 [::1][-][-][trace][yii\web\Application::handleRequest] Route requested: 'categoria'
+2019-01-13 17:16:42 [::1][-][-][trace][yii\base\Controller::runAction] Route to run: categoria/index
+2019-01-13 17:16:42 [::1][-][-][trace][yii\base\InlineAction::runWithParams] Running action: app\controllers\CategoriaController::actionIndex()
+2019-01-13 17:16:42 [::1][-][-][info][yii\db\Command::query] SHOW FULL COLUMNS FROM `categorias`
+    in C:\xampp\htdocs\daw2_trabajo_final_ofertas_y_chollos\daw2-2018-ofertas-y-chollos\basic\models\CategoriaSearch.php:54
+    in C:\xampp\htdocs\daw2_trabajo_final_ofertas_y_chollos\daw2-2018-ofertas-y-chollos\basic\controllers\CategoriaController.php:39
+2019-01-13 17:16:42 [::1][-][-][info][yii\db\Connection::open] Opening DB connection: mysql:host=localhost;dbname=daw2_ofertas
+    in C:\xampp\htdocs\daw2_trabajo_final_ofertas_y_chollos\daw2-2018-ofertas-y-chollos\basic\models\CategoriaSearch.php:54
+    in C:\xampp\htdocs\daw2_trabajo_final_ofertas_y_chollos\daw2-2018-ofertas-y-chollos\basic\controllers\CategoriaController.php:39
+2019-01-13 17:16:42 [::1][-][-][info][yii\db\Command::query] SELECT
+    kcu.constraint_name,
+    kcu.column_name,
+    kcu.referenced_table_name,
+    kcu.referenced_column_name
+FROM information_schema.referential_constraints AS rc
+JOIN information_schema.key_column_usage AS kcu ON
+    (
+        kcu.constraint_catalog = rc.constraint_catalog OR
+        (kcu.constraint_catalog IS NULL AND rc.constraint_catalog IS NULL)
+    ) AND
+    kcu.constraint_schema = rc.constraint_schema AND
+    kcu.constraint_name = rc.constraint_name
+WHERE rc.constraint_schema = database() AND kcu.table_schema = database()
+AND rc.table_name = 'categorias' AND kcu.table_name = 'categorias'
+    in C:\xampp\htdocs\daw2_trabajo_final_ofertas_y_chollos\daw2-2018-ofertas-y-chollos\basic\models\CategoriaSearch.php:54
+    in C:\xampp\htdocs\daw2_trabajo_final_ofertas_y_chollos\daw2-2018-ofertas-y-chollos\basic\controllers\CategoriaController.php:39
+2019-01-13 17:16:42 [::1][-][-][trace][yii\base\View::renderFile] Rendering view file: C:\xampp\htdocs\daw2_trabajo_final_ofertas_y_chollos\daw2-2018-ofertas-y-chollos\basic\views\categoria\index.php
+    in C:\xampp\htdocs\daw2_trabajo_final_ofertas_y_chollos\daw2-2018-ofertas-y-chollos\basic\controllers\CategoriaController.php:43
+2019-01-13 17:16:42 [::1][-][-][info][yii\db\Command::query] SELECT COUNT(*) FROM `categorias`
+    in C:\xampp\htdocs\daw2_trabajo_final_ofertas_y_chollos\daw2-2018-ofertas-y-chollos\basic\views\categoria\index.php:23
+    in C:\xampp\htdocs\daw2_trabajo_final_ofertas_y_chollos\daw2-2018-ofertas-y-chollos\basic\controllers\CategoriaController.php:43
+2019-01-13 17:16:42 [::1][-][-][info][yii\db\Command::query] SELECT * FROM `categorias` LIMIT 20
+    in C:\xampp\htdocs\daw2_trabajo_final_ofertas_y_chollos\daw2-2018-ofertas-y-chollos\basic\models\CategoriasQuery.php:23
+    in C:\xampp\htdocs\daw2_trabajo_final_ofertas_y_chollos\daw2-2018-ofertas-y-chollos\basic\views\categoria\index.php:23
+    in C:\xampp\htdocs\daw2_trabajo_final_ofertas_y_chollos\daw2-2018-ofertas-y-chollos\basic\controllers\CategoriaController.php:43
+2019-01-13 17:16:42 [::1][-][-][trace][yii\base\View::renderFile] Rendering view file: C:\xampp\htdocs\daw2_trabajo_final_ofertas_y_chollos\daw2-2018-ofertas-y-chollos\basic\themes\iphone7-yii2-1473294825\layouts\main.php
+    in C:\xampp\htdocs\daw2_trabajo_final_ofertas_y_chollos\daw2-2018-ofertas-y-chollos\basic\controllers\CategoriaController.php:43
+2019-01-13 17:16:47 [::1][-][-][trace][yii\base\Application::bootstrap] Bootstrap with bs\dbManager\Bootstrap::bootstrap()
+2019-01-13 17:16:47 [::1][-][-][trace][yii\base\Application::bootstrap] Bootstrap with yii\log\Dispatcher
+2019-01-13 17:16:47 [::1][-][-][trace][yii\base\Module::getModule] Loading module: debug
+2019-01-13 17:16:47 [::1][-][-][trace][yii\base\Application::bootstrap] Bootstrap with yii\debug\Module::bootstrap()
+2019-01-13 17:16:47 [::1][-][-][trace][yii\base\Module::getModule] Loading module: gii
+2019-01-13 17:16:47 [::1][-][-][trace][yii\base\Application::bootstrap] Bootstrap with yii\gii\Module::bootstrap()
+2019-01-13 17:16:47 [::1][-][-][trace][yii\web\UrlManager::parseRequest] Pretty URL not enabled. Using default URL parsing logic.
+2019-01-13 17:16:47 [::1][-][-][trace][yii\web\Application::handleRequest] Route requested: 'categorias'
+2019-01-13 17:16:47 [::1][-][-][error][yii\web\HttpException:404] yii\base\InvalidRouteException: Unable to resolve the request "categorias". in C:\xampp\htdocs\daw2_trabajo_final_ofertas_y_chollos\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\base\Module.php:537
+Stack trace:
+#0 C:\xampp\htdocs\daw2_trabajo_final_ofertas_y_chollos\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\web\Application.php(103): yii\base\Module->runAction('categorias', Array)
+#1 C:\xampp\htdocs\daw2_trabajo_final_ofertas_y_chollos\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\base\Application.php(386): yii\web\Application->handleRequest(Object(yii\web\Request))
+#2 C:\xampp\htdocs\daw2_trabajo_final_ofertas_y_chollos\daw2-2018-ofertas-y-chollos\basic\web\index.php(12): yii\base\Application->run()
+#3 {main}
+
+Next yii\web\NotFoundHttpException: Página no encontrada. in C:\xampp\htdocs\daw2_trabajo_final_ofertas_y_chollos\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\web\Application.php:115
+Stack trace:
+#0 C:\xampp\htdocs\daw2_trabajo_final_ofertas_y_chollos\daw2-2018-ofertas-y-chollos\basic\vendor\yiisoft\yii2\base\Application.php(386): yii\web\Application->handleRequest(Object(yii\web\Request))
+#1 C:\xampp\htdocs\daw2_trabajo_final_ofertas_y_chollos\daw2-2018-ofertas-y-chollos\basic\web\index.php(12): yii\base\Application->run()
+#2 {main}
+2019-01-13 17:16:47 [::1][-][-][trace][yii\base\Controller::runAction] Route to run: site/error
+2019-01-13 17:16:47 [::1][-][-][trace][yii\base\Action::runWithParams] Running action: yii\web\ErrorAction::run()
+2019-01-13 17:16:47 [::1][-][-][trace][yii\base\View::renderFile] Rendering view file: C:\xampp\htdocs\daw2_trabajo_final_ofertas_y_chollos\daw2-2018-ofertas-y-chollos\basic\views\site\error.php
+2019-01-13 17:16:47 [::1][-][-][trace][yii\base\View::renderFile] Rendering view file: C:\xampp\htdocs\daw2_trabajo_final_ofertas_y_chollos\daw2-2018-ofertas-y-chollos\basic\themes\iphone7-yii2-1473294825\layouts\main.php
+2019-01-13 17:17:18 [::1][-][-][trace][yii\base\Application::bootstrap] Bootstrap with bs\dbManager\Bootstrap::bootstrap()
+2019-01-13 17:17:18 [::1][-][-][trace][yii\base\Application::bootstrap] Bootstrap with yii\log\Dispatcher
+2019-01-13 17:17:18 [::1][-][-][trace][yii\base\Module::getModule] Loading module: debug
+2019-01-13 17:17:18 [::1][-][-][trace][yii\base\Application::bootstrap] Bootstrap with yii\debug\Module::bootstrap()
+2019-01-13 17:17:18 [::1][-][-][trace][yii\base\Module::getModule] Loading module: gii
+2019-01-13 17:17:18 [::1][-][-][trace][yii\base\Application::bootstrap] Bootstrap with yii\gii\Module::bootstrap()
+2019-01-13 17:17:18 [::1][-][-][trace][yii\web\UrlManager::parseRequest] Pretty URL not enabled. Using default URL parsing logic.
+2019-01-13 17:17:18 [::1][-][-][trace][yii\web\Application::handleRequest] Route requested: 'etiquetas'
+2019-01-13 17:17:18 [::1][-][-][trace][yii\base\Controller::runAction] Route to run: etiquetas/index
+2019-01-13 17:17:18 [::1][-][-][trace][yii\base\InlineAction::runWithParams] Running action: app\controllers\EtiquetasController::actionIndex()
+2019-01-13 17:17:18 [::1][-][-][info][yii\db\Command::query] SHOW FULL COLUMNS FROM `etiquetas`
+    in C:\xampp\htdocs\daw2_trabajo_final_ofertas_y_chollos\daw2-2018-ofertas-y-chollos\basic\models\EtiquetasSearch.php:54
+    in C:\xampp\htdocs\daw2_trabajo_final_ofertas_y_chollos\daw2-2018-ofertas-y-chollos\basic\controllers\EtiquetasController.php:39
+2019-01-13 17:17:18 [::1][-][-][info][yii\db\Connection::open] Opening DB connection: mysql:host=localhost;dbname=daw2_ofertas
+    in C:\xampp\htdocs\daw2_trabajo_final_ofertas_y_chollos\daw2-2018-ofertas-y-chollos\basic\models\EtiquetasSearch.php:54
+    in C:\xampp\htdocs\daw2_trabajo_final_ofertas_y_chollos\daw2-2018-ofertas-y-chollos\basic\controllers\EtiquetasController.php:39
+2019-01-13 17:17:18 [::1][-][-][info][yii\db\Command::query] SELECT
+    kcu.constraint_name,
+    kcu.column_name,
+    kcu.referenced_table_name,
+    kcu.referenced_column_name
+FROM information_schema.referential_constraints AS rc
+JOIN information_schema.key_column_usage AS kcu ON
+    (
+        kcu.constraint_catalog = rc.constraint_catalog OR
+        (kcu.constraint_catalog IS NULL AND rc.constraint_catalog IS NULL)
+    ) AND
+    kcu.constraint_schema = rc.constraint_schema AND
+    kcu.constraint_name = rc.constraint_name
+WHERE rc.constraint_schema = database() AND kcu.table_schema = database()
+AND rc.table_name = 'etiquetas' AND kcu.table_name = 'etiquetas'
+    in C:\xampp\htdocs\daw2_trabajo_final_ofertas_y_chollos\daw2-2018-ofertas-y-chollos\basic\models\EtiquetasSearch.php:54
+    in C:\xampp\htdocs\daw2_trabajo_final_ofertas_y_chollos\daw2-2018-ofertas-y-chollos\basic\controllers\EtiquetasController.php:39
+2019-01-13 17:17:18 [::1][-][-][trace][yii\base\View::renderFile] Rendering view file: C:\xampp\htdocs\daw2_trabajo_final_ofertas_y_chollos\daw2-2018-ofertas-y-chollos\basic\views\etiquetas\index.php
+    in C:\xampp\htdocs\daw2_trabajo_final_ofertas_y_chollos\daw2-2018-ofertas-y-chollos\basic\controllers\EtiquetasController.php:43
+2019-01-13 17:17:18 [::1][-][-][info][yii\db\Command::query] SELECT COUNT(*) FROM `etiquetas`
+    in C:\xampp\htdocs\daw2_trabajo_final_ofertas_y_chollos\daw2-2018-ofertas-y-chollos\basic\views\etiquetas\index.php:23
+    in C:\xampp\htdocs\daw2_trabajo_final_ofertas_y_chollos\daw2-2018-ofertas-y-chollos\basic\controllers\EtiquetasController.php:43
+2019-01-13 17:17:18 [::1][-][-][info][yii\db\Command::query] SELECT * FROM `etiquetas` LIMIT 20
+    in C:\xampp\htdocs\daw2_trabajo_final_ofertas_y_chollos\daw2-2018-ofertas-y-chollos\basic\models\EtiquetasQuery.php:23
+    in C:\xampp\htdocs\daw2_trabajo_final_ofertas_y_chollos\daw2-2018-ofertas-y-chollos\basic\views\etiquetas\index.php:23
+    in C:\xampp\htdocs\daw2_trabajo_final_ofertas_y_chollos\daw2-2018-ofertas-y-chollos\basic\controllers\EtiquetasController.php:43
+2019-01-13 17:17:18 [::1][-][-][trace][yii\base\View::renderFile] Rendering view file: C:\xampp\htdocs\daw2_trabajo_final_ofertas_y_chollos\daw2-2018-ofertas-y-chollos\basic\themes\iphone7-yii2-1473294825\layouts\main.php
+    in C:\xampp\htdocs\daw2_trabajo_final_ofertas_y_chollos\daw2-2018-ofertas-y-chollos\basic\controllers\EtiquetasController.php:43
+2019-01-13 17:40:50 [::1][-][-][trace][yii\base\Application::bootstrap] Bootstrap with bs\dbManager\Bootstrap::bootstrap()
+2019-01-13 17:40:50 [::1][-][-][trace][yii\base\Application::bootstrap] Bootstrap with yii\log\Dispatcher
+2019-01-13 17:40:50 [::1][-][-][trace][yii\base\Module::getModule] Loading module: debug
+2019-01-13 17:40:50 [::1][-][-][trace][yii\base\Application::bootstrap] Bootstrap with yii\debug\Module::bootstrap()
+2019-01-13 17:40:50 [::1][-][-][trace][yii\base\Module::getModule] Loading module: gii
+2019-01-13 17:40:50 [::1][-][-][trace][yii\base\Application::bootstrap] Bootstrap with yii\gii\Module::bootstrap()
+2019-01-13 17:40:50 [::1][-][-][trace][yii\web\UrlManager::parseRequest] Pretty URL not enabled. Using default URL parsing logic.
+2019-01-13 17:40:50 [::1][-][-][trace][yii\web\Application::handleRequest] Route requested: 'site/index'
+2019-01-13 17:40:50 [::1][-][-][trace][yii\base\Controller::runAction] Route to run: site/index
+2019-01-13 17:40:50 [::1][-][-][trace][yii\base\InlineAction::runWithParams] Running action: app\controllers\SiteController::actionIndex()
+2019-01-13 17:40:50 [::1][-][-][trace][yii\base\View::renderFile] Rendering view file: C:\xampp\htdocs\daw2_trabajo_final_ofertas_y_chollos\daw2-2018-ofertas-y-chollos\basic\views\site\index.php
+    in C:\xampp\htdocs\daw2_trabajo_final_ofertas_y_chollos\daw2-2018-ofertas-y-chollos\basic\controllers\SiteController.php:64
+2019-01-13 17:40:50 [::1][-][-][trace][yii\base\View::renderFile] Rendering view file: C:\xampp\htdocs\daw2_trabajo_final_ofertas_y_chollos\daw2-2018-ofertas-y-chollos\basic\themes\iphone7-yii2-1473294825\layouts\main.php
+    in C:\xampp\htdocs\daw2_trabajo_final_ofertas_y_chollos\daw2-2018-ofertas-y-chollos\basic\controllers\SiteController.php:64
