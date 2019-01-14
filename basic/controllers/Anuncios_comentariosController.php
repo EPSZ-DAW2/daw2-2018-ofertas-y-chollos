@@ -277,8 +277,9 @@ class Anuncios_comentariosController extends Controller
 			$fecha1 = new DateTime($model->fecha_denuncia1);//fecha inicial
 			$fecha2 = new DateTime(date('Y-m-d H:i:s'));//fecha de cierre
 			$intervalo = $fecha1->diff($fecha2);
-			if ($intervalo->format('Y')<1 && $intervalo->format('m')<1 && $intervalo->format('d')<1)) 
+			if ($intervalo->format('Y')<1 && $intervalo->format('m')<1 && $intervalo->format('d')<1) 
 				return $this->redirect(['bloquear' , 'id'=>$model->id, 'url'=> 'comentarios']);
+		}
 		
 		return $this->redirect(['comentarios']);
 	}

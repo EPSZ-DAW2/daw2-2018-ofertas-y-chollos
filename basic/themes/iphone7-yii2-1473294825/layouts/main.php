@@ -3,6 +3,7 @@
 use yii\helpers\Html;
 use yii\widgets\Menu;
 use yii\widgets\Breadcrumbs;
+use app\widgets\Alert;
 
 /**
  * @var $this \yii\base\View
@@ -125,6 +126,10 @@ use yii\widgets\Breadcrumbs;
 			<div class="container">
 				<div class="row">
 				  <div class="col-md-12">
+					 <?= Breadcrumbs::widget([
+						'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
+					]) ?>
+					<?= Alert::widget() ?>
 					 <?php echo $content; ?>
 				  </div>
 				</div>
