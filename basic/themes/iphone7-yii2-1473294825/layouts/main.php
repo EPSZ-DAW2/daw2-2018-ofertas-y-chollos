@@ -21,7 +21,7 @@ use yii\widgets\Breadcrumbs;
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
 
-    <title><?php echo Html::encode(\Yii::$app->name); ?> - A ThemeFactory.net Theme</title>
+    <title><?php echo Html::encode(\Yii::$app->name); ?></title>
 
     <!-- Font Awesome -->
     <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.0/css/font-awesome.min.css"> -->
@@ -32,27 +32,30 @@ use yii\widgets\Breadcrumbs;
 
     <!-- Material Design Bootstrap -->
     <link href="<?php echo $this->theme->baseUrl ?>/css/mdb.min.css" rel="stylesheet">
+	
+	<!-- JoseCM css -->
+    <link href="<?php echo $this->theme->baseUrl ?>/css/daw2.css" rel="stylesheet">
 
     <!-- Template styles -->
     <link href="<?php echo $this->theme->baseUrl ?>/css/style.css" rel="stylesheet">
 
     <style>
-            body {
-        background-color: white;
-      }
+        body {
+			background-color: white;
+		}
 
-      .primary-color-dark {
-        background-color: #000 !important;
-      }
+		.primary-color-dark {
+			background-color: #000 !important;
+		}
 
-.btn.btn-primary {
-  background-color: #000;
-}
+		.btn.btn-primary {
+			background-color: #000;
+		}
     
-.list-group-item.active, .list-group-item.active:focus, .list-group-item.active:hover {
-  background-color: #000;
-  border-color: #000;
-}
+		.list-group-item.active, .list-group-item.active:focus, .list-group-item.active:hover {
+			background-color: #000;
+			border-color: #000;
+		}
     </style>
 
 </head>
@@ -74,30 +77,31 @@ use yii\widgets\Breadcrumbs;
             <div class="container">
 
                 <!--Collapse content-->
+                <?= Html::a(Yii::t('app', Html::encode(\Yii::$app->name)), ['site/index'], ['class' => 'navbar-brand band-invisible']) ?>
                 <div class="collapse navbar-toggleable-xs" id="collapseEx">
                     <!--Navbar Brand-->
-                    <?= Html::a(Yii::t('app', Html::encode(\Yii::$app->name)), ['site/index'], ['class' => 'navbar-brand']) ?>
+                    <?= Html::a(Yii::t('app', Html::encode(\Yii::$app->name)), ['site/index'], ['class' => 'navbar-brand band-visible']) ?>
 					<!--Links-->
                     <?php
-      				        echo Menu::widget([
-      				          'options' => [
-      				            "id"  => "nav",
-      				            "class" => "nav navbar-nav"
-      				          ],
-    				            'items' => [
-									['label' => 'About', 'url' => ['site/about'], 'options' => [ "class" => "nav-item"]],
-									['label' => 'Contact', 'url' => ['site/contact'], 'options' => [ "class" => "nav-item"]],
-									['label' => 'Gestión', 'url' => ['gestion/index'],'options' => [ "class" => "nav-item"],
-										//'visible'=>Yii::$app->user->can('administrador')
-									],
-									Yii::$app->user->isGuest ? (
-										['label' => 'Conectar', 'url' => ['/usuarios/login'], 'options' => [ "class" => "nav-item"]]
-									) : (
-										['label' => Yii::$app->user->identity->nick, 'url' => ['/perfil/view'],'options' => [ "class" => "nav-item"]]
-									)
-									],
-      				        ]);
-	  		            ?>
+						echo Menu::widget([
+							'options' => [
+								"id"  => "nav",
+								"class" => "nav navbar-nav"
+							],
+							'items' => [
+								['label' => 'About', 'url' => ['site/about'], 'options' => [ "class" => "nav-item down"]],
+								['label' => 'Contact', 'url' => ['site/contact'], 'options' => [ "class" => "nav-item"]],
+								['label' => 'Gestión', 'url' => ['gestion/index'],'options' => [ "class" => "nav-item"]
+									//, 'visible'=>Yii::$app->user->can('administrador')
+								],
+								Yii::$app->user->isGuest ? (
+									['label' => 'Conectar', 'url' => ['/usuarios/login'], 'options' => [ "class" => "nav-item"]]
+								) : (
+									['label' => 'Loguot ('.Yii::$app->user->identity->nick.')', 'url' => ['/usuario/logout'],'options' => [ "class" => "nav-item"]]
+								)
+							],
+						]);
+					?>
 
                     <!--Search form-->
                     <form class="form-inline">
@@ -110,10 +114,11 @@ use yii\widgets\Breadcrumbs;
 
         </nav>
         <!--/.Navbar-->
-
+		
     </header>
 
 	<main>
+		
 		<div class="body-content">
 			<div class="container">
 				<div class="row">
