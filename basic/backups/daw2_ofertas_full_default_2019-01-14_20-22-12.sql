@@ -147,6 +147,7 @@ CREATE TABLE `auth_assignment` (
 
 LOCK TABLES `auth_assignment` WRITE;
 /*!40000 ALTER TABLE `auth_assignment` DISABLE KEYS */;
+INSERT INTO `auth_assignment` VALUES ('usuario','18',1547486659);
 /*!40000 ALTER TABLE `auth_assignment` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -248,7 +249,7 @@ CREATE TABLE `categorias` (
   `icono` varchar(25) DEFAULT NULL COMMENT 'Nombre del icono relacionado de entre los disponibles en la aplicación (carpeta iconos posibles).',
   `categoria_id` int(12) unsigned DEFAULT '0' COMMENT 'Categoria relacionada, para poder realizar la jerarquía de clasificaciones. Nodo padre de la jerarquía de categoría, o CERO si es nodo raiz (como si fuera NULL).',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -257,6 +258,7 @@ CREATE TABLE `categorias` (
 
 LOCK TABLES `categorias` WRITE;
 /*!40000 ALTER TABLE `categorias` DISABLE KEYS */;
+INSERT INTO `categorias` VALUES (1,'Electrónica','Anuncios de electrónica y tecnología.','',0),(2,'Viajes','Ofertas de viajes.','',0),(5,'Avión','Ofertas de billetes de avión.','',2),(6,'Barco','Ofertas de cruceros o similar.','',2),(7,'Jardín','Productos de jardinería.','',0),(8,'Hogar','Productos para la casa y el hogar.','',0),(9,'Ropa','Productos de ropa, moda y accesorios.','',0),(10,'Accesorios de moda','Accesorios.','',9),(11,'Salud y belleza','Productos relacionados con la salud y la belleza.','',0),(12,'Vehículos','Ofertas de vehículos.','',0),(13,'Coches','Ofertas de coches.','',12),(14,'Motos','Ofertas de motos.','',12),(15,'Accesorios coche.','Ofertas de accesorios y productos para el coche.','',13),(16,'Accesorios motos','Accesorios y productos para motos.','',14),(17,'Cultura','Ofertas y gangas de cultura.','',0),(18,'Familia','Ofertas para familias.','',0),(19,'Gratuito','Ofertas de productos totalmente gratuitos.','',0),(20,'Deportes y aire libre','Oferta de productos deportivos y de aire libre.','',0),(21,'Supermercado','Ofertas de productos que pueden encontrarse en supermercados.','',0),(22,'Móviles','Ofertas de móviles.','',1),(23,'Ordenadores','Ofertas de ordenadores.','',1);
 /*!40000 ALTER TABLE `categorias` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -418,7 +420,7 @@ CREATE TABLE `usuarios` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `email_UNIQUE` (`email`),
   UNIQUE KEY `nick_UNIQUE` (`nick`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -427,7 +429,7 @@ CREATE TABLE `usuarios` (
 
 LOCK TABLES `usuarios` WRITE;
 /*!40000 ALTER TABLE `usuarios` DISABLE KEYS */;
-INSERT INTO `usuarios` VALUES (1,'joseigles@usal.es','admin','joseigles','','',NULL,NULL,0,NULL,0,NULL,0,0,NULL,NULL);
+INSERT INTO `usuarios` VALUES (18,'joseigles@usal.es','21232f297a57a5a743894a0e4a801fc3','joseigles','Jose','iglesias','1995-05-29','iehk',0,'2019-01-14 18:24:19',1,NULL,0,0,NULL,NULL);
 /*!40000 ALTER TABLE `usuarios` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -595,4 +597,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-01-12 17:07:40
+-- Dump completed on 2019-01-14 20:22:13

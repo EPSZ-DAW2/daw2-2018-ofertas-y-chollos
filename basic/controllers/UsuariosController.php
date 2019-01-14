@@ -188,7 +188,7 @@ class UsuariosController extends Controller
             $model->password=md5($model->password);
             $model->password2=md5($model->password2);
 
-            //convertir fecha nacimiento [ PROVISIONAL HASTA DATEPICKER ]            
+            //convertir fecha nacimiento           
             $fecha_aux = str_replace('/', '-', $model->fecha_nacimiento);            
             $model->fecha_nacimiento=date('Y-m-d', strtotime($fecha_aux));
 

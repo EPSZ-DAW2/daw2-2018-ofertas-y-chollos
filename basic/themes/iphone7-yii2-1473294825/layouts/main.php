@@ -22,6 +22,8 @@ use yii\widgets\Breadcrumbs;
     <meta http-equiv="x-ua-compatible" content="ie=edge">
 
     <title><?php echo Html::encode(\Yii::$app->name); ?></title>
+	
+    <?= Html::csrfMetaTags() ?>
 
     <!-- Font Awesome -->
     <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.0/css/font-awesome.min.css"> -->
@@ -97,7 +99,7 @@ use yii\widgets\Breadcrumbs;
 								Yii::$app->user->isGuest ? (
 									['label' => 'Conectar', 'url' => ['/usuarios/login'], 'options' => [ "class" => "nav-item"]]
 								) : (
-									['label' => 'Loguot ('.Yii::$app->user->identity->nick.')', 'url' => ['/usuario/logout'],'options' => [ "class" => "nav-item"]]
+									['label' => 'Logout ('.Yii::$app->user->identity->nick.')', 'url' => ['/usuarios/logout'],'options' => [ "class" => "nav-item"]]
 								)
 							],
 						]);
