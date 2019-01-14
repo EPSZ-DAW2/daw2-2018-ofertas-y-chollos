@@ -33,7 +33,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <h1>¿Confirmar usuario?</h1>
     
-    <p><?= Html::a('CONFIRMAR', ['usuarios/confirmar', 'id'=>$model->id, 'confirmar'=>"1"], ['class' =>'profile-link']) ?></p>
+    <p><?= Html::a('CONFIRMAR', ['usuarios/confirmar', 'id'=>$model->id, 'confirmar'=>"1"], ['class' =>'btn btn-primary']) ?></p>
 
 
 </div>
