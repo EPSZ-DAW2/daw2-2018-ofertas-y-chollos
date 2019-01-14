@@ -23,13 +23,9 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'password')->passwordInput(['maxlength' => true]) ?>
     <?= $form->field($model, 'password2')->passwordInput(['maxlength' => true]) ?>
-   
-
     
-    <?= $form->field($model, 'fecha_nacimiento')->textInput() ?>   
+    <?= $form->field($model, 'fecha_nacimiento')->input('date')  ?>   
     <?= $form->field($model, 'direccion')->textarea(['rows' => 6]) ?>
-
-
     
 
     <div class="form-group">

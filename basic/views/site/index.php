@@ -1,6 +1,8 @@
 <?php
 
 use yii\helpers\Html;
+use yii\widgets\Menu;
+
 
 /* @var $this yii\web\View */
 
@@ -8,10 +10,33 @@ $this->title = 'My Yii Application';
 ?>
 <div class="site-index">
 
-	<!--Main layout-->
-	
+
 	<div class="row">
 
+		<!--2º Navbar-->
+		<nav class="navbar navbar-light navbar2">
+			<div class="collapse navbar-toggleable-xs container" id="collapseEx">
+				<?php
+					echo Menu::widget([
+						'options' => [
+							"id"  => "nav",
+							"class" => "nav navbar-nav"
+						],
+						'items' => [
+							['label' => 'Destacados', 'url' => ['#'], 'options' => [ "class" => "nav-item"]],
+							['label' => 'Populares', 'url' => ['#'], 'options' => [ "class" => "nav-item"]],
+							['label' => 'Nuevos', 'url' => ['#'],'options' => [ "class" => "nav-item"]],
+						],
+					]);
+				?>
+				<!--Search form-->
+				<form class="form-inline">
+					<input class="form-control" type="text" placeholder="Search">
+				</form>
+			</div>
+			<!--/.Collapse content-->
+		</div>
+	
 		<!--Main column-->
 		<div class="col-md-8">
 
@@ -78,7 +103,7 @@ $this->title = 'My Yii Application';
 			<!--Second row-->
 			<div class="row">
 				<!--First columnn-->
-				<div class="col-md-4">
+				<div class="col-md-6">
 					<!--Card-->
 					<div class="card">
 
@@ -106,37 +131,8 @@ $this->title = 'My Yii Application';
 				</div>
 				<!--First columnn-->
 
-				<!--Second columnn-->
-				<div class="col-md-4">
-					<!--Card-->
-					<div class="card">
-
-						<!--Card image-->
-						<div class="view overlay hm-white-slight">
-							<img src="https://i.imgur.com/97FlKd2.jpg" class="img-fluid" alt="">
-							<a href="#">
-								<div class="mask"></div>
-							</a>
-						</div>
-						<!--/.Card image-->
-
-						<!--Card content-->
-						<div class="card-block">
-							<!--Title-->
-							<h4 class="card-title">Product title</h4>
-							<!--Text-->
-							<p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. </p>
-							<a href="#" class="btn btn-primary">Buy now for 20$</a>
-						</div>
-						<!--/.Card content-->
-
-					</div>
-					<!--/.Card-->
-				</div>
-				<!--Second columnn-->
-
 				<!--Third columnn-->
-				<div class="col-md-4">
+				<div class="col-md-6">
 					<!--Card-->
 					<div class="card">
 

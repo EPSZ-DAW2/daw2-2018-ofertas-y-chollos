@@ -46,6 +46,14 @@ $this->title = 'My Yii Application';
 			</div>
 			
 			<div class="widget-wrapper">
+				<h4>Copias de seguridad:</h4>
+				<br>
+				<div class="list-group">
+					<?= Html::a('Copias de seguridad', ['/db-manager'], ['class' => 'list-group-item']) ?>
+				</div>
+			</div>
+			
+			<div class="widget-wrapper">
 				<h4>Logs:</h4>
 				<br>
 				<div class="list-group">

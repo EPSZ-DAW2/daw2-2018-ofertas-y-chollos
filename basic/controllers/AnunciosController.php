@@ -10,6 +10,7 @@ use app\models\AnuncioSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\data\ActiveDataProvider;
 
 /**
  * AnunciosController implements the CRUD actions for Anuncio model.
@@ -194,4 +195,23 @@ class AnunciosController extends Controller
         }
         return $ps;
     }
+
+    //acción para listar los anuncios en g
+
+    public function actionListar()
+    {
+        $searchModel = new AnuncioSearch();
+        $dataProvider = new ActiveDataProvider([
+            'query' => Anuncio::find(),
+            'pagination' => [
+        'pageSize' => 20,
+        ],
+]);
+
+        return $this->render('listar_anuncios', [
+            'dataProvider' => $dataProvider,
+        ]);
+    }
 }
+
+

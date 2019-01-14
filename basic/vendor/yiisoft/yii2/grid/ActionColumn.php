@@ -180,7 +180,8 @@ class ActionColumn extends Column
                     'data-pjax' => '0',
                 ], $additionalOptions, $this->buttonOptions);
 				//$icon = Html::tag('span', '', ['class' => "glyphicon glyphicon-$iconName"]);
-                $icon = '<i class="fas fa-'.$iconName.'"></i>';
+				$icon = Html::tag('i', '', ['class' => "fas fa-$iconName"]);
+                //$icon = '<i class="fas fa-'.$iconName.'"></i>';
                 return Html::a($icon, $url, $options);
             };
         }

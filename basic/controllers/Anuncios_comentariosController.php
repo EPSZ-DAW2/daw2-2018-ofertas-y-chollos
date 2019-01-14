@@ -173,9 +173,21 @@ class Anuncios_comentariosController extends Controller
      * @throws NotFoundHttpException if the model cannot be found
      */
    
-	public function actionBloquear($id)
+	public function actionBloquear($id, $tipo=null, $url=null)
     {
         $model = $this->findModel($id);
+		
+		if($tipo !== null) {
+			$model->fecha_bloqueo = date('Y-m-d H:i:s');
+			$model->bloqueado == $tipo;
+			if ($model->save(false)) {
+				//Grupo 2 poned aquí la dirección a la que tiene que volver, pasais otro parametro como el de tipo con lo que os haga falta para regresar
+				return $this->redirect([$url]);
+			} else {
+				//Grupo 2 poned aquí la dirección a la que tiene que volver, pasais otro parametro como el de tipo con lo que os haga falta para regresar
+				return $this->redirect([$url]);
+			}
+		}
 
 		$result = $model->load(Yii::$app->request->post());
 		if ($result) {
@@ -259,6 +271,14 @@ class Anuncios_comentariosController extends Controller
 		$model->num_denuncias = $model->num_denuncias+1;
 		if ($model->fecha_denuncia1 === null) $model->fecha_denuncia1 = date('Y-m-d H:i:s');
 		$model->save(false);
+		
+		//bloqueo automático por denuncias
+		if($model->num_denuncias === 10) {
+			$fecha1 = new DateTime($model->fecha_denuncia1);//fecha inicial
+			$fecha2 = new DateTime(date('Y-m-d H:i:s'));//fecha de cierre
+			$intervalo = $fecha1->diff($fecha2);
+			if ($intervalo->format('Y')<1 && $intervalo->format('m')<1 && $intervalo->format('d')<1)) 
+				return $this->redirect(['bloquear' , 'id'=>$model->id, 'url'=> 'comentarios']);
 		
 		return $this->redirect(['comentarios']);
 	}
