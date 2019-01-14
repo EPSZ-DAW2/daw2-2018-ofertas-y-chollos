@@ -9,6 +9,7 @@ use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use app\models\LoginForm;
+use yii\data\ActiveDataProvider;
 
 /**
  * UsuariosController implements the CRUD actions for Usuario model.
@@ -46,6 +47,28 @@ class UsuariosController extends Controller
     }
 
 
+
+    /*Accion de prueba para la vista de las piezas resumidas usuario
+    En query se le pasa la consulta que se necesite, en este caso todos los usuarios
+    --A listar_usuarios es obligatorio pasarle un objeto dataProvider
+    --pageSize es el tamaño de pagina
+    */
+    public function actionPrueba()
+    {
+
+        $dataProvider = new ActiveDataProvider([
+            'query' => Usuario::find(),
+            'pagination' => [
+                'pageSize' => 10,
+            ],
+        ]);
+
+        return $this->render('listar_usuarios', [
+            'dataProvider' => $dataProvider,
+        ]);
+
+    }
+
     //muestra todos los usuarios y su rol correspondiente para modificarlos
     public function actionRoles()
     {
@@ -58,6 +81,9 @@ class UsuariosController extends Controller
         ]);
     }
 
+
+
+    //cambia el rol del usuario, se viene aqui desde la pantalla de administrar roles
     public function actionAdmin($id, $opcion, $rol)
     {
         //Se crea un array con los roles para ascender o descender mas facilmente 

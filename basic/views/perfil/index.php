@@ -30,7 +30,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
             //'id',
             'email:email',
-            'password',
+            //'password',
             'nick',
             'nombre',
             'apellidos',
