@@ -96,7 +96,7 @@ use yii\widgets\Breadcrumbs;
 										'<li>'
 										. Html::beginForm(['/usuarios/logout'], 'post')
 										. Html::submitButton(
-											'Logout (' . Yii::$app->user->identity->username . ')',
+											'Logout (' . Yii::$app->user->identity->nick . ')',
 											['class' => 'nav-item']
 										)
 										. Html::endForm()
