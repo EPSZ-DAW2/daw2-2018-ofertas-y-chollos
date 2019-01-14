@@ -22,6 +22,8 @@ use yii\widgets\Breadcrumbs;
     <meta http-equiv="x-ua-compatible" content="ie=edge">
 
     <title><?php echo Html::encode(\Yii::$app->name); ?></title>
+	
+    <?= Html::csrfMetaTags() ?>
 
     <!-- Font Awesome -->
     <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.0/css/font-awesome.min.css"> -->
