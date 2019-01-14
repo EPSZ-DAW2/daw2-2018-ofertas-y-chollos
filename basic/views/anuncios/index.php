@@ -58,7 +58,7 @@ $this->params['breadcrumbs'][] = $this->title;
             //'notas_admin:ntext',
 
             ['class' => 'yii\grid\ActionColumn',
-             'template' =>'{view}'],
+             /*'template' =>'{view}'*/],
 
         ],
     ]); ?>
