@@ -14,7 +14,6 @@ use yii\filters\VerbFilter;
  */
 class MensajesController extends Controller
 {
-    public $fecha_limpieza;
     /**
      * @inheritdoc
      */
