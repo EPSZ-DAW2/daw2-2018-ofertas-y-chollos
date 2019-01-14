@@ -16,18 +16,21 @@ Thumbs.db
 /vendor
 
 # composer itself is not needed
-composer.phar
+#composer.phar
 
 # Mac DS_Store Files
 .DS_Store
 
 # phpunit itself is not needed
-phpunit.phar
+#phpunit.phar
 # local phpunit config
-/phpunit.xml
+#/phpunit.xml
 
 tests/_output/*
 tests/_support/_generated
 
 #vagrant folder
 /.vagrant
+
+#runtime no es necesario modificarlo a cada vez
+/runtime
