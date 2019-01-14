@@ -82,16 +82,20 @@ class MensajesController extends Controller
         $model->origen_usuario_id=$id_origen;
         $model->destino_usuario_id=$id_destino;
         $mensajes=$model->mensajes;
+        $cambios=0;
         foreach($mensajes as $mensaje)
         {
             $_SESSION['mensajes'][$id_destino][]=$mensaje;
             $mensaje->delete();
+            $cambios=1;
         }
-
+        //if($cambios==1)
+        //{
              return $this->render('chat', [
             'mensajes'=>$_SESSION['mensajes'][$id_destino],
             'model'=>new Mensaje(),
         ]);
+        //}
     }
 
     //Función que iniciará el chat entre dos usuarios

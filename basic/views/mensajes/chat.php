@@ -50,16 +50,18 @@ $this->params['breadcrumbs'][] = $this->title;
 
 
     <?= time()?>
-    <?php Pjax::end(); ?>
+
         <?php
 $script = <<< JS
 $(document).ready(function() {
-    setInterval(function(){ $("#refreshButton").click(); }, 10000);
+    setInterval(function(){ $("#refreshButton").click(); }, 3000);
     $("#chat").animate({ scrollTop: $('#chat')[0].scrollHeight},0);
 });
 JS;
 $this->registerJs($script);
+
 ?>
+    <?php Pjax::end(); ?>
     
     <?php $form = ActiveForm::begin(['action' => ['enviar'],]); ?>
     <?= $form->field($model, 'texto')->textarea(['rows' => 6]) ?>
