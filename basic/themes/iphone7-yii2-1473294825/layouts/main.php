@@ -93,14 +93,7 @@ use yii\widgets\Breadcrumbs;
 									Yii::$app->user->isGuest ? (
 										['label' => 'Conectar', 'url' => ['/usuarios/login'], 'options' => [ "class" => "nav-item"]]
 									) : (
-										'<li>'
-										. Html::beginForm(['/usuarios/logout'], 'post')
-										. Html::submitButton(
-											'Logout (' . Yii::$app->user->identity->nick . ')',
-											['class' => 'nav-item']
-										)
-										. Html::endForm()
-										. '</li>'
+										['label' => Yii::$app->user->identity->nick, 'url' => ['/perfil/view'],'options' => [ "class" => "nav-item"]]
 									)
 									],
       				        ]);
