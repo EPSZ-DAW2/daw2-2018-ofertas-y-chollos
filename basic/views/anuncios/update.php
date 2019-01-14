@@ -5,7 +5,7 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model app\models\Anuncio */
 
-$this->title = Yii::t('app', 'Update Anuncio: {nameAttribute}', [
+$this->title = Yii::t('app', 'Modificar Anuncio: '.$model->titulo, [
     'nameAttribute' => $model->id,
 ]);
 $this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Anuncios'), 'url' => ['index']];
@@ -18,6 +18,8 @@ $this->params['breadcrumbs'][] = Yii::t('app', 'Update');
 
     <?= $this->render('_form', [
         'model' => $model,
+        'categorias' => $categorias,
+        'proveedores' => $proveedores,
     ]) ?>
 
 </div>
