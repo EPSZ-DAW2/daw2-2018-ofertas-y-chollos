@@ -2,7 +2,7 @@
 --
 -- Volcado de datos para la tabla `categorias`
 --
-USE `daw2_ofertas`
+USE `daw2_ofertas`;
 
 INSERT INTO `categorias` (`id`, `nombre`, `descripcion`, `icono`, `categoria_id`) VALUES
 (1, 'Electrónica', 'Anuncios de electrónica y tecnología.', '', 0),
