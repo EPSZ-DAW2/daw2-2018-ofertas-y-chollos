@@ -15,6 +15,7 @@ use Yii;
  */
 class Mensaje extends \yii\db\ActiveRecord
 {
+    public $fecha_limpieza;
     /**
      * @inheritdoc
      */

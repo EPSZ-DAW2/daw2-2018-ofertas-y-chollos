@@ -14,6 +14,7 @@ use yii\filters\VerbFilter;
  */
 class MensajesController extends Controller
 {
+    public $fecha_limpieza;
     /**
      * @inheritdoc
      */
@@ -27,6 +28,26 @@ class MensajesController extends Controller
                 ],
             ],
         ];
+    }
+
+    public function actionLimpieza()
+    {
+        $model = new Mensaje();
+        if (!empty($_POST['Mensaje'])) {
+            //Eliminar Logs de la fecha
+            $fecha=$_POST['Mensaje']['fecha_limpieza'];
+
+            $ids_borrar=mensaje::find()->select('id')->where(['<=', 'fecha_hora', $fecha])->all();
+            foreach ($ids_borrar as $id)
+            {
+                $model=$this->findModel($id);
+                $model->delete();
+            }
+            return $this->redirect(['index']);
+        }
+        return $this->render('limpieza', [
+            'model' => $model,
+        ]);
     }
 
     public function actionEnviar()

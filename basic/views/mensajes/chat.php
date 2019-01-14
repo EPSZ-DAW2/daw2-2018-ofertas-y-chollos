@@ -26,7 +26,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <h1><?= Html::encode($this->title) ?></h1>
     <?php Pjax::begin(); ?>
-    <div id='chat' style="max-height: 400px; overflow-y: scroll; padding: 20px;">
+    <div id='chat' style="max-height: 400px; height:400px; overflow-y: scroll; padding: 20px;">
     <?php
         foreach ($mensajes as $mensaje)
         {
