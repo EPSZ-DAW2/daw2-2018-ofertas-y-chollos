@@ -17,7 +17,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= Html::a(Yii::t('app', 'Create Anuncio'), ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a(Yii::t('app', 'Nuevo anuncio'), ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?= GridView::widget([
@@ -30,10 +30,10 @@ $this->params['breadcrumbs'][] = $this->title;
             'titulo:ntext',
             'descripcion:ntext',
             'tienda:ntext',
-            'url:ntext',
+            //'url:ntext',
             //'fecha_desde',
             //'fecha_hasta',
-            //'precio_oferta',
+            'precio_oferta',
             //'precio_original',
             //'zona_id',
             //'categoria_id',
@@ -57,7 +57,9 @@ $this->params['breadcrumbs'][] = $this->title;
             //'modi_fecha',
             //'notas_admin:ntext',
 
-            ['class' => 'yii\grid\ActionColumn'],
+            ['class' => 'yii\grid\ActionColumn',
+             'template' =>'{view}'],
+
         ],
     ]); ?>
     <?php Pjax::end(); ?>
