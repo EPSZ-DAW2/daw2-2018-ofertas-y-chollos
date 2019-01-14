@@ -79,7 +79,7 @@ class Usuario extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface
             'nick' => Yii::t('app', 'Nick'),
             'nombre' => Yii::t('app', 'Nombre'),
             'apellidos' => Yii::t('app', 'Apellidos'),
-            'fecha_nacimiento' => Yii::t('app', 'Fecha Nacimiento (DD/MM/AAAA)'),
+            'fecha_nacimiento' => Yii::t('app', 'Fecha de nacimiento'),
             'direccion' => Yii::t('app', 'Direccion'),
             'zona_id' => Yii::t('app', 'Zona ID'),
             'fecha_registro' => Yii::t('app', 'Fecha Registro'),
