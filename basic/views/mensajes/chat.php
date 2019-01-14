@@ -46,11 +46,6 @@ $this->params['breadcrumbs'][] = $this->title;
     ?>
     </div>
 
-
-
-
-    <?= time()?>
-
         <?php
 $script = <<< JS
 $(document).ready(function() {
