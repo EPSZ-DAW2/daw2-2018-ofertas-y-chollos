@@ -1,6 +1,8 @@
 <?php
 
 use yii\helpers\Html;
+use yii\helpers\Url;
+
 
 ?>
 
@@ -8,12 +10,14 @@ use yii\helpers\Html;
 
 	<!--Imagen del anuncio-->
 			<div class="view overlay hm-white-slight">
-				<!-- imagen de prueba...  !-->
-			<img src="https://i.imgur.com/RNZjqM1.jpg" class="img-fluid" alt="">
+				<!-- OJO! -->
+			<img <?=($model->imagen_id == null)?'src="'.Url::base().'/imagenes/anuncios/anuncio_default.png"':'src="https://'.$model->imagen_id.'"'; ?>class="img-fluid" alt="">
 				<a href="#">
 				<div class="mask waves-effect waves-light"></div>
 				</a>
 			</div>
+
+
 	<!--/.Imagen del anuncio-->
 	<!--Contenido del anuncio-->
 	<div class="card-block">
