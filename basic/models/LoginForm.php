@@ -73,20 +73,17 @@ class LoginForm extends Model
      */
     public function login()
     {
-
-        
-
        
         //obtener las variables de bloqueo de la configuracion, si no existen, le damos un valor por defecto
-        if(!($max_accesos = Configuracion::findOne(['variable' => 'max_accesos']))) $max_accesos =5;
+        if(!($max_accesos = Configuracion::findOne(['variable' => 'max_accesos']))) $max_accesos = 5;
         else $max_accesos = $max_accesos->valor;
 
-        if(!($tiempo_bloqueo = Configuracion::findOne(['variable' => 'tiempo_bloqueo']))) $tiempo_bloqueo =60;
+        if(!($tiempo_bloqueo = Configuracion::findOne(['variable' => 'tiempo_bloqueo']))) $tiempo_bloqueo = 60;
         else $tiempo_bloqueo = $tiempo_bloqueo->valor;
 
         //cargamos el modelo del usuario
         $this->_user = Usuario::findByUsername($this->username); 
-
+        //si el usuario esta bloqueado...u
         if($this->_user->bloqueado == 1){
             
             //$this->_user->updateAttributes(['num_accesos' => $this->_user->num_accesos+=1]);
@@ -135,8 +132,6 @@ class LoginForm extends Model
                 }
 
             } 
-               
-              
 
         }
         return false;
