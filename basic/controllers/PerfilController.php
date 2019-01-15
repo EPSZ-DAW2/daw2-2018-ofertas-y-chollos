@@ -6,6 +6,9 @@ use Yii;
 use app\models\Perfil;
 use app\models\UsuariosAviso;
 use app\models\Anuncio;
+
+use app\models\Anuncio_comentario;
+
 use app\models\PerfilSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
@@ -231,8 +234,18 @@ class PerfilController extends Controller
         ]);
     }
 
-     public function actionComentarios(){
-       //////////////JOSEEEEEEEEEEEEEEEEEEEEEE AQUIIIIIIIIIIIIIIIII TUUUUUUUUUUUU FUNCIOOOOOOOOOOOOOOOOOOOOONNNNNNNNNNN
-           }
+	public function actionComentarios()
+	{
+        $query = Anuncio_comentario::find();
+		$query->andFilterWhere([
+			'crea_usuario_id'=>Yii::$app->user->id]);
+		$dataProvider = new ActiveDataProvider([
+            'query' => $query,
+        ]);
+
+        return $this->render('comentarios', [
+            'dataProvider' => $dataProvider,
+        ]);
+	}
 
 }
