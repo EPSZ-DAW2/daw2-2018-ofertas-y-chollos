@@ -85,8 +85,45 @@ class UsuariosController extends Controller
     public function actionListar()
     {
 
+        $query=Usuario::find();
+        if (isset($_GET['filtro'])) 
+        {
+            $filtro=$_GET['filtro'];
+
+
+            $query->andFilterWhere(['like', 'nick', $filtro]);
+
+        }
+
+
         $dataProvider = new ActiveDataProvider([
-            'query' => Usuario::find(),
+            'query' => $query,
+            'pagination' => [
+                'pageSize' => 10,
+            ],
+        ]);
+
+        return $this->render('listar_usuarios', [
+            'dataProvider' => $dataProvider,
+        ]);
+
+    }
+
+    public function actionListar_proveedores()
+    {
+
+        $query=Usuario::find();
+        $query->andWhere('usuarios.id in (SELECT usuario_id FROM proveedores)');
+
+        if (isset($_GET['filtro'])) 
+        {
+            $filtro=$_GET['filtro'];
+            $query->andFilterWhere(['like', 'nick', $filtro]);
+        }
+
+
+        $dataProvider = new ActiveDataProvider([
+            'query' => $query,
             'pagination' => [
                 'pageSize' => 10,
             ],
