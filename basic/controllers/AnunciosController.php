@@ -21,6 +21,7 @@ class AnunciosController extends Controller
     /**
      * @inheritdoc
      */
+
     public function behaviors()
     {
         return [
@@ -201,8 +202,7 @@ class AnunciosController extends Controller
 
     public function actionListar(){
 
-        //preparamos la consulta...
-       $searchModel = new AnuncioSearch();
+        //preparamos la consulta...      
         $query = Anuncio::find();
         //filtrar solo anuncios visibles...       
         $query->andFilterWhere([
@@ -215,8 +215,7 @@ class AnunciosController extends Controller
         ]);
 
         return $this->render('listar_anuncios', [
-            'dataProvider' => $dataProvider,
-            'searchModel' => $searchModel,
+            'dataProvider' => $dataProvider,           
         ]);
     }
 
