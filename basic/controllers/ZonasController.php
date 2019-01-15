@@ -29,7 +29,12 @@ class ZonasController extends Controller
         ];
     }
 
-
+    public function actionBusqueda()
+    {
+        return $this->render('busqueda', [
+            'model'=> new Zonas,
+        ]);
+    }
     public function codigo_a_texto($codigo){
         return $this::$zonas[$codigo];
 

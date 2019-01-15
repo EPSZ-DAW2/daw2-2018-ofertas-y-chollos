@@ -76,4 +76,13 @@ public static $zonas=array( 1=>'Continente', 2=>'Pais', 3=>'Estado', 4=>'Región
     public function getPadreOrdenar(){
         return $this->hasOne(Zonas::className(), ['id' => 'zona_id']);
     }
+
+    public function getContinentes()
+    {
+        return $zonas=Zonas::find()->where(['clase_zona_id'=>1])->all();
+    }
+    public function getHijos()
+    {
+        return $zonas=Zonas::find()->where(['zona_id'=>$this->id])->all();
+    }
 }
