@@ -66,6 +66,7 @@ class UsuariosAviso extends \yii\db\ActiveRecord
             'destino_usuario_id' => Yii::t('app', 'Usuario de destino'),
             'origen_usuario_id' => Yii::t('app', 'Usuario de origen'),
             'anuncio_id' => Yii::t('app', 'Anuncio'),
+            'anuncio' => Yii::t('app', 'Titulo del Anuncio'),
             'comentario_id' => Yii::t('app', 'Comentario'),
             'fecha_lectura' => Yii::t('app', 'Fecha Lectura'),
             'fecha_aceptado' => Yii::t('app', 'Fecha Aceptación'),
@@ -95,6 +96,17 @@ class UsuariosAviso extends \yii\db\ActiveRecord
     public function getAvisosClientesDestino()
     {
         return $this->hasOne(Usuario::className(),['id'=>'destino_usuario_id']);
+    }
+
+    public function getAvisosAnuncio()
+    {
+        return $this->hasOne(Anuncio::className(),['id'=>'anuncio_id']);
+    }
+
+    public function getAnuncio()
+    {
+        $titulo=Anuncio::find()->select('titulo')->where(['id'=>$this->anuncio_id])->one();
+        return $titulo->titulo;
     }
 
     /**

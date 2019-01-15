@@ -15,6 +15,7 @@ class UsuariosAvisosSearch extends UsuariosAviso
     public $tipo;
     public $usuarioOrigen;
     public $usuarioDestino;
+    public $anuncio;
     /**
      * @inheritdoc
      */
@@ -22,7 +23,7 @@ class UsuariosAvisosSearch extends UsuariosAviso
     {
         return [
             [['id', 'destino_usuario_id', 'origen_usuario_id', 'anuncio_id', 'comentario_id'], 'integer'],
-            [['fecha_aviso', 'clase_aviso_id', 'texto', 'fecha_lectura', 'fecha_aceptado', 'tipo','usuarioOrigen','usuarioDestino'], 'safe'],
+            [['fecha_aviso', 'clase_aviso_id', 'texto', 'fecha_lectura', 'fecha_aceptado', 'tipo','usuarioOrigen','usuarioDestino','anuncio'], 'safe'],
         ];
     }
 
@@ -47,6 +48,8 @@ class UsuariosAvisosSearch extends UsuariosAviso
         $query = UsuariosAviso::find();
         $query->joinWith(['avisosClientesOrigen aC'], true, 'LEFT OUTER JOIN');
         $query->joinWith(['avisosClientesDestino dC'], true, 'LEFT OUTER JOIN');
+        $query->joinWith(['avisosAnuncio aA'], true, 'LEFT OUTER JOIN');
+
 
         // add conditions that should always apply here
 
@@ -72,6 +75,12 @@ class UsuariosAvisosSearch extends UsuariosAviso
             'defaut'=>SORT_ASC,
         ];
 
+        $dataProvider->sort->attributes['anuncio']=[
+            'asc'=>['aA.titulo'=>SORT_ASC],
+            'desc'=>['aA.titulo'=>SORT_DESC],
+            'defaut'=>SORT_ASC,
+        ];
+
         $this->load($params);
 
         if (!$this->validate()) {
@@ -93,6 +102,7 @@ class UsuariosAvisosSearch extends UsuariosAviso
             'clase_aviso_id' => $this->tipo,
             'aC.nick' => $this->usuarioOrigen,
             'dc.nick' => $this->usuarioDestino,
+            'aA.titulo' => $this->anuncio,
         ]);
 
         $query->andFilterWhere(['like', 'clase_aviso_id', $this->clase_aviso_id])
