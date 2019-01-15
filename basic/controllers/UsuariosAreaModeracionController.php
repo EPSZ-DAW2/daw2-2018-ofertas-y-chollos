@@ -26,6 +26,22 @@ class UsuariosAreaModeracionController extends Controller
                     'delete' => ['POST'],
                 ],
             ],
+            
+            'access'=>[
+                'class'=>AccessControl::className(),
+                'rules'=>[
+                    [
+                        'allow'=>true,
+                        'actions'=>['index','view','create','update','delete'],
+                        'roles'=>['admin'],
+                    ],
+                    [
+                        'allow'=>true,
+                        'actions'=>['busqueda'],
+                        'roles'=>['invitado'],
+                    ]
+                ],
+            ],
         ];
     }
 
