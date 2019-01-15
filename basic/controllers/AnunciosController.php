@@ -6,6 +6,7 @@ use Yii;
 use app\models\Anuncio;
 use app\models\Categoria;
 use app\models\Proveedor;
+use app\models\Zonas;
 use app\models\AnuncioSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
@@ -207,6 +208,73 @@ class AnunciosController extends Controller
         $query->andFilterWhere([
             'visible' => '1',
         ]);
+    
+        //preparamos el proveedor de datos...
+        $dataProvider = new ActiveDataProvider([
+            'query' => $query,
+            'pagination' => ['pageSize' => 6]
+        ]);
+
+        return $this->render('listar_anuncios', [
+            'dataProvider' => $dataProvider,
+        ]);
+    }
+
+     public function hijos($hijo)
+    {
+        $hijos=$hijo->hijos;
+        foreach($hijos as $hijo)
+        {
+            $aux=$this->hijos($hijo);
+            foreach ($aux as $zona)
+            {
+                $hijos[]=$zona;
+            }
+        }
+        return $hijos;
+    }
+
+    public function actionListar_zona($id_zona){
+
+        $zonas=array();
+        $zona=zonas::find()->where(['id'=>$id_zona])->one();
+
+        $hijos=$zona->hijos;
+        $zonas[]=$zona;
+
+        foreach ($hijos as $hijo)
+        {
+            $zonas[]=$hijo;
+            $aux=$this->hijos($hijo);
+            foreach($aux as $zona)
+            {
+                $zonas[]=$zona;
+            }
+        }
+        $ids=array();
+        foreach ($zonas as $zona)
+        {
+            $ids[]=$zona->id;
+        }
+
+        //preparamos la consulta...
+        $query = Anuncio::find();
+        //filtrar solo anuncios visibles...
+        //to-do: filtrar tambien ofertas bloqueadas...
+        $query->andFilterWhere([
+            'visible' => '1',
+            'zona_id' => $ids,
+        ]);
+
+        /*$query = (new \yii\db\Query())
+        ->select('*')
+        ->from('anuncios')
+        ->where([
+        'visible' => '1',
+        'zona_id' => $ids])
+        ->all();*/
+
+        //echo "<pre>"; print_r($query); echo "</pre>";
     
         //preparamos el proveedor de datos...
         $dataProvider = new ActiveDataProvider([

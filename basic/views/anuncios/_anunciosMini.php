@@ -26,10 +26,24 @@ $desactivado = ($model->terminada > 0)?true:false;
 		<!--/.Imagen del anuncio-->	
 		
 
-		<span class="fecha-publicacion"/>
-			<?php //cuanto hace que se creo el anuncio...
-			if($model->crea_fecha !=null || $model->crea_fecha != 0) echo " hace ".humanTiming($model->crea_fecha);
-			else echo "sin fecha"; ?>
+			<span class="fecha-publicacion"/>
+				<?php 
+
+				//cuanto hace que se creo el anuncio...
+				if($model->crea_fecha !=null || $model->crea_fecha != 0){
+
+					$tiempo_pasado = ((time()-strtotime($model->crea_fecha))<1)?1:(time()-strtotime($model->crea_fecha));
+
+				    $equivalencias = array ( 31536000 => 'año',2592000 => 'mes',604800 => 'semana',
+				    							86400 => 'dia',3600 => 'hora',60 => 'minuto',1 => 'segundo' );
+				    foreach ($equivalencias as $unidad => $texto) {
+				        if ($tiempo_pasado < $unidad) continue;
+				        $n_unidades = floor($tiempo_pasado / $unidad);
+				        echo 'hace '. $n_unidades.' '.$texto.(($n_unidades>1)?'s':'');
+				        break;
+				    }			   
+				} 
+				else echo "sin fecha"; ?>
 			</span>
 		
 			<div class="votos">
