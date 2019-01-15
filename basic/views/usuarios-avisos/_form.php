@@ -14,7 +14,7 @@ use app\models\UsuariosAviso;
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'fecha_aviso');?>
+    <?= $form->field($model, 'fecha_aviso')->input('date');?>
 
     <?= $form->field($model, 'clase_aviso_id')->dropDownList($model::$tipos, ['prompt' => 'Seleccione Uno' ]);   ?>
 
