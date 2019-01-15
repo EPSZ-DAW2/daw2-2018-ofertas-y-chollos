@@ -8,6 +8,7 @@ use app\models\MensajesSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\filters\AccessControl;
 
 /**
  * MensajesController implements the CRUD actions for Mensaje model.
@@ -24,6 +25,21 @@ class MensajesController extends Controller
                 'class' => VerbFilter::className(),
                 'actions' => [
                     'delete' => ['POST'],
+                ],
+            ],
+            'access'=>[
+                'class'=>AccessControl::className(),
+                'rules'=>[
+                    [
+                        'allow'=>true,
+                        'actions'=>['limpieza','index','view','create','update','delete'],
+                        'roles'=>['admin'],
+                    ],
+                    [
+                        'allow'=>true,
+                        'actions'=>['enviar','listar','iniciar','actualizar'],
+                        'roles'=>['usuario'],
+                    ]
                 ],
             ],
         ];
@@ -107,20 +123,6 @@ class MensajesController extends Controller
     public function actionIniciar($id_destino)
     {
         return $this->actionActualizar($id_destino);
-        /*return $this->render('chat', [
-            'mensajes'=>$_SESSION['mensajes'][$id_destino],
-            'id_destino'=>$id_destino,
-            'nick'=>
-            'model'=>new Mensaje(),
-        ]);
-        if(isset($_SESSION['mensajes'][$id_destino]))
-        {
-            foreach ($_SESSION['mensajes'][$id_destino] as $mensaje)
-            {
-                echo $mensaje->fecha_hora.' '.$mensaje->texto.'<br>';
-                //echo $mensaje->nick;
-            }
-        }*/
     }
 
     /**
