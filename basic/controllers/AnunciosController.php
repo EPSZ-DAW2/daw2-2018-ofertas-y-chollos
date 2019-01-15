@@ -197,17 +197,15 @@ class AnunciosController extends Controller
         return $ps;
     }
 
-    //acción para listar los anuncios en g
+    //acción para listar todos los anuncios, a excepcion de los no visibles y los bloqueados    
 
     public function actionListar(){
 
         //preparamos la consulta...
         $query = Anuncio::find();
-        //filtrar solo anuncios visibles...
-        //to-do: filtrar tambien ofertas bloqueadas...
+        //filtrar solo anuncios visibles...       
         $query->andFilterWhere([
-            'visible' => '1',
-        ]);
+            'visible' => '1','bloqueada' => '0']);
     
         //preparamos el proveedor de datos...
         $dataProvider = new ActiveDataProvider([
