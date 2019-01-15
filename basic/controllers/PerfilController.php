@@ -35,9 +35,6 @@ class PerfilController extends Controller
      */
     public function actionIndex()
     {
-        $searchModel = new PerfilSearch();
-        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
-
        return $this->render('index', [
             'model' => $this->findModel(Yii::$app->user->id),
         ]);
@@ -125,6 +122,12 @@ class PerfilController extends Controller
     }
 
 
+    public function actionBaja(){
+       return $this->render('baja', [
+            'model' => $this->findModel(Yii::$app->user->id),
+        ]);
+
+    }
 
     public function actionPass(){
         $model = $this->findModel(Yii::$app->user->id);

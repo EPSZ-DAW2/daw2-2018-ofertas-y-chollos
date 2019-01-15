@@ -10,7 +10,6 @@ $this->title = Yii::t('app', 'Cambiar contraseña: {nameAttribute}', [
 ]);
 $this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Mi Perfil'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = Yii::t('app', 'Cambiar contraseña');
-$_SESSION['id']=Yii::$app->user->id
 ?>
 <div class="perfil-update">
 
