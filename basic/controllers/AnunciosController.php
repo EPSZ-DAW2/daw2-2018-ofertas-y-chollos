@@ -4,7 +4,7 @@ namespace app\controllers;
 
 use Yii;
 use app\models\Anuncio;
-use app\models\Categorias;
+use app\models\Categoria;
 use app\models\Proveedor;
 use app\models\Zonas;
 use app\models\AnuncioSearch;
@@ -180,7 +180,7 @@ class AnunciosController extends Controller
 
     protected function listarCategorias()
     {
-         $listaCategorias = Categorias::find()->all();
+         $listaCategorias = Categoria::find()->all();
        $categorias = array(0=>"Ninguna");
         foreach ($listaCategorias as $categoria) {
            $categorias[$categoria->id]=$categoria->nombre;
@@ -198,7 +198,29 @@ class AnunciosController extends Controller
     }
 
     //acción para listar los anuncios en g
-    public function hijos($hijo)
+
+    public function actionListar(){
+
+        //preparamos la consulta...
+        $query = Anuncio::find();
+        //filtrar solo anuncios visibles...
+        //to-do: filtrar tambien ofertas bloqueadas...
+        $query->andFilterWhere([
+            'visible' => '1',
+        ]);
+    
+        //preparamos el proveedor de datos...
+        $dataProvider = new ActiveDataProvider([
+            'query' => $query,
+            'pagination' => ['pageSize' => 6]
+        ]);
+
+        return $this->render('listar_anuncios', [
+            'dataProvider' => $dataProvider,
+        ]);
+    }
+
+     public function hijos($hijo)
     {
         $hijos=$hijo->hijos;
         foreach($hijos as $hijo)
@@ -212,7 +234,7 @@ class AnunciosController extends Controller
         return $hijos;
     }
 
-    public function actionListar($id_zona){
+    public function actionListar_zona($id_zona){
 
         $zonas=array();
         $zona=zonas::find()->where(['id'=>$id_zona])->one();
@@ -265,5 +287,3 @@ class AnunciosController extends Controller
         ]);
     }
 }
-
-
