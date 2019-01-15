@@ -198,15 +198,21 @@ class AnunciosController extends Controller
 
     //acción para listar los anuncios en g
 
-    public function actionListar()
-    {
-        $searchModel = new AnuncioSearch();
+    public function actionListar(){
+
+        //preparamos la consulta...
+        $query = Anuncio::find();
+        //filtrar solo anuncios visibles...
+        //to-do: filtrar tambien ofertas bloqueadas...
+        $query->andFilterWhere([
+            'visible' => '1',
+        ]);
+    
+        //preparamos el proveedor de datos...
         $dataProvider = new ActiveDataProvider([
-            'query' => Anuncio::find(),
-            'pagination' => [
-            'pageSize' => 20,
-        ],
-]);
+            'query' => $query,
+            'pagination' => ['pageSize' => 6]
+        ]);
 
         return $this->render('listar_anuncios', [
             'dataProvider' => $dataProvider,
