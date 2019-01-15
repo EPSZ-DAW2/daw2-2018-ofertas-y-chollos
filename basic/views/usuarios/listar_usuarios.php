@@ -1,3 +1,7 @@
+<?php 
+use yii\helpers\Html;
+use yii\widgets\ListView;
+?>
 <style>
  li {
   display:inline;
@@ -5,10 +9,16 @@
 }
 </style>
 
+
+<form >
+	<input type="text" name="r" value="usuarios/listar" hidden="">
+	<input type="text" name="filtro">
+	<input type="submit" name="" class="btn-primary" value="Buscar" >
+
+</form>
 <?php
 
-use yii\widgets\ListView;
-use yii\helpers\Html;
+
 
 
 echo ListView::widget([
