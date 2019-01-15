@@ -80,7 +80,7 @@ class LoginForm extends Model
         $existe = isset($this->_user->id);
         if(!$existe){
             $this->addError('username', 'El usuario no existe.');
-            return;
+            return false;
         }
 
         //obtener las variables de bloqueo de la configuracion, si no existen, le damos un valor por defecto
