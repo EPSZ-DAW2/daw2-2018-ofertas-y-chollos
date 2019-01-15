@@ -35,7 +35,7 @@ class PerfilController extends Controller
                 'rules'=>[
                     [
                         'allow'=>true,
-                        'actions'=>['index','view','create','update','delete', 'baja', 'pass', 'anuncios', 'avisos'],
+                        'actions'=>['index','view','create','update','delete', 'baja', 'pass', 'anuncios', 'avisos', 'seguidos'],
                         'roles'=>['usuario'],
                     ],
                     [
@@ -183,7 +183,7 @@ class PerfilController extends Controller
     }
 
 	public function actionAnuncios()
-	{
+    {
 
         //preparamos la consulta...
         $query = Anuncio::find();
@@ -202,6 +202,12 @@ class PerfilController extends Controller
         ]);
     
     }
+
+    public function actionSeguidos()
+    {
+//JOSEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE AQUI TU CODIGOOOOOOOOOOOOOOOOOOOOOOO    
+    }
+
 
     public function actionAvisos(){
         $query = UsuariosAviso::find();
