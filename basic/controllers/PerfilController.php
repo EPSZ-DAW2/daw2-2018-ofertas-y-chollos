@@ -11,6 +11,7 @@ use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use yii\data\ActiveDataProvider;
+use yii\filters\AccessControl;
 
 /**
  * PerfilController implements the CRUD actions for Perfil model.
@@ -27,6 +28,21 @@ class PerfilController extends Controller
                 'class' => VerbFilter::className(),
                 'actions' => [
                     'delete' => ['POST'],
+                ],
+            ],
+            'access'=>[
+                'class'=>AccessControl::className(),
+                'rules'=>[
+                    [
+                        'allow'=>true,
+                        'actions'=>['index','view','create','update','delete', 'baja', 'pass', 'anuncios', 'avisos'],
+                        'roles'=>['usuario'],
+                    ],
+                    [
+                        'allow'=>true,
+                        'actions'=>['busqueda'],
+                        'roles'=>['invitado'],
+                    ]
                 ],
             ],
         ];
@@ -187,4 +203,15 @@ class PerfilController extends Controller
     
     }
 
+    public function actionAvisos(){
+        $query = UsuariosAviso::find();
+        $query->andFilterWhere(['or',['destino_usuario_id'=> Yii::$app->user->id],['origen_usuario_id'=>Yii::$app->user->id]]);
+                $dataProvider = new ActiveDataProvider([
+            'query' => $query,
+        ]);
+
+        return $this->render('avisos', [
+            'dataProvider' => $dataProvider,
+        ]);
+    }
 }

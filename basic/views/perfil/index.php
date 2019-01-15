@@ -30,6 +30,7 @@ $this->params['breadcrumbs'][] = $this->title;
 					<?= Html::a('Cambio de contraseña', ['perfil/pass'], ['class' => 'list-group-item']) ?>
 					<?= Html::a('Solicitud de Baja', ['perfil/baja'], ['class' => 'list-group-item']) ?>
 					<?= Html::a('Anuncios creados', ['perfil/anuncios'], ['class' => 'list-group-item']) ?>
+					<?= Html::a('Anuncios seguidos', ['perfil/anuncios_seguidos'], ['class' => 'list-group-item']) ?>
 					<?= Html::a('Comentarios', ['perfil/comentarios'], ['class' => 'list-group-item']) ?>
 					<?= Html::a('Avisos', ['perfil/avisos'], ['class' => 'list-group-item']) ?>
 					<?= Html::a('Chats', ['mensajes/listar'], ['class' => 'list-group-item']) ?>
