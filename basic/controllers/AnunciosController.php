@@ -4,8 +4,9 @@ namespace app\controllers;
 
 use Yii;
 use app\models\Anuncio;
-use app\models\Categoria;
+use app\models\Categorias;
 use app\models\Proveedor;
+use app\models\Zonas;
 use app\models\AnuncioSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
@@ -179,7 +180,7 @@ class AnunciosController extends Controller
 
     protected function listarCategorias()
     {
-         $listaCategorias = Categoria::find()->all();
+         $listaCategorias = Categorias::find()->all();
        $categorias = array(0=>"Ninguna");
         foreach ($listaCategorias as $categoria) {
            $categorias[$categoria->id]=$categoria->nombre;
@@ -197,8 +198,42 @@ class AnunciosController extends Controller
     }
 
     //acción para listar los anuncios en g
+    public function hijos($hijo)
+    {
+        $hijos=$hijo->hijos;
+        foreach($hijos as $hijo)
+        {
+            $aux=$this->hijos($hijo);
+            foreach ($aux as $zona)
+            {
+                $hijos[]=$zona;
+            }
+        }
+        return $hijos;
+    }
 
-    public function actionListar(){
+    public function actionListar($id_zona){
+
+        $zonas=array();
+        $zona=zonas::find()->where(['id'=>$id_zona])->one();
+
+        $hijos=$zona->hijos;
+        $zonas[]=$zona;
+
+        foreach ($hijos as $hijo)
+        {
+            $zonas[]=$hijo;
+            $aux=$this->hijos($hijo);
+            foreach($aux as $zona)
+            {
+                $zonas[]=$zona;
+            }
+        }
+        $ids=array();
+        foreach ($zonas as $zona)
+        {
+            $ids[]=$zona->id;
+        }
 
         //preparamos la consulta...
         $query = Anuncio::find();
@@ -206,7 +241,18 @@ class AnunciosController extends Controller
         //to-do: filtrar tambien ofertas bloqueadas...
         $query->andFilterWhere([
             'visible' => '1',
+            'zona_id' => $ids,
         ]);
+
+        /*$query = (new \yii\db\Query())
+        ->select('*')
+        ->from('anuncios')
+        ->where([
+        'visible' => '1',
+        'zona_id' => $ids])
+        ->all();*/
+
+        //echo "<pre>"; print_r($query); echo "</pre>";
     
         //preparamos el proveedor de datos...
         $dataProvider = new ActiveDataProvider([
