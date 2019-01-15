@@ -205,7 +205,21 @@ class PerfilController extends Controller
 
     public function actionSeguidos()
     {
-//JOSEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE AQUI TU CODIGOOOOOOOOOOOOOOOOOOOOOOO    
+		$query = Anuncio::find();   
+        $query
+			->leftJoin('Usuarios_Anuncios','anuncios.id=usuarios_anuncios.anuncio_id')
+			->where([
+				'usuario_id'=>Yii::$app->user->id ]);
+    
+        //preparamos el proveedor de datos...
+        $dataProvider = new ActiveDataProvider([
+            'query' => $query,
+            'pagination' => ['pageSize' => 6]
+        ]);
+
+        return $this->render('anuncios', [
+            'dataProvider' => $dataProvider,
+        ]);
     }
 
 
