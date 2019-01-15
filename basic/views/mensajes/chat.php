@@ -25,15 +25,14 @@ $this->params['breadcrumbs'][] = $this->title;
         {
             if($id==$mensaje->origen_usuario_id)
             {
-                $align='right';
+                $align='right;color:green';
             }
             else
             {
                 $align='left';
             }
             echo '<hr>';
-            echo "<div style='text-align:".$align.";'>".$mensaje->texto.'<br>'.$mensaje->fecha_hora.'</div>';
-            //echo $mensaje->nick;
+            echo "<div style='text-align:".$align.";'>".$mensaje->texto.'<br>'.$mensaje->fecha_hora."</div>";
         }
     ?>
     </div>
@@ -51,7 +50,7 @@ $this->registerJs($script);
     <?php Pjax::end(); ?>
     
     <?php $form = ActiveForm::begin(['action' => ['enviar'],]); ?>
-    <?= $form->field($model, 'texto')->textInput() ?>
+    <?= $form->field($model, 'texto')->textInput(['autocomplete'=>"off",'autofocus' => 'autofocus']) ?>
     <?= $form->field($model, 'destino_usuario_id')->hiddenInput(['value' => $destino])->label(false); ?>
     <?= Html::submitButton(Yii::t('app', 'Enviar'), ['class' => 'btn btn-success']) ?>
     <?php ActiveForm::end(); ?>

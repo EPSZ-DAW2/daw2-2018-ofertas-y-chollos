@@ -30,7 +30,7 @@ class Mensaje extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['fecha_hora'], 'required'],
+            [['fecha_hora','texto'], 'required'],
             [['fecha_hora'], 'safe'],
             [['texto'], 'string'],
             [['origen_usuario_id', 'destino_usuario_id'], 'integer'],
