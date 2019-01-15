@@ -98,10 +98,10 @@ $patrocinado = (($model->proveedor_id != NULL) && ($model->proveedor_id != 0))?t
 						echo  Html::encode($model->precio_original);
 						echo "€</span>";
 						echo "&nbsp;";
-						$model->precio_original."&nbsp;";
-						$model->precio_oferta."&nbsp;";
+						$model->precio_original;
+						$model->precio_oferta;
 						$descuento = $model->precio_original - $model->precio_oferta;
-						$descuento = -1*(($model->precio_oferta/$model->precio_original)*100);
+						$descuento = -1*((1-$model->precio_oferta/$model->precio_original)*100);
 						$descuento = round($descuento, 0);
 						echo "<span class='porcentaje-descuento'>(".$descuento."%)</span>";
 				} ?>
