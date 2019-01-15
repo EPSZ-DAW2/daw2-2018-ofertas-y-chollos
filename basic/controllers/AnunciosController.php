@@ -197,11 +197,12 @@ class AnunciosController extends Controller
         return $ps;
     }
 
-    //acción para listar todos los anuncios, a excepcion de los no visibles y los bloqueados    
+    //acción para listar todos los anuncios, a excepcion de los no visibles y los bloqueados
 
     public function actionListar(){
 
         //preparamos la consulta...
+       $searchModel = new AnuncioSearch();
         $query = Anuncio::find();
         //filtrar solo anuncios visibles...       
         $query->andFilterWhere([
@@ -215,6 +216,7 @@ class AnunciosController extends Controller
 
         return $this->render('listar_anuncios', [
             'dataProvider' => $dataProvider,
+            'searchModel' => $searchModel,
         ]);
     }
 

@@ -115,9 +115,9 @@ $this->registerJs($js, View::POS_BEGIN);
 								),
 									['label' => 'About', 'url' => ['site/about'], 'options' => [ "class" => "nav-item"]],
 									['label' => 'Contact', 'url' => ['site/contact'], 'options' => [ "class" => "nav-item"]],
-									['label' => 'Gestión', 'url' => ['gestion/index'],'options' => [ "class" => "nav-item"]
+									['label' => 'Gestión', 'url' => ['gestion/index'],'options' => [ "class" => "nav-item"],
 										//, 'visible'=>Yii::$app->user->can('administrador')
-									['label' => 'Chats', 'url' => ['mensajes/listar'],'visible'=>!Yii::$app->user->isGuest,'options' => [ "class" => "nav-item"]],
+									['label' => 'Chats', 'url' => ['mensajes/listar'],'visible' => !Yii::$app->user->isGuest,'options' => [ 'class' => 'nav-item']],
 								],
 							],
 						]);
