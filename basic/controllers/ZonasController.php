@@ -29,6 +29,11 @@ class ZonasController extends Controller
         ];
     }
 
+    public function actionBuscar_zona()
+    {
+        
+    }
+
     public function actionBusqueda()
     {
         return $this->render('busqueda', [

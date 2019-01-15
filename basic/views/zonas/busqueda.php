@@ -38,7 +38,7 @@ $this->params['breadcrumbs'][] = $this->title;
         foreach($continentes as $continente)
         {
         ?>
-        <li><input type="checkbox" name="list" id="nivel1-<?= $continente->id?>"><label class="primero" for="nivel1-<?= $continente->id?>"><?= $continente->nombre ?></label>
+        <li><input type="checkbox" name="list" id="nivel1-<?= $continente->id?>"><label class="primero" for="nivel1-<?= $continente->id?>"><?= Html::a($continente->nombre, ['anuncios/listar', 'id_zona' => $continente->id]) ?></label>
             <ul class="interior">
                 <?php
                 $hijos1=$continente->hijos;
