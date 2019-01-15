@@ -46,6 +46,35 @@ class UsuariosController extends Controller
         ]);
     }
 
+    /**
+     * Lists all Usuario models.
+     * ORDENADOS POR FECHA
+     */
+    public function actionRevision_registro()
+    {
+        $searchModel = new UsuarioSearch();
+        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+
+        $dataProvider->setSort([
+        'attributes' => [
+            'fecha_registro' => [
+                'asc' => ['fecha_registro' => SORT_ASC],
+                'desc' => ['fecha_registro' => SORT_DESC],
+                'default' => SORT_ASC
+            ],
+        ],
+        'defaultOrder' => [
+            'fecha_registro' => SORT_DESC
+        ]
+    ]);
+
+
+
+        return $this->render('revision_registro', [
+            'searchModel' => $searchModel,
+            'dataProvider' => $dataProvider,
+        ]);
+    }
 
 
     /*Accion de prueba para la vista de las piezas resumidas usuario
