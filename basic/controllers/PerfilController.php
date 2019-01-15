@@ -10,6 +10,7 @@ use app\models\PerfilSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\data\ActiveDataProvider;
 
 /**
  * PerfilController implements the CRUD actions for Perfil model.
@@ -167,11 +168,23 @@ class PerfilController extends Controller
 
 	public function actionAnuncios()
 	{
-		$searchModel = new Anuncio();
-		$model = $this->findModel(Yii::$app->user->id);
-				return $this->render('anuncios', [
-								'model' => $model,
-				]);
-	}
+
+        //preparamos la consulta...
+        $query = Anuncio::find();
+        //filtrar solo anuncios visibles...       
+        $query->andFilterWhere([
+            'bloqueada' => '0', 'crea_usuario_id'=>Yii::$app->user->id ]);
+    
+        //preparamos el proveedor de datos...
+        $dataProvider = new ActiveDataProvider([
+            'query' => $query,
+            'pagination' => ['pageSize' => 6]
+        ]);
+
+        return $this->render('anuncios', [
+            'dataProvider' => $dataProvider,
+        ]);
+    
+    }
 
 }
