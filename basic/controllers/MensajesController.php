@@ -56,11 +56,14 @@ class MensajesController extends Controller
         $model->origen_usuario_id=$origen;
         $model->destino_usuario_id=$destino;*/
         $model->load(Yii::$app->request->post());
+        $model->origen_usuario_id=Yii::$app->user->id;
         $model->fecha_hora=date("Y-m-d H:i:s");
         $model->save();
         $_SESSION['mensajes'][$model->destino_usuario_id][]=$model;
         return $this->render('chat', [
             'mensajes'=>$_SESSION['mensajes'][$model->destino_usuario_id],
+            'destino'=>$model->destino_usuario_id,
+            'nick'=>$model->nick,
             'model'=>new Mensaje(),
         ]);
     }
@@ -81,32 +84,36 @@ class MensajesController extends Controller
         $id_origen=Yii::$app->user->id;
         $model->origen_usuario_id=$id_origen;
         $model->destino_usuario_id=$id_destino;
+        $nick=$model->nick;
         $mensajes=$model->mensajes;
-        $cambios=0;
         foreach($mensajes as $mensaje)
         {
             $_SESSION['mensajes'][$id_destino][]=$mensaje;
             $mensaje->delete();
-            $cambios=1;
         }
-        //if($cambios==1)
-        //{
-             return $this->render('chat', [
+        if(!isset($_SESSION['mensajes'][$id_destino]))
+        {
+        	$_SESSION['mensajes'][$id_destino]=array();
+        }
+            return $this->render('chat', [
             'mensajes'=>$_SESSION['mensajes'][$id_destino],
+            'destino'=>$id_destino,
+            'nick'=>$nick,
             'model'=>new Mensaje(),
         ]);
-        //}
     }
 
     //Función que iniciará el chat entre dos usuarios
-    public function actionIniciar($id_destino=null)
+    public function actionIniciar($id_destino)
     {
-        $this->actionActualizar($id_destino);
-        return $this->render('chat', [
+        return $this->actionActualizar($id_destino);
+        /*return $this->render('chat', [
             'mensajes'=>$_SESSION['mensajes'][$id_destino],
+            'id_destino'=>$id_destino,
+            'nick'=>
             'model'=>new Mensaje(),
         ]);
-        /*if(isset($_SESSION['mensajes'][$id_destino]))
+        if(isset($_SESSION['mensajes'][$id_destino]))
         {
             foreach ($_SESSION['mensajes'][$id_destino] as $mensaje)
             {

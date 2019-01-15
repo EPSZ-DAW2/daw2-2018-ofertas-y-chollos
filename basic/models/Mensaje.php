@@ -58,7 +58,15 @@ class Mensaje extends \yii\db\ActiveRecord
 
     public function getNick()
     {
-        $nick=Usuario::find()->select('nick')->where(['id'=>$this->origen_usuario_id])->one();
+        if(Yii::$app->user->id==$this->origen_usuario_id)
+        {
+            $id=$this->destino_usuario_id;
+        }
+        else
+        {
+            $id=$this->origen_usuario_id;
+        }
+        $nick=Usuario::find()->select('nick')->where(['id'=>$id])->one();
         return $nick->nick;
     }
 
