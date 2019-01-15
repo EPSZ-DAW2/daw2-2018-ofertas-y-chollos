@@ -94,11 +94,11 @@ class LoginForm extends Model
 
                          
             if($segundos <= $tiempo_bloqueo){
-                $this->addError('password', 'Demasiados intentos fallidos. Acceso bloqueado durante '.($tiempo_bloqueo-$segundos).' segundos');
+                $this->addError('password', 'Acceso bloqueado tras '.$max_accesos.' intentos fallidos. Espera '.($tiempo_bloqueo-$segundos).' segundos.');
                 return false;
                              
             }else{
-                $this->_user->updateAttributes(['num_accesos' => 0, 'bloqueado' => 0]);
+                $this->_user->updateAttributes(['num_accesos' => 0, 'bloqueado' => 0,'fecha_bloqueo' => NULL,'notas_bloqueo' => NULL]);
             }
         }
         
@@ -127,7 +127,7 @@ class LoginForm extends Model
                 //cambiar 5 por la variable $max_acesos en la tabla configuraciones...
                 if($this->_user->num_accesos >= $max_accesos){
                     //bloquear el acceso
-                    $this->_user->updateAttributes(['bloqueado' => 1]);
+                    $this->_user->updateAttributes(['bloqueado' => 1,'fecha_bloqueo' => date("Y-m-d H:i:s"),'notas_bloqueo' => 'Número de accesos fallidos excedido.']);
                     
                 }
 
