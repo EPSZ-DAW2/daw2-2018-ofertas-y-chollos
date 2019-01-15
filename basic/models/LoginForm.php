@@ -5,6 +5,7 @@ namespace app\models;
 use Yii;
 use yii\base\Model;
 use app\models\Configuracion;
+use app\models\Registro;
 
 /**
  * LoginForm is the model behind the login form.
@@ -73,17 +74,22 @@ class LoginForm extends Model
     public function login()
     {
 
-        //obtener las variables de bloqueo de la configuracion, si no existen, le damos un valor por defecto
-
-        $max_accesos =5;
         
-          $tiempo_bloqueo =60;
 
+       
+        //obtener las variables de bloqueo de la configuracion, si no existen, le damos un valor por defecto
+        if(!($max_accesos = Configuracion::findOne(['variable' => 'max_accesos']))) $max_accesos =5;
+        else $max_accesos = $max_accesos->valor;
+
+        if(!($tiempo_bloqueo = Configuracion::findOne(['variable' => 'tiempo_bloqueo']))) $tiempo_bloqueo =60;
+        else $tiempo_bloqueo = $tiempo_bloqueo->valor;
+
+        //cargamos el modelo del usuario
         $this->_user = Usuario::findByUsername($this->username); 
 
         if($this->_user->bloqueado == 1){
             
-            $this->_user->updateAttributes(['num_accesos' => $this->_user->num_accesos+=1]);
+            //$this->_user->updateAttributes(['num_accesos' => $this->_user->num_accesos+=1]);
 
             $fecha_acceso = $this->_user->fecha_acceso;
             $ahora =  strtotime(date("Y-m-d H:i:s"));
@@ -102,8 +108,16 @@ class LoginForm extends Model
         if ($this->validate()) {
             return Yii::$app->user->login($this->getUser(), $this->rememberMe ? 3600*24*30 : 0);
         }else{
+            //preparar el modelo para guardar el registro...
+            $log = new Registro();  
+            $log->fecha_registro = date("Y-m-d H:i:s");     
+            $log->clase_log_id = 'A';
+            $log->modulo = "LoginForm.php";
+            $log->texto = "Intento de acceso fallido";
+            $log->ip = Yii::$app->request->getUserIP();
+            $log->browser = Yii::$app->request->getUserAgent();
 
-           
+            $log->save();
             //si es el primer acceso fallido, almacenamos la fecha de acceso
             if($this->_user->num_accesos == 0){
                 $this->_user->updateAttributes(['fecha_acceso' => date("Y-m-d H:i:s"),'num_accesos' => $this->_user->num_accesos+=1]);
