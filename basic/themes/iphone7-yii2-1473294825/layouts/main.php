@@ -4,12 +4,28 @@ use yii\helpers\Html;
 use yii\widgets\Menu;
 use yii\widgets\Breadcrumbs;
 use app\widgets\Alert;
+use yii\web\View;
 
 /**
  * @var $this \yii\base\View
  * @var $content string
  */
 // $this->registerAssetBundle('app');
+
+$js = <<<SCRIPT
+	function mostrar() {
+		
+		if (document.getElementById("menuPerfil").style.display == "none") {
+		  document.getElementById("menuPerfil").style.display = "block";
+		} else {
+		  document.getElementById("menuPerfil").style.display = "none";
+		}
+	}
+SCRIPT;
+
+
+
+$this->registerJs($js, View::POS_BEGIN);
 ?>
 <?php $this->beginPage(); ?>
 
@@ -89,19 +105,19 @@ use app\widgets\Alert;
 						echo Menu::widget([
 							'options' => [
 								"id"  => "nav",
-								"class" => "nav navbar-nav"
+								"class" => "nav navbar-nav down"
 							],
 							'items' => [
-								['label' => 'About', 'url' => ['site/about'], 'options' => [ "class" => "nav-item down"]],
+								Yii::$app->user->isGuest ? (
+									['label' => 'Conectar', 'url' => ['/usuarios/login'], 'options' => [ "class" => "nav-item"]]
+								) : (
+									['label' => Yii::$app->user->identity->nick, 'template' => '<a href="#">{label}</a>', 'options' => [ "class" => "nav-item", 'onclick'=>'mostrar();']]
+								),
+								['label' => 'About', 'url' => ['site/about'], 'options' => [ "class" => "nav-item"]],
 								['label' => 'Contact', 'url' => ['site/contact'], 'options' => [ "class" => "nav-item"]],
 								['label' => 'Gestión', 'url' => ['gestion/index'],'options' => [ "class" => "nav-item"]
 									//, 'visible'=>Yii::$app->user->can('administrador')
 								],
-								Yii::$app->user->isGuest ? (
-									['label' => 'Conectar', 'url' => ['/usuarios/login'], 'options' => [ "class" => "nav-item"]]
-								) : (
-									['label' => 'Logout ('.Yii::$app->user->identity->nick.')', 'url' => ['/usuarios/logout'],'options' => [ "class" => "nav-item"]]
-								)
 							],
 						]);
 					?>
@@ -118,6 +134,18 @@ use app\widgets\Alert;
         </nav>
         <!--/.Navbar-->
 		
+			<div class="container menu-perfil" id="menuPerfil">
+				<div class="row">
+				  <div class="col-md-12">
+					<div class="list-group drop-perfil">
+						<?php
+						 echo Html::a('Perfil', ['/perfil/index'], ['class' => 'list-group-item']);
+						 echo Html::a('Logout', ['/usuarios/logout'], ['class' => 'list-group-item']);
+						?>
+					</div>
+				  </div>
+				</div>
+			</div>
     </header>
 
 	<main>

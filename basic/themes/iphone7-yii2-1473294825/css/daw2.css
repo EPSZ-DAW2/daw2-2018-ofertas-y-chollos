@@ -18,6 +18,19 @@
 		margin-left: 1.875rem;
 	}
 	
+	.drop-perfil {
+		width:200px;
+		position: absolute;
+		top: 0;
+		left: 125px;
+		z-index: 25;
+	}
+	
+	.menu-perfil {
+		display: none;
+		margin-top: -1px;
+	}
+
 	.navbar-light .navbar-nav .nav-link {
 		color: black;
 	}
@@ -37,5 +50,10 @@
 	
 	.down {
 		margin-top: 50px;
+	}
+	
+	.drop-perfil {
+		top: -140px;
+		left: 15px;
 	}
 }
