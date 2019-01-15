@@ -122,20 +122,30 @@ class PerfilController extends Controller
     }
 
 
-    public function actionBaja(){
-	//	$model = new UsuariosAviso/Create();
-		$id = $model->user->id;
-		$model = $this->actionCreate($id);
-		
-		if($model->load(Yii::$app->request->post()))
-		{
-			$id =  $model->id;
-		}
-		
+       public function actionBaja(){
+    //  $model = new UsuariosAviso/Create();
+/*      $model = $this->actionCreate($id);
+        
+        if($model->load(Yii::$app->request->post()))
+        {
+            $id =  $model->id;
+        }
+*/      
+    if (Yii::$app->request->post()) {
+                $modelo = new UsuariosAviso();
+                $modelo->fecha_aviso=date("y-m-d H:i:s");
+                $modelo->clase_aviso_id='N';
+                $modelo->texto='Baja';
+                $modelo->origen_usuario_id=Yii::$app->user->id;
+                if ( $modelo->save()) {
+                return $this->redirect(['index']);
+            }
+            }else{
+        $model = $this->findModel(Yii::$app->user->id);
        return $this->render('baja', [
             'model' => $model,
         ]);
-
+}
     }
 
     public function actionPass(){
