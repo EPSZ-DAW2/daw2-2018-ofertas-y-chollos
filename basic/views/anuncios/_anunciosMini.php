@@ -98,8 +98,10 @@ $desactivado = ($model->terminada > 0)?true:false;
 					echo  Html::encode($model->precio_original);
 					echo "€</span>";
 					echo "&nbsp;";
-					$descuento = $model->precio_original - $model->precio_oferta;
-					$descuento = -1*($descuento / $model->precio_oferta )*100;
+					echo $model->precio_original."&nbsp;";
+					echo $model->precio_oferta."&nbsp;";
+					echo $descuento = $model->precio_original - $model->precio_oferta;
+					$descuento = -1*(($model->precio_oferta/$model->precio_original)*100);
 					$descuento = round($descuento, 0);
 					echo "<span class='porcentaje-descuento'>(".$descuento."%)</span>";
 				} ?>
