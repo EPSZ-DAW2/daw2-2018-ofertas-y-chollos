@@ -144,6 +144,6 @@ class Usuario extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface
 
         return $this->password === md5($password);
 
-
     }
-}
+
+

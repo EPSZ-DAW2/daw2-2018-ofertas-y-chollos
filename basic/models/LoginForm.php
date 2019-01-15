@@ -4,6 +4,7 @@ namespace app\models;
 
 use Yii;
 use yii\base\Model;
+use app\models\Configuracion;
 
 /**
  * LoginForm is the model behind the login form.
@@ -18,6 +19,7 @@ class LoginForm extends Model
     public $username;
     public $password;
     public $rememberMe = true;
+    public $fecha_acceso;
 
     private $_user = false;
 
@@ -70,8 +72,66 @@ class LoginForm extends Model
      */
     public function login()
     {
+
+        //obtener las variables de bloqueo de la configuracion, si no existen, le damos un valor por defecto
+
+        if(!($max_accesos = Configuracion::findOne(['variable' => 'max_accesos']))){
+          $max_accesos =5;
+        }else{
+              $max_accesos = $max_accesos->valor;
+        }
+
+        if(!($tiempo_bloqueo = Configuracion::findOne(['variable' => 'tiempo_bloqueo']))){
+          $tiempo_bloqueo =60;
+        }else{
+              $tiempo_bloqueo = $tiempo_bloqueo->valor;
+        }
+
+        $this->_user = Usuario::findByUsername($this->username); 
+
+        if($this->_user->bloqueado == 1){
+            
+            $this->_user->updateAttributes(['num_accesos' => $this->_user->num_accesos+=1]);
+
+            $fecha_acceso = $this->_user->fecha_acceso;
+            $ahora =  strtotime(date("Y-m-d H:i:s"));
+            $segundos = $ahora - strtotime($fecha_acceso);
+
+                         
+            if($segundos <= $tiempo_bloqueo){
+                $this->addError('password', 'Demasiados intentos fallidos. Acceso bloqueado durante '.($tiempo_bloqueo-$segundos).' segundos');
+                return false;
+                             
+            }else{
+                $this->_user->updateAttributes(['num_accesos' => 0, 'bloqueado' => 0]);
+            }
+        }
+        
         if ($this->validate()) {
             return Yii::$app->user->login($this->getUser(), $this->rememberMe ? 3600*24*30 : 0);
+        }else{
+
+           
+            //si es el primer acceso fallido, almacenamos la fecha de acceso
+            if($this->_user->num_accesos == 0){
+                $this->_user->updateAttributes(['fecha_acceso' => date("Y-m-d H:i:s"),'num_accesos' => $this->_user->num_accesos+=1]);
+            }
+
+            else{
+
+                $this->_user->updateAttributes(['num_accesos' => $this->_user->num_accesos+=1]);
+
+                //cambiar 5 por la variable $max_acesos en la tabla configuraciones...
+                if($this->_user->num_accesos >= $max_accesos){
+                    //bloquear el acceso
+                    $this->_user->updateAttributes(['bloqueado' => 1]);
+                    
+                }
+
+            } 
+               
+              
+
         }
         return false;
     }
@@ -84,7 +144,7 @@ class LoginForm extends Model
     public function getUser()
     {
         if ($this->_user === false) {
-            $this->_user = Usuario::findByUsername($this->username);
+              $this->_user = Usuario::findByUsername($this->username);          
         }
 
         return $this->_user;

@@ -3,10 +3,13 @@
 use yii\helpers\Html;
 use yii\helpers\Url;
 
+//creamos una variable para determinar si la oferta está terminada o  no
 $desactivado = ($model->terminada > 0)?true:false;
 
 ?>
 
+<!--Inicio de la tarjeta de la oferta-->
+<!-- se aplican ciertos estilos de forma condicional en funcion de si la oferta esta terminada o o noh!-->
 <div class="<?= ($desactivado)?'card-terminada-blur':''?>">
 
 	<div class="card col-md-4 <?= ($desactivado)?' card-terminada-gris':''?>">

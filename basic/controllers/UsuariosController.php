@@ -240,8 +240,7 @@ class UsuariosController extends Controller
     
 
     /**
-     * Acción de registro de usuario.
-     * Si el registro es correcto, se redirigirá a la pantalla de login.     
+     * Acción de login de usuario.  
      */
 
     public function actionLogin()
@@ -253,6 +252,11 @@ class UsuariosController extends Controller
 
         $model = new LoginForm();
         if ($model->load(Yii::$app->request->post()) && $model->login()) {
+
+            //registrar la fecha de acceso en la base de datos y reiniciar el contador de accesos...
+            $usuario = Usuario::findOne(['id' => Yii::$app->user->id]);
+            $usuario->updateAttributes(['fecha_acceso' => date("Y-m-d H:i:s"),'num_accesos' => 0]);            
+            
             return $this->goBack();
         }
 
