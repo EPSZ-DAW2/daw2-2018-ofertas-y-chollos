@@ -15,7 +15,6 @@ use app\models\Registro;
  */
 class LoginForm extends Model
 {
-
     
     public $username;
     public $password;
@@ -124,7 +123,7 @@ class LoginForm extends Model
 
                 $this->_user->updateAttributes(['num_accesos' => $this->_user->num_accesos+=1]);
 
-                //cambiar 5 por la variable $max_acesos en la tabla configuraciones...
+                
                 if($this->_user->num_accesos >= $max_accesos){
                     //bloquear el acceso
                     $this->_user->updateAttributes(['bloqueado' => 1,'fecha_bloqueo' => date("Y-m-d H:i:s"),'notas_bloqueo' => 'Número de accesos fallidos excedido.']);
