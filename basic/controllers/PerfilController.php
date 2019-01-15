@@ -5,6 +5,7 @@ namespace app\controllers;
 use Yii;
 use app\models\Perfil;
 use app\models\UsuariosAviso;
+use app\models\Anuncio;
 use app\models\PerfilSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
@@ -164,6 +165,13 @@ class PerfilController extends Controller
         ]);
     }
 
-
+	public function actionAnuncios()
+	{
+		$searchModel = new Anuncio();
+		$model = $this->findModel(Yii::$app->user->id);
+				return $this->render('anuncios', [
+								'model' => $model,
+				]);
+	}
 
 }
