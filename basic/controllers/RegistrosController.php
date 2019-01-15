@@ -8,7 +8,6 @@ use app\models\RegistrosSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
-use yii\filters\AccessControl;
 /**
  * RegistrosController implements the CRUD actions for Registro model.
  */
@@ -24,16 +23,6 @@ class RegistrosController extends Controller
                 'class' => VerbFilter::className(),
                 'actions' => [
                     'delete' => ['POST'],
-                ],
-            ],
-            'access'=>[
-                'class'=>AccessControl::className(),
-                'rules'=>[
-                    [
-                        'allow'=>true,
-                        'actions'=>['limpieza_automatica','limpieza','exportar','index','view','create','update','delete'],
-                        'roles'=>['admin'],
-                    ],
                 ],
             ],
         ];

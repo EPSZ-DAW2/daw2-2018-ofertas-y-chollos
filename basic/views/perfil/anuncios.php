@@ -6,7 +6,7 @@ use yii\data\ActiveDataProvider;
 use yii\widgets\Pjax;
 
 
-$this->title = Yii::t('app', 'Ofertas');
+$this->title = Yii::t('app', 'Mis anuncios');
 
 
 ?>
@@ -21,17 +21,13 @@ $this->title = Yii::t('app', 'Ofertas');
 
     <h1><?= Html::encode($this->title) ?></h1>
     <?php Pjax::begin(); ?>
-    <?php  echo $this->render('_search', ['model' => $searchModel]); ?>
-
-
+    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <?= ListView::widget([
         'dataProvider' => $dataProvider,
         'itemView' => '_anunciosMini',
-        'layout' => '<div class="container container-fluid">{items}</div> <div>{pager}{summary}</div>',
-
+        'layout' => '<div class="container container-fluid">{items}</div> <div>{pager}{summary}</div>'
     ]); ?>    
 
     <?php Pjax::end(); ?>
 </div>
-

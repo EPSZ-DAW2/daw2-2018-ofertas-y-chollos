@@ -1,4 +1,14 @@
-
+	.custom-select {
+		display: inline-block;
+	  padding: 4px 8px;
+	  line-height: 1.5;
+	  border-radius: 0.25rem;
+	  border: none;
+	  box-shadow: 0 2px 5px 0 rgba(0,0,0,.16),0 2px 10px 0 rgba(0,0,0,.12);
+	  height: 30.5px;
+	  margin-bottom: 15px;
+	}
+	
 	.band-invisible {
 		display: none;
 		position: absolute;
@@ -16,6 +26,16 @@
 		margin-bottom: 30px;
 		margin-right: 1.875rem;
 		margin-left: 1.875rem;
+	}
+	
+	.pagination {
+		padding: 4px 8px;
+		height: 30.5px;
+	}
+	
+	.pagination li {
+		display:inline;
+		margin: 1px;
 	}
 	
 	.drop-perfil {

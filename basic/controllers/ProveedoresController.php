@@ -62,17 +62,34 @@ class ProveedoresController extends Controller
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
-    public function actionCreate()
+    public function actionCreate($id)
     {
         $model = new Proveedor();
 
+        $model->usuario_id=$id;
+
+        $model->fecha_alta=date("Y-m-d H:i:s");
+
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+
+
+            //Se le da al usuario el rol de proveedor
+            $auth = Yii::$app->authManager;
+        
+            $auth->revokeAll($id);
+
+             $authorRole = $auth->getRole('patrocinador');
+            $auth->assign($authorRole, $id);
+
+            return $this->redirect(['usuarios/roles']);
         }
+        else{
 
         return $this->render('create', [
             'model' => $model,
+            'id'=> $id
         ]);
+        }
     }
 
     /**
