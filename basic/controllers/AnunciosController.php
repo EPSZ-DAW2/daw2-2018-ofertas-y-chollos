@@ -4,7 +4,7 @@ namespace app\controllers;
 
 use Yii;
 use app\models\Anuncio;
-use app\models\Categoria;
+use app\models\Categorias;
 use app\models\Proveedor;
 use app\models\Zonas;
 use app\models\AnuncioSearch;
@@ -180,7 +180,7 @@ class AnunciosController extends Controller
 
     protected function listarCategorias()
     {
-         $listaCategorias = Categoria::find()->all();
+         $listaCategorias = Categorias::find()->all();
        $categorias = array(0=>"Ninguna");
         foreach ($listaCategorias as $categoria) {
            $categorias[$categoria->id]=$categoria->nombre;
