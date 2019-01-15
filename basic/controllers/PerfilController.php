@@ -216,7 +216,7 @@ class PerfilController extends Controller
             'pagination' => ['pageSize' => 6]
         ]);
 
-        return $this->render('anuncios', [
+        return $this->render('seguidos', [
             'dataProvider' => $dataProvider,
         ]);
     }

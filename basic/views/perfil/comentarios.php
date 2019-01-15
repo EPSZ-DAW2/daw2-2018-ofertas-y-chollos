@@ -46,26 +46,5 @@ $this->title = 'Comentarios del chollo 1';
 				'summary' => '{count} COMENTARIOS',
     ]); ?> 
 	
-	<?php $form = ActiveForm::begin([]); ?>
-		
-		<div class="comment_input">
-			<div class="cita" id="cita">
-				<p><strong id="user"></strong> <?= Html::button( '<i class="fas fa-trash-alt"></i> No citar', ['class'=>'no-btn menor rojo', 'onclick'=>'no_citar();']); ?></p>
-				<p id="texto"></p>
-			</div>
-		
-			<div class="input-group">
-				<?= $form->field($model, 'texto', ['labelOptions' => [ 'class' => 'hidden']])->textInput(['placeholder' => 'Comentar...', 'class' => 'form-control']) ?>
-				<?= $form->field($model, 'anuncio_id', ['labelOptions' => [ 'class' => 'hidden']])->hiddenInput(['value' => '1']) ?>  <!-- pendiente -->
-				<?= $form->field($model, 'comentario_id', ['labelOptions' => [ 'class' => 'hidden']])->textInput() ?>
-				<?= $form->field($model, 'modi_usuario_id', ['labelOptions' => [ 'class' => 'hidden']])->textInput() ?>
-				<span class="input-group-btn">
-				<?= Html::submitButton('<i class="fas fa-chevron-circle-right"></i>', ['class' => 'btn btn-success']) ?>
-				</span>
-			</div><!-- /input-group -->
-		</div>
-
-	<?php ActiveForm::end(); ?>
-
 </div>
 
