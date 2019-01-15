@@ -17,7 +17,7 @@ function realizaProceso(valorCaja, valor){
         };
         $.ajax({
                 data:  parametros, //datos que se envian a traves de ajax
-                url:   '?r=zonas%2Fcreate', //archivo que recibe la peticion
+                url:   '?r=zonas%2Fparte2', //archivo que recibe la peticion
                 type:  'post', //método de envio
                 beforeSend: function () {
                         $("#resultado").html("Procesando, espere por favor...");
@@ -36,6 +36,7 @@ function realizaProceso(valorCaja, valor){
 
 
     <?= $form->field($model, 'clase_zona_id')->dropDownList($model::$zonas, ['prompt' => 'Seleccione Uno', 'id'=>'tipo', 'onchange'=>"realizaProceso($('#tipo').val(), $('#ruta'));return false" ]);   ?>
+    <!--
     <?= $form->field($model, 'nombre')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'zona_id')->textInput(['maxlength' => true]) ?>
@@ -44,6 +45,6 @@ function realizaProceso(valorCaja, valor){
         <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
     </div>
 
-    <?php ActiveForm::end(); ?>
+    <?php ActiveForm::end(); ?>-->
 <span id="resultado"></span>
 </div>

@@ -105,6 +105,17 @@ class ZonasController extends Controller
         ]);
     }
 
+
+    public function actionParte2($id=null){
+  //      echo $_POST["Tipo"];
+        if($id!=null) $model = $this->findModel($id);
+        else $model = new zonas();
+//        $model->clase_zona_id=$_POST["Tipo"];
+        return $this->renderPartial('_form2', [
+        'model' => $model,
+    ]);
+    }
+
     /**
      * Deletes an existing zonas model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
