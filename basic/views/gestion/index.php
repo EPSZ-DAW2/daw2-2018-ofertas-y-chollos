@@ -20,7 +20,9 @@ $this->title = 'My Yii Application';
 				<br>
 				<div class="list-group">
 					<?= Html::a('Usuarios', ['usuarios/index'], ['class' => 'list-group-item']) ?>
+					<?= Html::a('Nuevos registros', ['usuarios/revision_registro'], ['class' => 'list-group-item']) ?>
 					<?= Html::a('Proveedores', ['proveedores/index'], ['class' => 'list-group-item']) ?>
+					<?= Html::a('Roles', ['usuarios/roles'], ['class' => 'list-group-item']) ?>
 					<?= Html::a('Perfil', ['perfil/index'], ['class' => 'list-group-item']) ?>
 					<?= Html::a('Avisos', ['usuarios-avisos/index'], ['class' => 'list-group-item']) ?>
 					<?= Html::a('Mensajes', ['mensajes/index'], ['class' => 'list-group-item']) ?>

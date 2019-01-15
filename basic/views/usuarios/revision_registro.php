@@ -7,7 +7,7 @@ use yii\widgets\Pjax;
 /* @var $searchModel app\models\UsuarioSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = Yii::t('app', 'Usuarios');
+$this->title = Yii::t('app', 'Últimos usuarios registrados');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="usuario-index">
