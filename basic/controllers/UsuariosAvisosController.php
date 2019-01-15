@@ -33,7 +33,7 @@ class UsuariosAvisosController extends Controller
                     [
                         'allow'=>true,
                         'actions'=>['index','view','create','update','delete'],
-                        'roles'=>['moderador'],
+                        'roles'=>['admin'],
                     ],
                 ],
             ],
