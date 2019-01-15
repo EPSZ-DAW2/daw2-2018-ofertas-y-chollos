@@ -124,6 +124,7 @@ class PerfilController extends Controller
 
     public function actionBaja(){
 	//	$model = new UsuariosAviso/Create();
+		$id = $model->user->id;
 		$model = $this->actionCreate($id);
 		
 		if($model->load(Yii::$app->request->post()))
