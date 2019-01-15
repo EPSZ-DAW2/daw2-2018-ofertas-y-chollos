@@ -124,6 +124,35 @@ $this->params['breadcrumbs'][] = $this->title;
                 ]
             
              ],
+
+             [
+            'class' => 'yii\grid\ActionColumn',
+            'template' => '{proveedor}',  // your custom button
+            'buttons' => [
+                    'proveedor' => function ($dataProvider) {
+                        $id=substr($dataProvider,-2);
+
+                        $userRole = Yii::$app->authManager->getRolesByUser($id);
+
+                        if ($userRole) 
+                        {
+
+                            foreach ($userRole as $role) {
+                               $roles[] = $role->name;
+                            }
+
+                            // if user have 1 role then $userRole will be a string containing it
+                            // othewhise let $userRole be an array containing them all
+
+                            $userRole = count($roles) === 1 ? $roles[0] : $roles ;
+                        }
+
+                        if ($userRole=='patrocinador') return 'El usuario ya es proveedor';
+                        else return Html::a('Ampliar a proveedor', ['proveedores/create', 'id'=>$id]);
+                    },
+                ]
+            
+             ],
               
 
              

@@ -12,7 +12,7 @@ use yii\widgets\ActiveForm;
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'usuario_id')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'usuario_id')->textInput(['disabled' => true]) ?>
 
     <?= $form->field($model, 'nif_cif')->textInput(['maxlength' => true]) ?>
 
@@ -24,7 +24,7 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'url')->textarea(['rows' => 6]) ?>
 
-    <?= $form->field($model, 'fecha_alta')->textInput(['disabled' => true]) ?>
+    <?php //$form->field($model, 'fecha_alta')->textInput(['disabled' => true]) ?>
 
     <div class="form-group">
         <?= Html::submitButton(Yii::t('app', 'Guardar'), ['class' => 'btn btn-success']) ?>

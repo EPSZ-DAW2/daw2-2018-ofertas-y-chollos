@@ -53,7 +53,7 @@ class UsuariosController extends Controller
     --A listar_usuarios es obligatorio pasarle un objeto dataProvider
     --pageSize es el tamaño de pagina
     */
-    public function actionPrueba()
+    public function actionListar()
     {
 
         $dataProvider = new ActiveDataProvider([
@@ -82,12 +82,11 @@ class UsuariosController extends Controller
     }
 
 
-
     //cambia el rol del usuario, se viene aqui desde la pantalla de administrar roles
     public function actionAdmin($id, $opcion, $rol)
     {
         //Se crea un array con los roles para ascender o descender mas facilmente 
-        $roles= array("usuario" , "moderador", "patrocinador", "admin", "sysadmin" );
+        $roles= array("usuario" , "moderador", "admin", "sysadmin" );
         switch ($rol) //se calcula el índice en el que esta el rol actual
         {
             case 'usuario':
@@ -96,14 +95,19 @@ class UsuariosController extends Controller
             case 'moderador':
                 $idrol=1;
                 break;
-            case 'patrocinador':
+            case 'admin':
                 $idrol=2;
                 break;
-            case 'admin':
+            case 'sysadmin':
                 $idrol=3;
                 break;
-            case 'sysadmin':
-                $idrol=4;
+
+            case 'patrocinador':
+             //SI EL USUARIO ERA PROVEEDOR BORRAR SUS DATOS DE LA TABLA CORRESPONDIENTE
+
+                Yii::$app->db->createCommand("DELETE FROM proveedores WHERE usuario_id = '$id' ")->execute();
+                if ($opcion=='ascender') $idrol=1;
+                else if ($opcion=='degradar') $idrol=2;
                 break;
         }
 
@@ -111,6 +115,7 @@ class UsuariosController extends Controller
         $auth = Yii::$app->authManager;
         
         $auth->revokeAll($id);
+
 
         if ($opcion=='ascender') 
         {
@@ -124,9 +129,7 @@ class UsuariosController extends Controller
 
         }
 
-
-
-         Yii::$app->runAction('usuarios/roles');
+         return $this->redirect(['usuarios/roles']);
     }
 
 
