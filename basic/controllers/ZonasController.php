@@ -8,6 +8,7 @@ use app\models\zonasSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\filters\AccessControl;
 
 /**
  * ZonasController implements the CRUD actions for zonas model.
@@ -26,12 +27,22 @@ class ZonasController extends Controller
                     'delete' => ['POST'],
                 ],
             ],
+            'access'=>[
+                'class'=>AccessControl::className(),
+                'rules'=>[
+                    [
+                        'allow'=>true,
+                        'actions'=>['index','view','create','update','delete'],
+                        'roles'=>['admin'],
+                    ],
+                    [
+                        'allow'=>true,
+                        'actions'=>['busqueda'],
+                        'roles'=>['invitado'],
+                    ]
+                ],
+            ],
         ];
-    }
-
-    public function actionBuscar_zona()
-    {
-        
     }
 
     public function actionBusqueda()
