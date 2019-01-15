@@ -26,6 +26,8 @@ use Yii;
  */
 class Perfil extends \yii\db\ActiveRecord
 {
+    public $password2;
+    public $password3;
     /**
      * @inheritdoc
      */
@@ -40,12 +42,14 @@ class Perfil extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['email', 'password', 'nick', 'nombre', 'apellidos', 'confirmado'], 'required'],
+            [['email', 'password2', 'password3', 'nick', 'nombre', 'apellidos', 'confirmado'], 'required'],
             [['fecha_nacimiento', 'fecha_registro', 'fecha_acceso', 'fecha_bloqueo'], 'safe'],
             [['direccion', 'notas_bloqueo'], 'string'],
             [['zona_id', 'num_accesos'], 'integer'],
             [['email'], 'string', 'max' => 255],
-            [['password'], 'string', 'max' => 60],
+            [['password3'], 'string', 'max' => 60],
+            [['password2'], 'string', 'max' => 60],
+            [['password2'], 'compare','compareAttribute'=>'password3'],
             [['nick'], 'string', 'max' => 25],
             [['nombre'], 'string', 'max' => 50],
             [['apellidos'], 'string', 'max' => 100],
@@ -62,14 +66,15 @@ class Perfil extends \yii\db\ActiveRecord
     {
         return [
             'id' => Yii::t('app', 'ID'),
-            'email' => Yii::t('app', 'Correo Electronico y \"login\" del usuario.'),
-            'password' => Yii::t('app', 'Password'),
+            'email' => Yii::t('app', 'Correo Electronico.'),
+            'password3' => Yii::t('app', 'Contraseña'),
+            'password2' => Yii::t('app', 'Repita su Contraseña'),
             'nick' => Yii::t('app', 'Nick'),
             'nombre' => Yii::t('app', 'Nombre'),
             'apellidos' => Yii::t('app', 'Apellidos'),
-            'fecha_nacimiento' => Yii::t('app', 'Fecha de nacimiento del usuario o NULL si no lo quiere informar.'),
-            'direccion' => Yii::t('app', 'Direccion del usuario o NULL si no quiere informar.'),
-            'zona_id' => Yii::t('app', 'Area/Zona de localización del usuario o CERO si no lo quiere informar (como si fuera NULL), aunque es recomendable.'),
+            'fecha_nacimiento' => Yii::t('app', 'Fecha de nacimiento.'),
+            'direccion' => Yii::t('app', 'Direccion del usuario.'),
+            'zona_id' => Yii::t('app', 'Area/Zona de localización del usuario'),
             'fecha_registro' => Yii::t('app', 'Fecha y Hora de registro del usuario o NULL si no se conoce por algún motivo (que no debería ser).'),
             'confirmado' => Yii::t('app', 'Indicador de usuario ha confirmado su registro o no.'),
             'fecha_acceso' => Yii::t('app', 'Fecha y Hora del ultimo acceso del usuario. Debería estar a NULL si no ha accedido nunca.'),

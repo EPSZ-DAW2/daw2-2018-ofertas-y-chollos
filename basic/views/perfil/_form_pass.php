@@ -12,21 +12,23 @@ use yii\widgets\ActiveForm;
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'email')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'email')->hiddenInput(['maxlength' => true])->label(false)?>
 
-    <?= $form->field($model, 'password')->hiddenInput(['maxlength' => true])->label(false) ?>
+   <?= $form->field($model, 'password3')->passwordInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'password2')->passwordInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'nick')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'nombre')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'nick')->hiddenInput(['maxlength' => true])->label(false) ?>
 
-    <?= $form->field($model, 'apellidos')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'nombre')->hiddenInput(['maxlength' => true])->label(false) ?>
 
-    <?= $form->field($model, 'fecha_nacimiento')->textInput() ?>
+    <?= $form->field($model, 'apellidos')->hiddenInput(['maxlength' => true])->label(false) ?>
 
-    <?= $form->field($model, 'direccion')->textarea(['rows' => 6]) ?>
+    <?= $form->field($model, 'fecha_nacimiento')->hiddenInput()->label(false) ?>
 
-    <?= $form->field($model, 'zona_id')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'direccion')->hiddenInput(['rows' => 6])->label(false) ?>
+
+    <?= $form->field($model, 'zona_id')->hiddenInput(['maxlength' => true])->label(false) ?>
 
     <?= $form->field($model, 'fecha_registro')->hiddenInput()->label(false) ?>
 

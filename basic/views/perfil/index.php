@@ -1,7 +1,7 @@
 <?php
 
 use yii\helpers\Html;
-use yii\grid\GridView;
+use yii\widgets\DetailView;
 
 use yii\widgets\ListView;
 use yii\data\ActiveDataProvider;
@@ -29,7 +29,9 @@ $this->params['breadcrumbs'][] = $this->title;
 					<?= Html::a('Modificar', ['perfil/update'], ['class' => 'list-group-item']) ?>
 					<?= Html::a('Cambio de contraseña', ['perfil/pass'], ['class' => 'list-group-item']) ?>
 					<?= Html::a('Solicitud de Baja', ['perfil/baja'], ['class' => 'list-group-item']) ?>
-					<?= Html::a('Avisos', ['usuarios-avisos/index'], ['class' => 'list-group-item']) ?>
+					<?= Html::a('Anuncios creados', ['perfil/anuncios'], ['class' => 'list-group-item']) ?>
+					<?= Html::a('Comentarios', ['perfil/comentarios'], ['class' => 'list-group-item']) ?>
+					<?= Html::a('Avisos', ['perfil/avisos'], ['class' => 'list-group-item']) ?>
 					<?= Html::a('Mensajes', ['mensajes/index'], ['class' => 'list-group-item']) ?>
 				</div>
 			</div>
@@ -53,10 +55,9 @@ $this->params['breadcrumbs'][] = $this->title;
 						<div class="divider-new">
 							<h1 class="h1-responsive">Perfil</h1>
 						</div>
-					<?= GridView::widget([
-						'dataProvider' => $dataProvider,
-						// 'filterModel' => $searchModel,
-						'columns' => [
+					<?= DetailView::widget([
+						 'model' => $model,
+        'attributes' => [
 							//['class' => 'yii\grid\SerialColumn'],
 
 							//'id',
@@ -76,7 +77,7 @@ $this->params['breadcrumbs'][] = $this->title;
 							//'fecha_bloqueo',
 							//'notas_bloqueo:ntext',
 
-						['class' => 'yii\grid\ActionColumn'],
+				//		['class' => 'yii\grid\ActionColumn'],
 						],
 					]); ?>
 					</div>

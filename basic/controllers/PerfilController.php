@@ -38,9 +38,8 @@ class PerfilController extends Controller
         $searchModel = new PerfilSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
-        return $this->render('index', [
-            'searchModel' => $searchModel,
-            'dataProvider' => $dataProvider,
+       return $this->render('index', [
+            'model' => $this->findModel(Yii::$app->user->id),
         ]);
     }
 
@@ -50,10 +49,10 @@ class PerfilController extends Controller
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
      */
-    public function actionView($id)
+    public function actionView()
     {
         return $this->render('view', [
-            'model' => $this->findModel($id),
+            'model' => $this->findModel(Yii::$app->user->id),
         ]);
     }
 
@@ -82,12 +81,12 @@ class PerfilController extends Controller
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
      */
-    public function actionUpdate($id)
+    public function actionUpdate()
     {
-        $model = $this->findModel($id);
+        $model = $this->findModel(Yii::$app->user->id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+            return $this->redirect(['index']);
         }
 
         return $this->render('update', [
@@ -124,4 +123,24 @@ class PerfilController extends Controller
 
         throw new NotFoundHttpException(Yii::t('app', 'The requested page does not exist.'));
     }
+
+
+
+    public function actionPass(){
+        $model = $this->findModel(Yii::$app->user->id);
+
+        if ($model->load(Yii::$app->request->post())) {
+            $model->password=md5($model->password2);
+            if ( $model->save()) {
+                return $this->redirect(['index']);
+            }
+        }
+
+        return $this->render('pass', [
+            'model' => $model,
+        ]);
+    }
+
+
+
 }
