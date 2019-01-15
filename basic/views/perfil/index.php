@@ -32,7 +32,7 @@ $this->params['breadcrumbs'][] = $this->title;
 					<?= Html::a('Anuncios creados', ['perfil/anuncios'], ['class' => 'list-group-item']) ?>
 					<?= Html::a('Comentarios', ['perfil/comentarios'], ['class' => 'list-group-item']) ?>
 					<?= Html::a('Avisos', ['perfil/avisos'], ['class' => 'list-group-item']) ?>
-					<?= Html::a('Mensajes', ['mensajes/index'], ['class' => 'list-group-item']) ?>
+					<?= Html::a('Chats', ['mensajes/listar'], ['class' => 'list-group-item']) ?>
 				</div>
 			</div>
 		</div>
