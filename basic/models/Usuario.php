@@ -146,4 +146,4 @@ class Usuario extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface
 
     }
 
-
+}
