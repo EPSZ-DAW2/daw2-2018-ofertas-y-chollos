@@ -3,6 +3,8 @@
 use yii\helpers\Html;
 use yii\widgets\DetailView;
 
+use yii\widgets\ActiveForm;
+
 use yii\widgets\ListView;
 use yii\data\ActiveDataProvider;
 
@@ -55,5 +57,19 @@ $this->params['breadcrumbs'][] = Yii::t('app', 'Solicitar Baja');
 					]); ?>
 					</div>
 				</div>
+				 <?php $form = ActiveForm::begin(); ?>
+				 <?= $form->field($model, 'nick')->hiddenInput(['maxlength' => true])->label(false) ?>
+				 <div class="form-group">
+					<?= Html::submitButton(Yii::t('app', 'Solicitar Baja'), [
+					'class' => 'btn btn-primary',
+					'data' => [
+						'confirm' => Yii::t('app', '¿Estás seguro que quieres dar de baja el perfil?'),
+						'method' => 'post',
+						],
+					]) ?>
+    </div>
+
+				<?php ActiveForm::end(); ?>
+				 
 
 			</div>
