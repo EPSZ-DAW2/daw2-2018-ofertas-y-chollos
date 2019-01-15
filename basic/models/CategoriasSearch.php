@@ -128,7 +128,8 @@ class CategoriasSearch extends Categorias
             for ($i=0; $i <$tab-1 ; $i++) { 
                if($var!=NULL) echo  '&nbsp&nbsp&nbsp&nbsp';
             }
-            echo Html::a(Yii::t('app', $value['nombre']), ['view?id='.$value['id']]);
+			//echo $value['id'];
+            echo Html::a(Yii::t('app', $value['nombre']), ['view','id'=>$value['id']]);
              // echo Html::a(Yii::t('app', $value['nombre']), ['view?id='.$value['id']], ['class' => 'btn btn-success']);
             echo '</p>';
             
