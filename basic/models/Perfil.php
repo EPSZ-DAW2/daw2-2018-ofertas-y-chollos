@@ -26,6 +26,7 @@ use Yii;
  */
 class Perfil extends \yii\db\ActiveRecord
 {
+    public $anpassword;
     public $password2;
     public $password3;
     /**
@@ -58,6 +59,9 @@ class Perfil extends \yii\db\ActiveRecord
             [['nick'], 'unique'],
         ];
     }
+    public function funcion($variable){
+        return md5($variable);
+    }
 
     /**
      * @inheritdoc
@@ -67,6 +71,7 @@ class Perfil extends \yii\db\ActiveRecord
         return [
             'id' => Yii::t('app', 'ID'),
             'email' => Yii::t('app', 'Correo Electronico.'),
+            'anpassword' => Yii::t('app', 'Contraseña antigua'),
             'password3' => Yii::t('app', 'Contraseña'),
             'password2' => Yii::t('app', 'Repita su Contraseña'),
             'nick' => Yii::t('app', 'Nick'),
