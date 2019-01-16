@@ -76,7 +76,7 @@ class ZonasController extends Controller
         return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
-            'clasesZona' => Zonas::$zonas,
+            'clasesZona' => Zonas::listarZonas(),
         ]);
     }
 
