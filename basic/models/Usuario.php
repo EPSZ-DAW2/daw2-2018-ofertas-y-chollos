@@ -46,8 +46,8 @@ class Usuario extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface
     public function rules()
     {
         return [
-            [['email', 'password', 'nick', 'nombre', 'apellidos', 'confirmado'], 'required'],
-            [['fecha_nacimiento', 'fecha_registro', 'fecha_acceso', 'fecha_bloqueo'], 'safe'],
+            [['email', /*'password',*/ 'nick', 'nombre', 'apellidos'], 'required'],
+            [['fecha_nacimiento', 'fecha_registro', 'fecha_acceso', 'fecha_bloqueo', 'confirmado'], 'safe'],
             [['direccion', 'notas_bloqueo'], 'string'],
             [['zona_id', 'num_accesos'], 'integer'],
             [['email'], 'string','max' => 250],

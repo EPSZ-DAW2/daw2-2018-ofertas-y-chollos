@@ -103,9 +103,9 @@ $this->registerCss($css1, [], '_comentario');
 					<li><?= Html::button('Editar', ['class'=>'no-btn li_element', 'onclick'=>"editar('".$model->id."', '".$model->texto."', '".$model->comentario_id."');"]) ?></li>
 				<?php //} if($model->crea_usuario_id == Yii::$app->user->identity->id || Yii::$app->authManager->getRolesByUser(Yii::$app->user->identity->id) == 'Administrador') { ?>
 					<li><?= Html::a('Eliminar', ['delete', 'id' => $model->id, 'page' => 'comentarios'], ['data-method' => 'post']) ?></li>
-				<?php //if($model->crea_usuario_id !== Yii::$app->user->identity->id) { ?>
+				<?php /*if($model->crea_usuario_id !== Yii::$app->user->identity->id) { ?>
 					<li><?= Html::a('Denunciar', ['enunciar', 'id' => $model->id]) ?></li>
-				<?php //} ?>
+				<?php }*/ ?>
 			</ul>
 		</div>
 	</div>

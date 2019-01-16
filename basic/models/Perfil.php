@@ -43,7 +43,7 @@ class Perfil extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['email', 'password2', 'password3', 'nick', 'nombre', 'apellidos', 'confirmado'], 'required'],
+            [['email', /*'password2', 'password3',*/ 'nick', 'nombre', 'apellidos', 'confirmado'], 'required'],
             [['fecha_nacimiento', 'fecha_registro', 'fecha_acceso', 'fecha_bloqueo'], 'safe'],
             [['direccion', 'notas_bloqueo'], 'string'],
             [['zona_id', 'num_accesos'], 'integer'],

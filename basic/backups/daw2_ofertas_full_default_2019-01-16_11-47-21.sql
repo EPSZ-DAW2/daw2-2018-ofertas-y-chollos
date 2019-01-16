@@ -54,7 +54,7 @@ CREATE TABLE `anuncios` (
   `modi_fecha` datetime DEFAULT NULL COMMENT 'Fecha y Hora de la última modificación del anuncio/oferta o NULL si no se conoce por algún motivo.',
   `notas_admin` text COMMENT 'Notas adicionales para los moderadores/administradores sobre el anuncio/oferta o NULL si no hay.',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -63,6 +63,7 @@ CREATE TABLE `anuncios` (
 
 LOCK TABLES `anuncios` WRITE;
 /*!40000 ALTER TABLE `anuncios` DISABLE KEYS */;
+INSERT INTO `anuncios` VALUES (1,'Federico','golfo','Federico tiene tienda',NULL,NULL,NULL,12,143,NULL,NULL,NULL,0,0,NULL,0,1,0,NULL,0,NULL,0,NULL,NULL,0,18,NULL,NULL,NULL,NULL),(2,'Hola hola','akdvn','sd',NULL,'2019-01-16 00:00:00','2019-01-24 06:06:00',5,25,1,0,NULL,0,0,0,0,1,0,NULL,0,NULL,0,NULL,NULL,0,0,NULL,0,NULL,NULL);
 /*!40000 ALTER TABLE `anuncios` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -89,7 +90,7 @@ CREATE TABLE `anuncios_comentarios` (
   `modi_usuario_id` int(12) unsigned DEFAULT '0' COMMENT 'Usuario que ha modificado el comentario por última vez o CERO (como si fuera NULL) si no existe o se hizo por un administrador de sistema.',
   `modi_fecha` datetime DEFAULT NULL COMMENT 'Fecha y Hora de la última modificación del comentario o NULL si no se conoce por algún motivo.',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -98,6 +99,7 @@ CREATE TABLE `anuncios_comentarios` (
 
 LOCK TABLES `anuncios_comentarios` WRITE;
 /*!40000 ALTER TABLE `anuncios_comentarios` DISABLE KEYS */;
+INSERT INTO `anuncios_comentarios` VALUES (1,1,'Golfo',0,0,0,'2019-01-15 18:01:51',0,'2019-01-15 18:01:54',NULL,18,NULL,0,NULL),(2,2,'Puta tu',1,0,0,NULL,0,NULL,NULL,18,NULL,0,NULL);
 /*!40000 ALTER TABLE `anuncios_comentarios` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -147,6 +149,7 @@ CREATE TABLE `auth_assignment` (
 
 LOCK TABLES `auth_assignment` WRITE;
 /*!40000 ALTER TABLE `auth_assignment` DISABLE KEYS */;
+INSERT INTO `auth_assignment` VALUES ('admin','18',1547495056),('usuario','19',1547574839);
 /*!40000 ALTER TABLE `auth_assignment` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -248,7 +251,7 @@ CREATE TABLE `categorias` (
   `icono` varchar(25) DEFAULT NULL COMMENT 'Nombre del icono relacionado de entre los disponibles en la aplicación (carpeta iconos posibles).',
   `categoria_id` int(12) unsigned DEFAULT '0' COMMENT 'Categoria relacionada, para poder realizar la jerarquía de clasificaciones. Nodo padre de la jerarquía de categoría, o CERO si es nodo raiz (como si fuera NULL).',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -257,6 +260,7 @@ CREATE TABLE `categorias` (
 
 LOCK TABLES `categorias` WRITE;
 /*!40000 ALTER TABLE `categorias` DISABLE KEYS */;
+INSERT INTO `categorias` VALUES (1,'Electrónica','Anuncios de electrónica y tecnología.','',0),(2,'Viajes','Ofertas de viajes.','',0),(5,'Avión','Ofertas de billetes de avión.','',2),(6,'Barco','Ofertas de cruceros o similar.','',2),(7,'Jardín','Productos de jardinería.','',0),(8,'Hogar','Productos para la casa y el hogar.','',0),(9,'Ropa','Productos de ropa, moda y accesorios.','',0),(10,'Accesorios de moda','Accesorios.','',9),(11,'Salud y belleza','Productos relacionados con la salud y la belleza.','',0),(12,'Vehículos','Ofertas de vehículos.','',0),(13,'Coches','Ofertas de coches.','',12),(14,'Motos','Ofertas de motos.','',12),(15,'Accesorios coche.','Ofertas de accesorios y productos para el coche.','',13),(16,'Accesorios motos','Accesorios y productos para motos.','',14),(17,'Cultura','Ofertas y gangas de cultura.','',0),(18,'Familia','Ofertas para familias.','',0),(19,'Gratuito','Ofertas de productos totalmente gratuitos.','',0),(20,'Deportes y aire libre','Oferta de productos deportivos y de aire libre.','',0),(21,'Supermercado','Ofertas de productos que pueden encontrarse en supermercados.','',0),(22,'Móviles','Ofertas de móviles.','',1),(23,'Ordenadores','Ofertas de ordenadores.','',1);
 /*!40000 ALTER TABLE `categorias` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -379,7 +383,7 @@ CREATE TABLE `registros` (
   `ip` varchar(40) DEFAULT NULL COMMENT 'Dirección IP desde donde accede el usuario (vale para IPv4 e IPv6.',
   `browser` text COMMENT 'Texto con información del navegador utilizado en el acceso.',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -388,6 +392,7 @@ CREATE TABLE `registros` (
 
 LOCK TABLES `registros` WRITE;
 /*!40000 ALTER TABLE `registros` DISABLE KEYS */;
+INSERT INTO `registros` VALUES (1,'2019-01-15 18:54:07','A','LoginForm.php','Intento de acceso fallido','::1','Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:64.0) Gecko/20100101 Firefox/64.0');
 /*!40000 ALTER TABLE `registros` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -418,7 +423,7 @@ CREATE TABLE `usuarios` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `email_UNIQUE` (`email`),
   UNIQUE KEY `nick_UNIQUE` (`nick`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -427,7 +432,7 @@ CREATE TABLE `usuarios` (
 
 LOCK TABLES `usuarios` WRITE;
 /*!40000 ALTER TABLE `usuarios` DISABLE KEYS */;
-INSERT INTO `usuarios` VALUES (1,'joseigles@usal.es','admin','','','',NULL,NULL,0,NULL,0,NULL,0,0,NULL,NULL);
+INSERT INTO `usuarios` VALUES (18,'joseigles@usal.es','21232f297a57a5a743894a0e4a801fc3','joseigles','Federico','Federico','2019-01-07','',0,'2019-01-14 20:44:16',1,'2019-01-15 23:46:42',0,0,NULL,''),(19,'agapito@asd.es','7815696ecbf1c96e6894b779456d330e','agapito','Agapito','Agapito','2018-12-16','',0,'2019-01-15 18:53:59',0,'2019-01-15 18:54:11',0,0,NULL,NULL);
 /*!40000 ALTER TABLE `usuarios` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -444,7 +449,7 @@ CREATE TABLE `usuarios_anuncios` (
   `anuncio_id` int(12) unsigned NOT NULL COMMENT 'Anuncio/Oferta relacionada.',
   `fecha_seguimiento` datetime NOT NULL COMMENT 'Fecha y Hora de activación del seguimiento del anuncio/oferta por parte del usuario.',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -453,6 +458,7 @@ CREATE TABLE `usuarios_anuncios` (
 
 LOCK TABLES `usuarios_anuncios` WRITE;
 /*!40000 ALTER TABLE `usuarios_anuncios` DISABLE KEYS */;
+INSERT INTO `usuarios_anuncios` VALUES (1,18,1,'0000-00-00 00:00:00');
 /*!40000 ALTER TABLE `usuarios_anuncios` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -499,7 +505,7 @@ CREATE TABLE `usuarios_avisos` (
   `fecha_lectura` datetime DEFAULT NULL COMMENT 'Fecha y Hora de lectura del aviso o NULL si no se ha leido o se ha desmarcado como tal.',
   `fecha_aceptado` datetime DEFAULT NULL COMMENT 'Fecha y Hora de aceptación del aviso o NULL si no se ha aceptado para su gestión por un moderador o administrador. No se usa en otros usuarios.',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -508,6 +514,7 @@ CREATE TABLE `usuarios_avisos` (
 
 LOCK TABLES `usuarios_avisos` WRITE;
 /*!40000 ALTER TABLE `usuarios_avisos` DISABLE KEYS */;
+INSERT INTO `usuarios_avisos` VALUES (1,'2019-01-15 17:23:09','N','Baja',0,18,0,0,NULL,NULL),(2,'2019-01-15 17:32:37','N','Baja',0,18,0,0,NULL,NULL),(3,'2019-01-16 01:12:10','N','Baja',0,18,0,0,NULL,NULL);
 /*!40000 ALTER TABLE `usuarios_avisos` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -574,7 +581,7 @@ CREATE TABLE `zonas` (
   `nombre` varchar(50) NOT NULL COMMENT 'Nombre de la zona que la identifica.',
   `zona_id` int(12) unsigned DEFAULT '0' COMMENT 'Zona relacionada. Nodo padre de la jerarquia o CERO si es nodo raiz.',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -583,6 +590,7 @@ CREATE TABLE `zonas` (
 
 LOCK TABLES `zonas` WRITE;
 /*!40000 ALTER TABLE `zonas` DISABLE KEYS */;
+INSERT INTO `zonas` VALUES (1,'1','Europa',0),(2,'2','España',1),(3,'1','Oceania',0);
 /*!40000 ALTER TABLE `zonas` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -595,4 +603,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-01-12 16:53:26
+-- Dump completed on 2019-01-16 11:47:22

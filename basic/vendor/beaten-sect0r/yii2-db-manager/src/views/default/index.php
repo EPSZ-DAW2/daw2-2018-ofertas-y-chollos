@@ -23,9 +23,9 @@ $this->params['breadcrumbs'][] = $this->title;
             'layout' => 'inline',
         ]) ?>
 
-        <?= $form->field($model, 'db')->dropDownList(array_combine($dbList, $dbList), ['prompt' => '']) ?>
+        <?= $form->field($model, 'db')->dropDownList(array_combine($dbList, $dbList), ['prompt' => ''])/* ?>
 
-        <?= $form->field($model, 'isArchive')->checkbox() ?>
+        <?= $form->field($model, 'isArchive')->checkbox() */?>
 
         <?= $form->field($model, 'schemaOnly')->checkbox() ?>
 
