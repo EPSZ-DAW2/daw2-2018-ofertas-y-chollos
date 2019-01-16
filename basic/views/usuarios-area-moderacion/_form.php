@@ -8,7 +8,8 @@ use app\models\Usuario;
 /* @var $this yii\web\View */
 /* @var $model app\models\UsuariosAreaModeracion */
 /* @var $form yii\widgets\ActiveForm */
-$user = Usuario::find()->all();
+$user = Usuario::find()->leftJoin('usuarios_area_moderacion','auth_assignment.user_id=usuarios_area_moderacion.usuario_id')
+						->Where(['item_name'=>'usuario']);
 $userlista=ArrayHelper::map($user,'id','nick');
 $zona = Zonas::find()->all();
 $zonalista=ArrayHelper::map($zona,'id','nombre');
