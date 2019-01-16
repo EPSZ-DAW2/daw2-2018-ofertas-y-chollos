@@ -127,7 +127,7 @@ class AnunciosController extends Controller
     {
         $model = $this->findModel($id);
         $model->votosOK = $model->votosOK+1;
-      
+        $model->save(false);
         return $this->redirect(['view', 'id' => $model->id]);
     
         
@@ -136,7 +136,7 @@ class AnunciosController extends Controller
     {
         $model = $this->findModel($id);
         $model->votosKO++;
-       $model->save();
+        $model->save(false);
         return $this->redirect(['view', 'id' => $model->id]);
         
     }
@@ -144,7 +144,12 @@ class AnunciosController extends Controller
     {
        $model = $this->findModel($id);
         $model->num_denuncias++;
-       $model->save();
+       $model->save(false);
+
+       if($model->num_denuncias === 10) {
+        //CUANDO  SE ALCANCE UN Nº DE DENUNCIAS DETERMINADO SE DEBERÁ BLOQUEAR EL ANUNCIO PARA QUE NO SE VEA.     
+      }
+
         return $this->redirect(['view', 'id' => $model->id]);
         
     }
