@@ -35,7 +35,14 @@ class Zonas extends \yii\db\ActiveRecord
             [['nombre'], 'string', 'max' => 50],
         ];
     }
-public static $zonas=array( 1=>'Continente', 2=>'Pais', 3=>'Estado', 4=>'Región', 5=>'Provincia', 6=>'Municipio', 7=>'Localidad', 8=>'Barrio', 9=>'Area');
+protected static $zonas=array( 1=>'Continente', 2=>'Pais', 3=>'Estado', 4=>'Región', 5=>'Provincia', 6=>'Municipio', 7=>'Localidad', 8=>'Barrio', 9=>'Area');
+
+    public static function listarZonas(){
+        return self::$zonas;
+    }
+    public static function nombrezona($id){
+        return isset(self::$zonas[$id]) ? self::$zonas[$id] : null;
+    }
 
     public function getZonaId($nombre){
         return array_search($nombre, $zonas);

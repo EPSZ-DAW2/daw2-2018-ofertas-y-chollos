@@ -3,6 +3,7 @@
 use yii\helpers\Html;
 use yii\helpers\Url;
 use yii\widgets\ActiveForm;
+use app\models\zonas;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\zonas */
@@ -41,7 +42,7 @@ if (isset($model->id)) {
 
 
 
-    <?= $form->field($model, 'clase_zona_id')->dropDownList($model::$zonas, ['prompt' => 'Seleccione Uno', 'id'=>'tipo', 'onchange'=>"realizaProceso($('#tipo').val(), $('#ruta'));return false" ]);   ?>
+    <?= $form->field($model, 'clase_zona_id')->dropDownList(Zonas::listarZonas(), ['prompt' => 'Seleccione Uno', 'id'=>'tipo', 'onchange'=>"realizaProceso($('#tipo').val(), $('#ruta'));return false" ]);   ?>
     <!--
     <?= $form->field($model, 'nombre')->textInput(['maxlength' => true]) ?>
 
