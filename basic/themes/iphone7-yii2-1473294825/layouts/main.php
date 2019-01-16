@@ -175,25 +175,15 @@ $this->registerJs($js, View::POS_BEGIN);
         <div class="container-fluid">
             <div class="row">
 
-                <!--First column-->
-                <div class="col-md-3 col-md-offset-1">
-                    <h5 class="title">Sobre nustra copia de CHOLLOMETRO</h5>
-                    <p>Aqui vamos a poner algo interesante para que parezca que sabemos lo que hacemos.</p>
-
-                    <p>Y aqui pondremos alguna chorrada más sobre la aplicación de chollometro que seguro copiaremos de ahí XD.</p>
-                </div>
-                <!--/.First column-->
-
                 <hr class="hidden-md-up">
 
                 <!--Second column-->
                 <div class="col-md-2 col-md-offset-1">
-                    <h5 class="title">First column</h5>
+                    <h5 class="title">Síguenos en las redes sociales</h5>
                     <ul>
-                        <li><a href="#!">Link 1</a></li>
-                        <li><a href="#!">Link 2</a></li>
-                        <li><a href="#!">Link 3</a></li>
-                        <li><a href="#!">Link 4</a></li>
+                        <li><a href="#!"><span><i class="fab fa-twitter"></i></span>&nbsp;@gangometro</a></li>
+                        <li><a href="#!"><span><i class="fab fa-facebook-square"></i></span>&nbsp;Gangómetro</a></li>
+                        <li><a href="#!"><span><i class="fab fa-instagram"></i></span>&nbsp;@gangometro</a></li>
                     </ul>
                 </div>
                 <!--/.Second column-->
@@ -201,13 +191,12 @@ $this->registerJs($js, View::POS_BEGIN);
                 <hr class="hidden-md-up">
 
                 <!--Third column-->
-                <div class="col-md-2">
-                    <h5 class="title">Second column</h5>
+                <div class="col-md-2 col-md-offset-1">
+                    <h5 class="title">Contacto</h5>
+					<hr>
                     <ul>
-                        <li><a href="#!">Link 1</a></li>
-                        <li><a href="#!">Link 2</a></li>
-                        <li><a href="#!">Link 3</a></li>
-                        <li><a href="#!">Link 4</a></li>
+                        <li><a href="#!"><span><i class="fas fa-envelope"></i></span>&nbsp; gangometro@daw.com</a></li>
+                        <li><a href="#!"><span><i class="fas fa-phone"></i></span>&nbsp; 900123456</a></li>
                     </ul>
                 </div>
                 <!--/.Third column-->
@@ -215,39 +204,19 @@ $this->registerJs($js, View::POS_BEGIN);
                 <hr class="hidden-md-up">
 
                 <!--Fourth column-->
-                <div class="col-md-2">
-                    <h5 class="title">Third column</h5>
+                <div>
+                    <h5 class="title">Gangómetro</h5>
+					<hr>
                     <ul>
-                        <li><a href="#!">Link 1</a></li>
-                        <li><a href="#!">Link 2</a></li>
-                        <li><a href="#!">Link 3</a></li>
-                        <li><a href="#!">Link 4</a></li>
+                        <li>Copyright &copy; 2019 - made with <span style="color:red;"><i class="fab fa-rebel"></i></span> by TODOS NOSOSTROS <i class="fas fa-fire"></i></li>
                     </ul>
                 </div>
                 <!--/.Fourth column-->
 
             </div>
         </div>
-        <!--/.Footer Links-->
-
-        <hr>
-
-        <!--Call to action-->
-        <div class="call-to-action">
-            <h4><?php echo Html::encode(\Yii::$app->name); ?></h4>
-        </div>
-        <!--/.Call to action-->
-
-        <!--Copyright-->
-        <div class="footer-copyright">
-            <div class="container-fluid">
-               Copyright &copy; 2019 - made with <span style="color:red;"><i class="fab fa-rebel"></i></span> by TODOS NOSOSTROS <i class="fas fa-fire"></i>
-
-            </div>
-        </div>
-        <!--/.Copyright-->
-
-    </footer>
+ 
+	</footer>
     <!--/.Footer-->
 
 
