@@ -37,7 +37,7 @@ $this->params['breadcrumbs'][] = $this->title;
             <?= $form->field($model, 'preset')->dropDownList($model->getCustomOptions(), ['prompt' => '']) ?>
         <?php endif ?>
 
-        <?= Html::submitButton(Yii::t('dbManager', 'Crear base de datos'), ['class' => 'btn btn-success']) ?>
+        <?= Html::submitButton(Yii::t('dbManager', 'Crear copia de seguridad'), ['class' => 'btn btn-success']) ?>
 
         <?php ActiveForm::end() ?>
     </div>

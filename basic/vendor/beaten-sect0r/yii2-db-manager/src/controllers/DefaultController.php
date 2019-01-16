@@ -13,6 +13,9 @@ use bs\dbManager\models\Dump;
 use bs\dbManager\models\Restore;
 use Symfony\Component\Process\Process;
 
+use ZipArchive;
+use RecursiveIteratorIterator;
+use RecursiveDirectoryIterator;
 /**
  * Default controller.
  */
@@ -90,13 +93,68 @@ class DefaultController extends Controller
         } else {
             Yii::$app->session->setFlash('error', Yii::t('dbManager', 'Respuesta invalida.') . '<br>' . Html::errorSummary($model));
         }
-
+		//$this->zipping();
         return $this->redirect(['index']);
     }
+	/*
+	public function zipping()
+	{
+		$filename = "Yii::app->imagenes/mi_archivo.zip";
+		$zip = new \ZipArchive();
 
+			if ($zip->open($filename, ZipArchive::CREATE) !== TRUE) {
+				print("cannot open <$filename>\n");
+			}
+
+			$zip->addFile("Yii::app->imagenes/test.png", "test.png");
+			$zip->close();
+	}
     /**
      * @inheritdoc
      */
+	 /*
+	 public function zipping(){
+		$rootPath = realpath('@app/imagenes/');
+		// Initialize archive object
+
+		$zip = new ZipArchive();
+		$zip->open('@app/imagenes/imagenes.zip', ZipArchive::CREATE | ZipArchive::OVERWRITE);
+
+		// Initialize empty "delete list"
+		$filesToDelete = array();
+		// Create recursive directory iterator
+		// @var SplFileInfo[] $files 
+		$files = new RecursiveIteratorIterator(
+		    new RecursiveDirectoryIterator($rootPath),
+		    RecursiveIteratorIterator::LEAVES_ONLY
+		);
+		foreach ($files as $name => $file)
+		{
+		    // Skip directories (they would be added automatically)
+		    if (!$file->isDir())
+		    {
+		        // Get real and relative path for current file
+		        $filePath = $file->getRealPath();
+		        $relativePath = substr($filePath, strlen($rootPath) + 1);
+		        // Add current file to archive
+		        $zip->addFile($filePath, $relativePath);
+		        // Add current file to "delete list"
+		        // delete it later cause ZipArchive create archive only after calling close function and ZipArchive lock files until archive created)
+		        if ($file->getFilename() != 'important.txt')
+		        {
+		            $filesToDelete[] = $filePath;
+		        }
+		    }
+		}
+		// Zip archive will be created only after closing object
+		$zip->close();
+		// Delete all files from "delete list"
+		foreach ($filesToDelete as $file)
+		{
+		    unlink($file);
+		}
+	}*/
+
     public function actionDownload($id)
     {
         $dumpPath = $this->getModule()->path . StringHelper::basename(ArrayHelper::getValue($this->getModule()->getFileList(), $id));
