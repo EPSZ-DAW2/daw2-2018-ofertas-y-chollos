@@ -8,9 +8,15 @@ use app\models\Usuario;
 /* @var $this yii\web\View */
 /* @var $model app\models\UsuariosAreaModeracion */
 /* @var $form yii\widgets\ActiveForm */
+<<<<<<< .mine
 $user = Usuario::find()->join('inner join','auth_assignment', 'auth_assignment.user_id=usuarios.id')
 ->where(['or',['item_name'=> 'admin'],['item_name'=> 'moderador'],['item_name'=> 'sysadmin']])
 ->all();
+=======
+$user = Usuario::find()->leftJoin('usuarios_area_moderacion','auth_assignment.user_id=usuarios_area_moderacion.usuario_id')
+						->Where(['item_name'=>'usuario']);
+
+>>>>>>> .theirs
 $userlista=ArrayHelper::map($user,'id','nick');
 $zona = Zonas::find()->all();
 $zonalista=ArrayHelper::map($zona,'id','nombre');
