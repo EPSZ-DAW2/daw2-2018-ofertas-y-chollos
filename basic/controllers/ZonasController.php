@@ -136,7 +136,7 @@ class ZonasController extends Controller
   //      echo $_POST["Tipo"];
         if($id!=null) $model = $this->findModel($id);
         else $model = new zonas();
-//        $model->clase_zona_id=$_POST["Tipo"];
+        $model->clase_zona_id=$_POST["Tipo"];
         return $this->renderPartial('_form2', [
         'model' => $model,
     ]);
