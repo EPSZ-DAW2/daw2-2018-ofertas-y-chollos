@@ -223,6 +223,7 @@ class PerfilController extends Controller
 
 
     public function actionAvisos(){
+		$model = $this->findModel(Yii::$app->user->id);
         $query = UsuariosAviso::find();
         $query->andFilterWhere(['or',['destino_usuario_id'=> Yii::$app->user->id],['origen_usuario_id'=>Yii::$app->user->id]]);
                 $dataProvider = new ActiveDataProvider([
@@ -231,6 +232,7 @@ class PerfilController extends Controller
 
         return $this->render('avisos', [
             'dataProvider' => $dataProvider,
+			'model' => $model,
         ]);
     }
 
