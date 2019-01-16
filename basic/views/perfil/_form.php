@@ -47,7 +47,7 @@ $zon = ArrayHelper::map(Zonas::find()->all(), 'id','nombre');
 
     <?= $form->field($model, 'notas_bloqueo')->hiddenInput(['rows' => 6])->label(false) ?>
     <div class="form-group">
-        <?= Html::submitButton(Yii::t('app', 'Save'), ['class' => 'btn btn-success']) ?>
+        <?= Html::submitButton(Yii::t('app', 'Modificar'), ['class' => 'btn btn-success']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>
