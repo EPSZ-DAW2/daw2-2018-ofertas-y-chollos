@@ -6,10 +6,10 @@ use yii\helpers\Html;
 /* @var $model app\models\UsuariosAreaModeracion */
 
 $this->title = Yii::t('app', 'Update Usuarios Area Moderación: {nameAttribute}', [
-    'nameAttribute' => $model->id,
+    'nameAttribute' => $model->usuario. '-'. $model->zona
 ]);
 $this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Usuarios Area Moderación'), 'url' => ['index']];
-$this->params['breadcrumbs'][] = ['label' => $model->id, 'url' => ['view', 'id' => $model->id]];
+$this->params['breadcrumbs'][] = ['label' => $model->usuario. '-'. $model->zona, 'url' => ['view', 'id' => $model->id]];
 $this->params['breadcrumbs'][] = Yii::t('app', 'Update');
 ?>
 <div class="usuarios-area-moderacion-update">
