@@ -32,7 +32,7 @@ class ZonasController extends Controller
                 'rules'=>[
                     [
                         'allow'=>true,
-                        'actions'=>['index','view','create','update','delete'],
+                        'actions'=>['index','view','create','update','delete', 'parte2'],
                         'roles'=>['admin'],
                     ],
                     [

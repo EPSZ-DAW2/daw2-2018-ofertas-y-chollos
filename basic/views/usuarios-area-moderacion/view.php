@@ -6,7 +6,7 @@ use yii\widgets\DetailView;
 /* @var $this yii\web\View */
 /* @var $model app\models\UsuariosAreaModeracion */
 
-$this->title = $model->id;
+$this->title = $model->usuario. '-'. $model->zona;
 $this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Usuarios Area Moderación'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
@@ -28,7 +28,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <?= DetailView::widget([
         'model' => $model,
         'attributes' => [
-            'id',
+//            'id',
             'usuario',
             'zona',
         ],
