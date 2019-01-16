@@ -103,7 +103,6 @@ class PerfilController extends Controller
     public function actionUpdate()
     {
         $model = $this->findModel(Yii::$app->user->id);
-
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['index']);
         }
@@ -167,8 +166,8 @@ class PerfilController extends Controller
         $model = $this->findModel(Yii::$app->user->id);
 
         if ($model->load(Yii::$app->request->post())) {
-            $anpassword=md5($model->anpassword);
-            if($model->password=== $anpassword){
+            $password=$model->password;
+            if($password==md5($model->anpassword)){
             $model->password=md5($model->password2);
             if ( $model->save()) {
                 return $this->redirect(['index']);

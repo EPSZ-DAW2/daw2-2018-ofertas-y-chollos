@@ -49,6 +49,7 @@ class Perfil extends \yii\db\ActiveRecord
             [['zona_id', 'num_accesos'], 'integer'],
             [['email'], 'string', 'max' => 255],
             [['password3'], 'string', 'max' => 60],
+            [['anpassword'], 'string', 'max' => 60],
             [['password2'], 'string', 'max' => 60],
             [['password2'], 'compare','compareAttribute'=>'password3'],
             [['nick'], 'string', 'max' => 25],

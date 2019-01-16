@@ -14,7 +14,7 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'email')->hiddenInput(['maxlength' => true])->label(false)?>
 
-    <?= $form->field($model, 'anpassword')->passwordInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'anpassword')->passwordInput(['maxlength' => true, 'required'=>true]) ?>
    <?= $form->field($model, 'password3')->passwordInput(['maxlength' => true]) ?>
     <?= $form->field($model, 'password2')->passwordInput(['maxlength' => true]) ?>
 

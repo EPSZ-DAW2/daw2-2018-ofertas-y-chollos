@@ -15,6 +15,7 @@ use yii\widgets\ActiveForm;
     <?= $form->field($model, 'email')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'password')->hiddenInput(['maxlength' => true])->label(false) ?>
+    <?= $form->field($model, 'anpassword')->hiddenInput(['maxlength' => true])->label(false) ?>
 
     <?= $form->field($model, 'nick')->textInput(['maxlength' => true]) ?>
 
