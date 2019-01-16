@@ -58,7 +58,7 @@ class LoginForm extends Model
     public function validatePassword($attribute, $params)
     {
         if (!$this->hasErrors()) {
-            $user = Login::getUser();
+            $user = LoginForm::getUser();
 
             if (!$user || !$user->validatePassword($this->password)) {
                 $this->addError($attribute, 'Nick o Contraseña incorrectos.');
