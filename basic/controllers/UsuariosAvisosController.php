@@ -5,10 +5,12 @@ namespace app\controllers;
 use Yii;
 use app\models\UsuariosAviso;
 use app\models\UsuariosAvisosSearch;
+use app\models\Zonas;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
+use yii\data\ActiveDataProvider;
 
 /**
  * UsuariosAvisosController implements the CRUD actions for UsuariosAviso model.
@@ -32,12 +34,47 @@ class UsuariosAvisosController extends Controller
                 'rules'=>[
                     [
                         'allow'=>true,
-                        'actions'=>['index','view','create','update','delete'],
+                        'actions'=>['view','create','update','delete','moderar','limpieza'],
+                        'roles'=>['moderador'],
+                    ],
+                    [
+                        'allow'=>true,
+                        'actions'=>['index'],
                         'roles'=>['admin'],
                     ],
                 ],
             ],
         ];
+    }
+
+    public function actionLimpieza()
+    {
+        $model = new UsuariosAviso();
+        if (!empty($_POST['UsuariosAviso'])) {
+            //Eliminar Logs de la fecha
+            $fecha=$_POST['UsuariosAviso']['fecha_limpieza'];
+            if(!Yii::$app->user->can('admin'))
+            {
+                $ids_zona=$this->calcular_zona();
+                $model->zona_busqueda=$ids_zona;
+                $ids=$model->avisosModeracion;
+                $ids_borrar=UsuariosAviso::find()->select('id')->where(['and',['<=', 'fecha_aviso', $fecha],['id'=>$ids]])->all();
+            }
+            else
+            {
+                $ids_borrar=UsuariosAviso::find()->select('id')->where(['<=', 'fecha_aviso', $fecha])->all();
+            }
+
+            foreach ($ids_borrar as $id)
+            {
+                $model=$this->findModel($id);
+                $model->delete();
+            }
+            return $this->redirect(['moderar']);
+        }
+        return $this->render('limpieza', [
+            'model' => $model,
+        ]);
     }
 
     /**
@@ -106,6 +143,95 @@ class UsuariosAvisosController extends Controller
         ]);
     }
 
+
+    public function hijos($hijo)
+    {
+        $hijos=$hijo->hijos;
+        foreach($hijos as $hijo)
+        {
+            $aux=$this->hijos($hijo);
+            foreach ($aux as $zona)
+            {
+                $hijos[]=$zona;
+            }
+        }
+        return $hijos;
+    }
+
+    public function calcular_zona()
+    {
+        $id_usuario=Yii::$app->user->id;
+        $rows = (new \yii\db\Query())
+            ->select('zona_id')
+            ->from('usuarios_area_moderacion')
+            ->all();
+
+        foreach($rows as $aux)
+        {
+            $id_zona[]=$aux['zona_id'];
+        }
+
+        $zonas=array();
+        foreach ($id_zona as $aux2)
+        {
+            $zona=zonas::find()->where(['id'=>$aux2])->one();
+
+            $hijos=$zona->hijos;
+            $zonas[]=$zona;
+
+            foreach ($hijos as $hijo)
+            {
+                $zonas[]=$hijo;
+                $aux=$this->hijos($hijo);
+                foreach($aux as $zona)
+                {
+                    $zonas[]=$zona;
+                }
+            }
+            $ids_zona=array();
+            foreach ($zonas as $zona)
+            {
+                $ids_zona[]=$zona->id;
+            }
+        }
+        return $ids_zona;
+    }
+
+
+
+    public function actionModerar()
+    {
+        if(!Yii::$app->user->can('admin'))
+        {
+            $ids_zona=$this->calcular_zona();
+            $model=new UsuariosAviso();
+            $model->zona_busqueda=$ids_zona;
+            $ids=$model->avisosModeracion;
+        }
+        else
+        {
+            $ids=array();
+        }
+
+        $query = UsuariosAviso::find();
+
+        $query->andFilterWhere([
+            'id'=>$ids,
+        ]);
+
+        $dataProvider = new ActiveDataProvider([
+            'query' => $query,
+            'pagination' => ['pageSize' => 6]
+        ]);
+
+        
+
+        return $this->render('mantenimiento_moderador', [
+            'dataProvider' => $dataProvider,
+        ]);
+    
+    }
+
     /**
      * Deletes an existing UsuariosAviso model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
@@ -135,4 +261,7 @@ class UsuariosAvisosController extends Controller
 
         throw new NotFoundHttpException(Yii::t('app', 'The requested page does not exist.'));
     }
+
+
+
 }

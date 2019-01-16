@@ -20,6 +20,8 @@ use Yii;
  */
 class UsuariosAviso extends \yii\db\ActiveRecord
 {
+    public $zona_busqueda;
+    public $fecha_limpieza;
     /**
      * @inheritdoc
      */
@@ -79,13 +81,27 @@ class UsuariosAviso extends \yii\db\ActiveRecord
     public function getUsuarioDestino()
     {
         $nick=Usuario::find()->select('nick')->where(['id'=>$this->destino_usuario_id])->one();
-        return $nick->nick;
+        if(isset($nick->nick))
+        {
+            return $nick->nick;
+        }
+        else
+        {
+            return null;
+        }
     }
 
     public function getUsuarioOrigen()
     {
         $nick=Usuario::find()->select('nick')->where(['id'=>$this->origen_usuario_id])->one();
-        return $nick->nick;
+        if(isset($nick->nick))
+        {
+            return $nick->nick;
+        }
+        else
+        {
+            return null;
+        }
     }
 
     public function getAvisosClientesOrigen()
@@ -106,8 +122,96 @@ class UsuariosAviso extends \yii\db\ActiveRecord
     public function getAnuncio()
     {
         $titulo=Anuncio::find()->select('titulo')->where(['id'=>$this->anuncio_id])->one();
-        return $titulo->titulo;
+        if(isset($titulo->titulo))
+        {
+            return $titulo->titulo;
+        }
+        else
+        {
+            return null;
+        }
     }
+
+    public function getAvisosModeracion()
+    {
+        //obtenemos ids de usuarios en la zona
+        $avisos=array(-1);
+        $ids=array();
+        $id_usuarios=Usuario::find()->select('id')->where(['zona_id'=>$this->zona_busqueda])->all();
+        foreach ($id_usuarios as $aux)
+        {
+            $ids[]=$aux->id;
+        }
+        //obtenemos avisos con los ids de los usuarios
+        $aux=UsuariosAviso::find()->where(['origen_usuario_id'=>$ids])->all();
+        foreach ($aux as $aviso)
+        {
+            $avisos[$aviso->id]=$aviso->id;
+        }
+
+        //obtenemos avisos con los ids de los usuarios
+        $aux=UsuariosAviso::find()->where(['destino_usuario_id'=>$ids])->all();
+        foreach ($aux as $aviso)
+        {
+            $avisos[$aviso->id]=$aviso->id;
+        }
+
+        //obtenemos ids de anuncios en la zona
+        $ids=array();
+        $id_anuncios=Anuncio::find()->select('id')->where(['zona_id'=>$this->zona_busqueda])->all();
+        foreach ($id_anuncios as $aux)
+        {
+            $ids[]=$aux->id;
+        }
+        //obtenemos avisos con los ids de los anuncios
+        $aux=UsuariosAviso::find()->where(['anuncio_id'=>$ids])->all();
+        foreach ($aux as $aviso)
+        {
+            $avisos[$aviso->id]=$aviso->id;
+        }
+
+        //obtenemos ids de comentarios en la zona
+        $id_comentarios=Anuncio_comentario::find()->select('id')->where(['anuncio_id'=>$ids])->all();
+        $ids=array();
+        foreach ($id_comentarios as $aux)
+        {
+            $ids[]=$aux->id;
+        }
+        //obtenemos avisos con los ids de los anuncios
+        $aux=UsuariosAviso::find()->where(['comentario_id'=>$ids])->all();
+        foreach ($aux as $aviso)
+        {
+            $avisos[$aviso->id]=$aviso->id;
+        }
+
+        return $avisos;
+    }
+
+    /*public function getZonaUsuarioOrigen()
+    {
+        $zona=Usuario::find()->select('zona_id')->where(['id'=>$this->origen_usuario_id])->one();
+        return $zona->zona_id;
+    }
+
+
+    public function getZonaUsuarioDestino()
+    {
+        $zona=Usuario::find()->select('zona_id')->where(['id'=>$this->destino_usuario_id])->one();
+        return $zona->zona_id;
+    }
+
+    public function getZonaAnuncio()
+    {
+        $zona=Anuncio::find()->select('zona_id')->where(['id'=>$this->anuncio_id])->one();
+        return $zona->zona_id;
+    }
+
+    public function getZonaComentario()
+    {
+        $anuncio=Anuncio_comentario::find()->select('anuncio_id')->where(['id'=>$this->comentario_id])->one();
+        $zona=Anuncio::find()->select('zona_id')->where(['id'=>$anuncio->anuncio_id])->one();
+        return $zona->zona_id;
+    }*/
 
     /**
      * @inheritdoc
