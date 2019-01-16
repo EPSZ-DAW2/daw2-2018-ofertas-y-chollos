@@ -81,6 +81,7 @@ class Perfil extends \yii\db\ActiveRecord
             'fecha_nacimiento' => Yii::t('app', 'Fecha de nacimiento.'),
             'direccion' => Yii::t('app', 'Direccion del usuario.'),
             'zona_id' => Yii::t('app', 'Area/Zona de localización del usuario'),
+            'zona' => Yii::t('app', 'Area/Zona de localización del usuario'),
             'fecha_registro' => Yii::t('app', 'Fecha y Hora de registro del usuario o NULL si no se conoce por algún motivo (que no debería ser).'),
             'confirmado' => Yii::t('app', 'Indicador de usuario ha confirmado su registro o no.'),
             'fecha_acceso' => Yii::t('app', 'Fecha y Hora del ultimo acceso del usuario. Debería estar a NULL si no ha accedido nunca.'),
@@ -98,5 +99,10 @@ class Perfil extends \yii\db\ActiveRecord
     public static function find()
     {
         return new UsuariosQuery(get_called_class());
+    }
+    public function getZona(){
+        
+        $zona=zonas::find()->select('nombre')->where(['id'=>$this->zona_id])->one();
+        return $zona["nombre"];
     }
 }

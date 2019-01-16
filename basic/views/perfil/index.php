@@ -69,6 +69,7 @@ $this->params['breadcrumbs'][] = $this->title;
 							'apellidos',
 							'fecha_nacimiento',
 							'direccion:ntext',
+							'zona',
 							//'zona_id',
 							//'fecha_registro',
 							//'confirmado',

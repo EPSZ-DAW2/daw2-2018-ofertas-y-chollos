@@ -2,10 +2,14 @@
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
+use yii\helpers\ArrayHelper;
+use app\models\zonas;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Perfil */
 /* @var $form yii\widgets\ActiveForm */
+$zon=array();
+$zon = ArrayHelper::map(Zonas::find()->all(), 'id','nombre');
 ?>
 
 <div class="perfil-form">
@@ -27,7 +31,7 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'direccion')->textarea(['rows' => 6]) ?>
 
-    <?= $form->field($model, 'zona_id')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'zona_id')->dropDownList($zon, ['prompt' => 'Ninguno']) ?>
 
     <?= $form->field($model, 'fecha_registro')->hiddenInput()->label(false) ?>
 
