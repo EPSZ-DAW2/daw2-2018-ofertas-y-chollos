@@ -24,7 +24,7 @@ $this->title = 'My Yii Application';
 					<?= Html::a('Proveedores', ['proveedores/index'], ['class' => 'list-group-item']) ?>
 					<?= Html::a('Roles', ['usuarios/roles'], ['class' => 'list-group-item']) ?>
 					<?= Html::a('Perfil', ['perfil/index'], ['class' => 'list-group-item']) ?>
-					<?= Html::a('Avisos', ['usuarios-avisos/index'], ['class' => 'list-group-item']) ?>
+					<?= Html::a('Avisos', ['usuarios-avisos/moderar'], ['class' => 'list-group-item']) ?>
 					<?= Html::a('Mensajes', ['mensajes/index'], ['class' => 'list-group-item']) ?>
 				</div>
 			</div>

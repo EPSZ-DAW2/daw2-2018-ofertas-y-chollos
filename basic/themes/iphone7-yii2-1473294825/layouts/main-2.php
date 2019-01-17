@@ -90,7 +90,7 @@ $this->registerCssFile("https://use.fontawesome.com/releases/v5.6.1/css/all.css"
             ['label' => 'About', 'url' => ['/site/about']],
             ['label' => 'Contact', 'url' => ['/site/contact']],
             ['label' => 'Comentarios', 'url' => ['/anuncios_comentarios/index']],
-            ['label' => 'Avisos', 'url' => ['/usuarios-avisos/index']],
+            ['label' => 'Avisos', 'url' => ['/usuarios-avisos/moderar']],
             ['label' => 'Logs', 'url' => ['/registros/index']],
             Yii::$app->user->isGuest ? (
                 ['label' => 'Conectar', 'url' => ['/usuarios/login']]
