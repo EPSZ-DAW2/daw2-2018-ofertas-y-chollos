@@ -42,7 +42,6 @@ class RegistrosController extends Controller
     public function limpieza_automatica()
     {
     	$fecha=date("Y-m-d H:i:s",time()-365*24*60*60);
-    	echo $fecha;
         $ids_borrar=registro::find()->select('id')->where(['<=', 'fecha_registro', $fecha])->all();
         foreach ($ids_borrar as $id)
         {

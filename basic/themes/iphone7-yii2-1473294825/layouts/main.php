@@ -13,18 +13,31 @@ use yii\web\View;
 // $this->registerAssetBundle('app');
 
 $js = <<<SCRIPT
-	function mostrar() {
+	function mostrar(act) {
 		
-		if (document.getElementById("menuPerfil").style.display == "none") {
-		  document.getElementById("menuPerfil").style.display = "block";
+		if(act=='perf') {
+			if (document.getElementById("menuPerfil").style.display == "none") {
+			  document.getElementById("menuPerfil").style.display = "block";
+			} else {
+			  document.getElementById("menuPerfil").style.display = "none";
+			}
 		} else {
-		  document.getElementById("menuPerfil").style.display = "none";
+			if(act=='filtros') {
+				if (document.getElementById("menuBuscar").style.display == "none") {
+				  document.getElementById("menuBuscar").style.display = "block";
+				} else {
+				  document.getElementById("menuBuscar").style.display = "none";
+				}
+			}
+			if(act=='zonas') {
+				
+			}
+			if(act=='categ') {
+				
+			}
 		}
 	}
 SCRIPT;
-
-
-
 $this->registerJs($js, View::POS_BEGIN);
 ?>
 <?php $this->beginPage(); ?>
@@ -111,10 +124,10 @@ $this->registerJs($js, View::POS_BEGIN);
 								Yii::$app->user->isGuest ? (
 									['label' => 'Conectar', 'url' => ['/usuarios/login'], 'options' => [ "class" => "nav-item"]]
 								) : (
-									['label' => Yii::$app->user->identity->nick, 'template' => '<a href="#">{label}</a>', 'options' => [ "class" => "nav-item", 'onclick'=>'mostrar();']]
+									['label' => Yii::$app->user->identity->nick, 'template' => '<a>{label}</a>', 'options' => [ "class" => "nav-item", 'onclick'=>'mostrar("perf");']]
 								),
-									['label' => 'About', 'url' => ['site/about'], 'options' => [ "class" => "nav-item"]],
-									['label' => 'Contact', 'url' => ['site/contact'], 'options' => [ "class" => "nav-item"]],
+									//['label' => 'About', 'url' => ['site/about'], 'options' => [ "class" => "nav-item"]],
+									//['label' => 'Contact', 'url' => ['site/contact'], 'options' => [ "class" => "nav-item"]],
 									['label' => 'Gestión', 'url' => ['gestion/index'],'options' => [ "class" => "nav-item"],
 										//, 'visible'=>Yii::$app->user->can('administrador')
                                 ],
@@ -123,11 +136,6 @@ $this->registerJs($js, View::POS_BEGIN);
 							],
 						]);
 					?>
-
-                    <!--Search form-->
-                    <form class="form-inline">
-                        <input class="form-control" type="text" placeholder="Search">
-                    </form>
                 </div>
                 <!--/.Collapse content-->
 
@@ -136,18 +144,18 @@ $this->registerJs($js, View::POS_BEGIN);
         </nav>
         <!--/.Navbar-->
 		
-			<div class="container menu-perfil" id="menuPerfil">
-				<div class="row">
-				  <div class="col-md-12">
-					<div class="list-group drop-perfil">
-						<?php
-						 echo Html::a('Perfil', ['/perfil/index'], ['class' => 'list-group-item']);
-						 echo Html::a('Logout', ['/usuarios/logout'], ['class' => 'list-group-item']);
-						?>
-					</div>
-				  </div>
+		<div class="container menuDes" id="menuPerfil">
+			<div class="row">
+			  <div class="col-md-12">
+				<div class="list-group drop-perfil">
+					<?php
+					 echo Html::a('Perfil', ['/perfil/index'], ['class' => 'list-group-item']);
+					 echo Html::a('Logout', ['/usuarios/logout'], ['class' => 'list-group-item']);
+					?>
 				</div>
+			  </div>
 			</div>
+		</div>
     </header>
 
 	<main>

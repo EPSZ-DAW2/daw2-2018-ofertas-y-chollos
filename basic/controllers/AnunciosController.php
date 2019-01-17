@@ -224,37 +224,18 @@ class AnunciosController extends Controller
         ]);
     }
 
-     public function hijos($hijo)
-    {
-        $hijos=$hijo->hijos;
-        foreach($hijos as $hijo)
-        {
-            $aux=$this->hijos($hijo);
-            foreach ($aux as $zona)
-            {
-                $hijos[]=$zona;
-            }
-        }
-        return $hijos;
-    }
-
     public function actionListar_zona($id_zona){
 
         $zonas=array();
         $zona=zonas::find()->where(['id'=>$id_zona])->one();
-
-        $hijos=$zona->hijos;
         $zonas[]=$zona;
 
-        foreach ($hijos as $hijo)
+        $aux=$zona->arbolHijos;
+        foreach($aux as $zona)
         {
-            $zonas[]=$hijo;
-            $aux=$this->hijos($hijo);
-            foreach($aux as $zona)
-            {
-                $zonas[]=$zona;
-            }
+            $zonas[]=$zona;
         }
+
         $ids=array();
         foreach ($zonas as $zona)
         {
@@ -269,16 +250,6 @@ class AnunciosController extends Controller
             'visible' => '1',
             'zona_id' => $ids,
         ]);
-
-        /*$query = (new \yii\db\Query())
-        ->select('*')
-        ->from('anuncios')
-        ->where([
-        'visible' => '1',
-        'zona_id' => $ids])
-        ->all();*/
-
-        //echo "<pre>"; print_r($query); echo "</pre>";
     
         //preparamos el proveedor de datos...
         $dataProvider = new ActiveDataProvider([

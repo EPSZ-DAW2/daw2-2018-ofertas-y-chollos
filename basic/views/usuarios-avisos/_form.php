@@ -16,7 +16,7 @@ use app\models\UsuariosAviso;
 
     <?= $form->field($model, 'fecha_aviso')->input('date');?>
 
-    <?= $form->field($model, 'clase_aviso_id')->dropDownList($model::$tipos, ['prompt' => 'Seleccione Uno' ]);   ?>
+    <?= $form->field($model, 'clase_aviso_id')->dropDownList($model->listaTipos, ['prompt' => 'Seleccione Uno' ]);   ?>
 
     <?= $form->field($model, 'texto')->textarea(['rows' => 6]) ?>
 

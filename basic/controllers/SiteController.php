@@ -62,26 +62,19 @@ class SiteController extends Controller
      *
      * @return string
      */
-    public function actionIndex($nPages=2, $filtro=null)
+    public function actionIndex($nPages=3, $filtro=null)
     {
         
 		//filtros
 		if($filtro===null)
 		{
-			$query = Anuncio::find();
-			$query->andFilterWhere([
-				'visible' => '1',
-				'bloqueada' => 0,
-			]);
+			$query = Anuncio::find()->nuevos();
 		}
-		if($filtro == 'rec')
-		{
-			$query = Anuncio::find();
-			$query->andFilterWhere([
-				'visible' => '1',
-				'bloqueada' => 0,
-				
-			]);
+		if($filtro == 'pop') {
+			$query = Anuncio::find()->populares();
+		}
+		if($filtro == 'rec') {
+			$query = Anuncio::find()->proximos();
 		}
 		
 		
@@ -100,29 +93,6 @@ class SiteController extends Controller
 			$dataProvider = new ActiveDataProvider([
 				'query' => $query,
 				'pagination' => false,
-			]);
-		}
-		
-		if($filtro == null) {
-			$dataProvider->setSort([
-				'defaultOrder' => [
-					'prioridad'=>SORT_DESC,
-					'id'=>SORT_DESC
-				],
-			]);
-		}
-		if($filtro == 'pop') {
-			$dataProvider->setSort([
-				'defaultOrder' => [
-					'votosOK'=>SORT_DESC,
-				],
-			]);
-		}
-		if($filtro == 'rec') {
-			$dataProvider->setSort([
-				'defaultOrder' => [
-					'fecha_desde'=>SORT_DESC,
-				],
 			]);
 		}
 		

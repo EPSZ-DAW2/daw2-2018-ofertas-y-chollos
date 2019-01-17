@@ -13,6 +13,50 @@ class AnunciosQuery extends \yii\db\ActiveQuery
     {
         return $this->andWhere('[[status]]=1');
     }*/
+	
+	public function proximos($db = null)
+    {
+        return $this
+			->andWhere(['visible' => 1, 'bloqueada' => 0])
+			->andWhere(['<','fecha_desde', date('Y-m-d H:i:s')])
+			->orderBy(['fecha_desde'=>SORT_DESC]);
+    }
+	
+	public function populares($db = null)
+    {
+        return $this
+			->andWhere(['visible' => 1, 'bloqueada' => 0])
+			->orderBy(['votosOK'=>SORT_DESC]);
+    }
+	
+	public function nuevos($db = null)
+    {
+        return $this
+			->andWhere(['visible' => 1, 'bloqueada' => 0])
+			->orderBy(['prioridad'=>SORT_DESC, 'id'=>SORT_DESC]);
+    }
+	
+	public function zonas($id_zona)
+    {
+        return $this
+			->andWhere(['visible' => 1, 'bloqueada' => 0, 'zona_id' => $id_zona])
+			->orderBy(['prioridad'=>SORT_DESC, 'id'=>SORT_DESC]);
+    }
+	
+	public function categorias($id_categoria)
+    {
+        return $this
+			->andWhere(['visible' => 1, 'bloqueada' => 0, 'categoria_id' => $id_categoría])
+			->orderBy(['prioridad'=>SORT_DESC, 'id'=>SORT_DESC]);
+    }
+	
+	public function busqueda($texto)
+    {
+        return $this
+			->andWhere(['visible' => 1, 'bloqueada' => 0])
+			->andWhere(['like', 'titulo', $texto])
+			->orderBy(['prioridad'=>SORT_DESC, 'id'=>SORT_DESC]);
+    }
 
     /**
      * @inheritdoc

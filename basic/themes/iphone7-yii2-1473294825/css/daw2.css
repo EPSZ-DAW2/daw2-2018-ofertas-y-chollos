@@ -6,7 +6,6 @@
 	  border: none;
 	  box-shadow: 0 2px 5px 0 rgba(0,0,0,.16),0 2px 10px 0 rgba(0,0,0,.12);
 	  height: 30.5px;
-	  margin-bottom: 15px;
 	}
 	
 	.band-invisible {
@@ -46,9 +45,28 @@
 		z-index: 25;
 	}
 	
-	.menu-perfil {
+	.drop-buscar {
+		width:250px;
+		position: absolute;
+		top: -30px;
+		right: 14px;
+		z-index: 25;
+	}
+	
+	.filtros {
+		margin: 0.425rem 0;
+		color: black;
+	}
+	.filtros a:hover {
+		color: grey;
+	}
+	.filtros a {
+		color: black;
+		margin-bottom: -2.425px;
+	}
+	
+	.menuDes {
 		display: none;
-		margin-top: -1px;
 	}
 
 	.navbar-light .navbar-nav .nav-link {
@@ -57,6 +75,15 @@
 	.navbar-light .nav-item:hover {
 		color: blue;
 	}
+	
+	.nav button {
+		margin: 0;
+	}
+	.navbar-nav .nav-link + .nav-link {
+		margin-left: 0;
+	}
+	
+	
 
 
 @media only screen and (max-width:544px) {
