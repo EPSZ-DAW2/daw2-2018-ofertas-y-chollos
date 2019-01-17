@@ -30,8 +30,10 @@ $this->params['breadcrumbs'][] = $this->title;
             'id',
             'fecha_hora',
             'texto:ntext',
-            'origen_usuario_id',
-            'destino_usuario_id',
+            //'origen_usuario_id',
+            //'destino_usuario_id',
+            'usuarioOrigen',
+            'usuarioDestino',
 
             ['class' => 'yii\grid\ActionColumn'],
         ],

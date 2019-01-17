@@ -48,9 +48,45 @@ class Mensaje extends \yii\db\ActiveRecord
             'texto' => Yii::t('app', 'Texto con el mensaje.'),
             'origen_usuario_id' => Yii::t('app', 'Usuario relacionado, origen del mensaje.'),
             'destino_usuario_id' => Yii::t('app', 'Usuario relacionado, destinatario del mensaje.'),
+            'usuarioDestino' => Yii::t('app', 'Destinatario'),
+            'usuarioOrigen' => Yii::t('app', 'Remitente'),
         ];
     }
 
+    public function getUsuarioDestino()
+    {
+        $nick=Usuario::find()->select('nick')->where(['id'=>$this->destino_usuario_id])->one();
+        if(isset($nick->nick))
+        {
+            return $nick->nick;
+        }
+        else
+        {
+            return null;
+        }
+    }
+
+    public function getUsuarioOrigen()
+    {
+        $nick=Usuario::find()->select('nick')->where(['id'=>$this->origen_usuario_id])->one();
+        if(isset($nick->nick))
+        {
+            return $nick->nick;
+        }
+        else
+        {
+            return null;
+        }
+    }
+    public function getAvisosClientesOrigen()
+    {
+        return $this->hasOne(Usuario::className(),['id'=>'origen_usuario_id']);
+    }
+
+    public function getAvisosClientesDestino()
+    {
+        return $this->hasOne(Usuario::className(),['id'=>'destino_usuario_id']);
+    }
     public function getMensajes()
     {
         return $mensajes=Mensaje::find()->where(['and',['origen_usuario_id'=>$this->destino_usuario_id],['destino_usuario_id'=>$this->origen_usuario_id]])->all();

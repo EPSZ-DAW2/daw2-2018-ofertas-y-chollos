@@ -43,11 +43,22 @@ class Registro extends \yii\db\ActiveRecord
     }
 
 
-    public static $tipos=[ 'E'=>'Error', 'A'=>'Aviso', 'I'=>'Informacion', 'D'=>'Depuracion'];
+    protected static $tipos=[ 'E'=>'Error', 'A'=>'Aviso', 'I'=>'Informacion', 'D'=>'Depuracion'];
+
+    public static function getListaTipos()
+    {
+        return self::$tipos;
+    }
+
+    public static function nombreTipo($id)
+    {
+        return isset(self::$tipos[$id]) ? self::$tipos[$id] : null;
+    }
 
     public function getTipo()
     {
-        return $this::$tipos[$this->clase_log_id];
+
+        return self::nombreTipo($this->clase_log_id);
     }
 
     /**
