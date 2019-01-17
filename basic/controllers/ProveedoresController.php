@@ -4,6 +4,7 @@ namespace app\controllers;
 
 use Yii;
 use app\models\Proveedor;
+use app\models\Usuario;
 use app\models\ProveedorSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
@@ -52,8 +53,11 @@ class ProveedoresController extends Controller
      */
     public function actionView($id)
     {
-        return $this->render('view', [
-            'model' => $this->findModel($id),
+        $model = $this->findModel($id);
+		
+		return $this->render('view', [
+            'model' => $model,
+			'usuario' =>  Usuario::findOne($model->usuario_id),
         ]);
     }
 

@@ -53,55 +53,15 @@ $this->params['breadcrumbs'][] = $this->title;
         ],
     ]) ?>
 	
-	<div style="overflow-x:auto;">	
-		<?= GridView::widget([
-			'dataProvider' => new ActiveDataProvider([
-				'query' => $model->getAnuncios(),  //devuelve "ActiveQuery" de Anuncios
-				//'pagination'=>false,
-				'sort'=>false,
-			]),
-			//'filterModel' => $searchModel,
-			'summary' => '<h3>Anuncio</h3>',
-			'columns' => [
-				['class' => 'yii\grid\SerialColumn'],
-
-				'id',
-				//'titulo:ntext',
-				[ 
-					'attribute' => 'titulo', 
-					'format' => 'raw', 
-					'value' => function ($model) { return Html::a($model->titulo, [ 'anuncios/view', 'id' => $model->id ]); }, 
-				],
-				'descripcion:ntext',
-				'crea_fecha',
-				'tienda:ntext',
-				'url:ntext',
-				//'fecha_desde',
-				//'fecha_hasta',
-				//'precio_oferta',
-				//'precio_original',
-				//'zona_id',
-				//'categoria_id',
-				//'imagen_id',
-				//'votosOK',
-				//'votosKO',
-				//'proveedor_id',
-				//'prioridad',
-				//'visible',
-				//'terminada',
-				//'fecha_terminacion',
-				//'num_denuncias',
-				//'fecha_denuncia1',
-				//'bloqueada',
-				//'fecha_bloqueo',
-				//'notas_bloqueo:ntext',
-				//'cerrada_comentar',
-				//'crea_usuario_id',
-				//'modi_usuario_id',
-				//'modi_fecha',
-				//'notas_admin:ntext',
-			],
-		]); ?>
+	<div class="jumbotron">
+		  <h1 class="display-4"><?= Html::a(Yii::t('app', $anuncio->titulo), ['anuncios/view', 'id' => $anuncio->id]) ?></h1>
+		  <p class="lead"><?= $anuncio->descripcion ?></p>
+		  <hr class="my-4">
+		  <p><strong>Votos OK:</strong> <?= $anuncio->votosOK ?></p>
+		  <p><strong>Votos KO:</strong> <?= $anuncio->votosKO ?></p>
+		  <p><strong>Fecha creaci?n:</strong> <?= $anuncio->crea_fecha ?></p>
+		  <p><strong>?Bloqueado?:</strong> <?php if($anuncio->bloqueada == 0) echo 'No'; else echo 'Si';?></p>
+		  <p><strong>?Visible?:</strong> <?php if($anuncio->visible == 0) echo 'No'; else echo 'Si';?></p>
 	</div>
 
 </div>

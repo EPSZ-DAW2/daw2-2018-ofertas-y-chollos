@@ -3,6 +3,7 @@
 namespace app\controllers;
 
 use Yii;
+use app\models\Anuncio;
 use app\models\Anuncio_comentario;
 use app\models\Anuncio_comentarioSearch;
 use yii\web\Controller;
@@ -52,8 +53,11 @@ class Anuncios_comentariosController extends Controller
      */
     public function actionView($id)
     {
-        return $this->render('view', [
-            'model' => $this->findModel($id),
+        $model = $this->findModel($id);
+		
+		return $this->render('view', [
+            'model' => $model,
+			'anuncio' => Anuncio::findOne($model->anuncio_id),
         ]);
     }
 	
