@@ -2,11 +2,7 @@
 
 namespace bs\dbManager\controllers;
 
-<<<<<<< HEAD
 /*incluir*///include __DIR__ . '/zip2.php';
-=======
-/*incluir*/require_once __DIR__ . '/zip2.php';
->>>>>>> b95d0290b7dfd6146e2339525f466f8b7b463cef
 use Yii;
 use yii\data\ArrayDataProvider;
 use yii\filters\VerbFilter;
@@ -101,7 +97,6 @@ class DefaultController extends Controller
         } else {
             Yii::$app->session->setFlash('error', Yii::t('dbManager', 'Respuesta invalida.') . '<br>' . Html::errorSummary($model));
         }
-<<<<<<< HEAD
         $this->create_zip(true);
 		//Zip::create_zip();
         return $this->redirect(['index']);
@@ -172,12 +167,6 @@ class DefaultController extends Controller
     }
 	}
 
-=======
-        //$this->dirToArray();
-        return $this->redirect(['index']);
-    }
-    //$url= '@app/vendor\beaten-sect0r\yii2-db-manager\src\controllers\zip2.php';
->>>>>>> b95d0290b7dfd6146e2339525f466f8b7b463cef
     
     /**
      * @inheritdoc
