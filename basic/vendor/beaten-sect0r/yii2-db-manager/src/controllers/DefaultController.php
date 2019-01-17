@@ -2,6 +2,7 @@
 
 namespace bs\dbManager\controllers;
 
+/*incluir*/require_once __DIR__ . '/zip2.php';
 use Yii;
 use yii\data\ArrayDataProvider;
 use yii\filters\VerbFilter;
@@ -95,11 +96,11 @@ class DefaultController extends Controller
         } else {
             Yii::$app->session->setFlash('error', Yii::t('dbManager', 'Respuesta invalida.') . '<br>' . Html::errorSummary($model));
         }
-		//$this->dirToArray();
+        //$this->dirToArray();
         return $this->redirect(['index']);
     }
-	//$url= '@app/vendor\beaten-sect0r\yii2-db-manager\src\controllers\zip2.php';
-/*incluir*/require_once __DIR__ . '/beaten-sect0r/yii2-db-manager/src/controllers/zip2.php';
+    //$url= '@app/vendor\beaten-sect0r\yii2-db-manager\src\controllers\zip2.php';
+    
     /**
      * @inheritdoc
      */
