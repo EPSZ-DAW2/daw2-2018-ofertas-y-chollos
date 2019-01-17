@@ -86,10 +86,24 @@ protected static $zonas=array( 1=>'Continente', 2=>'Pais', 3=>'Estado', 4=>'Regi
 
     public function getContinentes()
     {
-        return $zonas=Zonas::find()->where(['clase_zona_id'=>1])->all();
+        return Zonas::find()->where(['clase_zona_id'=>1])->all();
     }
     public function getHijos()
     {
-        return $zonas=Zonas::find()->where(['zona_id'=>$this->id])->all();
+        return Zonas::find()->where(['zona_id'=>$this->id])->all();
+    }
+
+    public function getArbolHijos()
+    {
+        $hijos=$this->hijos;
+        foreach($hijos as $hijo)
+        {
+            $aux=$hijo->arbolHijos;
+            foreach ($aux as $zona)
+            {
+                $hijos[]=$zona;
+            }
+        }
+        return $hijos;
     }
 }

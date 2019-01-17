@@ -143,21 +143,6 @@ class UsuariosAvisosController extends Controller
         ]);
     }
 
-
-    public function hijos($hijo)
-    {
-        $hijos=$hijo->hijos;
-        foreach($hijos as $hijo)
-        {
-            $aux=$this->hijos($hijo);
-            foreach ($aux as $zona)
-            {
-                $hijos[]=$zona;
-            }
-        }
-        return $hijos;
-    }
-
     public function calcular_zona()
     {
         $id_usuario=Yii::$app->user->id;
@@ -175,19 +160,14 @@ class UsuariosAvisosController extends Controller
         foreach ($id_zona as $aux2)
         {
             $zona=zonas::find()->where(['id'=>$aux2])->one();
-
-            $hijos=$zona->hijos;
             $zonas[]=$zona;
 
-            foreach ($hijos as $hijo)
+            $aux=$zona->arbolHijos;
+            foreach($aux as $zona)
             {
-                $zonas[]=$hijo;
-                $aux=$this->hijos($hijo);
-                foreach($aux as $zona)
-                {
-                    $zonas[]=$zona;
-                }
+                $zonas[]=$zona;
             }
+
             $ids_zona=array();
             foreach ($zonas as $zona)
             {
@@ -213,21 +193,28 @@ class UsuariosAvisosController extends Controller
             $ids=array();
         }
 
-        $query = UsuariosAviso::find();
-
-        $query->andFilterWhere([
-            'id'=>$ids,
+        $searchModel= new UsuariosAvisosSearch();
+        $dataProvider= $searchModel->search(Yii::$app->request->queryParams);
+        $dataProvider->query->andFilterWhere([
+            'usuarios_avisos.id'=>$ids,
         ]);
+        $dataProvider->pagination->pageSize=25;
+
+        /*$query = UsuariosAviso::find();
+
+        $query->
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
             'pagination' => ['pageSize' => 6]
-        ]);
+        ]);*/
 
         
 
         return $this->render('mantenimiento_moderador', [
+            'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
+
         ]);
     
     }

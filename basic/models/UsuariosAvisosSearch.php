@@ -100,13 +100,16 @@ class UsuariosAvisosSearch extends UsuariosAviso
             'fecha_lectura' => $this->fecha_lectura,
             'fecha_aceptado' => $this->fecha_aceptado,
             'clase_aviso_id' => $this->tipo,
-            'aC.nick' => $this->usuarioOrigen,
-            'dc.nick' => $this->usuarioDestino,
-            'aA.titulo' => $this->anuncio,
+            //'aC.nick' => $this->usuarioOrigen,
+            //'dc.nick' => $this->usuarioDestino,
+            //'aA.titulo' => $this->anuncio,
         ]);
 
         $query->andFilterWhere(['like', 'clase_aviso_id', $this->clase_aviso_id])
-            ->andFilterWhere(['like', 'texto', $this->texto]);
+            ->andFilterWhere(['like', 'texto', $this->texto])
+            ->andFilterWhere(['like', 'aC.nick', $this->usuarioOrigen])
+            ->andFilterWhere(['like', 'dc.nick', $this->usuarioDestino])
+            ->andFilterWhere(['like', 'aA.titulo', $this->anuncio]);
 
         return $dataProvider;
     }
