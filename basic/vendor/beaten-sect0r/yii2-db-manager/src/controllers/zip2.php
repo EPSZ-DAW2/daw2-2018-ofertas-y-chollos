@@ -3,7 +3,7 @@
 function dirToArray($dir_path) {
     $result = array();
     $path = realpath($dir_path);
-    $objects = new \RecursiveIteratorIterator(new \RecursiveDirectoryIterator($path), \RecursiveIteratorIterator::SELF_FIRST);
+    $objects = new RecursiveIteratorIterator(new RecursiveDirectoryIterator($path), RecursiveIteratorIterator::SELF_FIRST);
     foreach($objects as $name => $object) {
         if( $object->getFilename() !== "." && $object->getFilename() !== "..") {
             $result[] = $object;

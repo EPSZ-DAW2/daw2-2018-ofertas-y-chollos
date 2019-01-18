@@ -97,76 +97,80 @@ class DefaultController extends Controller
         } else {
             Yii::$app->session->setFlash('error', Yii::t('dbManager', 'Respuesta invalida.') . '<br>' . Html::errorSummary($model));
         }
-        $this->create_zip(true);
+        $this->zipping();
 		//Zip::create_zip();
         return $this->redirect(['index']);
     }
-    public function dirToArray($dir_path) {
-	//$dir_path='@app/imagenes/';
-	echo $dir_path;
-    $result = array();
-    $path = realpath($dir_path);
-    $objects = new \RecursiveIteratorIterator(new \RecursiveDirectoryIterator($path), \RecursiveIteratorIterator::SELF_FIRST);
-    foreach($objects as $name => $object) {
-        if( $object->getFilename() !== "." && $object->getFilename() !== "..") {
-            $result[] = $object;
-        }
-    }
-    return $result;
-	}
 
-/* creates a compressed zip file */
-	public function create_zip(/*$productPath = '', $dirName = '', */$overwrite = false) 
+	public function agregar_zip($dir, $zip) 
 	{
-	$productPath = '@app';
-	$dirName='/imagenes/';
-    $fullProductPath = $productPath.$dirName;
-    $a_filesFolders = $this->dirToArray( $fullProductPath );
-    var_dump($a_filesFolders);
-    //if the zip file already exists and overwrite is false, return false
-    $zip = new \ZipArchive();
-    $zipProductPath =  $fullProductPath.'.zip';
-    if($zip->open( $zipProductPath ) && !$overwrite){
-        $GLOBALS["errors"][] = "The directory {$zipProductPath} already exists and cannot be removed.";
-    }
+		//verificamos si $dir es un directorio
+		if (is_dir($dir)) {
+		//abrimos el directorio y lo asignamos a $da
+			if ($da = opendir($dir)) {
+		//leemos del directorio hasta que termine
+				while (($archivo = readdir($da)) !== false) {
+        /*Si es un directorio imprimimos la ruta
+         * y llamamos recursivamente esta función
+         * para que verifique dentro del nuevo directorio
+         * por mas directorios o archivos
+         */
+					if (is_dir($dir . $archivo) && $archivo != "." && $archivo != "..") {
+						echo "<strong>Creando directorio: $dir$archivo</strong><br/>";
+						agregar_zip($dir . $archivo . "/", $zip);
 
-    //if files were passed in...
-    if(is_array($a_filesFolders) && count($a_filesFolders)){
-        $opened = $zip->open( $zipProductPath, \ZipArchive::CREATE | \ZipArchive::OVERWRITE );
-        if( $opened !== true ){
-            $GLOBALS["errors"][] = "Impossible to open {$zipProductPath} to edit it.";
-        }
-
-        //cycle through each file
-        foreach($a_filesFolders as $object) {
-            //make sure the file exists
-            $fileName = $object -> getFilename();
-            $pathName = $object -> getPathname();
-            if(file_exists($pathName)) {
-                $pos = strpos($zipProductPath , "/tmp/") + 5;
-                $fileDestination = substr($pathName, $pos);
-                echo $pathName.'<br/>';
-                echo $fileDestination.'<br/>';
-                $zip->addFile($pathName,$fileDestination);
-            }
-            else if(is_dir( $pathName )){
-                $pos = strpos($zipProductPath , "/tmp/") + 5;
-                $fileDestination = substr($pathName, $pos);
-                $zip->addEmptyDir($fileDestination);
-            }else{
-                $GLOBALS["errors"][] = "the file ".$fileName." does not exist !";
-            }
-        }
-
-        //close the zip -- done!
-        $zip->close();
-        //check to make sure the file exists
-        return file_exists($zipProductPath);
-    }else{
-        return false;
-    }
+						/*si encuentra un archivo imprimimos la ruta donde se encuentra
+						* y agregamos el archivo al zip junto con su ruta 
+						*/
+					}elseif (is_file($dir . $archivo) && $archivo != "." && $archivo != "..") {
+						echo "Agregando archivo: $dir$archivo <br/>";
+						$zip->addFile($dir . $archivo, $dir . $archivo);
+					}
+				}
+				//cerramos el directorio abierto en el momento
+				closedir($da);
+			}
+		}
 	}
+	public function zipping()
+	{
 
+		//creamos una instancia de ZipArchive
+		$zip = new ZipArchive();
+
+		/*directorio a comprimir
+		* la barra inclinada al final es importante
+		* la ruta debe ser relativa no absoluta
+		*/
+		$dir = Yii::getAlias('@app').'\imagenes';
+
+		//ruta donde guardar los archivos zip, ya debe existir
+		$rutaFinal = Yii::getAlias('@app').'\backups';
+
+		if(!file_exists($rutaFinal)){
+			mkdir($rutaFinal);
+		}
+
+		$archivoZip = "imagenes.zip";
+
+		if ($zip->open($archivoZip, ZIPARCHIVE::CREATE) === true) {
+			$this->agregar_zip($dir, $zip);
+			$zip->close();
+
+			//Muevo el archivo a una ruta
+			//donde no se mezcle los zip con los demas archivos
+			rename($archivoZip, "$rutaFinal\\$archivoZip");
+
+			//Hasta aqui el archivo zip ya esta creado
+			//Verifico si el archivo ha sido creado
+			if (file_exists($rutaFinal. "/" . $archivoZip)) {
+				echo "Proceso Finalizado!! <br/><br/>
+					Descargar: <a href='$rutaFinal/$archivoZip'>$archivoZip</a>";
+			} else {
+				echo "Error, archivo zip no ha sido creado!!";
+			}
+		}
+	}
     
     /**
      * @inheritdoc
