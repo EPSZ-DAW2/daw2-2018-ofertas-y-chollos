@@ -115,16 +115,15 @@ class DefaultController extends Controller
          * para que verifique dentro del nuevo directorio
          * por mas directorios o archivos
          */
-					if (is_dir($dir . $archivo) && $archivo != "." && $archivo != "..") {
-						echo "<strong>Creando directorio: $dir$archivo</strong><br/>";
-						agregar_zip($dir . $archivo . "/", $zip);
+					if (is_dir($dir . DIRECTORY_SEPARATOR . $archivo) && $archivo != "." && $archivo != "..") {
+						self::agregar_zip2($dir . DIRECTORY_SEPARATOR . $archivo , $zip);
 
 						/*si encuentra un archivo imprimimos la ruta donde se encuentra
 						* y agregamos el archivo al zip junto con su ruta 
 						*/
-					}elseif (is_file($dir . $archivo) && $archivo != "." && $archivo != "..") {
-						echo "Agregando archivo: $dir$archivo <br/>";
-						$zip->addFile($dir . $archivo, $dir . $archivo);
+					}elseif (is_file($dir . DIRECTORY_SEPARATOR . $archivo) && $archivo != "." && $archivo != "..") {
+
+						$zip->addFile($dir . DIRECTORY_SEPARATOR . $archivo, $archivo);
 					}
 				}
 				//cerramos el directorio abierto en el momento
@@ -132,6 +131,39 @@ class DefaultController extends Controller
 			}
 		}
 	}
+    public function agregar_zip2($dir, $zip) 
+    {
+        //verificamos si $dir es un directorio
+        if (is_dir($dir)) {
+            $ruta = explode(DIRECTORY_SEPARATOR, $dir);
+            $r = end( $ruta );
+            
+        //abrimos el directorio y lo asignamos a $da
+            if ($da = opendir($dir)) {
+        //leemos del directorio hasta que termine
+                while (($archivo = readdir($da)) !== false) {
+        /*Si es un directorio imprimimos la ruta
+         * y llamamos recursivamente esta función
+         * para que verifique dentro del nuevo directorio
+         * por mas directorios o archivos
+         */
+                    if (is_dir($dir . DIRECTORY_SEPARATOR . $archivo) && $archivo != "." && $archivo != "..") { echo $archivo;
+
+                        self::agregar_zip2($dir . DIRECTORY_SEPARATOR . $archivo , $zip);
+
+                        /*si encuentra un archivo imprimimos la ruta donde se encuentra
+                        * y agregamos el archivo al zip junto con su ruta 
+                        */
+                    }elseif (is_file($dir . DIRECTORY_SEPARATOR . $archivo) && $archivo != "." && $archivo != "..") {
+
+                        $zip->addFile($dir . DIRECTORY_SEPARATOR . $archivo, $r . DIRECTORY_SEPARATOR. $archivo);
+                    }
+                }
+                //cerramos el directorio abierto en el momento
+                closedir($da);
+            }
+        }
+    }
 	public function zipping()
 	{
 
@@ -151,24 +183,15 @@ class DefaultController extends Controller
 			mkdir($rutaFinal);
 		}
 
-		$archivoZip = "imagenes.zip";
+        $archivoZip =$rutaFinal. DIRECTORY_SEPARATOR . "imagenes". date('j-m-y-H-i-s') . ".zip";
 
-		if ($zip->open($archivoZip, ZIPARCHIVE::CREATE) === true) {
-			$this->agregar_zip($dir, $zip);
-			$zip->close();
 
-			//Muevo el archivo a una ruta
-			//donde no se mezcle los zip con los demas archivos
-			rename($archivoZip, "$rutaFinal\\$archivoZip");
+        if ($zip->open($archivoZip, ZIPARCHIVE::CREATE | ZIPARCHIVE::OVERWRITE) === true) { 
+            $this->agregar_zip($dir, $zip);
 
-			//Hasta aqui el archivo zip ya esta creado
-			//Verifico si el archivo ha sido creado
-			if (file_exists($rutaFinal. "/" . $archivoZip)) {
-				echo "Proceso Finalizado!! <br/><br/>
-					Descargar: <a href='$rutaFinal/$archivoZip'>$archivoZip</a>";
-			} else {
-				echo "Error, archivo zip no ha sido creado!!";
-			}
+            $zip->close();
+
+
 		}
 	}
     
