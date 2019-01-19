@@ -43,10 +43,8 @@ class Anuncio extends \yii\db\ActiveRecord
     /**
      * @inheritdoc
      */
-    public static function tableName()
-    {
-        return '{{%anuncios}}';
-    }
+
+
 
     /**
      * @inheritdoc
@@ -110,5 +108,14 @@ class Anuncio extends \yii\db\ActiveRecord
     public static function find()
     {
         return new AnunciosQuery(get_called_class());
+    }
+
+      public static function maximoDenuncias(){
+        return 10;
+    }
+
+    public static function tableName()
+    {
+        return '{{%anuncios}}';
     }
 }
