@@ -52,7 +52,7 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'categoria_id')->dropDownList($categorias)->label("Elija una categoria") ?>
 
-    <?= $form->field($model, 'imagen_id')->textInput(['maxlength' => true])->label("Pegue aquí la url de la imagen") ?> <!--MODIFICAR-->
+    <?= $form->field($model, 'imagen_id')->textInput()->label("Pegue aquí la url de la imagen") ?> <!--MODIFICAR-->
 
     <?= $form->field($model, 'votosOK')->hiddenInput()->label(false) ?>
 
