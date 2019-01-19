@@ -130,4 +130,23 @@ class Anuncio_comentario extends \yii\db\ActiveRecord
 	{
 		return $this->hasMany( Anuncio::className(), ['crea_usuario_id' => 'id']);
 	}
+	
+	 public function getHijos()
+    {
+        return Anuncios_comentarios::find()->where(['comentario_id'=>$this->id, 'anuncio_id'=>$this->anuncio_id])->all();
+    }
+
+    public function getArbolHijos()
+    {
+        $hijos=$this->hijos;
+        foreach($hijos as $hijo)
+        {
+            $aux=$hijo->arbolHijos;
+            foreach ($aux as $zona)
+            {
+                $hijos[]=$zona;
+            }
+        }
+        return $hijos;
+    }
 }
