@@ -13,28 +13,12 @@ use yii\web\View;
 // $this->registerAssetBundle('app');
 
 $js = <<<SCRIPT
-	function mostrar(act) {
+	function mostrar() {
 		
-		if(act=='perf') {
-			if (document.getElementById("menuPerfil").style.display == "none") {
-			  document.getElementById("menuPerfil").style.display = "block";
-			} else {
-			  document.getElementById("menuPerfil").style.display = "none";
-			}
+		if (document.getElementById("menuPerfil").style.display == "none") {
+		  document.getElementById("menuPerfil").style.display = "block";
 		} else {
-			if(act=='filtros') {
-				if (document.getElementById("menuBuscar").style.display == "none") {
-				  document.getElementById("menuBuscar").style.display = "block";
-				} else {
-				  document.getElementById("menuBuscar").style.display = "none";
-				}
-			}
-			if(act=='zonas') {
-				
-			}
-			if(act=='categ') {
-				
-			}
+		  document.getElementById("menuPerfil").style.display = "none";
 		}
 	}
 SCRIPT;
@@ -43,11 +27,11 @@ $this->registerJs($js, View::POS_BEGIN);
 <?php $this->beginPage(); ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
 
-    <meta charset="utf-8">
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
 
@@ -124,7 +108,7 @@ $this->registerJs($js, View::POS_BEGIN);
 								Yii::$app->user->isGuest ? (
 									['label' => 'Conectar', 'url' => ['/usuarios/login'], 'options' => [ "class" => "nav-item"]]
 								) : (
-									['label' => Yii::$app->user->identity->nick, 'template' => '<a>{label}</a>', 'options' => [ "class" => "nav-item", 'onclick'=>'mostrar("perf");']]
+									['label' => Yii::$app->user->identity->nick, 'template' => '<a>{label}</a>', 'options' => [ "class" => "nav-item", 'onclick'=>'mostrar();']]
 								),
 									//['label' => 'About', 'url' => ['site/about'], 'options' => [ "class" => "nav-item"]],
 									//['label' => 'Contact', 'url' => ['site/contact'], 'options' => [ "class" => "nav-item"]],
@@ -187,7 +171,7 @@ $this->registerJs($js, View::POS_BEGIN);
 
                 <!--Second column-->
                 <div class="col-md-2 col-md-offset-1">
-                    <h5 class="title">Síguenos en las redes sociales</h5>
+                    <h5 class="title">Síguenos</h5>
                     <ul>
                         <li><a href="#!"><span><i class="fab fa-twitter"></i></span>&nbsp;@gangometro</a></li>
                         <li><a href="#!"><span><i class="fab fa-facebook-square"></i></span>&nbsp;Gangómetro</a></li>

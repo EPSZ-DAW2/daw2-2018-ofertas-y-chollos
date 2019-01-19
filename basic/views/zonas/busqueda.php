@@ -10,7 +10,7 @@ use app\models\Zonas;
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
 $this->title = 'Zonas';
-$this->params['breadcrumbs'][] = $this->title;
+//$this->params['breadcrumbs'][] = $this->title;
 ?>
 <style type="text/css">
     #menu * { list-style:none;}

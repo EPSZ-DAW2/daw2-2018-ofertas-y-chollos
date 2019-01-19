@@ -20,17 +20,22 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <h1><?= Html::encode($this->title) ?></h1>
 
-    <?= ListView::widget([
+    <?php var_dump($model); ?>
+	
+	
+	<?= ListView::widget([
         'dataProvider' => $dataProvider,
         'itemView' => '_comentario_rama',
 				'layout' => '{summary}<hr/>{items}<div style="clear:both"></div>{pager}',
-				'summary' => 'LA RAMA CONTIENE {count} COMENTARIOS',
+				'summary' => 'Los {count} comentarios que mencionan a este son:',
     ]); ?> 
 	
 	<p>
         <?php 
 			$models = $dataProvider->getModels();
-			echo Html::a('Cerrar rama', ['cerrar', 'models' => $models], ['class' => 'btn btn-danger'])
+			var_dump($models);
+			echo Html::a('Cerrar rama', ['cerrar', 'models' => $models], ['class' => 'btn btn-danger']);
+			echo Html::a('Cerrar toda la rama', ['cerrarTodo', 'models' => $models], ['class' => 'btn btn-danger']);
 		?>
     </p>
 
