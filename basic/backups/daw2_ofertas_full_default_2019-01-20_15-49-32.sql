@@ -54,7 +54,7 @@ CREATE TABLE `anuncios` (
   `modi_fecha` datetime DEFAULT NULL COMMENT 'Fecha y Hora de la última modificación del anuncio/oferta o NULL si no se conoce por algún motivo.',
   `notas_admin` text COMMENT 'Notas adicionales para los moderadores/administradores sobre el anuncio/oferta o NULL si no hay.',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -63,7 +63,7 @@ CREATE TABLE `anuncios` (
 
 LOCK TABLES `anuncios` WRITE;
 /*!40000 ALTER TABLE `anuncios` DISABLE KEYS */;
-INSERT INTO `anuncios` VALUES (1,'Federico','golfo','Federico tiene tienda',NULL,NULL,NULL,12,143,NULL,NULL,NULL,0,0,NULL,0,1,0,NULL,0,NULL,0,NULL,NULL,0,18,NULL,NULL,NULL,NULL);
+INSERT INTO `anuncios` VALUES (1,'Federico','golfo','Federico tiene tienda',NULL,NULL,NULL,12,143,NULL,NULL,NULL,0,0,NULL,0,1,0,NULL,0,NULL,0,NULL,NULL,0,18,NULL,NULL,NULL,NULL),(2,'Hola hola','akdvn','sd',NULL,'2019-01-16 00:00:00','2019-01-24 06:06:00',5,25,1,0,NULL,0,0,0,0,1,0,NULL,0,NULL,0,NULL,NULL,0,0,NULL,0,NULL,NULL);
 /*!40000 ALTER TABLE `anuncios` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -392,7 +392,7 @@ CREATE TABLE `registros` (
 
 LOCK TABLES `registros` WRITE;
 /*!40000 ALTER TABLE `registros` DISABLE KEYS */;
-INSERT INTO `registros` VALUES (1,'2019-01-15 18:54:07','A','LoginForm.php','Intento de acceso fallido','::1','Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:64.0) Gecko/20100101 Firefox/64.0'),(2,'2019-01-16 02:31:23','A','LoginForm.php','Intento de acceso fallido','::1','Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36');
+INSERT INTO `registros` VALUES (1,'2019-01-15 18:54:07','A','LoginForm.php','Intento de acceso fallido','::1','Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:64.0) Gecko/20100101 Firefox/64.0'),(2,'2019-01-16 11:49:05','A','LoginForm.php','Intento de acceso fallido','::1','Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36');
 /*!40000 ALTER TABLE `registros` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -432,7 +432,7 @@ CREATE TABLE `usuarios` (
 
 LOCK TABLES `usuarios` WRITE;
 /*!40000 ALTER TABLE `usuarios` DISABLE KEYS */;
-INSERT INTO `usuarios` VALUES (18,'asd@asd.es','7815696ecbf1c96e6894b779456d330e','Federico','Federicos','Federico','2019-01-07','',1,'2019-01-14 20:44:16',1,'2019-01-17 23:14:01',0,0,NULL,''),(19,'agapito@asd.es','7815696ecbf1c96e6894b779456d330e','agapito','Agapito','Agapito','2018-12-16','',0,'2019-01-15 18:53:59',0,'2019-01-15 18:54:11',0,0,NULL,NULL);
+INSERT INTO `usuarios` VALUES (18,'joseigles@usal.es','21232f297a57a5a743894a0e4a801fc3','joseigles','Federico','Shefede','2019-01-07','ajfhj',1,'2019-01-14 20:44:16',1,'2019-01-18 14:43:51',0,0,NULL,''),(19,'agapito@asd.es','7815696ecbf1c96e6894b779456d330e','agapito','Agapito','Agapito','2018-12-16','',0,'2019-01-15 18:53:59',0,'2019-01-15 18:54:11',0,0,NULL,NULL);
 /*!40000 ALTER TABLE `usuarios` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -458,7 +458,7 @@ CREATE TABLE `usuarios_anuncios` (
 
 LOCK TABLES `usuarios_anuncios` WRITE;
 /*!40000 ALTER TABLE `usuarios_anuncios` DISABLE KEYS */;
-INSERT INTO `usuarios_anuncios` VALUES (1,18,1,'2019-01-15 00:00:00');
+INSERT INTO `usuarios_anuncios` VALUES (1,18,1,'0000-00-00 00:00:00');
 /*!40000 ALTER TABLE `usuarios_anuncios` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -474,7 +474,7 @@ CREATE TABLE `usuarios_area_moderacion` (
   `usuario_id` int(12) unsigned NOT NULL COMMENT 'Usuario relacionado con un Area para su moderación.',
   `zona_id` int(12) unsigned NOT NULL COMMENT 'Zona relacionada con el Usuario que puede moderarla.',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -483,7 +483,6 @@ CREATE TABLE `usuarios_area_moderacion` (
 
 LOCK TABLES `usuarios_area_moderacion` WRITE;
 /*!40000 ALTER TABLE `usuarios_area_moderacion` DISABLE KEYS */;
-INSERT INTO `usuarios_area_moderacion` VALUES (1,18,1);
 /*!40000 ALTER TABLE `usuarios_area_moderacion` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -506,7 +505,7 @@ CREATE TABLE `usuarios_avisos` (
   `fecha_lectura` datetime DEFAULT NULL COMMENT 'Fecha y Hora de lectura del aviso o NULL si no se ha leido o se ha desmarcado como tal.',
   `fecha_aceptado` datetime DEFAULT NULL COMMENT 'Fecha y Hora de aceptación del aviso o NULL si no se ha aceptado para su gestión por un moderador o administrador. No se usa en otros usuarios.',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -515,7 +514,7 @@ CREATE TABLE `usuarios_avisos` (
 
 LOCK TABLES `usuarios_avisos` WRITE;
 /*!40000 ALTER TABLE `usuarios_avisos` DISABLE KEYS */;
-INSERT INTO `usuarios_avisos` VALUES (1,'2019-01-15 17:23:09','N','Baja',19,18,0,0,NULL,NULL),(2,'2019-01-15 17:32:37','N','Baja',19,18,0,0,NULL,NULL);
+INSERT INTO `usuarios_avisos` VALUES (1,'2019-01-15 17:23:09','N','Baja',0,18,0,0,NULL,NULL),(2,'2019-01-15 17:32:37','N','Baja',0,18,0,0,NULL,NULL),(3,'2019-01-16 01:12:10','N','Baja',0,18,0,0,NULL,NULL),(4,'2019-01-16 13:29:28','N','Baja',0,18,0,0,NULL,NULL);
 /*!40000 ALTER TABLE `usuarios_avisos` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -582,7 +581,7 @@ CREATE TABLE `zonas` (
   `nombre` varchar(50) NOT NULL COMMENT 'Nombre de la zona que la identifica.',
   `zona_id` int(12) unsigned DEFAULT '0' COMMENT 'Zona relacionada. Nodo padre de la jerarquia o CERO si es nodo raiz.',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -591,7 +590,7 @@ CREATE TABLE `zonas` (
 
 LOCK TABLES `zonas` WRITE;
 /*!40000 ALTER TABLE `zonas` DISABLE KEYS */;
-INSERT INTO `zonas` VALUES (1,'1','Europa',0),(2,'2','España',1),(3,'1','Oceania',0),(4,'2','Cangurolandia',3);
+INSERT INTO `zonas` VALUES (1,'1','Europa',0),(2,'2','España',1),(3,'1','Oceania',0);
 /*!40000 ALTER TABLE `zonas` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -604,4 +603,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-01-18 13:38:13
+-- Dump completed on 2019-01-20 15:49:33
