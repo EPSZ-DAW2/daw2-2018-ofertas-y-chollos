@@ -87,6 +87,13 @@ class DefaultController extends Controller
             $dumpOptions = $model->makeDumpOptions();
             $manager = $this->getModule()->createManager($dbInfo);
             $dumpPath = $manager->makePath($this->getModule()->path, $dbInfo, $dumpOptions);
+$nombre = explode(DIRECTORY_SEPARATOR, $dumpPath);
+$nombre = explode("/", end($nombre));
+$nombre = explode("_", end($nombre));
+$nombre=$nombre[4]. "_". $nombre[5];
+$nombre = explode(".", $nombre);
+
+    
             $dumpCommand = $manager->makeDumpCommand($dumpPath, $dbInfo, $dumpOptions);
             Yii::trace(compact('dumpCommand', 'dumpPath', 'dumpOptions'), get_called_class());
             if ($model->runInBackground) {
@@ -97,10 +104,11 @@ class DefaultController extends Controller
         } else {
             Yii::$app->session->setFlash('error', Yii::t('dbManager', 'Respuesta invalida.') . '<br>' . Html::errorSummary($model));
         }
-        $this->zipping();
+        $this->zipping($nombre[0]);
 		//Zip::create_zip();
         return $this->redirect(['index']);
     }
+
 
 	public function agregar_zip($dir, $zip) 
 	{
@@ -116,7 +124,7 @@ class DefaultController extends Controller
          * por mas directorios o archivos
          */
 					if (is_dir($dir . DIRECTORY_SEPARATOR . $archivo) && $archivo != "." && $archivo != "..") {
-						self::agregar_zip2($dir . DIRECTORY_SEPARATOR . $archivo , $zip);
+						self::agregar_zip2($dir . DIRECTORY_SEPARATOR . $archivo , $zip, $archivo);
 
 						/*si encuentra un archivo imprimimos la ruta donde se encuentra
 						* y agregamos el archivo al zip junto con su ruta 
@@ -131,12 +139,11 @@ class DefaultController extends Controller
 			}
 		}
 	}
-    public function agregar_zip2($dir, $zip) 
+    public function agregar_zip2($dir, $zip, $ruta) 
     {
         //verificamos si $dir es un directorio
         if (is_dir($dir)) {
-            $ruta = explode(DIRECTORY_SEPARATOR, $dir);
-            $r = end( $ruta );
+
             
         //abrimos el directorio y lo asignamos a $da
             if ($da = opendir($dir)) {
@@ -149,14 +156,14 @@ class DefaultController extends Controller
          */
                     if (is_dir($dir . DIRECTORY_SEPARATOR . $archivo) && $archivo != "." && $archivo != "..") { echo $archivo;
 
-                        self::agregar_zip2($dir . DIRECTORY_SEPARATOR . $archivo , $zip);
+                        self::agregar_zip2($dir . DIRECTORY_SEPARATOR . $archivo , $zip, $ruta. DIRECTORY_SEPARATOR . $archivo);
 
                         /*si encuentra un archivo imprimimos la ruta donde se encuentra
                         * y agregamos el archivo al zip junto con su ruta 
                         */
                     }elseif (is_file($dir . DIRECTORY_SEPARATOR . $archivo) && $archivo != "." && $archivo != "..") {
 
-                        $zip->addFile($dir . DIRECTORY_SEPARATOR . $archivo, $r . DIRECTORY_SEPARATOR. $archivo);
+                        $zip->addFile($dir . DIRECTORY_SEPARATOR . $archivo, $ruta . DIRECTORY_SEPARATOR. $archivo);
                     }
                 }
                 //cerramos el directorio abierto en el momento
@@ -164,7 +171,7 @@ class DefaultController extends Controller
             }
         }
     }
-	public function zipping()
+	public function zipping($nombre)
 	{
 
 		//creamos una instancia de ZipArchive
@@ -183,7 +190,7 @@ class DefaultController extends Controller
 			mkdir($rutaFinal);
 		}
 
-        $archivoZip =$rutaFinal. DIRECTORY_SEPARATOR . "imagenes". date('Y-m-d_H-i-s') . ".zip";
+        $archivoZip =$rutaFinal. DIRECTORY_SEPARATOR . "imagenes_". $nombre . ".zip";
 
 
         if ($zip->open($archivoZip, ZIPARCHIVE::CREATE | ZIPARCHIVE::OVERWRITE) === true) { 
@@ -201,8 +208,18 @@ class DefaultController extends Controller
     public function actionDownload($id)
     {
         $dumpPath = $this->getModule()->path . StringHelper::basename(ArrayHelper::getValue($this->getModule()->getFileList(), $id));
+print_r($dumpPath);
+$nombre = explode(DIRECTORY_SEPARATOR, $dumpPath);
+$nombre = explode("/", end($nombre));
+$nombre = explode("_", end($nombre));
+$nombre=$nombre[4]. "_". $nombre[5];
+$nombre2 = explode(".", $nombre);
+$nombre = Yii::getAlias('@app') . "/backups/imagenes_" .$nombre2[0] . ".zip";
+$ruta = Yii::getAlias('@app') . "/backups/";
 
-        return Yii::$app->response->sendFile($dumpPath);
+
+    Yii::$app->response->sendFile($nombre);
+    //   return Yii::$app->response->sendFile($dumpPath);
     }
 
     /**
@@ -211,6 +228,11 @@ class DefaultController extends Controller
     public function actionRestore($id)
     {
         $dumpFile = $this->getModule()->path . StringHelper::basename(ArrayHelper::getValue($this->getModule()->getFileList(), $id));
+    $nombre = explode(DIRECTORY_SEPARATOR, $dumpFile);
+$nombre = explode("/", end($nombre));
+$nombre = explode("_", end($nombre));
+$nombre=$nombre[4]. "_". $nombre[5];
+$nombre = explode(".", $nombre);
         $model = new Restore($this->getModule()->dbList, $this->getModule()->customRestoreOptions);
         if (Yii::$app->request->isPost) {
             if ($model->load(Yii::$app->request->post()) && $model->validate()) {
@@ -222,13 +244,13 @@ class DefaultController extends Controller
                 if ($model->runInBackground) {
                     $this->runProcessAsync($restoreCommand, true);
                 } else {
+                    self::restaurarImagenes($nombre[0]);
                     $this->runProcess($restoreCommand, true);
                 }
 
                 return $this->redirect(['index']);
             }
         }
-		$this->restaurarImagenes();
         return $this->render('restore', [
             'model' => $model,
             'file' => $dumpFile,
@@ -236,14 +258,18 @@ class DefaultController extends Controller
         ]);
     }
 
+
+
+
+
     /**
      * @inheritdoc
      */
 	 
-	public function restaurarImagenes()
+	public function restaurarImagenes($nombre)
 	{
 		//exec('compact /u'. Yii::getAlias('@app').'\backups\imagenes.zip');
-		$archivo = Yii::getAlias('@app').'\backups\imagenes.zip';
+		$archivo = Yii::getAlias('@app').'\backups\imagenes_'. $nombre.'.zip';
 		$destino = Yii::getAlias('@webroot').'\imagenes';
 		$zip = new zipArchive;
 		if($zip->open($archivo)===TRUE)
@@ -282,7 +308,14 @@ class DefaultController extends Controller
     public function actionDelete($id)
     {
         $dumpFile = $this->getModule()->path . StringHelper::basename(ArrayHelper::getValue($this->getModule()->getFileList(), $id));
-        if (unlink($dumpFile)) {
+        $nombre = explode(DIRECTORY_SEPARATOR, $dumpFile);
+$nombre = explode("/", end($nombre));
+$nombre = explode("_", end($nombre));
+$nombre=$nombre[4]. "_". $nombre[5];
+$nombre2 = explode(".", $nombre);
+$nombre = Yii::getAlias('@app') . "/backups/imagenes_" .$nombre2[0] . ".zip";
+
+        if ((unlink($dumpFile)) && (unlink($nombre))) {
             Yii::$app->session->setFlash('success', Yii::t('dbManager', 'Copia eliminada correctamente.'));
         } else {
             Yii::$app->session->setFlash('error', Yii::t('dbManager', 'Error al eliminar la copia.'));
@@ -299,6 +332,13 @@ class DefaultController extends Controller
         if (!empty($this->getModule()->getFileList())) {
             $fail = [];
             foreach ($this->getModule()->getFileList() as $file) {
+$nombre = explode(DIRECTORY_SEPARATOR, $file);
+$nombre = explode("/", end($nombre));
+$nombre = explode("_", end($nombre));
+$nombre=$nombre[4]. "_". $nombre[5];
+$nombre2 = explode(".", $nombre);
+$nombre = Yii::getAlias('@app') . "/backups/imagenes_" .$nombre2[0] . ".zip";
+unlink($nombre);
                 if (!unlink($file)) {
                     $fail[] = $file;
                 }
