@@ -217,18 +217,16 @@ class Anuncios_comentariosController extends Controller
 
         throw new NotFoundHttpException(Yii::t('app', 'The requested page does not exist.'));
     }
-	
-	
-	
-	
-	
-	
-	
 		
-	public function actionCerrar($models)
+	public function actionCerrar($id)
 	{
-		if(!is_array($models))
-		$models = array($models);
+		$model = $this->findModel($id);
+		$query = Anuncio_comentario::find()->hijos($id, $model->anuncio_id);
+		$dataProvider = new ActiveDataProvider([
+			'query' => $query,
+		]);
+		$models = $dataProvider->getModels();
+		$models[] = $model;
 	
 		foreach($models as $model){
 			$model->cerrado = 1;
@@ -238,10 +236,12 @@ class Anuncios_comentariosController extends Controller
 		return $this->redirect(['index']);
 	}
 	
-	public function actionCerrarTodo($models)
+	public function actionCerrartodo($id)
 	{
+		$model = $this->findModel($id);
+		
 		//llama función
-		self::cerrar($newModes);
+		self::cerrar($model);
 		
 		return $this->redirect(['index']);
 	}
@@ -260,17 +260,9 @@ class Anuncios_comentariosController extends Controller
 				'query' => $query,
 			]);
 			$newModels = $dataProvider->getModels();
-			if(!empty($newModels)) self::cerrar($newModes);
+			if(!empty($newModels)) self::cerrar($newModels);
 		}
 	}
-	
-	
-	
-	
-	
-	
-	
-	
 		
 	public function actionComentarios()
 	{

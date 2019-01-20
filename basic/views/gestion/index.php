@@ -17,12 +17,14 @@ $this->title = 'My Yii Application';
 
 			<div class="widget-wrapper">
 				<h4>Usuarios:</h4>
-				<br>
 				<div class="list-group">
 					<?= Html::a('Usuarios', ['usuarios/index'], ['class' => 'list-group-item']) ?>
+					<?= Html::a('Moderación', ['usuarios-area-moderacion/index'], ['class' => 'list-group-item']) ?>
 					<?= Html::a('Nuevos registros', ['usuarios/revision_registro'], ['class' => 'list-group-item']) ?>
 					<?= Html::a('Proveedores', ['proveedores/index'], ['class' => 'list-group-item']) ?>
 					<?= Html::a('Roles', ['usuarios/roles'], ['class' => 'list-group-item']) ?>
+					<?= Html::a('Etiquetas', ['usuarios-etiquetas/index'], ['class' => 'list-group-item']) ?>
+					<?= Html::a('Categorías', ['usuarios-categorias/index'], ['class' => 'list-group-item']) ?>
 					<?= Html::a('Perfil', ['perfil/index'], ['class' => 'list-group-item']) ?>
 					<?= Html::a('Avisos', ['usuarios-avisos/moderar'], ['class' => 'list-group-item']) ?>
 					<?= Html::a('Mensajes', ['mensajes/index'], ['class' => 'list-group-item']) ?>
@@ -31,25 +33,17 @@ $this->title = 'My Yii Application';
 			
 			<div class="widget-wrapper">
 				<h4>Anuncios:</h4>
-				<br>
 				<div class="list-group">
 					<?= Html::a('Anuncios', ['anuncios/index'], ['class' => 'list-group-item']) ?>
 					<?= Html::a('Comentarios', ['anuncios_comentarios/index'], ['class' => 'list-group-item']) ?>
-				</div>
-			</div>
-			
-			<div class="widget-wrapper">
-				<h4>Zonas:</h4>
-				<br>
-				<div class="list-group">
+					<?= Html::a('Categorías', ['categorias/index'], ['class' => 'list-group-item']) ?>
 					<?= Html::a('Zonas', ['zonas/index'], ['class' => 'list-group-item']) ?>
-					<?= Html::a('Moderación', ['usuarios-area-moderacion/index'], ['class' => 'list-group-item']) ?>
+					<?= Html::a('Moderación de zonas', ['usuarios-area-moderacion/index'], ['class' => 'list-group-item']) ?>
 				</div>
 			</div>
 			
 			<div class="widget-wrapper">
 				<h4>Sistema:</h4>
-				<br>
 				<div class="list-group">
 					<?= Html::a('Copias de seguridad', ['/db-manager'], ['class' => 'list-group-item']) ?>
 					<?= Html::a('Logs', ['registros/index'], ['class' => 'list-group-item']) ?>

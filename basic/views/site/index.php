@@ -81,22 +81,27 @@ $this->title = 'My Yii Application';
 			</div>
 		</div>
 		
-		<div style="display:none;" id="zonas">
-			<?php 
-				echo \Yii::$app->view->renderFile('@app/views/zonas/busqueda.php', [
-					'model'=> new Zonas,
-				]);
-			?>
-		</div style="display:none;" id="categorias">
-		<div>
-			<?php 
+		<div class="card" style="display:none;" id="zonas">
+			<div class="card-block">
+				<?php 
+					echo \Yii::$app->view->renderFile('@app/views/zonas/busqueda.php', [
+						'model'=> new Zonas,
+					]);
+				?>
+			</div>
+		</div>
+		<div style="display:none;" id="categorias">
+			<div class="card-block">
+				<?php 
 
-			?>
+				?>
+			</div>
 		</div>
 	
 		<?= ListView::widget([
 			'dataProvider' => $dataProvider,
 			'itemView' =>  '../anuncios/_anunciosMini',
+			'layout' => '{items}<div style="clear: both;"></div>{pager}',
 			
 			/*'layout' => 
 			'<div class="container container-fluid">{items}</div> 
