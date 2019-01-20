@@ -7,12 +7,13 @@ use app\models\Anuncio;
 use app\models\Categorias;
 use app\models\Proveedor;
 use app\models\Zonas;
+use app\models\Anuncio_comentario;
 use app\models\AnuncioSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use yii\data\ActiveDataProvider;
-
+use app\models\Anuncio_comentarioSearch;
 /**
  * AnunciosController implements the CRUD actions for Anuncio model.
  */
@@ -69,6 +70,9 @@ class AnunciosController extends Controller
     //vista detalle publica
     public function actionView($id)
     {
+
+
+
     	$model = $this->findModel($id);
     	if($model->terminada==0 && $model->bloqueada==0 && $model->visible==1)
     	{
@@ -78,10 +82,27 @@ class AnunciosController extends Controller
     		$categoria = Categorias::findOne($model->categoria_id);
     		$nombreCategoria= $categoria==null ? " Sin zona asignada" : $categoria->nombre;
 
+      //  $comentarios = Anuncio_comentario::findAll(['anuncio_id'=>$model->id, 'bloqueado'=>0, 'cerrado'=>0]);
+        $comentario = new Anuncio_comentario();
+        if (!Yii::$app->user->isGuest && $comentario->load(Yii::$app->request->post())) {
+      //$model->crea_usuario_id = Yii::$app->user->identity->id; //---------pendiente-------------
+              $comentario->crea_usuario_id = Yii::$app->user->identity->id;
+              $comentario->crea_fecha = date('Y-m-d H:i:s');
+              $comentario->save(false);
+     // return $this->redirect(['comentarios']);
+    } 
+    $searchModel = new Anuncio_comentarioSearch();
+    $dataProvider = $searchModel->search(['Anuncio_comentarioSearch'=>['anuncio_id' => $model->id,'cerrado'=>0, 'bloqueado' => '0']]);
+    $dataProvider->setSort([
+        'defaultOrder' => ['crea_fecha'=>SORT_DESC],
+    ]);
         	return $this->render('view', [
             'model' =>  $model,
             'zona' => $nombreZona,
-            'categoria' => $nombreCategoria
+            'categoria' => $nombreCategoria,
+            'comentarios' => $dataProvider
+
+
         	]);
     	}else{
     		 return $this->redirect(['site/index']);
