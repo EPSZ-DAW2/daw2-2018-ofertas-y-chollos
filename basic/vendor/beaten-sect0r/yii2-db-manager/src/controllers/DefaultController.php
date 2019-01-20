@@ -250,6 +250,11 @@ class DefaultController extends Controller
 		{
 			$zip->extractTo($destino);
 			$zip->close();
+			echo 'OK';
+		}
+		else
+		{
+			echo 'Fail';
 		}
 	}
     public function actionStorage($id)
