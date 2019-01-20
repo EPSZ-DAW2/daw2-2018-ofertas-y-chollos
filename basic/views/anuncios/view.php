@@ -3,6 +3,8 @@
 use yii\helpers\Html;
 use yii\widgets\DetailView;
 use yii\helpers\Url;
+use app\models\Usuario;
+use app\models\Anuncio_comentario;
 /* @var $this yii\web\View */
 /* @var $model app\models\Anuncio */
 
@@ -12,6 +14,9 @@ $this->params['breadcrumbs'][] = $this->title;
 $url = $model->url==null ? 'Sin página web' : "<a href=$model->url> Ir a su web</a>";
 $imagen = ($model->imagen_id == null) ? 'src="'.Url::base().'/imagenes/anuncios/anuncio_default.png"':'src="'.Url::base().'/imagenes/anuncios/'.$model->imagen_id.'"';
 $activada = !Yii::$app->user->isGuest;//($model->terminada==0 && $model->bloqueada==0 && $model->visible==1);
+
+
+var_dump(Yii::$app->user->identity->id);
 ?>
  
 
@@ -89,5 +94,48 @@ $activada = !Yii::$app->user->isGuest;//($model->terminada==0 && $model->bloquea
            // 'notas_admin:ntext',
         ],
     ]) ?>
-<?= Html::a(Yii::t('app', 'Denunciar'), ['denunciar', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
+       <?php if($activada){
+      echo Html::a(Yii::t('app', 'Denunciar anuncio'), ['denunciar', 'id' => $model->id], ['class' => 'btn btn-primary']);
+      echo Html::a(Yii::t('app', 'Comentar'), ['anuncios_comentarios/create', 'id' => $model->id], ['class' => 'btn btn-primary']);
+       }?>
 </div>
+
+<div>
+<h3>COMENTARIOS</h3>
+<p></p>
+<?php 
+   /* foreach ($comentarios as $comentario) {
+      
+        echo DetailView::widget([
+            'model' => $comentario,
+            'attributes' => [
+
+               //'crea_usuario_id',
+          [
+            'label' => 'Usuario',
+            'format'=>'raw',
+            'value' => Html::a(Yii::t('app', Usuario::findIdentity($comentario->crea_usuario_id)->nick), ['usuarios/view', 'id' => $comentario->crea_usuario_id]),
+          ],
+           [
+            'label' => 'Fecha',
+            'format'=>'raw',
+            'value' => $comentario->crea_fecha,
+          ],
+            [
+            'label' => 'ha comentado: ',
+            'format'=>'raw',
+            'value' => $comentario->texto,
+          ],
+         
+            ],
+        ]);
+
+    }*/
+     ?>
+
+     <?= $this->render('comentarios', [
+        'dataProvider' => $comentarios,
+        'model' => new Anuncio_comentario(),
+    ]) ?>
+
+  </div>
