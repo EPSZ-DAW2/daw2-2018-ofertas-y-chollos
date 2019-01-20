@@ -99,6 +99,8 @@ class Anuncios_comentariosController extends Controller
         ]);
     }
 
+
+
     /**
      * Updates an existing Anuncio_comentario model.
      * If update is successful, the browser will be redirected to the 'view' page.
@@ -275,7 +277,7 @@ class Anuncios_comentariosController extends Controller
 		$model = new Anuncio_comentario();
 		
 		//id oferta
-		$id = 1;
+		$id = 2;
 		
 		if ($model->load(Yii::$app->request->post())) {
 			//$model->crea_usuario_id = Yii::$app->user->identity->id; //---------pendiente-------------
