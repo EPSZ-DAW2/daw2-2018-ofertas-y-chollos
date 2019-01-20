@@ -174,7 +174,7 @@ class DefaultController extends Controller
 		* la barra inclinada al final es importante
 		* la ruta debe ser relativa no absoluta
 		*/
-		$dir = Yii::getAlias('@app').'\imagenes';
+		$dir = Yii::getAlias('@webroot').'\imagenes';
 
 		//ruta donde guardar los archivos zip, ya debe existir
 		$rutaFinal = Yii::getAlias('@app').'\backups';
@@ -228,7 +228,7 @@ class DefaultController extends Controller
                 return $this->redirect(['index']);
             }
         }
-
+		$this->restaurarImagenes();
         return $this->render('restore', [
             'model' => $model,
             'file' => $dumpFile,
@@ -239,6 +239,19 @@ class DefaultController extends Controller
     /**
      * @inheritdoc
      */
+	 
+	public function restaurarImagenes()
+	{
+		//exec('compact /u'. Yii::getAlias('@app').'\backups\imagenes.zip');
+		$archivo = Yii::getAlias('@app').'\backups\imagenes.zip';
+		$destino = Yii::getAlias('@webroot').'\imagenes';
+		$zip = new zipArchive;
+		if($zip->open($archivo)===TRUE)
+		{
+			$zip->extractTo($destino);
+			$zip->close();
+		}
+	}
     public function actionStorage($id)
     {
         if (Yii::$app->has('backupStorage')) {
@@ -254,7 +267,7 @@ class DefaultController extends Controller
                 Yii::$app->session->setFlash('success', Yii::t('dbManager', 'Copia subida al almacenamiento.'));
             }
         }
-
+		$this->restaurarImagenes();
         return $this->redirect(['index']);
     }
 

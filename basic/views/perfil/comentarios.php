@@ -41,7 +41,7 @@ $this->title = 'Comentarios del chollo 1';
 
     <?= ListView::widget([
         'dataProvider' => $dataProvider,
-        'itemView' => '/anuncios_comentarios/_comentario_rama',
+        'itemView' => '/anuncios_comentarios/_comentario',
 				'layout' => '{summary}<hr/>{items}<div style="clear:both"></div>{pager}',
 				'summary' => '{count} COMENTARIOS',
     ]); ?> 
