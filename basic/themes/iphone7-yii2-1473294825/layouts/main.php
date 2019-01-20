@@ -11,43 +11,15 @@ use yii\web\View;
  * @var $content string
  */
 // $this->registerAssetBundle('app');
-
-$js = <<<SCRIPT
-	function mostrar(act) {
-		
-		if(act=='perf') {
-			if (document.getElementById("menuPerfil").style.display == "none") {
-			  document.getElementById("menuPerfil").style.display = "block";
-			} else {
-			  document.getElementById("menuPerfil").style.display = "none";
-			}
-		} else {
-			if(act=='filtros') {
-				if (document.getElementById("menuBuscar").style.display == "none") {
-				  document.getElementById("menuBuscar").style.display = "block";
-				} else {
-				  document.getElementById("menuBuscar").style.display = "none";
-				}
-			}
-			if(act=='zonas') {
-				
-			}
-			if(act=='categ') {
-				
-			}
-		}
-	}
-SCRIPT;
-$this->registerJs($js, View::POS_BEGIN);
 ?>
 <?php $this->beginPage(); ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
 
-    <meta charset="utf-8">
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
 
@@ -124,7 +96,19 @@ $this->registerJs($js, View::POS_BEGIN);
 								Yii::$app->user->isGuest ? (
 									['label' => 'Conectar', 'url' => ['/usuarios/login'], 'options' => [ "class" => "nav-item"]]
 								) : (
-									['label' => Yii::$app->user->identity->nick, 'template' => '<a>{label}</a>', 'options' => [ "class" => "nav-item", 'onclick'=>'mostrar("perf");']]
+									['label' => Yii::$app->user->identity->nick, 'template' => 
+										'<div class="dropdown dropdown-perfil">
+											<button class="btn dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+												{label}
+											</button>
+											<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">'.
+												 Html::a('Perfil', ['/perfil/index'], ['class' => 'dropdown-item']).
+												 Html::a('Logout', ['/usuarios/logout'], ['class' => 'dropdown-item'])
+											.'</div>
+										</div>'
+										,'options' => [ "class" => "nav-item"]
+									]
+									//['label' => Yii::$app->user->identity->nick, 'template' => '<a>{label}</a>', 'options' => [ "class" => "nav-item", 'onclick'=>'mostrar();']]
 								),
 									//['label' => 'About', 'url' => ['site/about'], 'options' => [ "class" => "nav-item"]],
 									//['label' => 'Contact', 'url' => ['site/contact'], 'options' => [ "class" => "nav-item"]],
@@ -143,19 +127,6 @@ $this->registerJs($js, View::POS_BEGIN);
 
         </nav>
         <!--/.Navbar-->
-		
-		<div class="container menuDes" id="menuPerfil">
-			<div class="row">
-			  <div class="col-md-12">
-				<div class="list-group drop-perfil">
-					<?php
-					 echo Html::a('Perfil', ['/perfil/index'], ['class' => 'list-group-item']);
-					 echo Html::a('Logout', ['/usuarios/logout'], ['class' => 'list-group-item']);
-					?>
-				</div>
-			  </div>
-			</div>
-		</div>
     </header>
 
 	<main>
@@ -187,7 +158,7 @@ $this->registerJs($js, View::POS_BEGIN);
 
                 <!--Second column-->
                 <div class="col-md-2 col-md-offset-1">
-                    <h5 class="title">Síguenos en las redes sociales</h5>
+                    <h5 class="title">Síguenos</h5>
                     <ul>
                         <li><a href="#!"><span><i class="fab fa-twitter"></i></span>&nbsp;@gangometro</a></li>
                         <li><a href="#!"><span><i class="fab fa-facebook-square"></i></span>&nbsp;Gangómetro</a></li>

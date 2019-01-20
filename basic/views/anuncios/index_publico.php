@@ -56,9 +56,9 @@ $this->params['breadcrumbs'][] = $this->title;
             //'modi_usuario_id',
             //'modi_fecha',
             //'notas_admin:ntext',
-
-            ['class' => 'yii\grid\ActionColumn'],
-        ],
+            
+                ['class' => 'yii\grid\ActionColumn','template' =>'{view}'],
+         ],      
     ]); ?>
     <?php Pjax::end(); ?>
 </div>

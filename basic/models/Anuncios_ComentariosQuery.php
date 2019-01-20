@@ -31,4 +31,10 @@ class Anuncios_ComentariosQuery extends \yii\db\ActiveQuery
     {
         return parent::one($db);
     }
+	
+	public function hijos($comentario_id, $anuncio_id)
+    {
+        return $this
+			->andWhere(['comentario_id' => $comentario_id, 'anuncio_id' => $anuncio_id]);
+    }
 }

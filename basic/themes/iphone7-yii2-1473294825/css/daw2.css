@@ -23,8 +23,8 @@
 	
 	.navbar2 {
 		margin-bottom: 30px;
-		margin-right: 1.875rem;
-		margin-left: 1.875rem;
+		margin-right: 0.9325rem;
+		margin-left: 0.9325rem;
 	}
 	
 	.pagination {
@@ -83,7 +83,13 @@
 		margin-left: 0;
 	}
 	
-	
+	.dropdown-perfil,  .dropdown-perfil button{
+		background-color: black ;
+		color: grey;
+	}
+	.dropdown-perfil a {
+		color: black !important;
+	}
 
 
 @media only screen and (max-width:544px) {

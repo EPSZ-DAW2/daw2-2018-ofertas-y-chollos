@@ -9,6 +9,7 @@ use app\models\Anuncio_comentarioSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\data\ActiveDataProvider;
 
 /**
  * Anuncios_comentariosController implements the CRUD actions for Anuncio_comentario model.
@@ -69,28 +70,15 @@ class Anuncios_comentariosController extends Controller
      */
     public function actionRama($id)
     {
-        $model = $this->findModel($id);
-		$models = array($model);
+     
+		$model = $this->findModel($id);
+		$query = Anuncio_comentario::find()->hijos($id, $model->anuncio_id);
+		$dataProvider = new ActiveDataProvider([
+			'query' => $query,
+		]);
 		
-		$i=array(0);
-		$j=0;
-		
-		$searchModel = new Anuncio_comentarioSearch();
-		$dataProvider = $searchModel->search(['Anuncio_comentarioSearch'=>[]]);
-		$dataProvider->setModels(array($model));
-		$dataProvider->setKeys($i);
-		
-			while ($model->comentario_id != 0) {
-				$model = $this->findModel($model->comentario_id);
-				$dataProvider->getModels($models);
-				array_unshift($models, $model);
-				$j++;
-				$i[] = $j;
-				$dataProvider->setModels($models);
-				$dataProvider->setKeys($i);
-			}
-		
-		return $this->render('rama', ['dataProvider' => $dataProvider]);
+		return $this->render('rama', ['model'=>$model, 'dataProvider' => $dataProvider]);
+	
     }
 
     /**
@@ -228,10 +216,15 @@ class Anuncios_comentariosController extends Controller
         throw new NotFoundHttpException(Yii::t('app', 'The requested page does not exist.'));
     }
 		
-	public function actionCerrar($models)
+	public function actionCerrar($id)
 	{
-		if(!is_array($models))
-		$models = array($models);
+		$model = $this->findModel($id);
+		$query = Anuncio_comentario::find()->hijos($id, $model->anuncio_id);
+		$dataProvider = new ActiveDataProvider([
+			'query' => $query,
+		]);
+		$models = $dataProvider->getModels();
+		$models[] = $model;
 	
 		foreach($models as $model){
 			$model->cerrado = 1;
@@ -239,6 +232,34 @@ class Anuncios_comentariosController extends Controller
 		}
 		
 		return $this->redirect(['index']);
+	}
+	
+	public function actionCerrartodo($id)
+	{
+		$model = $this->findModel($id);
+		
+		//llama función
+		self::cerrar($model);
+		
+		return $this->redirect(['index']);
+	}
+	
+	protected function cerrar($models)
+	{
+		if(!is_array($models))
+		$models = array($models);
+	
+		foreach($models as $model){
+			$model->cerrado = 1;
+			$model->save(false);
+			
+			$query = Anuncio_comentario::find()->hijos($model->id, $model->anuncio_id);
+			$dataProvider = new ActiveDataProvider([
+				'query' => $query,
+			]);
+			$newModels = $dataProvider->getModels();
+			if(!empty($newModels)) self::cerrar($newModels);
+		}
 	}
 		
 	public function actionComentarios()

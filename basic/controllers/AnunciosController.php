@@ -48,7 +48,7 @@ class AnunciosController extends Controller
             'dataProvider' => $dataProvider,
         ]);
     }
-     public function actionIndexPublico()
+     public function actionIndexpublico()
     {
         $searchModel = new AnuncioSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
@@ -65,16 +65,33 @@ class AnunciosController extends Controller
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
      */
+
+    //vista detalle publica
     public function actionView($id)
     {
-        return $this->render('view', [
-            'model' => $this->findModel($id),
-        ]);
+    	$model = $this->findModel($id);
+    	if($model->terminada==0 && $model->bloqueada==0 && $model->visible==1)
+    	{
+    		$zona = Zonas::findOne($model->zona_id);
+    		$nombreZona = $zona==null ? " Sin zona asignada" : $zona->nombre;
+
+    		$categoria = Categorias::findOne($model->categoria_id);
+    		$nombreCategoria= $categoria==null ? " Sin zona asignada" : $categoria->nombre;
+
+        	return $this->render('view', [
+            'model' =>  $model,
+            'zona' => $nombreZona,
+            'categoria' => $nombreCategoria
+        	]);
+    	}else{
+    		 return $this->redirect(['site/index']);
+    	}
+    	
     }
      public function actionViewadmin($id)
     {
         return $this->render('view_admin', [
-            'model' => $this->findModel($id),
+            'model' => $model,
         ]);
     }
 
@@ -91,6 +108,7 @@ class AnunciosController extends Controller
        
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
+
             return $this->redirect(['view', 'id' => $model->id]);
         }
 
@@ -113,6 +131,7 @@ class AnunciosController extends Controller
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
+
             return $this->redirect(['view', 'id' => $model->id]);
         }
 
@@ -144,12 +163,14 @@ class AnunciosController extends Controller
     {
        $model = $this->findModel($id);
         $model->num_denuncias++;
-       $model->save(false);
+      
 
-       if($model->num_denuncias === 10) {
-        //CUANDO  SE ALCANCE UN Nº DE DENUNCIAS DETERMINADO SE DEBERÁ BLOQUEAR EL ANUNCIO PARA QUE NO SE VEA.     
+       if($model->num_denuncias >= Anuncio::maximoDenuncias()) {
+        //CUANDO  SE ALCANCE UN Nº DE DENUNCIAS DETERMINADO SE DEBERÁ BLOQUEAR EL ANUNCIO PARA QUE NO SE VEA.  
+        $model->bloqueada=1;
+        $model->visible=0;  
       }
-
+ 		$model->save(false);
         return $this->redirect(['view', 'id' => $model->id]);
         
     }
