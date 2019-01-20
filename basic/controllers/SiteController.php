@@ -62,11 +62,11 @@ class SiteController extends Controller
      *
      * @return string
      */
-    public function actionIndex($nPages=3, $filtro=null)
+    public function actionIndex($nPages=25, $filtro=null, $id_zona=null, $id_categoria=null)
     {
         
 		//filtros
-		if($filtro===null)
+		if($filtro===null && $id_zona===null && $id_categoria===null)
 		{
 			$query = Anuncio::find()->nuevos();
 		}
@@ -75,6 +75,12 @@ class SiteController extends Controller
 		}
 		if($filtro == 'rec') {
 			$query = Anuncio::find()->proximos();
+		}
+		if($id_zona !== null) {
+			$query = Anuncio::find()->zonas($id_zona);
+		}
+		if($id_categoria !== null) {
+			$query = Anuncio::find()->categorias($id_categoria);
 		}
 		
 		
