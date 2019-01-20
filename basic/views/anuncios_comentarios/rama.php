@@ -20,22 +20,21 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <h1><?= Html::encode($this->title) ?></h1>
 
-    <?php var_dump($model); ?>
+    <?= $this->render('_comentario_rama', ['model'=>$model]);?>
 	
-	
-	<?= ListView::widget([
-        'dataProvider' => $dataProvider,
-        'itemView' => '_comentario_rama',
-				'layout' => '{summary}<hr/>{items}<div style="clear:both"></div>{pager}',
-				'summary' => 'Los {count} comentarios que mencionan a este son:',
-    ]); ?> 
+	<div style="border-left: 2px solid blue; padding-left: 10px; margin: 20px 0;">
+		<?= ListView::widget([
+			'dataProvider' => $dataProvider,
+			'itemView' => '_comentario_rama',
+					'layout' => '{summary}<hr/>{items}<div style="clear:both"></div>{pager}',
+					'summary' => '<h4>Los {count} comentarios que mencionan a este son:</h4>',
+		]); ?> 
+	</div>
 	
 	<p>
         <?php 
-			$models = $dataProvider->getModels();
-			var_dump($models);
-			echo Html::a('Cerrar rama', ['cerrar', 'models' => $models], ['class' => 'btn btn-danger']);
-			echo Html::a('Cerrar toda la rama', ['cerrarTodo', 'models' => $models], ['class' => 'btn btn-danger']);
+			echo Html::a('Cerrar rama', ['cerrar', 'id' => $model->id], ['class' => 'btn btn-danger']);
+			echo Html::a('Cerrar toda la rama', ['cerrartodo', 'id' => $model->id], ['class' => 'btn btn-danger']);
 		?>
     </p>
 

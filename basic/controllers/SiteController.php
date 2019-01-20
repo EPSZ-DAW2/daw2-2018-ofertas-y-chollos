@@ -62,7 +62,7 @@ class SiteController extends Controller
      *
      * @return string
      */
-    public function actionIndex($nPages=25, $filtro=null, $id_zona=null, $id_categoria=null)
+    public function actionIndex($nPages=24, $filtro=null, $id_zona=null, $id_categoria=null)
     {
         
 		//filtros
