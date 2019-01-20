@@ -183,7 +183,7 @@ class DefaultController extends Controller
 			mkdir($rutaFinal);
 		}
 
-        $archivoZip =$rutaFinal. DIRECTORY_SEPARATOR . "imagenes". date('j-m-y-H-i-s') . ".zip";
+        $archivoZip =$rutaFinal. DIRECTORY_SEPARATOR . "imagenes". date('Y-m-d_H-i-s') . ".zip";
 
 
         if ($zip->open($archivoZip, ZIPARCHIVE::CREATE | ZIPARCHIVE::OVERWRITE) === true) { 
@@ -250,6 +250,11 @@ class DefaultController extends Controller
 		{
 			$zip->extractTo($destino);
 			$zip->close();
+			echo 'OK';
+		}
+		else
+		{
+			echo 'Fail';
 		}
 	}
     public function actionStorage($id)
