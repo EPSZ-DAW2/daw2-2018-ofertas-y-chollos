@@ -10,7 +10,7 @@ use yii\helpers\Html;
 			<h2><?= Html::encode($model->nick) ?> </h2>
 			<h5 class="card-title"><?= Html::encode($model->nombre) ?> <?= Html::encode($model->apellidos) ?></h5>
 			<!--Text-->
-			<p class="card-text">Nacido en <?= Html::encode($model->fecha_nacimiento) ?></p>
+			<p class="card-text">Registrado desde: <?= Html::encode($model->fecha_registro) ?></p>
 			<?= Html::a('Iniciar Chat', ['/mensajes/iniciar', 'id_destino'=>$model->id], ['class'=>'btn btn-primary']) ?>
 		</div>
 			<!--/.Card content-->

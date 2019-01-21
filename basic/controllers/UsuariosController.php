@@ -120,7 +120,9 @@ class UsuariosController extends Controller
         if (isset($_GET['filtro'])) 
         {
             $filtro=$_GET['filtro'];
-            $query->andFilterWhere(['like', 'nick', $filtro]);
+            $query->orFilterWhere(['like', 'nick', $filtro]);
+            $query->orFilterWhere(['like', 'nombre', $filtro]);
+            $query->orFilterWhere(['like', 'apellidos', $filtro]);
         }
 
 
@@ -140,13 +142,50 @@ class UsuariosController extends Controller
     //muestra todos los usuarios y su rol correspondiente para modificarlos
     public function actionRoles()
     {
-        $searchModel = new UsuarioSearch();
-        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
-        return $this->render('admin_roles', [
-            'searchModel' => $searchModel,
-            'dataProvider' => $dataProvider,
-        ]);
+        if (!Yii::$app->user->isGuest) 
+        {
+            # code...
+            //Comprobamos el rol del usuario
+
+            $id=Yii::$app->user->identity->id;
+            $userRole = Yii::$app->authManager->getRolesByUser($id);
+
+
+            if ($userRole) 
+            {
+
+                    foreach ($userRole as $role) 
+                    {
+                       $roles[] = $role->name;
+                    }
+
+                      // if user have 1 role then $userRole will be a string containing it
+                      // othewhise let $userRole be an array containing them all
+                        $userRole = count($roles) === 1 ? $roles[0] : $roles ;
+            }
+
+
+            if ($userRole=='admin' || $userRole=='sysadmin') 
+            {
+                
+                $searchModel = new UsuarioSearch();
+                $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+
+                return $this->render('admin_roles', [
+                    'searchModel' => $searchModel,
+                    'dataProvider' => $dataProvider,
+                ]);
+            }
+
+
+            echo "No tienes permiso para entrar a este sitio";
+        }
+
+
+
+
+
     }
 
 

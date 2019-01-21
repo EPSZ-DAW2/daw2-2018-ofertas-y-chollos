@@ -29,6 +29,27 @@ use Yii;
 class Usuario extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface
 {
 
+
+
+    //lista de Roles posibles
+    protected static $roles = array(
+        0 => 'usuario', 
+        1 => 'patrocinador', 
+        2 => 'moderador', 
+        3 => 'admin', 
+        4 => 'sysadmin', 
+
+    );
+
+
+    //devuelve el array de roles
+    public static function listaRoles()
+    {
+        return self::$roles;
+    }
+
+
+
     public $email2;
     public $password2;
     public $authKey;
