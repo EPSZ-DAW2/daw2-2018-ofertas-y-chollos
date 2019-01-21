@@ -73,14 +73,17 @@ class AnunciosController extends Controller
 
 
 
-    	$model = $this->findModel($id);
-    	if($model->terminada==0 && $model->bloqueada==0 && $model->visible==1)
-    	{
-    		$zona = Zonas::findOne($model->zona_id);
-    		$nombreZona = $zona==null ? " Sin zona asignada" : $zona->nombre;
+      $model = $this->findModel($id);
+      if($model->terminada==0 && $model->bloqueada==0 && $model->visible==1)
+      {
+        $zona = Zonas::findOne($model->zona_id);
+        $nombreZona = $zona==null ? " Sin zona asignada" : $zona->nombre;
 
-    		$categoria = Categorias::findOne($model->categoria_id);
-    		$nombreCategoria= $categoria==null ? " Sin zona asignada" : $categoria->nombre;
+        $categoria = Categorias::findOne($model->categoria_id);
+        $nombreCategoria= $categoria==null ? " Sin zona asignada" : $categoria->nombre;
+
+       $comentarios = Anuncio_comentario::findAll(['anuncio_id'=>$model->id]);
+
 
       //  $comentarios = Anuncio_comentario::findAll(['anuncio_id'=>$model->id, 'bloqueado'=>0, 'cerrado'=>0]);
         $comentario = new Anuncio_comentario();
@@ -88,26 +91,30 @@ class AnunciosController extends Controller
       //$model->crea_usuario_id = Yii::$app->user->identity->id; //---------pendiente-------------
               $comentario->crea_usuario_id = Yii::$app->user->identity->id;
               $comentario->crea_fecha = date('Y-m-d H:i:s');
+              $comentario->anuncio_id = $model->id;
+
               $comentario->save(false);
      // return $this->redirect(['comentarios']);
     } 
+
+
     $searchModel = new Anuncio_comentarioSearch();
-    $dataProvider = $searchModel->search(['Anuncio_comentarioSearch'=>['anuncio_id' => $model->id,'cerrado'=>0, 'bloqueado' => '0']]);
+    $dataProvider = $searchModel->search(['Anuncio_comentarioSearch'=>['anuncio_id' => $comentario->anuncio_id,'cerrado'=>0, 'bloqueado' => '0']]);
     $dataProvider->setSort([
         'defaultOrder' => ['crea_fecha'=>SORT_DESC],
     ]);
-        	return $this->render('view', [
+          return $this->render('view', [
             'model' =>  $model,
             'zona' => $nombreZona,
             'categoria' => $nombreCategoria,
             'comentarios' => $dataProvider
 
 
-        	]);
-    	}else{
-    		 return $this->redirect(['site/index']);
-    	}
-    	
+          ]);
+      }else{
+         return $this->redirect(['site/index']);
+      }
+      
     }
      public function actionViewadmin($id)
     {
@@ -191,7 +198,18 @@ class AnunciosController extends Controller
         $model->bloqueada=1;
         $model->visible=0;  
       }
- 		$model->save(false);
+    $model->save(false);
+        return $this->redirect(['view', 'id' => $model->id]);
+        
+    }
+
+    //Realiza un seguimiento de un anuncio
+    public function actionSeguir($id)
+    {
+       $model = $this->findModel($id);
+        
+
+    //$model->save(false);
         return $this->redirect(['view', 'id' => $model->id]);
         
     }
