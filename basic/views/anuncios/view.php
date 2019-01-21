@@ -94,15 +94,16 @@ var_dump(Yii::$app->user->identity->id);
            // 'notas_admin:ntext',
         ],
     ]) ?>
-       <?php if($activada){
+       <center><?php if($activada){
       echo Html::a(Yii::t('app', 'Denunciar anuncio'), ['denunciar', 'id' => $model->id], ['class' => 'btn btn-primary']);
-      echo Html::a(Yii::t('app', 'Comentar'), ['anuncios_comentarios/create', 'id' => $model->id], ['class' => 'btn btn-primary']);
-       }?>
+      echo Html::a(Yii::t('app', 'Seguir anuncio'), ['seguir', 'id' => $model->id], ['class' => 'btn btn-default btn-circle']);
+
+    //  echo Html::a(Yii::t('app', 'Comentar'), ['anuncios_comentarios/create', 'id' => $model->id], ['class' => 'btn btn-primary']);
+       }?></center>
 </div>
 
 <div>
-<h3>COMENTARIOS</h3>
-<p></p>
+<br/><br/><br/>
 <?php 
    /* foreach ($comentarios as $comentario) {
       
