@@ -1,6 +1,7 @@
 <?php
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
+
 /* @var $this yii\web\View */
 /* @var $model app\models\Anuncio */
 /* @var $form yii\widgets\ActiveForm */
@@ -9,8 +10,7 @@ use yii\widgets\ActiveForm;
 <div class="anuncio-form">
 
     <?php 
-
-        $form = ActiveForm::begin(); 
+        $form = ActiveForm::begin(['options' => ['enctype' => 'multipart/form-data']]); 
         $model->fecha_desde=date(" d/m/Y h:i");
         $model->fecha_hasta=date(" d/m/Y h:i");
         $model->precio_oferta=0;
