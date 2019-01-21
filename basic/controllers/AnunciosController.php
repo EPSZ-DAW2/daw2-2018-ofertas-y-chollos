@@ -9,11 +9,15 @@ use app\models\Proveedor;
 use app\models\Zonas;
 use app\models\Anuncio_comentario;
 use app\models\AnuncioSearch;
+use app\models\Etiqueta;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use yii\data\ActiveDataProvider;
 use app\models\Anuncio_comentarioSearch;
+use app\models\UsuariosAnuncios;
+use app\models\AnunciosEtiquetas;
+
 /**
  * AnunciosController implements the CRUD actions for Anuncio model.
  */
@@ -82,7 +86,7 @@ class AnunciosController extends Controller
         $categoria = Categorias::findOne($model->categoria_id);
         $nombreCategoria= $categoria==null ? " Sin zona asignada" : $categoria->nombre;
 
-       $comentarios = Anuncio_comentario::findAll(['anuncio_id'=>$model->id]);
+      // $comentarios = Anuncio_comentario::findAll(['anuncio_id'=>$model->id]);
 
 
       //  $comentarios = Anuncio_comentario::findAll(['anuncio_id'=>$model->id, 'bloqueado'=>0, 'cerrado'=>0]);
@@ -98,8 +102,14 @@ class AnunciosController extends Controller
     } 
 
 
+
+$seguimiento =  UsuariosAnuncios::findOne(['usuario_id' =>Yii::$app->user->identity->id, 'anuncio_id' => $model->id]);
+
+
+
+
     $searchModel = new Anuncio_comentarioSearch();
-    $dataProvider = $searchModel->search(['Anuncio_comentarioSearch'=>['anuncio_id' => $comentario->anuncio_id,'cerrado'=>0, 'bloqueado' => '0']]);
+    $dataProvider = $searchModel->search(['Anuncio_comentarioSearch'=>['anuncio_id' => $model->id,'cerrado'=>0, 'bloqueado' => '0']]);
     $dataProvider->setSort([
         'defaultOrder' => ['crea_fecha'=>SORT_DESC],
     ]);
@@ -107,9 +117,9 @@ class AnunciosController extends Controller
             'model' =>  $model,
             'zona' => $nombreZona,
             'categoria' => $nombreCategoria,
-            'comentarios' => $dataProvider
-
-
+            'comentarios' => $dataProvider,
+            'seguimiento' => $seguimiento,
+            'etiquetas'=>$this->listarEtiquetas($model->id)
           ]);
       }else{
          return $this->redirect(['site/index']);
@@ -132,8 +142,6 @@ class AnunciosController extends Controller
     {
         $model = new Anuncio();
 
-        
-       
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
 
@@ -263,6 +271,17 @@ class AnunciosController extends Controller
         return $ps;
     }
 
+     protected function listarEtiquetas($id)
+    {
+         $relaciones = AnunciosEtiquetas::findAll(['anuncio_id'=>$id]);
+       $etiquetas = array();
+        foreach ($relaciones as $relacion) {
+        
+           $etiquetas[$relacion->id]=Etiqueta::findOne($relacion->etiqueta_id)->nombre;
+        }
+        return $etiquetas;
+    }
+
     //acción para listar todos los anuncios, a excepcion de los no visibles y los bloqueados
 
     public function actionListar(){
@@ -283,6 +302,7 @@ class AnunciosController extends Controller
             'dataProvider' => $dataProvider,           
         ]);
     }
+
 
     public function actionListar_zona($id_zona){
 
@@ -321,4 +341,6 @@ class AnunciosController extends Controller
             'dataProvider' => $dataProvider,
         ]);
     }
+
+
 }
