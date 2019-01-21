@@ -4,6 +4,7 @@ namespace app\controllers;
 
 use Yii;
 use app\models\AnunciosEtiquetas;
+use app\models\Etiqueta;
 use app\models\AnunciosEtiquetasSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
@@ -108,6 +109,14 @@ class AnunciosEtiquetasController extends Controller
 
         return $this->redirect(['index']);
     }
+    public function actionDesetiquetar($id)
+    {
+        $model = $this->findModel($id);
+        $anuncio_id= $model->anuncio_id;
+        $model->delete();
+
+        return $this->redirect(['anuncios/view','id'=>$anuncio_id]);
+    }
 
     /**
      * Finds the AnunciosEtiquetas model based on its primary key value.
@@ -124,4 +133,32 @@ class AnunciosEtiquetasController extends Controller
 
         throw new NotFoundHttpException(Yii::t('app', 'The requested page does not exist.'));
     }
+
+
+
+    public function actionEtiquetar($anuncio_id)
+    {
+        $model = new AnunciosEtiquetas();
+        $model->anuncio_id=$anuncio_id;
+        if ($model->load(Yii::$app->request->post()) && $model->save(false)) {
+            return $this->redirect(['anuncios/view', 'id' => $model->anuncio_id]);
+        }
+
+        return $this->render('etiquetar', [
+            'model' => $model,
+            'etiquetas'=>$this->listarEtiquetas($model->anuncio_id)
+        ]);
+    }
+
+        protected function listarEtiquetas($anuncio_id)
+    {
+         $etiquetasTodas = Etiqueta::find()->all();
+       $etiquetas = array();
+        foreach ($etiquetasTodas as $etiqueta) {
+        if( AnunciosEtiquetas::findOne(['anuncio_id'=>$anuncio_id,'etiqueta_id'=>$etiqueta->id]) == null)
+           $etiquetas[$etiqueta->id]=$etiqueta->nombre;
+        }
+        return $etiquetas;
+    }
+    
 }
