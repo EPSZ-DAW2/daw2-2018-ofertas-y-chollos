@@ -311,4 +311,19 @@ class Anuncios_comentariosController extends Controller
 		return $this->redirect(['comentarios']);
 	}
 	
+
+
+
+
+//Función creada por el grupo 2, lo que hace es ocultar un comentario por el administrador, por tanto, pone el campo bloqueado a 2, y oculta dicho comentario redirigiendo al anuncio nuevamente
+    public function actionDelete($id)
+    {
+    	$comen = $this->findModel($id);
+        $nocomen = $comen==null ? " Sin comentario asociado" : $comen->bloqueado =2;
+        //$this->findModel($id)->delete();
+        $comen->save(false);
+       // return $this->redirect(['anuncios/index/]);
+        return $this->redirect(['anuncios/view','id'=>$comen->anuncio_id]);
+
+     }
 }
