@@ -208,18 +208,39 @@ $nombre = explode(".", $nombre);
     public function actionDownload($id)
     {
         $dumpPath = $this->getModule()->path . StringHelper::basename(ArrayHelper::getValue($this->getModule()->getFileList(), $id));
-print_r($dumpPath);
+
 $nombre = explode(DIRECTORY_SEPARATOR, $dumpPath);
 $nombre = explode("/", end($nombre));
+$archivo = end($nombre);
 $nombre = explode("_", end($nombre));
 $nombre=$nombre[4]. "_". $nombre[5];
 $nombre2 = explode(".", $nombre);
 $nombre = Yii::getAlias('@app') . "/backups/imagenes_" .$nombre2[0] . ".zip";
-$ruta = Yii::getAlias('@app') . "/backups/";
 
 
-    Yii::$app->response->sendFile($nombre);
-    //   return Yii::$app->response->sendFile($dumpPath);
+$zip = new ZipArchive();
+
+        /*directorio a comprimir
+        * la barra inclinada al final es importante
+        * la ruta debe ser relativa no absoluta
+        */
+        $dir = Yii::getAlias('@webroot').'\backups';
+
+        //ruta donde guardar los archivos zip, ya debe existir
+        $rutaFinal = Yii::getAlias('@app').'\tmp';
+
+        if(!file_exists($rutaFinal)){
+            mkdir($rutaFinal);
+        }
+ $archivoZip =$rutaFinal. DIRECTORY_SEPARATOR . "backup_". $nombre2[0] . ".zip";
+
+
+        if ($zip->open($archivoZip, ZIPARCHIVE::CREATE | ZIPARCHIVE::OVERWRITE) === true) { 
+            $zip->addFile($nombre, "imagenes_" .$nombre2[0] . ".zip");
+            $zip->addFile($dumpPath, $archivo);
+            $zip->close();
+        }
+       return Yii::$app->response->sendFile($archivoZip);
     }
 
     /**
