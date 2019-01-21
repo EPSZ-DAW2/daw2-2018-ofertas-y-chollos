@@ -2,8 +2,9 @@
 
 namespace app\models;
 
+use yii\base\Model;
+use yii\web\UploadedFile;
 use Yii;
-
 /**
  * This is the model class for table "{{%anuncios}}".
  *
@@ -37,6 +38,7 @@ use Yii;
  * @property string $modi_usuario_id Usuario que ha modificado el anuncio/oferta por última vez o CERO (como si fuera NULL) si no existe o se hizo por un administrador de sistema.
  * @property string $modi_fecha Fecha y Hora de la última modificación del anuncio/oferta o NULL si no se conoce por algún motivo.
  * @property string $notas_admin Notas adicionales para los moderadores/administradores sobre el anuncio/oferta o NULL si no hay.
+    
  */
 class Anuncio extends \yii\db\ActiveRecord
 {
@@ -46,9 +48,6 @@ class Anuncio extends \yii\db\ActiveRecord
 
 
 
-    /**
-     * @inheritdoc
-     */
     public function rules()
     {
         return [
@@ -61,6 +60,8 @@ class Anuncio extends \yii\db\ActiveRecord
             [['visible', 'terminada', 'bloqueada', 'cerrada_comentar'], 'string', 'max' => 1],
         ];
     }
+
+
 
     /**
      * @inheritdoc
@@ -101,6 +102,8 @@ class Anuncio extends \yii\db\ActiveRecord
         ];
     }
 
+
+
     /**
      * @inheritdoc
      * @return AnunciosQuery the active query used by this AR class.
@@ -118,4 +121,23 @@ class Anuncio extends \yii\db\ActiveRecord
     {
         return '{{%anuncios}}';
     }
+
+
+
+    //Administración de las listas de bloqueo
+    protected static $bloqueos=array( 0=>'No', 1=>'Bloqueado por denuncias', 2=>'Bloqueada por administrador');
+
+    public static function listarBloqueos(){
+        return self::$bloqueos;
+    }
+
+    //Administración de las listas de terminación
+    protected static $terminaciones=array( 0=>'No', 1=>'Realizada', 2=>'Suspendida', 3=>'Cancelada por inadecuada');
+
+    public static function listarTerminaciones(){
+        return self::$terminaciones;
 }
+
+
+}
+
