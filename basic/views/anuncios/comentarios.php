@@ -30,7 +30,7 @@ $this->registerCss($css2, []);
 /* @var $this yii\web\View */
 /* @var $model app\models\Anuncio_comentario */
 
-$this->title = 'Comentarios del chollo 1';
+$this->title = 'Comentarios del anuncio';
 ?>
 <div class="anuncio-comentario-index">
 
@@ -56,10 +56,7 @@ $this->title = 'Comentarios del chollo 1';
 		
 			<div class="input-group">
 				<?= $form->field($model, 'texto', ['labelOptions' => [ 'class' => 'hidden']])->textInput(['placeholder' => 'Comentar...', 'class' => 'form-control']) ?>
-				<?= $form->field($model, 'anuncio_id', ['labelOptions' => [ 'class' => 'hidden']])->hiddenInput(['value' => '1']) ?>  <!-- pendiente -->
-				<?= $form->field($model, 'comentario_id', ['labelOptions' => [ 'class' => 'hidden']])->textInput() ?>
-				<?= $form->field($model, 'modi_usuario_id', ['labelOptions' => [ 'class' => 'hidden']])->textInput() ?>
-				<span class="input-group-btn">
+				
 				<?= Html::submitButton('<i class="fas fa-chevron-circle-right"></i>', ['class' => 'btn btn-success']) ?>
 				</span>
 			</div><!-- /input-group -->
