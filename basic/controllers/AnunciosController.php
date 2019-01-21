@@ -102,9 +102,10 @@ class AnunciosController extends Controller
     } 
 
 
-
+if(!Yii::$app->user->isGuest)
 $seguimiento =  UsuariosAnuncios::findOne(['usuario_id' =>Yii::$app->user->identity->id, 'anuncio_id' => $model->id]);
-
+else
+  $seguimiento=null;
 
 
 
