@@ -25,14 +25,16 @@ $activada = !Yii::$app->user->isGuest;//($model->terminada==0 && $model->bloquea
     <h1></h1>
 <p>Etiquetas: <?php foreach($etiquetas as $nombre) echo $nombre."&nbsp"?></p>
  <?php
- if($model->crea_usuario_id == Yii::$app->user->identity->id && count($etiquetas)!=0)
-      {
-        echo "<p>Quitar etiqueta de: ";
+ $idusuario = Yii::$app->user->isGuest ? 0 : Yii::$app->user->identity->id;
 
-        foreach($etiquetas as $key => $nombre) echo Html::a($nombre, ['anuncios-etiquetas/desetiquetar', 'id'=>$key],  ['class' => 'btn btn-danger']);
+   if($model->crea_usuario_id == $idusuario && count($etiquetas)!=0)
+        {
+          echo "<p>Quitar etiqueta de: ";
 
-        echo "</p>";
-  }
+          foreach($etiquetas as $key => $nombre) echo Html::a($nombre, ['anuncios-etiquetas/desetiquetar', 'id'=>$key],  ['class' => 'btn btn-danger']);
+
+          echo "</p>";
+    }
   ?>
 <center><img <?=$imagen?>alt=""></center>
     <div>
