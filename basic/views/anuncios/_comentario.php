@@ -84,8 +84,8 @@ $this->registerCss($css1, [], '_comentario');
 	
 	<?php if($model->comentario_id != 0) { ?>
 		<div class="citado">
-			<p class="no-margin-bottom"><strong id="<?=$model->id?>_cita_name">jose</strong></p>
-			<p id="<?=$model->id?>_cita_text">Eres un fiera</p>
+			<p class="no-margin-bottom"><strong id="<?=$model->id?>_cita_name"></strong></p>
+			<p id="<?=$model->id?>_cita_text"></p>
 		</div>
 	<?php } ?>
 	
@@ -99,13 +99,17 @@ $this->registerCss($css1, [], '_comentario');
 				<span class="glyphicon glyphicon-option-vertical" aria-hidden="true"></span>
 			</button>
 			<ul class="dropdown-menu">
-				<?php //if($model->crea_usuario_id == Yii::$app->user->identity->id) { ?>
-					<li><?= Html::button('Editar', ['class'=>'no-btn li_element', 'onclick'=>"editar('".$model->id."', '".$model->texto."', '".$model->comentario_id."');"]) ?></li>
-				<?php //} if($model->crea_usuario_id == Yii::$app->user->identity->id || Yii::$app->authManager->getRolesByUser(Yii::$app->user->identity->id) == 'Administrador') { ?>
-					<li><?= Html::a('Eliminar', ['delete', 'id' => $model->id, 'page' => 'comentarios'], ['data-method' => 'post']) ?></li>
-				<?php //if($model->crea_usuario_id !== Yii::$app->user->identity->id) { ?>
-					<li><?= Html::a('Denunciar', ['enunciar', 'id' => $model->id]) ?></li>
-				<?php //} ?>
+				
+				<?php 
+
+				if($model->crea_usuario_id == Yii::$app->user->identity->id || Yii::$app->authManager->getRolesByUser(Yii::$app->user->identity->id) == 'Administrador') { 
+/////////
+					?>
+					<li>
+						<?= Html::a('Eliminar', ['anuncios_comentarios/delete', 'id' => $model->id], ['data-method' => 'post']) ?> <?php } ?></li>
+				<?php if($model->crea_usuario_id != Yii::$app->user->identity->id) { ?>
+					<li><?= Html::a('Denunciar', ['denunciar', 'id' => $model->id]) ?><?php } ?></li>
+				
 			</ul>
 		</div>
 	</div>
