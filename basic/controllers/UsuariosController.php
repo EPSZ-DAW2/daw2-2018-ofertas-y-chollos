@@ -91,7 +91,9 @@ class UsuariosController extends Controller
             $filtro=$_GET['filtro'];
 
 
-            $query->andFilterWhere(['like', 'nick', $filtro]);
+            $query->orFilterWhere(['like', 'nick', $filtro]);
+            $query->orFilterWhere(['like', 'nombre', $filtro]);
+            $query->orFilterWhere(['like', 'apellidos', $filtro]);
 
         }
 

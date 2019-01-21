@@ -11,7 +11,7 @@ use yii\helpers\Html;
 			<h5 class="card-title"><?= Html::encode($model->nombre) ?> <?= Html::encode($model->apellidos) ?></h5>
 			<!--Text-->
 			<p class="card-text">Nacido en <?= Html::encode($model->fecha_nacimiento) ?></p>
-			<?= Html::a('Ver perfil', ['/usuarios/view', 'id'=>$model->id], ['class'=>'btn btn-primary']) ?>
+			<?= Html::a('Iniciar Chat', ['/mensajes/iniciar', 'id_destino'=>$model->id], ['class'=>'btn btn-primary']) ?>
 		</div>
 			<!--/.Card content-->
 
