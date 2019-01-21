@@ -28,6 +28,7 @@ $this->title = 'My Yii Application';
 					<?= Html::a('Perfil', ['perfil/index'], ['class' => 'list-group-item']) ?>
 					<?= Html::a('Avisos', ['usuarios-avisos/moderar'], ['class' => 'list-group-item']) ?>
 					<?= Html::a('Mensajes', ['mensajes/index'], ['class' => 'list-group-item']) ?>
+					<?= Html::a('Seguimiento', ['usuarios-anuncios/index'], ['class' => 'list-group-item']) ?>
 				</div>
 			</div>
 			
@@ -39,6 +40,7 @@ $this->title = 'My Yii Application';
 					<?= Html::a('Categorías', ['categorias/index'], ['class' => 'list-group-item']) ?>
 					<?= Html::a('Zonas', ['zonas/index'], ['class' => 'list-group-item']) ?>
 					<?= Html::a('Moderación de zonas', ['usuarios-area-moderacion/index'], ['class' => 'list-group-item']) ?>
+					<?= Html::a('Etiquetas', ['anuncios-etiquetas/index'], ['class' => 'list-group-item']) ?>
 				</div>
 			</div>
 			
