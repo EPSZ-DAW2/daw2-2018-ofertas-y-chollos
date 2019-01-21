@@ -15,15 +15,25 @@ $url = $model->url==null ? 'Sin página web' : "<a href=$model->url> Ir a su web
 $imagen = ($model->imagen_id == null) ? 'src="'.Url::base().'/imagenes/anuncios/anuncio_default.png"':'src="'.Url::base().'/imagenes/anuncios/'.$model->imagen_id.'"';
 $activada = !Yii::$app->user->isGuest;//($model->terminada==0 && $model->bloqueada==0 && $model->visible==1);
 
+//var_dump($etiquetas);
 
-var_dump(Yii::$app->user->identity->id);
 ?>
  
 
 <div class="anuncio-view">
 
-    <h1><?= Html::encode($this->title) ?></h1>
+    <h1></h1>
+<p>Etiquetas: <?php foreach($etiquetas as $nombre) echo $nombre."&nbsp"?></p>
+ <?php
+ if($model->crea_usuario_id == Yii::$app->user->identity->id && count($etiquetas)!=0)
+      {
+        echo "<p>Quitar etiqueta de: ";
 
+        foreach($etiquetas as $key => $nombre) echo Html::a($nombre, ['anuncios-etiquetas/desetiquetar', 'id'=>$key],  ['class' => 'btn btn-danger']);
+
+        echo "</p>";
+  }
+  ?>
 <center><img <?=$imagen?>alt=""></center>
     <div>
         <table><tr>
@@ -95,8 +105,19 @@ var_dump(Yii::$app->user->identity->id);
         ],
     ]) ?>
        <center><?php if($activada){
-      echo Html::a(Yii::t('app', 'Denunciar anuncio'), ['denunciar', 'id' => $model->id], ['class' => 'btn btn-primary']);
-      echo Html::a(Yii::t('app', 'Seguir anuncio'), ['seguir', 'id' => $model->id], ['class' => 'btn btn-default btn-circle']);
+      
+      if($model->crea_usuario_id == Yii::$app->user->identity->id)
+      {
+        echo Html::a(Yii::t('app', 'Etiquetar anuncio'), ['anuncios-etiquetas/etiquetar', 'anuncio_id' => $model->id], ['class' => 'btn btn-default btn-primary']);
+      }else{
+            echo Html::a(Yii::t('app', 'Denunciar anuncio'), ['denunciar', 'id' => $model->id], ['class' => 'btn btn-primary']);
+            if($seguimiento==NULL){
+
+                  echo Html::a(Yii::t('app', 'Seguir anuncio'), ['usuarios-anuncios/seguir', 'anuncio_id' => $model->id], ['class' => 'btn btn-default btn-circle']);
+                }else{
+                  echo Html::a(Yii::t('app', 'Dejar de seguir anuncio'), ['usuarios-anuncios/finseguimiento', 'id' => $seguimiento->id], ['class' => 'btn btn-default btn-danger']);
+                }
+      }
 
     //  echo Html::a(Yii::t('app', 'Comentar'), ['anuncios_comentarios/create', 'id' => $model->id], ['class' => 'btn btn-primary']);
        }?></center>
