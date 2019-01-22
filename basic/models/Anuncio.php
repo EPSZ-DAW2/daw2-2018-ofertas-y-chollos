@@ -38,7 +38,7 @@ use Yii;
  * @property string $modi_usuario_id Usuario que ha modificado el anuncio/oferta por última vez o CERO (como si fuera NULL) si no existe o se hizo por un administrador de sistema.
  * @property string $modi_fecha Fecha y Hora de la última modificación del anuncio/oferta o NULL si no se conoce por algún motivo.
  * @property string $notas_admin Notas adicionales para los moderadores/administradores sobre el anuncio/oferta o NULL si no hay.
-    
+*
  */
 class Anuncio extends \yii\db\ActiveRecord
 {
@@ -46,7 +46,7 @@ class Anuncio extends \yii\db\ActiveRecord
      * @inheritdoc
      */
 
-
+public $imageFile;
 
     public function rules()
     {
@@ -57,6 +57,7 @@ class Anuncio extends \yii\db\ActiveRecord
             [['precio_oferta', 'precio_original'], 'number'],
             [['zona_id', 'categoria_id', 'votosOK', 'votosKO', 'proveedor_id', 'prioridad', 'num_denuncias', 'crea_usuario_id', 'modi_usuario_id'], 'integer'],
             [['imagen_id'], 'string', 'max' => 25],
+            [['imageFile'], 'file', 'skipOnEmpty' => true, 'extensions' => 'png, jpg'],
             [['visible', 'terminada', 'bloqueada', 'cerrada_comentar'], 'string', 'max' => 1],
         ];
     }
@@ -81,6 +82,7 @@ class Anuncio extends \yii\db\ActiveRecord
             'zona_id' => Yii::t('app', 'Area/Zona de ubicación de la tienda del anuncio/oferta o CERO si no existe o aún no está indicada (como si fuera NULL).'),
             'categoria_id' => Yii::t('app', 'Categoria de clasificación del anuncio/oferta o CERO si no existe o aún no está indicada (como si fuera NULL).'),
             'imagen_id' => Yii::t('app', 'Nombre identificativo (fichero interno) con la imagen principal o \"de presentación\" del anuncio/oferta, o NULL si no hay.'),
+         
             'votosOK' => Yii::t('app', 'Contador de votos a favor para el anuncio/oferta.'),
             'votosKO' => Yii::t('app', 'Contador de votos encontra para el anuncio/oferta.'),
             'proveedor_id' => Yii::t('app', 'Prveedor  del anuncio/oferta o CERO si no está patrocinado por nadie o no existe, o aún no está indicado (como si fuera NULL).'),
@@ -155,6 +157,18 @@ class Anuncio extends \yii\db\ActiveRecord
     public function getTerminado()
     {
         return $this::$terminados[$this->terminada];
+    }
+
+     public function upload()
+    {
+      //  if ($this->validate()) {
+            $this->imageFile->saveAs('imagenes/anuncios/' .$this->id. '.' . $this->imageFile->extension);
+            $this->imagen_id =$this->id. '.' . $this->imageFile->extension;
+            $this->save(false);
+            return true;
+      /*  } else {
+            return false;
+        }*/
     }
 }
 
