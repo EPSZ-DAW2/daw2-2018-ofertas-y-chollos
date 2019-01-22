@@ -17,6 +17,9 @@ $imagen = ($model->imagen_id == null) ? 'src="'.Url::base().'/imagenes/anuncios/
 $activada = !Yii::$app->user->isGuest;//($model->terminada==0 && $model->bloqueada==0 && $model->visible==1);
 $form = ActiveForm::begin(['options' => ['enctype' => 'multipart/form-data']]);
 
+if(Yii::$app->authManager->getRolesByUser(Yii::$app->user->identity->id) === 'admin') { 
+ $this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Anuncios'), 'url' => ['index']];
+}
 //var_dump($etiquetas);
 
 ?>
