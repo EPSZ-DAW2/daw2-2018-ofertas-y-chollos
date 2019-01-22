@@ -60,8 +60,13 @@ $this->params['breadcrumbs'][] = $this->title;
             ['class' => 'yii\grid\ActionColumn',
 
 
-                'template' => '{view}{update}{delete}{bloquear}{terminar}',
+                'template' => '{viewadmin}{update}{delete}{bloquear}{terminar}',
                 'buttons' => [
+                    'viewadmin' => function ($url, $model) {
+                        return Html::a('<i class="fas fa-eye"></i>', $url, [
+                                    'title' => Yii::t('app', 'viewadmin'),
+                        ]);
+                    },
                     'bloquear' => function ($url, $model) {
                         return Html::a('<i class="fas fa-lock"></i>', $url, [
                                     'title' => Yii::t('app', 'bloquear'),
