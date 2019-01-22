@@ -5,6 +5,9 @@ namespace app\controllers;
 use Yii;
 use app\models\Etiqueta;
 use app\models\EtiquetasSearch;
+use app\models\Anuncio;
+use app\models\AnunciosEtiquetas;
+use app\models\UsuariosEtiquetas;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -102,6 +105,35 @@ class EtiquetasController extends Controller
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
      */
+	 
+	 public function actionUnificacion()
+    {
+         $model = new Etiqueta();//usamos un modelo de etiquetas pero no guardaremos una etiqueta sino dos ids de etiqueta
+
+        if ($model->load(Yii::$app->request->post())) {
+			$idEliminar = $model->descripcion;
+			$idConservar = $model->nombre;//el atributo nombre en esta ocasion nos servirá para guardar el id de la otra categoria
+			if($idEliminar != $idConservar)
+			{
+				UsuariosEtiquetas::updateAll(['etiqueta_id' => $idConservar], 'etiqueta_id = '.$idEliminar);
+				AnunciosEtiquetas::updateAll(['etiqueta_id' => $idConservar], 'etiqueta_id = '.$idEliminar);		
+				$this->findModel($idEliminar)->delete();
+			}
+			
+            return $this->redirect(['index']);
+        }
+		$listaDeEtiquetas = Etiqueta::find()->all();
+		$listaDeNombres = array();
+		foreach($listaDeEtiquetas as $etiqueta)
+		{
+			$listaDeNombres[$etiqueta->id]=$etiqueta->nombre;
+		}
+        return $this->render('unificacion', [
+            'model' => $model,
+			'listaDeEtiquetas' => $listaDeNombres,
+        ]);
+    }
+	 
     public function actionDelete($id)
     {
         $this->findModel($id)->delete();
