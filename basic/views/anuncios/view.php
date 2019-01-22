@@ -5,6 +5,7 @@ use yii\widgets\DetailView;
 use yii\helpers\Url;
 use app\models\Usuario;
 use app\models\Anuncio_comentario;
+use yii\widgets\ActiveForm;
 /* @var $this yii\web\View */
 /* @var $model app\models\Anuncio */
 
@@ -14,6 +15,7 @@ $this->params['breadcrumbs'][] = $this->title;
 $url = $model->url==null ? 'Sin página web' : "<a href=$model->url> Ir a su web</a>";
 $imagen = ($model->imagen_id == null) ? 'src="'.Url::base().'/imagenes/anuncios/anuncio_default.png"':'src="'.Url::base().'/imagenes/anuncios/'.$model->imagen_id.'"';
 $activada = !Yii::$app->user->isGuest;//($model->terminada==0 && $model->bloqueada==0 && $model->visible==1);
+$form = ActiveForm::begin(['options' => ['enctype' => 'multipart/form-data']]);
 
 //var_dump($etiquetas);
 
@@ -35,6 +37,7 @@ $activada = !Yii::$app->user->isGuest;//($model->terminada==0 && $model->bloquea
 
           echo "</p>";
     }
+     $form->field($model, 'imageFile')->fileInput();
   ?>
 <center><img <?=$imagen?>alt=""></center>
     <div>
