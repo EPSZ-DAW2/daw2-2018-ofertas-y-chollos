@@ -165,18 +165,67 @@ else
      */
     public function actionUpdate($id)
     {
-        $model = $this->findModel($id);
+        // $model = $this->findModel($id);
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+        // if ($model->load(Yii::$app->request->post()) && $model->save()) {
 
+
+
+           // return $this->redirect(['view', 'id' => $model->id]);
+     //   }
+
+
+
+        $result = $model->load(Yii::$app->request->post()) && $model->validate();
+        if ($result) {
+          if($model->texto != $model->oldAttributes['texto']) {
+            //if(Yii::$app->authManager->getRolesByUser(Yii::$app->user->identity->id) == 'Administrador' ) 
+              $model->modi_usuario_id = 0;
+            //else
+              //$model->modi_usuario_id = Yii::$app->user->identity->id;
+            $model->modi_fecha = date('Y-m-d H:i:s');
+          }
+          if($model->bloqueada != $model->oldAttributes['bloqueada']) {
+            if($model->bloqueada == 0){
+              $model->fecha_bloqueo = '';
+            } else if($model->fecha_bloqueo == ''){
+              $model->fecha_bloqueo = date('Y-m-d H:i:s');
+            }
+          }
+          if ($model->save(false)) {
             return $this->redirect(['view', 'id' => $model->id]);
-        }
+          }
+
+
+        $resulta = $model->load(Yii::$app->request->post()) && $model->validate();
+        if ($resulta) {
+          if($model->texto != $model->oldAttributes['texto']) {
+            //if(Yii::$app->authManager->getRolesByUser(Yii::$app->user->identity->id) == 'Administrador' ) 
+              $model->modi_usuario_id = 0;
+            //else
+              //$model->modi_usuario_id = Yii::$app->user->identity->id;
+            $model->modi_fecha = date('Y-m-d H:i:s');
+          }
+          if($model->terminada != $model->oldAttributes['terminada']) {
+            if($model->terminada == 0){
+              $model->fecha_terminacion = '';
+            } else if($model->fecha_terminacion == ''){
+              $model->fecha_terminacion = date('Y-m-d H:i:s');
+            }
+          }
+          if ($model->save(false)) {
+            return $this->redirect(['view', 'id' => $model->id]);
+          }
+
+
 
         return $this->render('update', [
             'model' => $model,
             'categorias' => $this->listarCategorias(),
              'proveedores' => $this->listarProveedores(),
         ]);
+      }
+    }
     }
 
     public function actionVotarok($id)
@@ -342,6 +391,83 @@ else
             'dataProvider' => $dataProvider,
         ]);
     }
+
+
+
+//Función para bloqueo de anuncios. Recibe lista de bloqueos
+public function actionBloquear($id, $tipo=null, $url=null)
+    {
+        $model = $this->findModel($id);
+    
+    if($tipo !== null) {
+      $model->fecha_bloqueo = date('Y-m-d H:i:s');
+      $model->bloqueada == $tipo;
+      if ($model->save(false)) {
+        //Grupo 2 poned aquí la dirección a la que tiene que volver, pasais otro parametro como el de tipo con lo que os haga falta para regresar
+        return $this->redirect([$url]);
+      } else {
+        //Grupo 2 poned aquí la dirección a la que tiene que volver, pasais otro parametro como el de tipo con lo que os haga falta para regresar
+        return $this->redirect([$url]);
+      }
+    }
+
+    $result = $model->load(Yii::$app->request->post());
+    if ($result) {
+      if($model->bloqueada != $model->oldAttributes['bloqueada']) {
+        if($model->bloqueada == 0){
+          $model->fecha_bloqueo = '';
+        } else if($model->fecha_bloqueo == ''){
+          $model->fecha_bloqueo = date('Y-m-d H:i:s');
+        }
+      }
+      if ($model->save(false)) {
+        return $this->redirect(['view', 'id' => $model->id]);
+      }
+        }
+
+        return $this->render('bloquear', [
+            'model' => $model,
+        ]);
+    }
+
+//Función para bloqueo de anuncios. Recibe lista de terminación
+public function actionTerminar($id, $tipo=null, $url=null)
+    {
+        $model = $this->findModel($id);
+    
+    if($tipo !== null) {
+      $model->fecha_terminacion = date('Y-m-d H:i:s');
+      $model->terminada == $tipo;
+      if ($model->save(false)) {
+        //Grupo 2 poned aquí la dirección a la que tiene que volver, pasais otro parametro como el de tipo con lo que os haga falta para regresar
+        return $this->redirect([$url]);
+      } else {
+        //Grupo 2 poned aquí la dirección a la que tiene que volver, pasais otro parametro como el de tipo con lo que os haga falta para regresar
+        return $this->redirect([$url]);
+      }
+    }
+
+    $resulta = $model->load(Yii::$app->request->post());
+    if ($resulta) {
+      if($model->terminada != $model->oldAttributes['terminada']) {
+        if($model->terminada == 0){
+          $model->fecha_terminacion = '';
+        } else if($model->fecha_terminacion == ''){
+          $model->fecha_terminacion = date('Y-m-d H:i:s');
+        }
+      }
+      if ($model->save(false)) {
+        return $this->redirect(['view', 'id' => $model->id]);
+      }
+        }
+
+        return $this->render('terminar', [
+            'model' => $model,
+        ]);
+    }
+
+
+
 
 
 }
