@@ -165,14 +165,14 @@ else
      */
     public function actionUpdate($id)
     {
-        // $model = $this->findModel($id);
+         $model = $this->findModel($id);
 
-        // if ($model->load(Yii::$app->request->post()) && $model->save()) {
+         if ($model->load(Yii::$app->request->post()) && $model->save()) {
 
 
 
-           // return $this->redirect(['view', 'id' => $model->id]);
-     //   }
+            return $this->redirect(['view', 'id' => $model->id]);
+        }
 
 
 
@@ -207,25 +207,24 @@ else
             $model->modi_fecha = date('Y-m-d H:i:s');
           }
           if($model->terminada != $model->oldAttributes['terminada']) {
-            if($model->terminada == 0){
-              $model->fecha_terminacion = '';
-            } else if($model->fecha_terminacion == ''){
-              $model->fecha_terminacion = date('Y-m-d H:i:s');
+                if($model->terminada == 0){
+                  $model->fecha_terminacion = '';
+                } else if($model->fecha_terminacion == ''){
+                  $model->fecha_terminacion = date('Y-m-d H:i:s');
+                }
+              }
+                if ($model->save(false)) {
+                  return $this->redirect(['view', 'id' => $model->id]);
+                }
+ 
             }
-          }
-          if ($model->save(false)) {
-            return $this->redirect(['view', 'id' => $model->id]);
-          }
 
-
-
-        return $this->render('update', [
+    }
+     return $this->render('update', [
             'model' => $model,
             'categorias' => $this->listarCategorias(),
              'proveedores' => $this->listarProveedores(),
         ]);
-      }
-    }
     }
 
     public function actionVotarok($id)
