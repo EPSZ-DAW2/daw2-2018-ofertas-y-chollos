@@ -19,7 +19,7 @@ $patrocinado = (($model->proveedor_id != NULL) && ($model->proveedor_id != 0))?t
 					<!-- OJO! modificar cuando este claro que se guarda en el campo imagen_id de la base de datos..-->
 				<img <?=($model->imagen_id == null)?'src="'.Url::base().'/imagenes/anuncios/anuncio_default.png"':'src="https://'.$model->imagen_id.'"'; ?>class="img-fluid no-descuadrar-img" alt="">
 					<!-- Enlazar la imagen con la vista detallada del anuncio!-->
-					<?=Html::a('<div class="mask waves-effect waves-light"></div>', ['anuncios/ver', 'id'=>$model->id])?>
+					<?=Html::a('<div class="mask waves-effect waves-light"></div>', ['anuncios/view', 'id'=>$model->id])?>
 					
 				</div>
 
