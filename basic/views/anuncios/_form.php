@@ -54,6 +54,8 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'imagen_id')->textInput()->label("Pegue aquí la url de la imagen") ?> <!--MODIFICAR-->
 
+    <?=$form->field($model, 'imageFile')->fileInput()?>
+
     <?= $form->field($model, 'votosOK')->hiddenInput()->label(false) ?>
 
     <?= $form->field($model, 'votosKO')->hiddenInput()->label(false)  ?>
