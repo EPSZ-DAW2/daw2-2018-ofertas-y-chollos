@@ -84,7 +84,7 @@ $patrocinado = (($model->proveedor_id != NULL) && ($model->proveedor_id != 0))?t
 		<div class="card-block">
 			<!--Titulo del anuncio-->
 
-			<h4 class="card-title"> <?= Html::a($model->titulo, ['anuncios/ver', 'id'=>$model->id], ['class' =>'waves-effect waves-light']) ?></h4>
+			<h4 class="card-title"> <?= Html::a($model->titulo, ['anuncios/view', 'id'=>$model->id], ['class' =>'waves-effect waves-light']) ?></h4>
 				<p class="card-text"><?php 
 
 				//mostrar el precio del chollaso, el precio original
