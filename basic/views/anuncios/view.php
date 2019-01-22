@@ -10,15 +10,17 @@ use yii\widgets\ActiveForm;
 /* @var $model app\models\Anuncio */
 
 $this->title = $model->titulo;
-$this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Anuncios'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
+
 $url = $model->url==null ? 'Sin página web' : "<a href=$model->url> Ir a su web</a>";
 $imagen = ($model->imagen_id == null) ? 'src="'.Url::base().'/imagenes/anuncios/anuncio_default.png"':'src="'.Url::base().'/imagenes/anuncios/'.$model->imagen_id.'"';
 $activada = !Yii::$app->user->isGuest;//($model->terminada==0 && $model->bloqueada==0 && $model->visible==1);
 $form = ActiveForm::begin(['options' => ['enctype' => 'multipart/form-data']]);
 
 //var_dump($etiquetas);
-
+if(Yii::$app->authManager->getRolesByUser(Yii::$app->user->identity->id) === 'admin') { 
+ $this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Anuncios'), 'url' => ['index']];
+}
 ?>
  
 
@@ -28,6 +30,9 @@ $form = ActiveForm::begin(['options' => ['enctype' => 'multipart/form-data']]);
 <p>Etiquetas: <?php foreach($etiquetas as $nombre) echo $nombre."&nbsp"?></p>
  <?php
  $idusuario = Yii::$app->user->isGuest ? 0 : Yii::$app->user->identity->id;
+
+
+
 
    if($model->crea_usuario_id == $idusuario && count($etiquetas)!=0)
         {
