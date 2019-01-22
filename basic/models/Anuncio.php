@@ -123,21 +123,39 @@ class Anuncio extends \yii\db\ActiveRecord
     }
 
 
-
+/*
     //Administración de las listas de bloqueo
-    protected static $bloqueos=array( 0=>'No', 1=>'Bloqueado por denuncias', 2=>'Bloqueada por administrador');
-
     public static function listarBloqueos(){
         return self::$bloqueos;
+    }*/
+    //lista de estados posibles para bloqueo.
+    public static $bloqueados= array(
+        0=>'No', 
+        1=>'Bloqueado por denuncias',
+        2=>'Bloqueado por administrador',
+    );
+        
+    public function getBloqueado()
+    {
+        return $this::$bloqueados[$this->bloqueada];
     }
+    
+    public static $cerrados= array(
+        0=>'No', 
+        1=>'Si',
+    );
+
+
 
     //Administración de las listas de terminación
-    protected static $terminaciones=array( 0=>'No', 1=>'Realizada', 2=>'Suspendida', 3=>'Cancelada por inadecuada');
-
-    public static function listarTerminaciones(){
-        return self::$terminaciones;
+    //lista de estados posibles para terminación.
+    public static $terminados=array( 0=>'No', 1=>'Realizada', 2=>'Suspendida', 3=>'Cancelada por inadecuada');
+   // public static function listarTerminaciones(){
+       // return self::$terminaciones;
+    public function getTerminado()
+    {
+        return $this::$terminados[$this->terminada];
+    }
 }
 
-
-}
 
