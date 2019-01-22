@@ -92,6 +92,12 @@ $this->registerCss($css1, [], '_comentario');
 	<p class="text"><?= $model->texto ?></p>
 	
 	<div class="">
+		<?php
+		 $idusuario = Yii::$app->user->isGuest ? 0 : Yii::$app->user->identity->id;
+		 $rol  = Yii::$app->user->isGuest ? 0 : Yii::$app->authManager->getRolesByUser(Yii::$app->user->identity->id);
+
+
+		?>
 		<?= Html::button( '<i class="fas fa-quote-right"></i> Citar', ['class'=>'no-btn menor', 'onclick'=>"citar('".$model->id."', '".$model->crea_usuario_id."', '".$model->texto."');"]); ?>
 
 		<div class="btn-group">
@@ -102,12 +108,14 @@ $this->registerCss($css1, [], '_comentario');
 				
 				<?php 
 
-				if($model->crea_usuario_id == Yii::$app->user->identity->id || Yii::$app->authManager->getRolesByUser(Yii::$app->user->identity->id) == 'Administrador') { 
-/////////
+
+
+				if($model->crea_usuario_id == $idusuario || $rol == 'Administrador') { 
+
 					?>
 					<li>
 						<?= Html::a('Eliminar', ['anuncios_comentarios/delete', 'id' => $model->id], ['data-method' => 'post']) ?> <?php } ?></li>
-				<?php if($model->crea_usuario_id != Yii::$app->user->identity->id) { ?>
+				<?php if($model->crea_usuario_id != $idusuario) { ?>
 					<li><?= Html::a('Denunciar', ['denunciar', 'id' => $model->id]) ?><?php } ?></li>
 				
 			</ul>
