@@ -110,14 +110,15 @@ $this->registerCss($css1, [], '_comentario');
 
 
 
-				if($model->crea_usuario_id == $idusuario || $rol == 'Administrador') { 
+				if($model->crea_usuario_id === $idusuario || $rol === 'Administrador') { 
 
-					?>
-					<li>
-						<?= Html::a('Eliminar', ['anuncios_comentarios/delete', 'id' => $model->id], ['data-method' => 'post']) ?> <?php } ?></li>
-				<?php if($model->crea_usuario_id != $idusuario) { ?>
-					<li><?= Html::a('Denunciar', ['denunciar', 'id' => $model->id]) ?><?php } ?></li>
-				
+					echo "<li>".Html::a('Eliminar', ['anuncios_comentarios/delete', 'id' => $model->id], ['data-method' => 'post'])."</li>"; 
+			
+				}
+				if($model->crea_usuario_id != $idusuario && !Yii::$app->user->isGuest) { 
+					echo "<li>".Html::a('Denunciar', ['denunciar', 'id' => $model->id])."</li>";
+				}
+				?>
 			</ul>
 		</div>
 	</div>
