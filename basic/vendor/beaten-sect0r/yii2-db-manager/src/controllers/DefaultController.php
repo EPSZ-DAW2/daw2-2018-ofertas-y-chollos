@@ -13,6 +13,8 @@ use yii\web\Controller;
 use bs\dbManager\models\Dump;
 use bs\dbManager\models\Restore;
 use Symfony\Component\Process\Process;
+use yii\filters\AccessControl;
+
 
 use ZipArchive;
 use RecursiveIteratorIterator;
@@ -48,6 +50,22 @@ class DefaultController extends Controller
                     'restore' => ['get', 'post'],
                     '*' => ['get'],
                 ],
+			],
+			'access'=>[
+                'class'=>AccessControl::className(),
+                'rules'=>[
+                    [
+                        'allow'=>true,
+                        'actions'=>['index','create','download','delete', 'restore', 'zipping', 'agregar_zip', 'agregar_zip2', 'restaurarImagenes', 'storage','delete-all','prepareFileData','checkActivePids','runProcess','runProcessAsync'],
+                        'roles'=>['admin'],
+                    ],
+                    [
+                        'allow'=>false,
+                        'actions'=>['busqueda'],
+                        'roles'=>['invitado'],
+                    ]
+                ],
+           
             ],
         ];
     }
