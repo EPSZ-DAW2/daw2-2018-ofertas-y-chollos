@@ -24,6 +24,9 @@ $this->params['breadcrumbs'][] = $this->title;
         <?= Html::a(Yii::t('app', 'Crear Categoria'), ['create'], ['class' => 'btn btn-success']) ?>
 	</p>
 	<p>
+        <?= Html::a(Yii::t('app', 'Unificar Categorias'), ['unificacion'], ['class' => 'btn btn-success']) ?>
+	</p>
+	<p>
 		<?= CategoriasSearch::arbolCategorias();?>
 	</p>
     <?= GridView::widget([
