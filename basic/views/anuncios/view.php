@@ -10,7 +10,7 @@ use yii\widgets\ActiveForm;
 /* @var $model app\models\Anuncio */
 
 $this->title = $model->titulo;
-$this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Anuncios'), 'url' => ['index']];
+//$this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Anuncios'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 $url = $model->url==null ? 'Sin página web' : "<a href=$model->url> Ir a su web</a>";
 $imagen = ($model->imagen_id == null) ? 'src="'.Url::base().'/imagenes/anuncios/anuncio_default.png"':'src="'.Url::base().'/imagenes/anuncios/'.$model->imagen_id.'"';
