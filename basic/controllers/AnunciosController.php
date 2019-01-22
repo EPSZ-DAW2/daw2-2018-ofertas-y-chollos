@@ -17,7 +17,7 @@ use yii\data\ActiveDataProvider;
 use app\models\Anuncio_comentarioSearch;
 use app\models\UsuariosAnuncios;
 use app\models\AnunciosEtiquetas;
-
+use yii\web\UploadedFile;
 /**
  * AnunciosController implements the CRUD actions for Anuncio model.
  */
@@ -129,8 +129,8 @@ else
     }
      public function actionViewadmin($id)
     {
-        return $this->render('view_admin', [
-            'model' => $model,
+        return $this->render('viewadmin', [
+            'model' => $this->findModel($id),
         ]);
     }
 
@@ -144,8 +144,15 @@ else
         $model = new Anuncio();
 
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+        if ($model->load(Yii::$app->request->post())) {
+           $model->save(false);
 
+        
+              $model->imageFile = UploadedFile::getInstance($model, 'imageFile');
+          if(!empty($model->imageFile)){
+              $model->upload();
+            }
+        
             return $this->redirect(['view', 'id' => $model->id]);
         }
 
@@ -167,9 +174,14 @@ else
     {
          $model = $this->findModel($id);
 
-         if ($model->load(Yii::$app->request->post()) && $model->save()) {
+         if ($model->load(Yii::$app->request->post())) {
 
+          $model->save(false);
 
+             $model->imageFile = UploadedFile::getInstance($model, 'imageFile');
+          if(!empty($model->imageFile)){
+              $model->upload();
+            }
 
             return $this->redirect(['view', 'id' => $model->id]);
         }
@@ -465,7 +477,20 @@ public function actionTerminar($id, $tipo=null, $url=null)
         ]);
     }
 
+   public function actionUpload()
+    {
+        $model = new Anuncio();
 
+        if (Yii::$app->request->isPost) {
+            $model->imageFile = UploadedFile::getInstance($model, 'imageFile');
+            if ($model->upload()) {
+                // el archivo se subió exitosamente
+                return;
+            }
+        }
+
+        return $this->render('upload', ['model' => $model]);
+    }
 
 
 
