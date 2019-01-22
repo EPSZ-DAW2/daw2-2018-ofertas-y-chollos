@@ -57,7 +57,27 @@ $this->params['breadcrumbs'][] = $this->title;
             //'modi_fecha',
             //'notas_admin:ntext',
 
-            ['class' => 'yii\grid\ActionColumn',],
+            ['class' => 'yii\grid\ActionColumn',
+
+
+                'template' => '{view}{update}{delete}{bloquear}{terminar}',
+                'buttons' => [
+                    'bloquear' => function ($url, $model) {
+                        return Html::a('<i class="fas fa-lock"></i>', $url, [
+                                    'title' => Yii::t('app', 'bloquear'),
+                        ]);
+                    },
+                    'terminar' => function ($url, $model) {
+                        return Html::a('<i class="fas fa-hourglass-end"></i>', $url, [
+                                    'title' => Yii::t('app', 'terminar'),
+                        ]);
+                    }
+
+
+                ],
+            ],
+
+
 
         ],
     ]); ?>
