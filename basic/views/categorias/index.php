@@ -26,9 +26,7 @@ $this->params['breadcrumbs'][] = $this->title;
 	<p>
         <?= Html::a(Yii::t('app', 'Unificar Categorias'), ['unificacion'], ['class' => 'btn btn-success']) ?>
 	</p>
-	<p>
-		<?= CategoriasSearch::arbolCategorias();?>
-	</p>
+	
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,

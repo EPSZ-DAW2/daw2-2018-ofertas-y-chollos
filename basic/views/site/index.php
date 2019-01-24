@@ -5,6 +5,7 @@ use yii\widgets\Menu;
 use yii\widgets\ListView;
 use app\models\zonas;
 use app\models\Categorias;
+use app\models\Etiqueta;
 use app\models\Anuncio;
 use yii\web\View;
 
@@ -54,6 +55,7 @@ $this->title = 'My Yii Application';
 								<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
 									<a class="dropdown-item" href="#" onclick="mostrarFiltro('.'\'zonas\''.');">Buscar por zonas</a>
 									<a class="dropdown-item" href="#" onclick="mostrarFiltro('.'\'categorias\''.');">Buscar por categor?as</a>
+									<a class="dropdown-item" href="#" onclick="mostrarFiltro('.'\'etiquetas\''.');">Busqueda por etiquetas</a>
 									<a class="dropdown-item" href="#" onclick="mostrarFiltro('.'\'simple\''.');">Busqueda simple</a>
 								</div>
 							</div>'
@@ -92,6 +94,15 @@ $this->title = 'My Yii Application';
 				<?php 
 					echo \Yii::$app->view->renderFile('@app/views/anuncios/_searchsimple.php', [
 						'model'=> new Anuncio,
+					]);
+				?>
+			</div>
+		</div>
+		<div style="display:none;" id="etiquetas">
+			<div class="card-block">
+				<?php 
+					echo \Yii::$app->view->renderFile('@app/views/etiquetas/busquedaetiquetas.php', [
+						'model'=> new Etiqueta,
 					]);
 				?>
 			</div>

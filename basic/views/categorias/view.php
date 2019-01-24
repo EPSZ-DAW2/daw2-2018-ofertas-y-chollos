@@ -42,39 +42,4 @@ $this->params['breadcrumbs'][] = $this->title;
         ],
     ]) ?>
 	
-	<h2>Anuncios enlazados: </h2>
-	<?php /* 
-        GridView::widget([
-        'dataProvider' => $dataProvider,
-        'filterModel' => $searchModel,
-        'columns' => [
-			['class' => 'yii\grid\SerialColumn'],
-            ['attribute'=>'titulo',
-                'filter' => AutoComplete::widget([
-                    'model' => $searchModel,
-                    'attribute' => 'titulo',
-                    'clientOptions' => [
-                    'source' => Anuncio::find()->andWhere(['categoria_id'=>$model->id])->select(['titulo AS value'])->orderBy('titulo')->asArray()->all(),
-                    ],
-                    'options' => [
-                        'class' => 'form-control'
-                    ],
-                ]),
-            ],
-            'descripcion',
-            ['class' => 'yii\grid\ActionColumn',
-                'buttons' => [
-                    'view'=> function ($url, $model) {
-                    return Html::a('<span class="glyphicon glyphicon-eye-open"></span>', 'http://localhost/daw/basic/web/alertas/view?id='.$model->id, [
-                                'title' => Yii::t('app', 'View'),
-                        ]);
-                    },
-                ],
-                'template' => '{view}',
-            ],
-        ],
-        ]); 
-		
-		*/
-    ?>
 </div>
