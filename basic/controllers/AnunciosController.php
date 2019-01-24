@@ -63,6 +63,17 @@ class AnunciosController extends Controller
             'dataProvider' => $dataProvider,
         ]);
     }
+	
+	 public function actionBusquedaavanzada()
+    {
+        $searchModel = new AnuncioSearch();
+        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+
+        return $this->render('busquedaavanzada', [
+            'searchModel' => $searchModel,
+            'dataProvider' => $dataProvider,
+        ]);
+    }
 
     /**
      * Displays a single Anuncio model.

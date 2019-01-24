@@ -4,6 +4,8 @@ use yii\helpers\Html;
 use yii\widgets\Menu;
 use yii\widgets\ListView;
 use app\models\zonas;
+use app\models\Categorias;
+use app\models\Anuncio;
 use yii\web\View;
 
 
@@ -12,27 +14,11 @@ use yii\web\View;
 $js = <<<SCRIPT
 	function mostrarFiltro(elem) {
 		
+		document.getElementById("zonas").style.display = "none";
+		document.getElementById("categorias").style.display = "none";
+		document.getElementById("simple").style.display = "none";
+		 document.getElementById(elem).style.display = "block";
 		
-		if (elem == "zonas") {
-			if (document.getElementById("zonas").style.display == "none") {
-			  document.getElementById("zonas").style.display = "block";
-			} else {
-			  document.getElementById("zonas").style.display = "none";
-			}
-			if (document.getElementById("categorias").style.display == "block") {
-			  document.getElementById("categorias").style.display = "none";
-			}
-		}
-		if (elem == "categorias") {
-			if (document.getElementById("categorias").style.display == "none") {
-			  document.getElementById("categorias").style.display = "block";
-			} else {
-			  document.getElementById("categorias").style.display = "none";
-			}
-			if (document.getElementById("zonas").style.display == "block") {
-			  document.getElementById("zonas").style.display = "none";
-			}
-		}
 	}
 SCRIPT;
 $this->registerJs($js, View::POS_BEGIN);
@@ -68,19 +54,21 @@ $this->title = 'My Yii Application';
 								<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
 									<a class="dropdown-item" href="#" onclick="mostrarFiltro('.'\'zonas\''.');">Buscar por zonas</a>
 									<a class="dropdown-item" href="#" onclick="mostrarFiltro('.'\'categorias\''.');">Buscar por categor?as</a>
+									<a class="dropdown-item" href="#" onclick="mostrarFiltro('.'\'simple\''.');">Busqueda simple</a>
 								</div>
 							</div>'
 							,'options' => [ "class" => "nav-item"]],
 							['label' => 'Nuevos', 'url' => ['index'],'options' => [ "class" => "nav-item"]],
 							['label' => 'Populares', 'url' => ['index', 'filtro' => 'pop'], 'options' => [ "class" => "nav-item"]],
 							['label' => 'Pr?ximos', 'url' => ['index', 'filtro' => 'rec'], 'options' => [ "class" => "nav-item"]],
+							['label' => 'Busqueda Avanzada', 'url' => ['anuncios/busquedaavanzada'], 'options' => [ "class" => "nav-item"]],
 						],
 					]);
 				?>
 				
 			</div>
 		</div>
-		
+
 		<div class="card" style="display:none;" id="zonas">
 			<div class="card-block">
 				<?php 
@@ -93,7 +81,18 @@ $this->title = 'My Yii Application';
 		<div style="display:none;" id="categorias">
 			<div class="card-block">
 				<?php 
-
+					echo \Yii::$app->view->renderFile('@app/views/categorias/busqueda.php', [
+						'model'=> new Categorias,
+					]);
+				?>
+			</div>
+		</div>
+		<div style="display:none;" id="simple">
+			<div class="card-block">
+				<?php 
+					echo \Yii::$app->view->renderFile('@app/views/anuncios/_searchsimple.php', [
+						'model'=> new Anuncio,
+					]);
 				?>
 			</div>
 		</div>

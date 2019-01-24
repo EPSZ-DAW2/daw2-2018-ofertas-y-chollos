@@ -62,7 +62,7 @@ class SiteController extends Controller
      *
      * @return string
      */
-    public function actionIndex($nPages=24, $filtro=null, $id_zona=null, $id_categoria=null)
+    public function actionIndex($nPages=24, $filtro=null, $id_zona=null, $id_categoria=null, $id_etiqueta=null)
     {
         
 		//filtros
@@ -76,11 +76,19 @@ class SiteController extends Controller
 		if($filtro == 'rec') {
 			$query = Anuncio::find()->proximos();
 		}
+		$anuncio = Yii::$app->request->get('Anuncio');
+		if($anuncio != null){
+			$query = Anuncio::find()->busqueda($anuncio['titulo']);
+		}
 		if($id_zona !== null) {
 			$query = Anuncio::find()->zonas($id_zona);
 		}
 		if($id_categoria !== null) {
 			$query = Anuncio::find()->categorias($id_categoria);
+		}
+		if($id_etiqueta !== null) {
+			$query = Anuncio::find()->etiquetas($id_etiqueta);
+		
 		}
 		
 		
@@ -101,14 +109,14 @@ class SiteController extends Controller
 				'pagination' => false,
 			]);
 		}
-		
-
+	
 		
 		
 		
 		return $this->render('index', [
             'dataProvider' => $dataProvider,
 			'nPages' => $nPages,
+			
         ]);
     }
 

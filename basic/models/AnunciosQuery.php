@@ -46,10 +46,23 @@ class AnunciosQuery extends \yii\db\ActiveQuery
 	public function categorias($id_categoria)
     {
         return $this
-			->andWhere(['visible' => 1, 'bloqueada' => 0, 'categoria_id' => $id_categoría])
+			->andWhere(['visible' => 1, 'bloqueada' => 0, 'categoria_id' => $id_categoria])
 			->orderBy(['prioridad'=>SORT_DESC, 'id'=>SORT_DESC]);
     }
-	
+	public function etiquetas($id_etiqueta)
+    {
+		
+		$listaRelaciones= AnunciosEtiquetas::find()->select('anuncio_id')->where(['etiqueta_id' => $id_etiqueta])->all();
+		$listaIds=array();
+		foreach( $listaRelaciones as $anunciosEtiquetas){
+			array_push($listaIds,$anunciosEtiquetas->anuncio_id);
+		}
+		
+        return $this
+			->andWhere(['visible' => 1, 'bloqueada' => 0])
+			->andWhere(['in', 'id', $listaIds])
+			->orderBy(['prioridad'=>SORT_DESC, 'id'=>SORT_DESC]);
+    }
 	public function busqueda($texto)
     {
         return $this

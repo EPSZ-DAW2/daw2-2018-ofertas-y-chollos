@@ -35,6 +35,14 @@ class CategoriasController extends Controller
      * Lists all Categoria models.
      * @return mixed
      */
+	 
+	public function actionBusqueda()
+    {
+        return $this->render('busqueda', [
+            'model'=> new Categorias,
+        ]);
+    }
+	 
     public function actionIndex()
     {
         $searchModel = new CategoriasSearch();

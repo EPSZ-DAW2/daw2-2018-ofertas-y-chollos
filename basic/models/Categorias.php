@@ -58,6 +58,16 @@ class Categorias extends \yii\db\ActiveRecord
     {
         return $this->hasOne(Categorias::className(), ['id' => 'id']);
     }
+	
+	public function getNombrePadres()
+	{
+		return Categorias::find()->where(['categoria_id'=>0])->all();
+	}
+	
+	public function getHijos()
+    {
+        return Zonas::find()->where(['categoria_id'=>$this->id])->all();
+    }
 
     /**
      * @inheritdoc
